@@ -24,4 +24,10 @@ public class DBController {
 
 	}
 
+	/**
+	 * 
+	 */
+	public editUnivInfo(University university, List<String> info) {
+		
+	}
 }
