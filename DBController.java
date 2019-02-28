@@ -23,6 +23,20 @@ public class DBController {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public Account findByUsername (String username) { //hello
+		
+	}
+	
+	public String findUserPassword(Account account) {
+	
+	}
+	
+	public List<University> getReccomendations(University university){
+		
+	}
+	
+	
 
 	/**
 	 * 
