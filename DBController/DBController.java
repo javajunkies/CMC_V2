@@ -1,10 +1,12 @@
 /**
+ *@Description DBController class to be logic based class to retrieve, update and manage the information in the CMC Database
  * 
  */
 package edu.csbsju.cs;
 
 /**
- * @author bwest001
+ * @author bwest001, dkuhr001
+ * @version 1.0
  *
  */
 public class DBController {
