@@ -1,0 +1,18 @@
+public class accountController implements DBController {
+  
+  public void editUser(String firstName, String lastName, String password) {
+    
+  }
+  
+  public void register(String first, String last, String username, String password) {
+    
+  }
+  
+  public void checkPasswordCriteria(String password) {
+    
+  }
+  
+  public void checkPasswordMatch(String password) {
+    
+  }
+}
