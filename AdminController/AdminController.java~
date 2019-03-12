@@ -1,0 +1,49 @@
+public class AdminController {
+ 
+  //intitiate DBController
+  call methods on DBController
+    
+  //DBcontroller dbcontroller = new DBController(
+  
+  
+  public void login(String username, String password) {
+    
+  }
+  
+  public void logoff(){
+    
+  }
+  
+  public void viewUniversities() {
+    
+  }
+  
+  public void removeUniversity(University school) {
+    
+  }
+  
+  public void addUniversity(University school) {
+    
+  }
+  
+  
+  public void editUniversity(University school) {
+    
+  }
+  
+  public void editUser(String firstName, String lastName, String password) {
+    
+  } 
+  
+  public void viewUserInfo(String user) {
+    
+  } 
+  
+  public boolean search Users (String username) {
+    
+  }
+  
+  public void addNewUser(String firstname, String lastName, String username, String password, String type) {
+    
+  } 
+}

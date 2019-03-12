@@ -1,8 +1,6 @@
-/**
- * 
- */
+import dblibrary.project.csci230.*;
 package edu.csbsju.cs;
-
+.
 /**
  * @author Java Junkies
  *
@@ -74,5 +72,30 @@ public class DBController {
 	public adminEditUser(String firstName, String lastName, String username, String password, char type, status)
 	{
 		DB.user_editUser(firstName, lastName, username, password, type, status);
+	}
+	
+	public getRecommendations()
+	{
+		
+	}
+	
+	//5
+	public void getAllUniversities()
+	{
+		universities[][] = DB.universities_getUniversities();
+		for (int i = 0; i < universities[0].length; i++)
+		{
+			System.out.println(universities[i]);
+		}
+	}
+	
+	//6
+	public void getAllUsers() 
+	{
+		users[][] = DB.users_getUsers();
+		for (int i = 0; i < users[0].length; i++)
+		{
+			System.out.println(users[i]);
+		}
 	}
 }
