@@ -69,7 +69,7 @@ public class UserInteraction
   */
  public void register(String first, String last, String password)
  {
-  if (password.length = 8 && password.contains("[a-zA-Z0-9]*"))
+  if (password.length = 8 && password.contains("[a-zA-Z]*") && password.contains("[0-9]*"))
   {
    AccountController.register(first, last, password);
   }
