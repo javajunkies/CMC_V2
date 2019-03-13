@@ -19,7 +19,7 @@ public class DBController {
   
   
   //constructor
-   UniversityDBLibrary DB = new UniversityDBLibrary(javajunk, csci230);
+  UniversityDBLibrary DB = new UniversityDBLibrary(javajunk, csci230);
   //UniversityDBLibrary DB = new UniversityDBLibrary("javajunk", "javajunk", "csci230");
   
   /*
@@ -78,6 +78,28 @@ public class DBController {
    
    }
    */
+  
+  //search
+  public String[] searchUniversities(String state, int numberOfStudents) 
+  {
+    universities[][] = DB.universities_getUniversities();
+    int rowLength = universities[0].length;
+    int colLength = universities[1].length; 
+    String[] matchUni;
+    int k = 0;
+    
+    for(int i = 0; i < rowLength; i++) {
+      for(int j = 0; l < colLength; j++) {
+        if(universities[i][1]) == state  && universities[i][4] < numberOfStudents) { 
+          matchUni[k] = universities[i][0];
+          k++;
+        }
+        }
+     }
+     return matchUni;
+     }
+   
+   
   //5
   public String[] getAllUniversities()
   {
@@ -101,6 +123,6 @@ public class DBController {
    System.out.println(users[i]);
    }
    */
-
+  
+  }
 }
-
