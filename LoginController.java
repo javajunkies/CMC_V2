@@ -46,8 +46,10 @@ public class LoginController {
 	 * @param username
 	 */
 	public boolean checkUsername(String username) {
-		String[][] users = db.user_getUsers();
-		return false;
+		if(DBController.findByUsername(username) == null) {
+			return false;
+		}
+			return true;
 	}
 	
 	/**
