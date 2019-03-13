@@ -19,18 +19,17 @@ public class DBController {
   
   
   //constructor
-  UniversityDBLibrary DB = new UniversityDBLibrary(javajunk, csci230);
+  UniversityDBLibrary DB = new UniversityDBLibrary(javajunk, CSCI230);
   //UniversityDBLibrary DB = new UniversityDBLibrary("javajunk", "javajunk", "csci230");
   
-  /*
-   *  
-   *
+  
    public Account findByUsername (String username) 
    { 
-   
+	   String[][] = DB.user_getUsers();
+	   for()
    }
    
-   */
+   
   
    public String findUserPassword(String username) 
    {
