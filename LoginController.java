@@ -13,7 +13,10 @@ public class LoginController {
 	DBController db = new DBController();
 	/**
 	 * Logs user into system.
-	 * 
+	 * @param username username associated with this user
+	 * @param pass password user uses to log in
+	 * @return int representation of login attempt. 0 if succesful, 1 if invalid username,
+	 *         2 if invalid password, and 3 if status is inactive.
 	 */
 	public int login(String username, String pass) {
 		int u, p, s;

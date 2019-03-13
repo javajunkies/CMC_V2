@@ -22,7 +22,11 @@ public class DBController {
   UniversityDBLibrary DB = new UniversityDBLibrary(javajunk, CSCI230);
   //UniversityDBLibrary DB = new UniversityDBLibrary("javajunk", "javajunk", "csci230");
   
-  
+  /**
+   * Searchs for a specified user in the database.
+   * @param username username being searched for
+   * @return boolean representation of outcome, true if user is found, false if not.
+   */
    public boolean findByUsername (String username) 
    { 
 	   String[][] users = DB.user_getUsers();
@@ -34,6 +38,11 @@ public class DBController {
    return false;
    }
   
+   /**
+    * Searchs for a specified users password in database.
+    * @param username user whos password is being searched for.
+    * @return String String representation of the users password.
+    */
    public String findUserPassword(String username) 
    {
    	String[][] users = DB.user_getUsers();
@@ -131,7 +140,7 @@ public class DBController {
    public void getAllUsers() 
    {
    String [][] users = DB.user_getUsers();
-   for (int i = 0; i < users[0].length; i++)
+   for (int i = 0; i < users.length; i++)
    {
    System.out.println(users[i]);
    }
