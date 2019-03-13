@@ -1,13 +1,20 @@
 import dblibrary.project.csci230.*;
-package cmc;
+<<<<<<< HEAD
+import java.util.*;
+
 //package edu.csbsju.cs;
 
+=======
+package cmc;
+.
+>>>>>>> 4633d169b171c4e2830dfa9e88c8c0c537838f5b
 /**
  * @author Java Junkies
  *
  * Database controller class
  */
 public class DBController {
+<<<<<<< HEAD
   
   /**
    * database controller
@@ -20,8 +27,7 @@ public class DBController {
   
   
   //constructor
-   UniversityDBLibrary DB = new UniversityDBLibrary(javajunk, csci230);
-  //UniversityDBLibrary DB = new UniversityDBLibrary("javajunk", "javajunk", "csci230");
+  UniversityDBLibrary DB = new UniversityDBLibrary("javajunk", "javajunk", "csci230");
   
   /*
    *  
@@ -102,8 +108,8 @@ public class DBController {
    System.out.println(users[i]);
    }
    */
+=======
 
-<<<<<<< HEAD
 	/**
 	 * database controller
 	 */
@@ -115,7 +121,7 @@ public class DBController {
 	
 
 	//constructor
-	UniversityDBLibrary DB = new UniversityDBLibrary(javajunk, javajunk, csci230);
+	UniversityDBLibrary DB = new UniversityDBLibrary(javajunk, csci230);
 	
 	
 	
@@ -134,6 +140,7 @@ public class DBController {
 		
 	}
 	
+
 	public editUnivInfo(University university, List<String> info) 
 	{
 		
@@ -175,28 +182,6 @@ public class DBController {
 		
 	}
 	
-	/**
-	 * Searches for universities that match the user input
-	 */ 
-	  public String[] searchUniversities(String state, int numberOfStudents) {
-	    
-	    universities[][] = DB.universities_getUniversities();
-	    int rowLength = universities[0].length;
-	    int colLength = universities[1].length; 
-	    String[] matchUni;
-	    int k = 0;
-	    
-	    for(int i = 0; i < rowLength; i++) {
-	      for(int j = 0; l < colLength; j++) {
-	        if(universities[i][1]) == state  && universities[i][4] < numberOfStudents) { 
-	          matchUni[k] = universities[i][0];
-	          k++;
-	        }
-	      }
-	    }
-	    return matchUni;
-	 }
-	
 	//5
 	public void getAllUniversities()
 	{
@@ -216,7 +201,6 @@ public class DBController {
 			System.out.println(users[i]);
 		}
 	}
-=======
->>>>>>> 9b83725274b6d650b349387cc6be7717b1c3d6b5
+>>>>>>> 4633d169b171c4e2830dfa9e88c8c0c537838f5b
 }
 
