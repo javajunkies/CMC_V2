@@ -102,7 +102,11 @@ public class DBController {
    
    }
   
-  //search
+  /**
+   * method to search for a university 
+   * @param state the search criteria
+   * @param numberOfStudents the search criteria
+   */
   public String[] searchUniversities(String state, int numberOfStudents) 
   {
     universities[][] = DB.universities_getUniversities();
@@ -123,7 +127,10 @@ public class DBController {
      }
    
    
-  //5
+  /**
+   * method to view a list of all universities
+   * 
+   */
   public void getAllUniversities()
   {
     String[][] s = new String[10][];
@@ -146,7 +153,10 @@ public class DBController {
    }
 	   
    
-   //2
+   /**
+    * @param username the active users username 
+    * method to view retreive a users info from the database and display it. 
+    */
    public void viewuser(String username)
    {
      String[][] users = DB.user_getUsers();
@@ -167,7 +177,15 @@ public class DBController {
    }
    
   
-   
-   public 
-  }
+   /**
+    * @param firstName the new username to be updated
+    * @param lastName the new lastname to be updated
+    * @param password the new password to be updated
+    * 
+    * method to edit the current users information that is stored in the database
+    */
+   public void editUser(String firstName, String lastName, String password)
+   {
+	   String[][] users = DB.user_getUsers();  
+   }
 }
