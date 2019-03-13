@@ -1,6 +1,5 @@
 import dblibrary.project.csci230.*;
 package cmc;
-//package edu.csbsju.cs;
 
 /**
  * @author Java Junkies

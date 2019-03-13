@@ -71,7 +71,7 @@ public class LoginController {
 	 * @param account
 	 */
 	public boolean checkStatus(String username) {
-		String[][] user = db.user_getUsers();
+		Account user = DBController.findByUsername(username);
 		if(user.getStatus().equals('Y')) {
 		return true;
 	}
