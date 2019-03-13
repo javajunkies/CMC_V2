@@ -1,6 +1,7 @@
 //@author dkuhr001
 //@Description Driver class to demonstrate functionalities for Phase 2
 
+<<<<<<< HEAD
 public class Phase2Driver
 {
   public void main(String[] args)
@@ -13,18 +14,26 @@ public class Phase2Driver
    
    
    /*
+=======
 public class Phase2Driver{
   public void main(){
+    
+>>>>>>> 4633d169b171c4e2830dfa9e88c8c0c537838f5b
    Scanner sc=new Scanner(System.in);
    System.out.println("Enter username: ");
    String username=sc.nextLine();
    System.out.println("Enter password: ");
    String password=sc.nextLine();
-   /**help here Imad login(username,password)  ---------------
+   /**help here Imad login(username,password)
+   **/
    String username= User.getUsername();
    String first=
    (username,first,last,password,type,status);
-*/
+<<<<<<< HEAD
+   */
+=======
+  
+>>>>>>> 4633d169b171c4e2830dfa9e88c8c0c537838f5b
   
   }  
 }
