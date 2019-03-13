@@ -1,7 +1,0 @@
-public class UniversityController {
-  
-  public void sortSavedSchools(int price, int numOfStudents, int acceptanceRate, String username) {
-  
-  }
-  
-}

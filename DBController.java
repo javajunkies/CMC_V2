@@ -1,6 +1,5 @@
 import dblibrary.project.csci230.*;
-import java.util.*;
-
+package cmc;
 //package edu.csbsju.cs;
 
 /**
@@ -21,7 +20,8 @@ public class DBController {
   
   
   //constructor
-  UniversityDBLibrary DB = new UniversityDBLibrary("javajunk", "javajunk", "csci230");
+   UniversityDBLibrary DB = new UniversityDBLibrary(javajunk, csci230);
+  //UniversityDBLibrary DB = new UniversityDBLibrary("javajunk", "javajunk", "csci230");
   
   /*
    *  
@@ -102,4 +102,6 @@ public class DBController {
    System.out.println(users[i]);
    }
    */
+
 }
+
