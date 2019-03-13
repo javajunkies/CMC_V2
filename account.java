@@ -17,7 +17,7 @@ public class account {
 	 * @return the first name on the account
 	 */
 	public String getFirst() {
-		return first;
+		return this.first;
 	}
 
 
@@ -33,7 +33,7 @@ public class account {
 	 * @return the last name on the account
 	 */
 	public String getLast() {
-		return last;
+		return this.last;
 	}
 
 
@@ -49,14 +49,14 @@ public class account {
 	 * @return the username associated on the account
 	 */
 	public String getUsername() {
-		return username;
+		return this.username;
 	}
 
 	/**
 	 * @return the status associated with the account
 	 */
 	public String getStatus() {
-		return status;
+		return this.status;
 	}
 
 
@@ -80,7 +80,7 @@ public class account {
 	 * @return the password associated with the account
 	 */
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 
@@ -96,7 +96,7 @@ public class account {
 	 * @return the type of user
 	 */
 	public char getUsertype() {
-		return usertype;
+		return this.usertype;
 	}
 
 
@@ -122,6 +122,7 @@ public class account {
 		this.username = username;
 		this.password = passsword;
 		this.usertype = usertype;
+		this.status = 'Y';
 	}
 
 }

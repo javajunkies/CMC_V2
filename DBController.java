@@ -30,9 +30,17 @@ public class DBController {
    
    }
    
+   */
+  
    public String findUserPassword(String username) 
    {
-   
+   	String[][] users = DB.user_getUsers();
+   	for(int i = 0; i < users.length; i++){
+   		if(users[i].equals(username)) {
+   			return users[i][3];
+   		}
+   	}
+   	return "Could not find " + username;
    }
    
    public List<University> getReccomendations(University university)
@@ -44,7 +52,6 @@ public class DBController {
    {
    
    }
-   */
   
   /**
    * Deletes a university
@@ -62,10 +69,11 @@ public class DBController {
    }
    
    
-   *
-   public createUser(String firstName, String lastName, String username, String password, char type)
+   */
+   public boolean createUser(String firstName, String lastName, String username, String password, char type)
    {
-   DB.user_addUser(firstName, lastName, username, password, type)
+   DB.user_addUser(firstName, lastName, username, password, type);
+   Account username = new Account(firstName, lastName, username, password, type);
    }
    
    public adminEditUser(String firstName, String lastName, String username, String password, char type, status)
@@ -77,7 +85,6 @@ public class DBController {
    {
    
    }
-   */
   
   //search
   public String[] searchUniversities(String state, int numberOfStudents) 
@@ -101,7 +108,7 @@ public class DBController {
    
    
   //5
-  public String[] getAllUniversities()
+  public void getAllUniversities()
   {
     String[][] s = new String[10][];
     s = DB.university_getUniversities();
@@ -109,20 +116,19 @@ public class DBController {
     for (int i = 0; i < s.length; i++)
     {
       b[i] = s[i][0];
-      //System.out.println(s[i]);
+      System.out.println(s[i]);
     }
-    return b;
   }
-  /*
+  
    //6
    public void getAllUsers() 
    {
-   users = DB.users_getUsers();
+   String [][] users = DB.user_getUsers();
    for (int i = 0; i < users[0].length; i++)
    {
    System.out.println(users[i]);
    }
-   */
+   
   
   }
 }
