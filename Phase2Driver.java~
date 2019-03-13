@@ -3,7 +3,7 @@
 
 public class Phase2Driver{
   public void main(){
-   DBController db=new DBController;
+   DBController db=new DBController();
    
    String[][] schools=db.getAllUniversities();
    System.out.println(schools);
