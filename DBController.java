@@ -1,5 +1,5 @@
 import dblibrary.project.csci230.*;
-package edu.csbsju.cs;
+package cmc;
 .
 /**
  * @author Java Junkies
@@ -19,7 +19,7 @@ public class DBController {
 	
 
 	//constructor
-	UniversityDBLibrary DB = new UniversityDBLibrary(javajunk, javajunk, csci230);
+	UniversityDBLibrary DB = new UniversityDBLibrary(javajunk, csci230);
 	
 	
 	
@@ -38,6 +38,7 @@ public class DBController {
 		
 	}
 	
+
 	public editUnivInfo(University university, List<String> info) 
 	{
 		
@@ -99,3 +100,4 @@ public class DBController {
 		}
 	}
 }
+
