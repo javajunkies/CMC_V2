@@ -24,7 +24,8 @@ public class LoginController {
 			return 1;
 		}
 		if(u == 1) {
-			if(this.checkPassword(pass)) {
+			String correctPassword = this.getPassword(username);
+			if(correctPassword.equals(pass)) {
 				p = 1;
 			}
 			else {
@@ -46,10 +47,10 @@ public class LoginController {
 	 * @param username
 	 */
 	public boolean checkUsername(String username) {
-		if(DBController.findByUsername(username) == null) {
-			return false;
-		}
+		if(DBController.findByUsername(username)) {
 			return true;
+		}
+			return false;
 	}
 	
 	/**
@@ -64,8 +65,8 @@ public class LoginController {
 	 * Gets password
 	 * @param account
 	 */
-	public String getPassword(Account account) {
-		return DBController.findUserPassword(account);
+	public String getPassword(String user) {
+		return DBController.findUserPassword(user);
 	}
 	
 	/**
