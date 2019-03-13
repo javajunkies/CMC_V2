@@ -128,7 +128,30 @@ public class DBController {
    {
    System.out.println(users[i]);
    }
+	   
+   
+   //2
+   public void viewuser(String username)
+   {
+     String[][] users = DB.user_getUsers();
+     for (int i = 0; i < users[1].length(); i++)
+     {
+       if (users[i][2] == username)
+       {
+	     String [] userInfo;
+	     for(String s : userInfo)
+	     {
+	       userInfo[s] = users[i][s];
+	     }
+       }
+     }
+     for(int j = 0; j < userInfo.length; j++) {
+    	 System.out.println(userInfo[j]);
+     }
+   }
    
   
+   
+   public 
   }
 }
