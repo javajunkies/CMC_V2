@@ -4,7 +4,7 @@
 package edu.csbsju.cs
 
 
-public class AdminInteraction extends Admin{
+public class AdminInteraction{
  
  AdminController adminController=new AdminController;
  LoginController loginController=new LoginController;
@@ -19,18 +19,18 @@ public class AdminInteraction extends Admin{
  public void logoff(){
    loginController.logoff();
  }
- //@Description remove a university from the database
- //@params String school name
+ //@Description remove a 
+ //@params
  public void removeUniversity(String school){
    adminController.removeUniversity(school);
  }
- //@Description add new university to the database
- //@params String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife
+ //@Description
+ //@params
  public void addUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
    adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
  }
- //@Description edit an existing university
- //@params 
+ //@Description
+ //@params
  public void editUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
    adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
  }
@@ -57,12 +57,12 @@ public class AdminInteraction extends Admin{
  //@Description
  //@params
  public boolean searchUsers(String username){
-   searchController.searchUsers(username);
+   adminController.searchUsers(username);
  }
  //@Description add new user, passes user info to admin controller
  //@params
  public void addNewUser(String firstName,String lastName,String username,String password,char type){
-   accountController.addNewUser(firstName,lastName,username,password,type);
+   adminController.addNewUser(firstName,lastName,username,password,type);
  }
  
 }
