@@ -23,13 +23,16 @@ public class DBController {
   //UniversityDBLibrary DB = new UniversityDBLibrary("javajunk", "javajunk", "csci230");
   
   
-   public Account findByUsername (String username) 
+   public boolean findByUsername (String username) 
    { 
-	   String[][] = DB.user_getUsers();
-	   for()
+	   String[][] users = DB.user_getUsers();
+	   for(int i = 0; i < users.length; i++) {
+		   if(users[i].equals(username)) {
+	   			return true;
+	   		}
    }
-   
-   
+   return false;
+   }
   
    public String findUserPassword(String username) 
    {
@@ -72,7 +75,12 @@ public class DBController {
    public boolean createUser(String firstName, String lastName, String username, String password, char type)
    {
    DB.user_addUser(firstName, lastName, username, password, type);
-   Account username = new Account(firstName, lastName, username, password, type);
+   if(type = 'a') {
+	   User user = new User(firstName, lastName, username, password, type);
+   }
+   else{
+	   Admin admin = new Admin(firstName, lastName, username, password, type);
+   }
    }
    
    public adminEditUser(String firstName, String lastName, String username, String password, char type, status)
