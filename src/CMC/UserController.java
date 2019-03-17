@@ -1,13 +1,13 @@
-/**
- * 
- */
 package CMC;
+import java.util.*;
 
 /**
  * @author javajunkies
- *
  */
 public class UserController {
+	
+	DBController dbcontroller = new DBController();
+	LoginController logInController = new LoginController();
 	
 	/**
 	 *Logs the user onto their account
@@ -15,7 +15,7 @@ public class UserController {
 	 *@param password the users password
 	 */
 	public void login(String username, String password) {
-		
+		dbcontroller.login(username, password);
 	}
 	
 	/**
@@ -23,7 +23,7 @@ public class UserController {
 	 *
 	 */
 	public void logoff() {
-		
+		dbcontroller.logoff();
 	}
 	
 	/**
@@ -98,7 +98,7 @@ public class UserController {
 	}
 	
 	/**
-	 * gets the users information
+	 *gets the users information
 	 *@param username	the username to return information for
 	 */
 	public void viewUserInfo(String username) {

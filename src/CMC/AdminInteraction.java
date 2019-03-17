@@ -14,27 +14,73 @@ public class AdminInteraction{
  AdminController adminController=new AdminController();
  LoginController loginController=new LoginController();
  
- //@Description login, call method in AdminController
- //@params String username, String password
+ /**@Description login, call method in AdminController
+  * 
+  * @param username
+  * @param password
+  */
+
  public void login(String username, String password){
    loginController.login(username,password);
  }
- //@Description logoff current admin
- //@params
+ /**@Description logoff current admin
+  * 
+  */
+
  public void logoff(){
    loginController.logoff();
  }
- //@Description remove a 
- //@params
+ /**@Description remove a university
+  * 
+  * @param school
+  */
+
  public void removeUniversity(String school){
    adminController.removeUniversity(school);
  }
- //@Description
- //@params
+ /**@Description add new university
+  * 
+  * @param school
+  * @param state
+  * @param location
+  * @param control
+  * @param numStudents
+  * @param percentFemale
+  * @param SATVerbal
+  * @param SATMath
+  * @param expenses
+  * @param percentFinancialAid
+  * @param numApplicants
+  * @param percentAdmitted
+  * @param percentEnrolled
+  * @param academicsScale
+  * @param socialScale
+  * @param qualityOfLife
+  */
+
  public void addUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
    adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
  }
- //@Description
+ /**@Description edit existing university
+  * 
+  * @param school
+  * @param state
+  * @param location
+  * @param control
+  * @param numStudents
+  * @param percentFemale
+  * @param SATVerbal
+  * @param SATMath
+  * @param expenses
+  * @param percentFinancialAid
+  * @param numApplicants
+  * @param percentAdmitted
+  * @param percentEnrolled
+  * @param academicsScale
+  * @param socialScale
+  * @param qualityOfLife
+  */
+
  //@params
  public void editUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
    adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
@@ -47,12 +93,12 @@ public class AdminInteraction{
  //@Description
  //@params
  public void editAdmin(String userName, String firstName, String lastName, String password, char type, char status){
-   adminController.editAdmin(username,firstName,lastName,password,type,status);
+   adminController.editAdmin(userName,firstName,lastName,password,type,status);
  }
  /**@Description
   * 
   */
- public void viewUsers(){
+ public List<User> viewUsers(){
    adminController.viewUsers();
  }
  //@Description
@@ -78,7 +124,7 @@ public class AdminInteraction{
   * @param type
   */
 
- public void addNewUser(String firstName,String lastName,String username,String password,char type){
+ public void addNewUser(String firstName,String lastName,String username,String password,String type){
    adminController.addNewUser(firstName,lastName,username,password,type);
  }
  
