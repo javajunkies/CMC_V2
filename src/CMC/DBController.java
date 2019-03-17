@@ -68,7 +68,7 @@ public class DBController {
   {
     String[][] users = db.user_getUsers();
     for(int i = 0; i < users.length; i++){
-      if(users[i].equals(username)) {
+      if(users[i][2].equals(username)) {
         return users[i][3];
       }
     }
@@ -145,10 +145,8 @@ public class DBController {
   
   /**
    * view all users in database
-   * 
    */
-  public List<User> getAllUsers() 
-  {
+   public List<User> getAllUsers() {
 	//User user=new User();
 	ArrayList<User> userList = new ArrayList<User>();
     String[][]usersInfo = db.user_getUsers();
@@ -161,10 +159,8 @@ public class DBController {
     	User user = new User(usersInfo[j][0],usersInfo[j][1],usersInfo[j][2],usersInfo[j][3],usersInfo[j][4].charAt(0));
     	userList.add(user);
     }
-    return userList;
-    
+    return userList;  
   }
-  
   
   /**
    * @param username the active users username 
