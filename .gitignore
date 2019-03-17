@@ -6,6 +6,8 @@
 *.jar
 *.war
 *.ear
+*.java~
+*.temp
 hs_err_pid*
 
 ##########################

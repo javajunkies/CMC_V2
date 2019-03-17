@@ -1,6 +1,6 @@
 package CMC;
 /**
- * @author Justin Brakob
+ * @author Java Junkies
  *
  *User interactions class
  */
@@ -131,7 +131,7 @@ public class UserInteraction
  }
  
  /**
-  * 
+  * Compares two schools
   * 
   * @param u1
   * @param u2

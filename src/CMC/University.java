@@ -94,6 +94,7 @@ public class University {
 		this.state = state;
 	}
 
+<<<<<<< HEAD
 	/**@Description get location
 	 * 
 	 * @return location
@@ -319,4 +320,18 @@ public class University {
 	public void setQualityOfLife(int qualityOfLife) {
 		this.qualityOfLife = qualityOfLife;
 	}
+=======
+ public University() {
+  // TODO Auto-generated constructor stub
+ }
+
+ /**
+  * get details of university
+  */
+ private void getDetails()
+ {
+  
+  return null;
+ }
+>>>>>>> 0a16b808f0b9baa3b58ff40c692855eecdb947fa
 }
