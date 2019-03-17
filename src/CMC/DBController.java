@@ -123,7 +123,7 @@ public class DBController {
     int k = 0;
     
     for(int i = 0; i < rowLength; i++) {
-      for(int j = 0; l < colLength; j++) {
+      for(int j = 0; j < colLength; j++) {
         if(universities[i][1].equals(state)  && Integer.parseInt(universities[i][4]) < numberOfStudents) {     //  <--- fix this boy
           matchUni[k] = universities[i][0];
         k++;
@@ -149,18 +149,19 @@ public class DBController {
    */
   public List<User> getAllUsers() 
   {
-
-	List<User> users;
-    String[][]usersInfo=db.user_getUsers();
-    for(int j=0;j<usersInfo[1].length;j++) {
-    	String first=usersInfo[j][0];
-    	String last=usersInfo[j][1];
-    	String username=usersInfo[j][2];
-    	String password=usersInfo[j][3];
-    	char type=usersInfo[j][4];
-    	users[j]=new User(first,last,username,password,type)
+	//User user=new User();
+	ArrayList<User> userList = new ArrayList<User>();
+    String[][]usersInfo = db.user_getUsers();
+    for(int j=0; j<usersInfo[1].length; j++) {
+    	//String first = usersInfo[j][0];
+    	//String last = usersInfo[j][1];
+    	//String username = usersInfo[j][2];
+    	//String password = usersInfo[j][3];
+    	//char type = usersInfo[j][4];
+    	User user = new User(usersInfo[j][0],usersInfo[j][1],usersInfo[j][2],usersInfo[j][3],usersInfo[j][4].charAt(0));
+    	userList.add(user);
     }
-    return users;
+    return userList;
     
   }
   

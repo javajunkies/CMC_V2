@@ -44,22 +44,22 @@ public class University {
   *
   */
  public University(String mySchool,String myState,String myLocation,String myControl,int myNumStudents,double myPercentFemale,double mySATVerbal,double mySATMath,double myExpenses,double myPercentFinancialAid,int myNumApplicants,double myPercentAdmitted,double myPercentEnrolled,int myAcademicsScale,int mySocialScale,int myQualityOfLife) {
-  school=mySchool;
-  state=myState;
-  location=myLocation;
-  control=myControl;
-  numStudents=myNumStudents;
-  percentFemale=myPercentFemale;
-  SATVerbal=mySATVerbal;
-  SATMath=mySATMath;
-  expenses=myExpenses;
-  percentFinancialAid=myPercentFinancialAid;
-  numApplicants=myNumApplicants;
-  percentAdmitted=myPercentAdmitted;
-  percentEnrolled=myPercentEnrolled;
-  academicsScale=myAcademicsScale;
-  socialScale=mySocialScale;
-  qualityOfLife=myQualityOfLife;
+  school = mySchool;
+  state = myState;
+  location = myLocation;
+  control = myControl;
+  numStudents = myNumStudents;
+  percentFemale = myPercentFemale;
+  SATVerbal = mySATVerbal;
+  SATMath = mySATMath;
+  expenses = myExpenses;
+  percentFinancialAid = myPercentFinancialAid;
+  numApplicants = myNumApplicants;
+  percentAdmitted = myPercentAdmitted;
+  percentEnrolled = myPercentEnrolled;
+  academicsScale = myAcademicsScale;
+  socialScale = mySocialScale;
+  qualityOfLife = myQualityOfLife;
  }
  
  /**get school name
