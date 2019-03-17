@@ -36,7 +36,7 @@ public class UserInteraction
   */
  public void logoff()
  {
-  UserController.logoff()
+  UserController.logoff();
  }
  
  /**
@@ -84,7 +84,7 @@ public class UserInteraction
   * @param percentAdmitted - acceptance rate
   * @param user - username to get saved schools
   */
- public sortSavedSchools(int price, int numOfStudents, int percentAdmitted, String user)
+ public void sortSavedSchools(int price, int numOfStudents, int percentAdmitted, String user)
  {
   UniversityController.sortSavedSchools(price, numOfStudents, percentAdmitted, user);
  }
@@ -94,9 +94,9 @@ public class UserInteraction
   * 
   * @param university - school
   */
- public getRecommendedList(String university)   //List<University>)
+ public void getRecommendedList(String university)   //List<University>)
  {
-  UserController.getRecommendedList(university)
+  UserController.getRecommendedList(university);
  }
  
  /**
@@ -107,7 +107,7 @@ public class UserInteraction
   */
  public void removeSavedSchool(String user, University school)
  {
-  UserController.removeSavedSchool(user, school)
+  UserController.removeSavedSchool(user, school);
  }
  
  /**
@@ -138,7 +138,7 @@ public class UserInteraction
   */
  public void compare(University u1, University u2)
  {
-  UserController.compare(u1,u2)
+  UserController.compare(u1,u2);
  }
 
  /**

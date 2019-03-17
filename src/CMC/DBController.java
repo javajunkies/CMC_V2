@@ -1,5 +1,6 @@
 package CMC;
 import dblibrary.project.csci230.*;
+import java.util.*;
 
 
 /**
@@ -20,8 +21,7 @@ public class DBController {
   
   
   //constructor
-  UniversityDBLibrary DB = new UniversityDBLibrary(javajunk, CSCI230);
-  //UniversityDBLibrary DB = new UniversityDBLibrary("javajunk", "javajunk", "csci230");
+  UniversityDBLibrary DB = new UniversityDBLibrary("javajunk", "CSCI230");
   
   /**
    * Searchs for a specified user in the database.
@@ -60,7 +60,7 @@ public class DBController {
     
   }
   
-  public editUnivInfo(University university, List<String> info) 
+  public void editUnivInfo(University university, List<String> info) 
   {
     
   }
@@ -85,7 +85,7 @@ public class DBController {
   public boolean createUser(String firstName, String lastName, String username, String password, char type)
   {
     DB.user_addUser(firstName, lastName, username, password, type);
-    if(type = 'a') {
+    if(type == 'a') {
       User user = new User(firstName, lastName, username, password, type);
     }
     else{
@@ -93,12 +93,12 @@ public class DBController {
     }
   }
   
-  public adminEditUser(String firstName, String lastName, String username, String password, char type, status)
+  public void adminEditUser(String firstName, String lastName, String username, String password, char type, char status)
   {
     DB.user_editUser(firstName, lastName, username, password, type, status);
   }
   
-  public getRecommendations()
+  public void getRecommendations()
   {
     
   }
@@ -110,7 +110,7 @@ public class DBController {
    */
   public String[] searchUniversities(String state, int numberOfStudents) 
   {
-    universities[][] = DB.universities_getUniversities();
+    String[][] universities = DB.universities_getUniversities();
     int rowLength = universities[0].length;
     int colLength = universities[1].length; 
     String[] matchUni;
@@ -118,9 +118,9 @@ public class DBController {
     
     for(int i = 0; i < rowLength; i++) {
       for(int j = 0; l < colLength; j++) {
-        if(universities[i][1]) == state  && universities[i][4] < numberOfStudents) { 
+        if(universities[i][1]).equals(state)  && universities[i][4] < numberOfStudents) {     //  <--- fix this boy
           matchUni[k] = universities[i][0];
-          k++;
+        k++;
         }
         }
      }
