@@ -164,4 +164,5 @@ public abstract class Account {
 	public void setUsertype(char usertype) {
 		this.usertype = usertype;
 	}
+
 }

@@ -13,7 +13,6 @@ package CMC;
  */
 
 public class User extends Account{
-	
 	/**
 	 * Constructs a new User object with specified parameters.
 	 * 
@@ -30,12 +29,6 @@ public class User extends Account{
  
 /**
  *  UserInteraction userInteraction=new UserInteraction;
- 
- //@Description retrieves all saved schools associated with the current user
- //@params
- public List<String> savedSchools() {
-	 userInteraction.viewSavedSchools();
- }
- */
+*/
 
 }

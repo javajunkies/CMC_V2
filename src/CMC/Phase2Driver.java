@@ -4,25 +4,41 @@ import dblibrary.project.csci230.*;
 import java.io.*;
 import java.util.*;
 /**
- * @author trobinson001
+ * @author Java Junkies
  *
  */
-public class Phase2Driver {
-	private UniversityDBLibrary univDBLib;	
+public class Phase2Driver {	
 	
 	 public  Phase2Driver(String username, String password){
 		    univDBLib = new UniversityDBLibrary(username,password);
 		  }
-	public UniversityDBLibrary getUnivDBLib() {
-		return univDBLib;
-	}
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Phase2Driver dbld = new Phase2Driver(args[0], args[1]);
 
-	}
-
+  private UniversityDBLibrary univDBLib; 
+  
+  public DBController DBController(String username, String password)
+  {
+    univDBLib = new UniversityDBLibrary(username,password);
+  }
+  public UniversityDBLibrary getUnivDBLib() {
+    return univDBLib;
+  }
+  
+  /**
+   * @param args
+   */
+  public static void main(String[] args) {
+    DBDriver dbld = new DBDriver(args[0], args[1]);
+    
+  }
+  public void printSchools();
+  {
+    String[][] s = new String [178][];
+    s = schoolArray;
+    System.out.println("---Universities:");
+    for (int i = 0; i != 178; i++)
+    {
+      System.out.println(s[i][0]);
+    }
+  }
 }
