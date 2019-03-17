@@ -25,6 +25,7 @@ public class Phase2Driver {
     DBDriver dbld = new DBDriver(args[0], args[1]);
     
   }
+  //for testing
   public void printSchools();
   {
     String[][] s = new String [178][];

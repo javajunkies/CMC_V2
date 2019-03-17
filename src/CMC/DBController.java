@@ -88,8 +88,9 @@ public class DBController {
     if(type == 'a') {
       User user = new User(firstName, lastName, username, password, type);
     }
-    else{
-      Admin admin = new Admin(firstName, lastName, username, password, type);
+    else
+    {
+      User admin = new User(firstName, lastName, username, password, type);
     }
   }
   
@@ -110,24 +111,25 @@ public class DBController {
    */
   public String[] searchUniversities(String state, int numberOfStudents) 
   {
-    String[][] universities = DB.universities_getUniversities();
+    String[][] universities = DB.university_getUniversities();
     int rowLength = universities[0].length;
     int colLength = universities[1].length; 
     String[] matchUni;
     int k = 0;
     
     for(int i = 0; i < rowLength; i++) {
-      for(int j = 0; l < colLength; j++) {
-        if(universities[i][1]).equals(state)  && universities[i][4] < numberOfStudents) {     //  <--- fix this boy
+      for(int l = 0; l < colLength; l++) {
+        if(universities[i][1].equals(state)  && Integer.parseInt(universities[i][4]) < numberOfStudents) 
+        {
           matchUni[k] = universities[i][0];
-        k++;
+          k++;
         }
-        }
-     }
-     return matchUni;
-     }
-   
-   
+      }
+    }
+    return matchUni;
+  }
+  
+  
   /**
    * method to view a list of all universities
    * 
@@ -181,6 +183,5 @@ public class DBController {
   public void editUser(String firstName, String lastName, String password)
   {
     String[][] users = DB.user_getUsers();  
-  }
   }
 }
