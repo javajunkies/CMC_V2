@@ -93,7 +93,7 @@ public class DBController {
     }
   }
   
-  public adminEditUser(String firstName, String lastName, String username, String password, char type, status)
+  public adminEditUser(String firstName, String lastName, String username, String password, char type, char status)
   {
     DB.user_editUser(firstName, lastName, username, password, type, status);
   }
