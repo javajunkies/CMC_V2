@@ -34,7 +34,7 @@ public class AdminInteraction{
  public void addUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
    adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
  }
- //@Description
+ //@Descriptiongit 
  //@params
  public void editUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
    adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
@@ -47,7 +47,7 @@ public class AdminInteraction{
  //@Description
  //@params
  public void editAdmin(String userName, String firstName, String lastName, String password, char type, char status){
-   adminController.editAdmin(username,firstName,lastName,password,type,status);
+   adminController.editAdmin(userName,firstName,lastName,password,type,status);
  }
  /**@Description
   * 
@@ -78,7 +78,7 @@ public class AdminInteraction{
   * @param type
   */
 
- public void addNewUser(String firstName,String lastName,String username,String password,char type){
+ public void addNewUser(String firstName,String lastName,String username,String password,String type){
    adminController.addNewUser(firstName,lastName,username,password,type);
  }
  
