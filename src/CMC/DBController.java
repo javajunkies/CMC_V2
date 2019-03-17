@@ -17,12 +17,23 @@ public class DBController {
     // TODO Auto-generated constructor stub
   }
   
-  
-  
-  
   //constructor
   UniversityDBLibrary DB = new UniversityDBLibrary("javajunkies","CSCI230");
 
+  
+
+  /**
+   * login
+   */
+  public void login(String username, String password)
+  {
+    
+  }
+  
+  public void logoff()
+  {
+    
+  }
   
   /**
    * Searchs for a specified user in the database.
@@ -70,26 +81,27 @@ public class DBController {
    * Deletes a university
    * 
    * @param university - university to be deleted
-   *
-   public removeUniversity(String university)
-   {
-   DB.university_deleteUniversity(university);
-   }
-   
-   public addUniversity(String school, String state)
-   {
-   
-   }
-   
-   
    */
-  public boolean createUser(String firstName, String lastName, String username, String password, char type){
+   public void removeUniversity(String university)
+   {
+     DB.university_deleteUniversity(university);
+   }
+   
+   public void addUniversity(String school, String state)
+   {
+   
+   }
+   
+
+  public boolean createUser(String firstName, String lastName, String username, String password, char type)
+  {
     DB.user_addUser(firstName, lastName, username, password, type);
     if(type == 'a') {
       User user = new User(firstName, lastName, username, password, type);
     }
-    else{
-      Admin admin = new Admin(firstName, lastName, username, password, type);
+    else
+    {
+      User admin = new User(firstName, lastName, username, password, type);
     }
   }
   
@@ -111,24 +123,25 @@ public class DBController {
    */
   public String[] searchUniversities(String state, int numberOfStudents) 
   {
-    String[][] universities = DB.universities_getUniversities();
+    String[][] universities = DB.university_getUniversities();
     int rowLength = universities[0].length;
     int colLength = universities[1].length; 
     String[] matchUni;
     int k = 0;
     
     for(int i = 0; i < rowLength; i++) {
-      for(int j = 0; l < colLength; j++) {
-        if(universities[i][1]).equals(state)  && universities[i][4] < numberOfStudents) {     //  <--- fix this boy
+      for(int l = 0; l < colLength; l++) {
+        if(universities[i][1].equals(state)  && Integer.parseInt(universities[i][4]) < numberOfStudents) 
+        {
           matchUni[k] = universities[i][0];
-        k++;
+          k++;
         }
-        }
-     }
-     return matchUni;
-     }
-   
-   
+      }
+    }
+    return matchUni;
+  }
+  
+  
   /**
    * method to view a list of all universities
    * 
@@ -190,6 +203,5 @@ public class DBController {
   public void editUser(String firstName, String lastName, String password)
   {
     String[][] users = DB.user_getUsers();  
-  }
   }
 }
