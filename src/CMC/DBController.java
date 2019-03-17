@@ -17,11 +17,22 @@ public class DBController {
     // TODO Auto-generated constructor stub
   }
   
-  
-  
-  
   //constructor
   UniversityDBLibrary DB = new UniversityDBLibrary("javajunk", "CSCI230");
+  
+
+  /**
+   * login
+   */
+  public void login(String username, String password)
+  {
+    
+  }
+  
+  public void logoff()
+  {
+    
+  }
   
   /**
    * Searchs for a specified user in the database.
@@ -69,19 +80,17 @@ public class DBController {
    * Deletes a university
    * 
    * @param university - university to be deleted
-   *
-   public removeUniversity(String university)
-   {
-   DB.university_deleteUniversity(university);
-   }
-   
-   public addUniversity(String school, String state)
-   {
-   
-   }
-   
-   
    */
+   public void removeUniversity(String university)
+   {
+     DB.university_deleteUniversity(university);
+   }
+   
+   public void addUniversity(String school, String state)
+   {
+   
+   }
+   
   public boolean createUser(String firstName, String lastName, String username, String password, char type)
   {
     DB.user_addUser(firstName, lastName, username, password, type);

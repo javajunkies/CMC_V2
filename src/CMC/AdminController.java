@@ -5,8 +5,8 @@ package CMC;
  */
 public class AdminController {
 
-  DBcontroller dbcontroller = new DBController();
-  LoginController logInController = new LogonController();
+  DBController dbcontroller = new DBController();
+  LoginController logInController = new LoginController();
 
 
   public void login(String username, String password) {
@@ -22,7 +22,7 @@ public class AdminController {
   }
 
   public void removeUniversity(String name) {
-    dbcontroller.removeUniversity(String name); 
+    dbcontroller.removeUniversity(name); 
   }
 
   public void addUniversity(String school, String state, String location, String control, int numberOfStudents,
@@ -30,11 +30,11 @@ public class AdminController {
                                double percentFinancialAid, int numberOfApplicants, double percentFinancialAid, 
                                int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
                                int academicsScale, int socialScale, int qualityOfLifeScale) {
-    dbcontroller.addUniversity(String school, String state, String location, String control, int numberOfStudents,
-                               double percentFemales, double SATVerbal, double SATMath, double expenses, 
-                               double percentFinancialAid, int numberOfApplicants, double percentFinancialAid, 
-                               int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
-                               int academicsScale, int socialScale, int qualityOfLifeScale) ;
+    dbcontroller.addUniversity(school, state, location, control, numberOfStudents,
+                               percentFemales, SATVerbal, SATMath, expenses, 
+                               percentFinancialAid, numberOfApplicants, percentFinancialAid, 
+                               numberOfApplicants, percentAdmitted, percentEnrolled, 
+                               academicsScale, socialScale, qualityOfLifeScale) ;
   }
 
 
@@ -43,16 +43,16 @@ public class AdminController {
                                double percentFinancialAid, int numberOfApplicants, double percentFinancialAid, 
                                int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
                                int academicsScale, int socialScale, int qualityOfLifeScale) {
-    dbcontroller.editUniversity(String school, String state, String location, String control, int numberOfStudents,
-                               double percentFemales, double SATVerbal, double SATMath, double expenses, 
-                               double percentFinancialAid, int numberOfApplicants, double percentFinancialAid, 
-                               int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
-                               int academicsScale, int socialScale, int qualityOfLifeScale);
+    dbcontroller.editUniversity(school, state, location, control, numberOfStudents,
+                               percentFemales, SATVerbal, SATMath, expenses, 
+                               percentFinancialAid, numberOfApplicants, percentFinancialAid, 
+                               numberOfApplicants, percentAdmitted, percentEnrolled, 
+                               academicsScale, socialScale, qualityOfLifeScale);
   }
 
   public void editUser(String username, String firstName, String lastName, String password, char type, char status) {
-    dbcontroller.adminEditUser(String username, String firstName, String lastName, String password, char type, 
-                               char status);
+    dbcontroller.adminEditUser(username, firstName, lastName, password, type, 
+                               status);
 
   } 
 
@@ -61,10 +61,10 @@ public class AdminController {
   } 
 
   public boolean searchUsers(String username) {
-    dbcontroller.searchUsers(String username);
+    dbcontroller.searchUsers(username);
   }
 
   public void addNewUser(String firstname, String lastName, String username, String password, String type) {
-    dbcontroller.createUser(String firstName, String lastName, String username, String password, char type);
+    dbcontroller.createUser(firstName, lastName, username, password, type);
   } 
 } 

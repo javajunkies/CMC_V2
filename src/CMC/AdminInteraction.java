@@ -7,8 +7,8 @@ package CMC;
 
 public class AdminInteraction{
  
- AdminController adminController=new AdminController;
- LoginController loginController=new LoginController;
+ AdminController adminController=new AdminController();
+ LoginController loginController=new LoginController();
  
  //@Description login, call method in AdminController
  //@params String username, String password
@@ -42,7 +42,7 @@ public class AdminInteraction{
  }
  //@Description
  //@params
- public void editAdmin(String firstName, String lastName, String password, char type, char status){
+ public void editAdmin(String userName, String firstName, String lastName, String password, char type, char status){
    adminController.editAdmin(username,firstName,lastName,password,type,status);
  }
  //@Description
