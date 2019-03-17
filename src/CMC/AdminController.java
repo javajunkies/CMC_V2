@@ -1,4 +1,5 @@
 package CMC;
+import java.util.*;
 
 /**
  * @ author bwest001
@@ -56,7 +57,7 @@ public class AdminController {
 
   } 
 
-  public List<Users> viewUserInfo(String user) {
+  public List<User> viewUsers() {
     dbcontroller.getUsers();
   } 
 
