@@ -150,12 +150,15 @@ public class DBController {
   public List<User> getAllUsers() 
   {
 
-	  List<User> users;
+	List<User> users;
     String[][]usersInfo=db.user_getUsers();
     for(int j=0;j<usersInfo[1].length;j++) {
-    	for(int i=0;i<usersInfo[0];i++) {
-    		usersInfo[i]=users[j][i];
-      }
+    	String first=usersInfo[j][0];
+    	String last=usersInfo[j][1];
+    	String username=usersInfo[j][2];
+    	String password=usersInfo[j][3];
+    	char type=usersInfo[j][4];
+    	users[j]=new User(first,last,username,password,type)
     }
     return users;
     
