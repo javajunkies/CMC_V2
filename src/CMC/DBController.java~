@@ -1,5 +1,6 @@
 package CMC;
 import dblibrary.project.csci230.*;
+import java.util.*;
 
 
 /**
@@ -16,12 +17,23 @@ public class DBController {
     // TODO Auto-generated constructor stub
   }
   
-  
-  
-  
   //constructor
-  UniversityDBLibrary DB = new UniversityDBLibrary(javajunk, CSCI230);
-  //UniversityDBLibrary DB = new UniversityDBLibrary("javajunk", "javajunk", "csci230");
+  UniversityDBLibrary DB = new UniversityDBLibrary("javajunkies","CSCI230");
+
+  
+
+  /**
+   * login
+   */
+  public void login(String username, String password)
+  {
+    
+  }
+  
+  public void logoff()
+  {
+    
+  }
   
   /**
    * Searchs for a specified user in the database.
@@ -60,7 +72,7 @@ public class DBController {
     
   }
   
-  public editUnivInfo(University university, List<String> info) 
+  public void editUnivInfo(University university, List<String> info) 
   {
     
   }
@@ -69,36 +81,42 @@ public class DBController {
    * Deletes a university
    * 
    * @param university - university to be deleted
-   *
-   public removeUniversity(String university)
-   {
-   DB.university_deleteUniversity(university);
-   }
-   
-   public addUniversity(String school, String state)
-   {
-   
-   }
-   
-   
    */
+   public void removeUniversity(String university)
+   {
+     DB.university_deleteUniversity(university);
+   }
+   
+   public void addUniversity(String school, String state)
+   {
+   
+   }
+   
+<<<<<<< HEAD
   public boolean createUser(String firstName, String lastName, String username, String password, char type)
   {
+=======
+   
+   */
+  public boolean createUser(String firstName, String lastName, String username, String password, char type){
+>>>>>>> 8b5d52022ad504512fb32ea06e2a99a5f8ea15cf
     DB.user_addUser(firstName, lastName, username, password, type);
-    if(type = 'a') {
+    if(type == 'a') {
       User user = new User(firstName, lastName, username, password, type);
     }
-    else{
-      Admin admin = new Admin(firstName, lastName, username, password, type);
+    else
+    {
+      User admin = new User(firstName, lastName, username, password, type);
     }
   }
   
-  public adminEditUser(String firstName, String lastName, String username, String password, char type, status)
+
+  public void adminEditUser(String firstName, String lastName, String username, String password, char type, char status)
   {
     DB.user_editUser(firstName, lastName, username, password, type, status);
   }
   
-  public getRecommendations()
+  public void getRecommendations()
   {
     
   }
@@ -110,24 +128,25 @@ public class DBController {
    */
   public String[] searchUniversities(String state, int numberOfStudents) 
   {
-    universities[][] = DB.universities_getUniversities();
+    String[][] universities = DB.university_getUniversities();
     int rowLength = universities[0].length;
     int colLength = universities[1].length; 
     String[] matchUni;
     int k = 0;
     
     for(int i = 0; i < rowLength; i++) {
-      for(int j = 0; l < colLength; j++) {
-        if(universities[i][1]) == state  && universities[i][4] < numberOfStudents) { 
+      for(int l = 0; l < colLength; l++) {
+        if(universities[i][1].equals(state)  && Integer.parseInt(universities[i][4]) < numberOfStudents) 
+        {
           matchUni[k] = universities[i][0];
           k++;
         }
-        }
-     }
-     return matchUni;
-     }
-   
-   
+      }
+    }
+    return matchUni;
+  }
+  
+  
   /**
    * method to view a list of all universities
    * 
@@ -181,6 +200,5 @@ public class DBController {
   public void editUser(String firstName, String lastName, String password)
   {
     String[][] users = DB.user_getUsers();  
-  }
   }
 }

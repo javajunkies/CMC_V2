@@ -182,5 +182,17 @@ public class DBController {
   {
     String[][] users = DB.user_getUsers();  
   }
+  
+  /**
+   * @param price price of the school 
+   * @param numStudents number of students attending the university 
+   * @param acceptanceRate acceptance rate of the university
+   * @param username username 
+   * 
+   * a method to sort a users Saved schools
+   */
+  public void sortSavedSchools(int price, int numStudents, int acceptanceRate, String username) 
+  {
+	  
   }
 }

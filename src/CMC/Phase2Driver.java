@@ -7,7 +7,13 @@ import java.util.*;
  * @author Java Junkies
  *
  */
-public class Phase2Driver {
+public class Phase2Driver {	
+	
+	 public  Phase2Driver(String username, String password){
+		    univDBLib = new UniversityDBLibrary(username,password);
+		  }
+
+
   private UniversityDBLibrary univDBLib; 
   
   public DBController DBController(String username, String password)
@@ -25,6 +31,7 @@ public class Phase2Driver {
     DBDriver dbld = new DBDriver(args[0], args[1]);
     
   }
+  //for testing
   public void printSchools();
   {
     String[][] s = new String [178][];
