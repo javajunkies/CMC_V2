@@ -41,6 +41,7 @@ public class University {
   *@param int myQualityOfLife
   */
  public University(String mySchool,String myState,String myLocation,String myControl,int myNumStudents,double myPercentFemale,double mySATVerbal,double mySATMath,double myExpenses,double myPercentFinancialAid,int myNumApplicants,double myPercentAdmitted,double myPercentEnrolled,int myAcademicsScale,int mySocialScale,int myQualityOfLife) {
+
   this.school = mySchool;
   this.state = myState;
   this.location = myLocation;
