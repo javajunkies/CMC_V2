@@ -56,7 +56,7 @@ public class AdminController {
 
   } 
 
-  public List<Users> viewUserInfo(String user) {
+  public List<User> viewUsers() {
     dbcontroller.getUsers();
   } 
 
