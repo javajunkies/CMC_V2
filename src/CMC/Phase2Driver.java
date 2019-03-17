@@ -7,7 +7,13 @@ import java.util.*;
  * @author Java Junkies
  *
  */
-public class Phase2Driver {
+public class Phase2Driver {	
+	
+	 public  Phase2Driver(String username, String password){
+		    univDBLib = new UniversityDBLibrary(username,password);
+		  }
+
+
   private UniversityDBLibrary univDBLib; 
   
   public DBController DBController(String username, String password)

@@ -17,11 +17,23 @@ public class DBController {
     // TODO Auto-generated constructor stub
   }
   
-  
-  
-  
   //constructor
-  UniversityDBLibrary DB = new UniversityDBLibrary("javajunk", "CSCI230");
+  UniversityDBLibrary DB = new UniversityDBLibrary("javajunkies","CSCI230");
+
+  
+
+  /**
+   * login
+   */
+  public void login(String username, String password)
+  {
+    
+  }
+  
+  public void logoff()
+  {
+    
+  }
   
   /**
    * Searchs for a specified user in the database.
@@ -69,21 +81,25 @@ public class DBController {
    * Deletes a university
    * 
    * @param university - university to be deleted
-   *
-   public removeUniversity(String university)
-   {
-   DB.university_deleteUniversity(university);
-   }
-   
-   public addUniversity(String school, String state)
-   {
-   
-   }
-   
-   
    */
+   public void removeUniversity(String university)
+   {
+     DB.university_deleteUniversity(university);
+   }
+   
+   public void addUniversity(String school, String state)
+   {
+   
+   }
+   
+<<<<<<< HEAD
   public boolean createUser(String firstName, String lastName, String username, String password, char type)
   {
+=======
+   
+   */
+  public boolean createUser(String firstName, String lastName, String username, String password, char type){
+>>>>>>> 8b5d52022ad504512fb32ea06e2a99a5f8ea15cf
     DB.user_addUser(firstName, lastName, username, password, type);
     if(type == 'a') {
       User user = new User(firstName, lastName, username, password, type);
@@ -94,6 +110,7 @@ public class DBController {
     }
   }
   
+
   public void adminEditUser(String firstName, String lastName, String username, String password, char type, char status)
   {
     DB.user_editUser(firstName, lastName, username, password, type, status);

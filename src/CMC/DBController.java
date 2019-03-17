@@ -18,7 +18,8 @@ public class DBController {
   }
   
   //constructor
-  UniversityDBLibrary DB = new UniversityDBLibrary("javajunk", "CSCI230");
+  UniversityDBLibrary DB = new UniversityDBLibrary("javajunkies","CSCI230");
+
   
 
   /**
@@ -91,6 +92,7 @@ public class DBController {
    
    }
    
+
   public boolean createUser(String firstName, String lastName, String username, String password, char type)
   {
     DB.user_addUser(firstName, lastName, username, password, type);
@@ -103,6 +105,7 @@ public class DBController {
     }
   }
   
+
   public void adminEditUser(String firstName, String lastName, String username, String password, char type, char status)
   {
     DB.user_editUser(firstName, lastName, username, password, type, status);
