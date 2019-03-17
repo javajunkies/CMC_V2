@@ -83,8 +83,7 @@ public class DBController {
    
    
    */
-  public boolean createUser(String firstName, String lastName, String username, String password, char type)
-  {
+  public boolean createUser(String firstName, String lastName, String username, String password, char type){
     DB.user_addUser(firstName, lastName, username, password, type);
     if(type == 'a') {
       User user = new User(firstName, lastName, username, password, type);
@@ -94,11 +93,8 @@ public class DBController {
     }
   }
   
-<<<<<<< HEAD
-  public adminEditUser(String firstName, String lastName, String username, String password, char type, char status)
-=======
+
   public void adminEditUser(String firstName, String lastName, String username, String password, char type, char status)
->>>>>>> 0a16b808f0b9baa3b58ff40c692855eecdb947fa
   {
     DB.user_editUser(firstName, lastName, username, password, type, status);
   }
