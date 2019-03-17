@@ -1,31 +1,31 @@
+package CMC;
 /**File:LoginController.java
  * 
  */
-
-package CMC;
+import java.lang.*;
 
 /**
- * LoginController is the controller class for login functionalities.
- * 
- * @author Java Junkies
- * @version March 17, 2019
+ * @author trobinson001
+ *
  */
-
 public class LoginController {
 
 	DBController db = new DBController();
-	
 	/**
 	 * Logs user into system.
-	 * 
 	 * @param username username associated with this user
 	 * @param pass password user uses to log in
-	 * @return integer representation of login attempt. 0 if successful, 1 if invalid username,
+	 * @return int representation of login attempt. 0 if succesful, 1 if invalid username,
 	 *         2 if invalid password, and 3 if status is inactive.
 	 */
 	public int login(String username, String pass) {
+<<<<<<< HEAD
 		int u, p;
 		if(this.findUser(username)){
+=======
+		int u, p, s;
+		if(this.checkUsername(username)){
+>>>>>>> 2d2c55e9367f88ffd4a565b1f9d3be65c15d1042
 			u = 1;
 			}
 		else {
@@ -55,8 +55,13 @@ public class LoginController {
 	 * Checks username.
 	 * @param username
 	 */
+<<<<<<< HEAD
 	public boolean findUser(String username) {
 		if(db.isUser(username)) {
+=======
+	public boolean checkUsername(String username) {
+		if(DBController.findByUsername(username)) {
+>>>>>>> 2d2c55e9367f88ffd4a565b1f9d3be65c15d1042
 			return true;
 		}
 			return false;

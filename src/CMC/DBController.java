@@ -21,23 +21,17 @@ public class DBController {
     // TODO Auto-generated constructor stub
   }
   
+<<<<<<< HEAD
   //constructor
   UniversityDBLibrary db = new UniversityDBLibrary("javajunkies","CSCI230");
 
+=======
+>>>>>>> 2d2c55e9367f88ffd4a565b1f9d3be65c15d1042
   
-
-  /**
-   * login
-   */
-  public void login(String username, String password)
-  {
-    
-  }
   
-  public void logoff()
-  {
-    
-  }
+  
+  //constructor
+  UniversityDBLibrary DB = new UniversityDBLibrary("javajunk", "CSCI230");
   
   /**
    * Searches for a specified user in the database.
@@ -103,18 +97,23 @@ public class DBController {
    * Deletes a university
    * 
    * @param university - university to be deleted
-   */
-   public void removeUniversity(String university)
+   *
+   public removeUniversity(String university)
    {
+<<<<<<< HEAD
    db.university_deleteUniversity(university);
+=======
+   DB.university_deleteUniversity(university);
+>>>>>>> 2d2c55e9367f88ffd4a565b1f9d3be65c15d1042
    }
    
-   public void addUniversity(String school, String state)
+   public addUniversity(String school, String state)
    {
    
    }
    
-
+   
+   */
   public boolean createUser(String firstName, String lastName, String username, String password, char type)
   {
     db.user_addUser(firstName, lastName, username, password, type);
@@ -122,14 +121,18 @@ public class DBController {
       User user = new User(firstName, lastName, username, password, type);
       return true;
     }
+<<<<<<< HEAD
     else
     {
       User admin = new User(firstName, lastName, username, password, type);
       return true;
+=======
+    else{
+      Admin admin = new Admin(firstName, lastName, username, password, type);
+>>>>>>> 2d2c55e9367f88ffd4a565b1f9d3be65c15d1042
     }
   }
   
-
   public void adminEditUser(String firstName, String lastName, String username, String password, char type, char status)
   {
     db.user_editUser(firstName, lastName, username, password, type, status);
@@ -147,25 +150,28 @@ public class DBController {
    */
   public String[] searchUniversities(String state, int numberOfStudents) 
   {
+<<<<<<< HEAD
     String[][] universities = db.university_getUniversities();
+=======
+    String[][] universities = DB.universities_getUniversities();
+>>>>>>> 2d2c55e9367f88ffd4a565b1f9d3be65c15d1042
     int rowLength = universities[0].length;
     int colLength = universities[1].length; 
     String[] matchUni;
     int k = 0;
     
     for(int i = 0; i < rowLength; i++) {
-      for(int l = 0; l < colLength; l++) {
-        if(universities[i][1].equals(state)  && Integer.parseInt(universities[i][4]) < numberOfStudents) 
-        {
+      for(int j = 0; l < colLength; j++) {
+        if(universities[i][1]).equals(state)  && universities[i][4] < numberOfStudents) {     //  <--- fix this boy
           matchUni[k] = universities[i][0];
-          k++;
+        k++;
         }
-      }
-    }
-    return matchUni;
-  }
-  
-  
+        }
+     }
+     return matchUni;
+     }
+   
+   
   /**
    * method to view a list of all universities
    * 
@@ -229,5 +235,18 @@ public class DBController {
   public void editUser(String firstName, String lastName, String password)
   {
     String[][] users = db.user_getUsers();  
+  }
+  
+  /**
+   * @param price price of the school 
+   * @param numStudents number of students attending the university 
+   * @param acceptanceRate acceptance rate of the university
+   * @param username username 
+   * 
+   * a method to sort a users Saved schools
+   */
+  public void sortSavedSchools(int price, int numStudents, int acceptanceRate, String username) 
+  {
+	  
   }
 }
