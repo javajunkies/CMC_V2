@@ -24,7 +24,7 @@ public class LoginController {
 	 *         2 if invalid password, and 3 if status is inactive.
 	 */
 	public int login(String username, String pass) {
-		int u, p, s;
+		int u, p;
 		if(this.findUser(username)){
 			u = 1;
 			}
@@ -41,13 +41,14 @@ public class LoginController {
 			}
 		}
 		if(p == 1) {
-			if(this.checkStatus(user)) {
+			if(this.checkStatus(username)) {
 				return 0;
 			}
 		}
 		else { 
 			return 3;
 		}
+		return 1;
 	}
 	
 	/**
@@ -55,7 +56,7 @@ public class LoginController {
 	 * @param username
 	 */
 	public boolean findUser(String username) {
-		if(this.findByUsername(username)) {
+		if(this.isUser(username)) {
 			return true;
 		}
 			return false;
@@ -74,7 +75,7 @@ public class LoginController {
 	 * @param account
 	 */
 	public String getPassword(String user) {
-		return DBController.findUserPassword(user);
+		return db.findUserPassword(user);
 	}
 	
 	/**
@@ -82,8 +83,8 @@ public class LoginController {
 	 * @param account
 	 */
 	public boolean checkStatus(String username) {
-		Account user = DBController.findByUsername(username);
-		if(user.getStatus().equals('Y')) {
+		Account user = db.findByUsername(username);
+		if(user.getStatus() == 'Y') {
 		return true;
 	}
 		else {
