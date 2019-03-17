@@ -1,3 +1,7 @@
+/**
+ * File: DBController.java
+ */
+
 package CMC;
 import dblibrary.project.csci230.*;
 import java.util.*;
@@ -20,6 +24,20 @@ public class DBController {
   //constructor
   UniversityDBLibrary db = new UniversityDBLibrary("javajunkies","CSCI230");
 
+  
+
+  /**
+   * login
+   */
+  public void login(String username, String password)
+  {
+    
+  }
+  
+  public void logoff()
+  {
+    
+  }
   
   /**
    * Searches for a specified user in the database.
@@ -49,8 +67,10 @@ public class DBController {
 	  for(int i = 0; i < users.length; i++) {
 		  if(users[i][2].equals(username)) {
 			  Account u = new User(users[i][0], users[i][1], users[i][2], users[i][3], users[i][4].charAt(0));
+			  return u;
 		  }
 	  }
+	  return null;
   }
   
   /**
@@ -71,7 +91,7 @@ public class DBController {
   
   public List<University> getReccomendations(University university)
   {
-    
+    return null;
   }
   
   public void editUnivInfo(University university, List<String> info) 
@@ -83,30 +103,33 @@ public class DBController {
    * Deletes a university
    * 
    * @param university - university to be deleted
-   *
-   public removeUniversity(String university)
+   */
+   public void removeUniversity(String university)
    {
    db.university_deleteUniversity(university);
    }
    
-   public addUniversity(String school, String state)
+   public void addUniversity(String school, String state)
    {
    
    }
    
-   
-   */
+
   public boolean createUser(String firstName, String lastName, String username, String password, char type)
   {
     db.user_addUser(firstName, lastName, username, password, type);
     if(type == 'a') {
       User user = new User(firstName, lastName, username, password, type);
+      return true;
     }
-    else{
-      Admin admin = new Admin(firstName, lastName, username, password, type);
+    else
+    {
+      User admin = new User(firstName, lastName, username, password, type);
+      return true;
     }
   }
   
+
   public void adminEditUser(String firstName, String lastName, String username, String password, char type, char status)
   {
     db.user_editUser(firstName, lastName, username, password, type, status);
@@ -124,24 +147,25 @@ public class DBController {
    */
   public String[] searchUniversities(String state, int numberOfStudents) 
   {
-    String[][] universities = db.universities_getUniversities();
+    String[][] universities = db.university_getUniversities();
     int rowLength = universities[0].length;
     int colLength = universities[1].length; 
     String[] matchUni;
     int k = 0;
     
     for(int i = 0; i < rowLength; i++) {
-      for(int j = 0; l < colLength; j++) {
-        if(universities[i][1]).equals(state)  && universities[i][4] < numberOfStudents) {     //  <--- fix this boy
+      for(int l = 0; l < colLength; l++) {
+        if(universities[i][1].equals(state)  && Integer.parseInt(universities[i][4]) < numberOfStudents) 
+        {
           matchUni[k] = universities[i][0];
-        k++;
+          k++;
         }
-        }
-     }
-     return matchUni;
-     }
-   
-   
+      }
+    }
+    return matchUni;
+  }
+  
+  
   /**
    * method to view a list of all universities
    * 
@@ -155,20 +179,30 @@ public class DBController {
    * view all users in database
    * 
    */
-  public String[][] getAllUsers() 
+  public List<User> getAllUsers() 
   {
-    return db.user_getUsers();
+
+	  List<User> users;
+    String[][]usersInfo=db.user_getUsers();
+    for(int j=0;j<usersInfo[1].length();j++) {
+    	for(int i=0;i<usersInfo[0];i++) {
+    		usersInfo[i]=users[j][i];
+      }
+    }
+    return users;
+    
+>>>>>>> 53713db564b9e25395ee9ba59d5cb670e257f5e5
   }
   
   
   /**
    * @param username the active users username 
-   * method to view retreive a users info from the database and display it. 
+   * method to view retrieve a users info from the database and display it. 
    */
   public void viewuser(String username)
   {
     String[][] users = db.user_getUsers();
-    for (int i = 0; i < users[1].length(); i++)
+    for (int i = 0; i < users[1].length; i++)
     {
       if (users[i][2] == username)
       {
@@ -195,6 +229,5 @@ public class DBController {
   public void editUser(String firstName, String lastName, String password)
   {
     String[][] users = db.user_getUsers();  
-  }
   }
 }

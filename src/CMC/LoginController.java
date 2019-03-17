@@ -56,7 +56,7 @@ public class LoginController {
 	 * @param username
 	 */
 	public boolean findUser(String username) {
-		if(this.isUser(username)) {
+		if(db.isUser(username)) {
 			return true;
 		}
 			return false;
