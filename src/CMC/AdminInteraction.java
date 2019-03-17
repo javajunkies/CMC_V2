@@ -1,7 +1,11 @@
 package CMC;
-//@author dkuhr001
-//@version 1.1 added methods
-//Class to handle admin interactions in the system and pass further commands to controller classes
+/**@author dkuhr001
+ *@version 1.1 added methods
+ *Class to handle admin interactions in the system and pass further commands to controller classes
+ * 
+ * @author dkuhr001
+ *
+ */
 
 
 
@@ -45,8 +49,9 @@ public class AdminInteraction{
  public void editAdmin(String userName, String firstName, String lastName, String password, char type, char status){
    adminController.editAdmin(username,firstName,lastName,password,type,status);
  }
- //@Description
- //@params
+ /**@Description
+  * 
+  */
  public void viewUsers(){
    adminController.viewUsers();
  }
@@ -55,13 +60,24 @@ public class AdminInteraction{
  public void deactivateUser(String username){
    adminController.deactivateUser(username);
  }
- //@Description
- //@params
+ /**@Description
+  * 
+  * @param username
+  * @return boolean whether username is taken or not
+  */
+
  public boolean searchUsers(String username){
    adminController.searchUsers(username);
  }
- //@Description add new user, passes user info to admin controller
- //@params
+ /**@Description add new user, passes user info to admin controller
+  * 
+  * @param firstName
+  * @param lastName
+  * @param username
+  * @param password
+  * @param type
+  */
+
  public void addNewUser(String firstName,String lastName,String username,String password,char type){
    adminController.addNewUser(firstName,lastName,username,password,type);
  }

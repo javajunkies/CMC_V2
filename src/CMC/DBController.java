@@ -155,9 +155,17 @@ public class DBController {
    * view all users in database
    * 
    */
-  public String[][] getAllUsers() 
+  public List<User> getAllUsers() 
   {
-    return DB.user_getUsers();
+	  List<User> users;
+    String[][]usersInfo=DB.user_getUsers();
+    for(int j=0;j<usersInfo[1].length();j++) {
+    	for(int i=0;i<usersInfo[0];i++) {
+    		usersInfo[i]=users[j][i];
+      }
+    }
+    return users;
+    
   }
   
   
