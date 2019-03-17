@@ -2,11 +2,12 @@ package CMC;
 /**File:LoginController.java
  * 
  */
-import java.lang.*;
 
 /**
- * @author trobinson001
- *
+ * Controller class for login functionalities.
+ * 
+ * @author Java Junkies
+ * @version March 17. 2019
  */
 public class LoginController {
 

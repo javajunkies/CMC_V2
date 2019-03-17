@@ -39,27 +39,24 @@ public class University {
   *@param int myAcademicsScale
   *@param int mySocialScale
   *@param int myQualityOfLife
-  *@return
-  * 
-  *
   */
  public University(String mySchool,String myState,String myLocation,String myControl,int myNumStudents,double myPercentFemale,double mySATVerbal,double mySATMath,double myExpenses,double myPercentFinancialAid,int myNumApplicants,double myPercentAdmitted,double myPercentEnrolled,int myAcademicsScale,int mySocialScale,int myQualityOfLife) {
-  school=mySchool;
-  state=myState;
-  location=myLocation;
-  control=myControl;
-  numStudents=myNumStudents;
-  percentFemale=myPercentFemale;
-  SATVerbal=mySATVerbal;
-  SATMath=mySATMath;
-  expenses=myExpenses;
-  percentFinancialAid=myPercentFinancialAid;
-  numApplicants=myNumApplicants;
-  percentAdmitted=myPercentAdmitted;
-  percentEnrolled=myPercentEnrolled;
-  academicsScale=myAcademicsScale;
-  socialScale=mySocialScale;
-  qualityOfLife=myQualityOfLife;
+  this.school = mySchool;
+  this.state = myState;
+  this.location = myLocation;
+  this.control = myControl;
+  this.numStudents = myNumStudents;
+  this.percentFemale = myPercentFemale;
+  this.SATVerbal = mySATVerbal;
+  this.SATMath = mySATMath;
+  this.expenses = myExpenses;
+  this.percentFinancialAid = myPercentFinancialAid;
+  this.numApplicants = myNumApplicants;
+  this.percentAdmitted = myPercentAdmitted;
+  this.percentEnrolled = myPercentEnrolled;
+  this.academicsScale = myAcademicsScale;
+  this.socialScale = mySocialScale;
+  this.qualityOfLife = myQualityOfLife;
  }
  
  /**get school name
@@ -165,7 +162,7 @@ public class University {
   * @return SATVerbal
   */
  public double getSATVerbal() {
-  return SATVerbal;
+  return this.SATVerbal;
  }
 
  /**@Description set SAT Verbal average score
@@ -173,7 +170,7 @@ public class University {
   * @param SATVerbal
   */
  public void setSATVerbal(double sATVerbal) {
-  SATVerbal = SATVerbal;
+  this.SATVerbal = SATVerbal;
  }
 
  /**@Description get SAT Math average score
@@ -181,7 +178,7 @@ public class University {
   * @return SATMath
   */
  public double getSATMath() {
-  return SATMath;
+  return this.SATMath;
  }
 
  /**@Description set SAT Math average score
@@ -189,7 +186,7 @@ public class University {
   * @param SATMath
   */
  public void setSATMath(double SATMath) {
-  SATMath = SATMath;
+  this.SATMath = SATMath;
  }
 
  /**@Description get expenses
