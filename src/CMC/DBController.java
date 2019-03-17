@@ -48,14 +48,14 @@ public class DBController {
    */
   
   public Account findByUsername(String username) {
-	  String[][] users = db.user_getUsers();
-	  for(int i = 0; i < users.length; i++) {
-		  if(users[i][2].equals(username)) {
-			  Account u = new User(users[i][0], users[i][1], users[i][2], users[i][3], users[i][4].charAt(0));
-			  return u;
-		  }
-	  }
-	  return null;
+   String[][] users = db.user_getUsers();
+   for(int i = 0; i < users.length; i++) {
+    if(users[i][2].equals(username)) {
+     Account u = new User(users[i][0], users[i][1], users[i][2], users[i][3], users[i][4].charAt(0));
+     return u;
+    }
+   }
+   return null;
   }
   
   /**
@@ -123,7 +123,7 @@ public class DBController {
     int k = 0;
     
     for(int i = 0; i < rowLength; i++) {
-      for(int j = 0; l < colLength; j++) {
+      for(int j = 0; j < colLength; j++) {
         if(universities[i][1].equals(state)  && Integer.parseInt(universities[i][4]) < numberOfStudents) {     //  <--- fix this boy
           matchUni[k] = universities[i][0];
         k++;
@@ -150,11 +150,13 @@ public class DBController {
   public List<User> getAllUsers() 
   {
 
-	  List<User> users;
+    List<User> users;
     String[][]usersInfo=db.user_getUsers();
-    for(int j=0;j<usersInfo[1].length;j++) {
-    	for(int i=0;i<usersInfo[0];i++) {
-    		usersInfo[i]=users[j][i];
+    for(int j=0;j<usersInfo[1].length;j++) 
+    {
+      for(int i=0;i < usersInfo[0].length;i++) 
+      {
+        usersInfo[i]=users[j][i];
       }
     }
     return users;
@@ -208,6 +210,6 @@ public class DBController {
    */
   public void sortSavedSchools(int price, int numStudents, int acceptanceRate, String username) 
   {
-	  
+   
   }
 }
