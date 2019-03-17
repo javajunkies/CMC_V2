@@ -11,8 +11,8 @@ package CMC;
 
 public class AdminInteraction{
  
- AdminController adminController=new AdminController();
- LoginController loginController=new LoginController();
+ AdminController adminController = new AdminController();
+ LoginController loginController = new LoginController();
  
  /**@Description login, call method in AdminController
   * 
