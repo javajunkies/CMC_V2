@@ -20,7 +20,7 @@ public class DBController {
   
   
   //constructor
-  UniversityDBLibrary DB = new UniversityDBLibrary(javajunk, CSCI230);
+  UniversityDBLibrary DB = new UniversityDBLibrary("javajunkies","CSCI230");
   //UniversityDBLibrary DB = new UniversityDBLibrary("javajunk", "javajunk", "csci230");
   
   /**
