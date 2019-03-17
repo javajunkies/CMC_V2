@@ -28,26 +28,22 @@ public class AdminController {
 
   public void addUniversity(String school, String state, String location, String control, int numberOfStudents,
                                double percentFemales, double SATVerbal, double SATMath, double expenses, 
-                               double percentFinancialAid, int numberOfApplicants, double percentFinancialAid, 
-                               int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
-                               int academicsScale, int socialScale, int qualityOfLifeScale) {
+                               double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
+                               double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
     dbcontroller.addUniversity(school, state, location, control, numberOfStudents,
                                percentFemales, SATVerbal, SATMath, expenses, 
-                               percentFinancialAid, numberOfApplicants, percentFinancialAid, 
-                               numberOfApplicants, percentAdmitted, percentEnrolled, 
+                               percentFinancialAid, numberOfApplicants, percentEnrolled, 
                                academicsScale, socialScale, qualityOfLifeScale) ;
   }
 
 
   public void editUniversity(String school, String state, String location, String control, int numberOfStudents,
                                double percentFemales, double SATVerbal, double SATMath, double expenses, 
-                               double percentFinancialAid, int numberOfApplicants, double percentFinancialAid, 
-                               int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
+                               double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
                                int academicsScale, int socialScale, int qualityOfLifeScale) {
     dbcontroller.editUniversity(school, state, location, control, numberOfStudents,
                                percentFemales, SATVerbal, SATMath, expenses, 
-                               percentFinancialAid, numberOfApplicants, percentFinancialAid, 
-                               numberOfApplicants, percentAdmitted, percentEnrolled, 
+                               percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, 
                                academicsScale, socialScale, qualityOfLifeScale);
   }
 
@@ -65,7 +61,7 @@ public class AdminController {
     dbcontroller.searchUsers(username);
   }
 
-  public void addNewUser(String firstname, String lastName, String username, String password, String type) {
+  public void addNewUser(String firstName, String lastName, String username, String password, String type) {
     dbcontroller.createUser(firstName, lastName, username, password, type);
   } 
 } 
