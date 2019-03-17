@@ -145,8 +145,8 @@ public class DBController {
   
   /**
    * view all users in database
-   * 
-   *  public List<User> getAllUsers() 
+   */
+   public List<User> getAllUsers() 
   {
 
 	List<User> users;
@@ -155,21 +155,16 @@ public class DBController {
     	for(int i=0;i < usersInfo[0];i++) {
     		usersInfo[i]=users[j][i];
       }
+    	String first=usersInfo[j][0];
+    	String last=usersInfo[j][1];
+    	String username=usersInfo[j][2];
+    	String password=usersInfo[j][3];
+    	char type=usersInfo[j][4];
+    	users[j]=new User(first,last,username,password,type)
     }
     return users;
     
   }
-   */
-  public List<String> getAllUsers() 
-  {
-	  List<String> result = new ArrayList<String>();
-	  String[][] users = db.user_getUsers();
-	  for(int i = 0; i < users.length; i++) {
-		  result.add(users[i][2]);
-	  }
-	return result;
-  }
-  
   
   /**
    * @param username the active users username 
