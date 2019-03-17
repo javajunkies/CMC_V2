@@ -166,8 +166,9 @@ public class DBController {
    * @param username the active users username 
    * method to view retrieve a users info from the database and display it. 
    */
-  public void viewuser(String username)
+  public User viewUser(String username)
   {
+  
     String[][] users = db.user_getUsers();
     for (int i = 0; i < users[1].length; i++)
     {
@@ -180,10 +181,17 @@ public class DBController {
         }
       }
     }
-    for(int j = 0; j < userInfo.length; j++) {
-      System.out.println(userInfo[j]);
-    }
+        String first = userInfo[0];
+        String last = userInfo[1];
+        String username = userInfo[2];
+        String password = userInfo[3];
+        String userType =  = userInfo[4];
+        char uT = userType.charAt(0);
+        
+        User user = new User(first, last, username, password, uT);
+        return user;  
   }
+
   
   
   /**
@@ -193,9 +201,9 @@ public class DBController {
    * 
    * method to edit the current users information that is stored in the database
    */
-  public void editUser(String firstName, String lastName, String password)
+  public void adminEditUser(String firstName, String lastName, String username, String password, char type, char status)
   {
-    String[][] users = db.user_getUsers();  
+    db.user_editUser(firstName, lastName, username, password, type, status);
   }
   
   /**
