@@ -38,9 +38,8 @@ public class UserController {
   * finds recommended schools based a certain school
   * @param list a university that will be used as a basis for recomendations
   */
- public void getRecommendedList(List<University> list) {
-  dbcontroller.getRecommendations(list);
-  ////??????????????
+ public void getRecommendedList(University university) {
+  dbcontroller.getRecommendations(university);
  }
 
  /**
@@ -108,11 +107,4 @@ public class UserController {
   dbcontroller.viewUser(username);
  }
  
- /**
-  *   
-  */
- public UserController() {
-  // TODO Auto-generated constructor stub
- }
-
 }

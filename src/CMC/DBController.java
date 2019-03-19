@@ -164,11 +164,6 @@ public class DBController {
     }
   }
   
-  public void getRecommendations()
-  {
-    
-  }
-  
   /**
    * method to search for a university 
    * @param state the search criteria
@@ -316,9 +311,9 @@ public class DBController {
   }
   
   public void viewSavedSchools(String username)
-{
+  {
 
-}
+  }
 
 public void getRecommendedList(List<University> list)
 {
@@ -332,12 +327,12 @@ public void searchUniversities(List<String> schools)
 
 public void addToSaved(String username, String university)
 {
-
+	db.user_saveSchool(username, university);
 }
 
 public void romoveFromSaved(String username, String university)
 {
-
+	db.user_removeSchool(username, university);
 }
   
   
