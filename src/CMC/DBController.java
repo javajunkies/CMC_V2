@@ -79,10 +79,67 @@ public class DBController {
   {
 	  
 	  String[][] universities = getAllUniversities();
-	  String[][] distance = new String[][];
+	  ArrayList[][] distance = new ArrayList[][];
+	  ArrayList[][] maximum = new ArrayList[][];
+	  ArrayList[][] minimum = new ArrayList[][];
 	  for(int j = 0; j<universities[0].length(); j++) {
-		  for(int i = 0; i<universities[1].length(); i++) {
-			  distance[j][i] = 
+		  for(int i = 4; i<universities[1].length(); i++) {
+			  if(universities[j][i] > maximum[0][i]) {
+				  maximum[0][i] = universities[j][i];
+			  }
+			  if(universities[j][i] < minimum[0][i]) {
+				  minimum[0][i] = universities[j][i];
+			  }
+		  }
+	  }
+	  for(int j = 0; j<universities[0].length(); j++) {
+			  distance[j][0] = universities[j][0];
+			  String state = universities[j][1];
+			  String location = universities[j][2];
+			  String control = universities[j][3];
+			  int numStudents = universities[j][4];
+			  double percentFemale = universities[j][5];
+			  double SATVerbal = universities[j][6];
+			  double SATMath = universities[j][7];
+			  double expenses = universities[j][8];
+			  double percentFinancialAid = universities[j][9];
+			  int numApplicants = universities[j][10];
+			  double percentAdmitted = universities[j][11];
+			  double percentEnrolled = universities[j][12];
+			  int academicsScale = universities[j][13];
+			  int socialScale = universities[j][14];
+			  int qualityOfLife = universities[j][15];
+			  
+			  if(state.equals(university.getState())) {
+				  double x1=0;
+			  }
+			  else {
+				  double x1=1;
+			  }
+			  
+			  if(location.equals(university.getState())) {
+				  double x2=0;
+			  }
+			  else {
+				  double x2=1;
+			  }
+			  
+			  if(control.equals(university.getState())) {
+				  double x3=0;
+			  }
+			  else {
+				  double x3=1;
+			  }
+			  
+			  distance[j][1] = x1 + x2 + x3 + abs(numStudents-university.getNumStudents())/abs(maximum[0][4]-minimum[0][4]) + abs(percentFemale-university.getNPercentFemale())/abs(maximum[0][5]-minimum[0][5]) + abs(SATVerbal-university.getSATVerbal())/abs(maximum[0][6]-minimum[0][6]) + abs(SATMath-university.getSATMath())/abs(maximum[0][7]-minimum[0][7]) + abs(expenses-university.getExpenses())/abs(maximum[0][8]-minimum[0][8]) + abs(percentFinancialAid-university.getPercentFinancialAid())/abs(maximum[0][9]-minimum[0][9]) + abs(numApplicants-university.getnumApplicants())/abs(maximum[0][10]-minimum[0][10]) + abs(percentAdmitted-university.getPercentAdmitted())/abs(maximum[0][11]-minimum[0][11]) + abs(percentEnrolled-university.getPercentEnrolled())/abs(maximum[0][12]-minimum[0][12]) + abs(academicsScale-university.getAcademicsScale())/abs(maximum[0][13]-minimum[0][13]) + abs(socialScale-university.getSocialScale())/abs(maximum[0][14]-minimum[0][14]) + abs(qualityOfLife-university.getQualityOfLife())/abs(maximum[0][15]-minimum[0][15]);
+			  
+		  //}
+	  }
+	  
+	  for(int j = 0; j < distance[0].length(); j++) {
+		  if(distance[j+1][1] < distance[j][1]) {
+			  distance[j][1] = distance[j+1][1];
+			  distance[j+1][1] = distance
 		  }
 	  }
 	  return ;
