@@ -16,7 +16,6 @@ public class UserInteraction
  
  //objects
  UserController UserController = new UserController();
- //User User = new User();
  AccountController AccountController = new AccountController();
  UniversityController UniversityController = new UniversityController();
  
