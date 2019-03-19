@@ -38,8 +38,8 @@ public class UserController {
   * finds recommended schools based a certain school
   * @param list a university that will be used as a basis for recomendations
   */
- public void getRecommendedList(List<University> list) {
-  dbcontroller.getRecommendedList(list);
+ public void getRecommendedList(University university) {
+  dbcontroller.getRecommendations(university);
  }
 
  /**
@@ -48,6 +48,7 @@ public class UserController {
   */
  public void search(List<String> schools) {
   dbcontroller.searchUniversities(schools);
+  ////???????????
  }
  
  /**
@@ -56,7 +57,6 @@ public class UserController {
   * @param university a university object to be saved to the users saved schools list
   */
  public void saveSchool(String username, String university) {
-  //dbcontroller.user_saveSchool(username, university);
    dbcontroller.addToSaved(username, university);
  }
  
@@ -76,17 +76,18 @@ public class UserController {
   *@param lastname the users new last name
   *@param password the users new password
   */
- public void editUserInfo(String username, String fistname, String lastname, String password) {
-  dbcontroller.user_editUser(username, firstname, lastname, password);
+ public void editUserInfo(String username, String firstname, String lastname, String password) {
+  dbcontroller.userEditUser(username, firstname, lastname, password);
  }
  
  /**
-  *checks if the users matches the password on the account
+  *checks if the users password matches the password on the account
   *@param p the users password 
-  *@return boboolean if the users entered password  
+  *@return boolean 
   */
  public boolean getPassword(String p) {
   dbcontroller.getPassword(p);
+  ////????????
  }
  
  /**
@@ -106,11 +107,4 @@ public class UserController {
   dbcontroller.viewUser(username);
  }
  
- /**
-  *   
-  */
- public UserController() {
-  // TODO Auto-generated constructor stub
- }
-
 }

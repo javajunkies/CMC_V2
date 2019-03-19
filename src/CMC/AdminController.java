@@ -6,26 +6,68 @@ import java.util.*;
  */
 public class AdminController {
 
+  // Creating instances of the other classes being used.
   DBController dbcontroller = new DBController();
   LoginController logInController = new LoginController();
 
-
+/**
+ * Calls the login method, passing the specified parameters.
+ *   
+ * @param username is the username used to login with
+ * @param password is the password used to login with
+ */
+  
   public void login(String username, String password) {
     dbcontroller.login(username, password);
   }
 
+  /**
+   * Calls the logoff method from DBController.
+   */
+  
   public void logoff(){
     dbcontroller.logoff();
   }
 
+  /**
+   * Calls the getAllUniversities method from DBController.
+   */
+  
   public void viewUniversities() {
     dbcontroller.getAllUniversities();
   }
 
+  /**
+   * Calls the removeUniversity method from DBController.
+   * 
+   * @param name is the name of the university being romved
+   */
+  
   public void removeUniversity(String name) {
     dbcontroller.removeUniversity(name); 
   }
 
+  /**
+   * Calls the addUniversity method from DBController.
+   * 
+   * @param school is the name of the school
+   * @param state is the state that the school is located
+   * @param location is the type of area in which the school is located (i.e. Suburban, Small-city, ...)
+   * @param control specifies who controls the university (i.e. Public, Private, ...)
+   * @param numberOfStudents is the number of students at this university
+   * @param percentFemales is the percentage of females at this university
+   * @param SATVerbal is the average SAT Verbal score, out of 800, for the students at this university
+   * @param SATMath is the average SAT Math score, out of 800, for the students at this university
+   * @param expenses is the annual tuition for this university
+   * @param percentFinancialAid is the percentage of students who received some sort of financial aid from this university
+   * @param numberOfApplicants is the number of students who typically apply to this university
+   * @param percentAdmitted is the percentage of students who are admitted annually to this university
+   * @param percentEnrolled is the percentage of students who are currently enrolled at this university
+   * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
+   * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
+   * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
+   */
+  
   public void addUniversity(String school, String state, String location, String control, int numberOfStudents,
                                double percentFemales, double SATVerbal, double SATMath, double expenses, 
                                double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
@@ -36,7 +78,27 @@ public class AdminController {
                                percentEnrolled, academicsScale, socialScale, qualityOfLifeScale) ;
   }
 
-
+  /**
+   * Calls the editUniversity method from DBController
+   * 
+   * @param school is the name of the school
+   * @param state is the state that the school is located
+   * @param location is the type of area in which the school is located (i.e. Suburban, Small-city, ...)
+   * @param control specifies who controls the university (i.e. Public, Private, ...)
+   * @param numberOfStudents is the number of students at this university
+   * @param percentFemales is the percentage of females at this university
+   * @param SATVerbal is the average SAT Verbal score, out of 800, for the students at this university
+   * @param SATMath is the average SAT Math score, out of 800, for the students at this university
+   * @param expenses is the annual tuition for this university
+   * @param percentFinancialAid is the percentage of students who received some sort of financial aid from this university
+   * @param numberOfApplicants is the number of students who typically apply to this university
+   * @param percentAdmitted is the percentage of students who are admitted annually to this university
+   * @param percentEnrolled is the percentage of students who are currently enrolled at this university
+   * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
+   * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
+   * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
+   */
+  
   public void editUniversity(String school, String state, String location, String control, int numberOfStudents,
                                double percentFemales, double SATVerbal, double SATMath, double expenses, 
                                double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
@@ -54,11 +116,14 @@ public class AdminController {
   } 
 
   public List<User> viewUsers() {
-    dbcontroller.getAllUsers();
+    return dbcontroller.getAllUsers();
   } 
 
-  public boolean searchUsers(String username) {
-    dbcontroller.searchUsers(username);
+  public boolean isUniqueUsername(String username) {
+	  if(dbcontroller.isUniqueUsername(username)) {
+		  return true;
+	  }
+    return false;
   }
 
   public void addNewUser(String firstName, String lastName, String username, String password, char type) {

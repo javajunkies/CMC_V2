@@ -100,7 +100,7 @@ public class AdminInteraction{
   * 
   */
  public List<User> viewUsers(){
-   adminController.viewUsers();
+   return adminController.viewUsers();
  }
  //@Description
  //@params
@@ -113,8 +113,11 @@ public class AdminInteraction{
   * @return boolean whether username is taken or not
   */
 
- public boolean searchUsers(String username){
-   adminController.searchUsers(username);
+ public boolean isUniqueUsername(String username){
+	 if(adminController.isUniqueUsername(username)) {
+		 return true;
+	 }
+	 return false;
  }
  /**@Description add new user, passes user info to admin controller
   * 

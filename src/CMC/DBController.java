@@ -80,10 +80,10 @@ public class DBController {
    * @param University object 
    * @return List<University> of length 5 for the recommended schools
    */
-  public ArrayList<University> getReccomendations(University university)
+  public ArrayList<University> getRecommendations(University university)
   {
 	  
-	  String[][] universities = getAllUniversities();
+	  String[][] universities = this.getAllUniversities();
 	  ArrayList[][] distance = new ArrayList[][];
 	  ArrayList[][] maximum = new ArrayList[][];
 	  ArrayList[][] minimum = new ArrayList[][];
@@ -179,9 +179,12 @@ public class DBController {
 	  return recommendedSchools;
   }
   
-  public void editUnivInfo(University university, List<String> info) 
+  public int editUnivInfo(String school, String state, String location, String control, int numberOfStudents,
+          double percentFemales, double SATVerbal, double SATMath, double expenses, 
+          double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
+          double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) 
   {
-    
+    return db.university_editUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
   }
   
   public boolean createUser(String firstName, String lastName, String username, String password, char type)
@@ -290,11 +293,14 @@ public class DBController {
    * 
    * method to edit the current users information that is stored in the database
    */
-  public void adminEditUser(String firstName, String lastName, String username, String password, char type, char status)
+  public int adminEditUser(String firstName, String lastName, String username, String password, char type, char status)
   {
-    db.user_editUser(firstName, lastName, username, password, type, status);
+    return db.user_editUser(username, firstName, lastName, password, type, status);
   }
   
+  public int userEditUser(String username, String first, String last, String password) {
+	  return db.user_editUser(username, first, last, password, 'u', 'Y');
+  }
   /**
    * @param price price of the school 
    * @param numStudents number of students attending the university 
@@ -313,60 +319,61 @@ public class DBController {
     
   }
   
-  public void logoff();
+  public void logoff()
   {
     
   }
   
-  public void removeUniversity(String name)
+  public int removeUniversity(String name)
   {
-    
+    return db.university_deleteUniversity(name);
   }
   
-  public void addUniversity(String school, String state, String location, String control, int numberOfStudents,
+  public int addUniversity(String school, String state, String location, String control, int numberOfStudents,
                             double percentFemales, double SATVerbal, double SATMath, double expenses, 
                             double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
                             double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale)
   {
-    //add university
+    return db.university_addUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
   }
   
-  public void editUniversity(String school, String state, String location, String control, int numberOfStudents,
+  public int editUniversity(String school, String state, String location, String control, int numberOfStudents,
                                double percentFemales, double SATVerbal, double SATMath, double expenses, 
                                double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
                                int academicsScale, int socialScale, int qualityOfLifeScale) 
   {
-   //edit 
+   return db.university_editUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale); 
   }
   
-  public boolean searchUsers(String username)
+  public boolean isUniqueUsername(String username)
   {
-    
-  }
+	   String[][] users = db.user_getUsers();
+	    for(int i = 0; i < users.length; i++) {
+	      if(users[i][2].equals(username)) {
+	        return false;
+	      }
+	    }
+	    return true;
+	  }
   
   public void viewSavedSchools(String username)
-{
+  {
 
-}
-
-public void getRecommendedList(List<University> list)
-{
-
-}
+  }
 
 public void searchUniversities(List<String> schools)
 {
 
 }
 
-public void addToSaved(String username, String university)
+public int addToSaved(String username, String university)
 {
-
+	return db.user_saveSchool(username, university);
 }
 
-public void removeFromSaved(String username, String university)
+public int removeFromSaved(String username, String university)
 {
-
+	return db.user_removeSchool(username, university);
 }
   
   
