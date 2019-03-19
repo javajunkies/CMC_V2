@@ -70,7 +70,7 @@ public class UserInteraction
   */
  public void register(String first, String last, String password)
  {
-  if (password.length = 8 && password.contains("[a-zA-Z]*") && password.contains("[0-9]*"))
+  if (password.length == 8 && password.contains("[a-zA-Z]*") && password.contains("[0-9]*"))
   {
    AccountController.register(first, last, password);
   }
@@ -105,7 +105,7 @@ public class UserInteraction
   * @param user - current user
   * @param school - school to remove
   */
- public void removeSavedSchool(String user, University school)
+ public void removeSavedSchool(String user, String school)
  {
   UserController.removeSavedSchool(user, school);
  }

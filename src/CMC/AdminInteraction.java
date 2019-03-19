@@ -125,7 +125,7 @@ public class AdminInteraction{
   * @param type
   */
 
- public void addNewUser(String firstName,String lastName,String username,String password,String type){
+ public void addNewUser(String firstName,String lastName,String username,String password,char type){
    adminController.addNewUser(firstName,lastName,username,password,type);
  }
  
