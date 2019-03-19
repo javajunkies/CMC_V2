@@ -185,7 +185,7 @@ public class DBController {
         String last = userInfo[1];
         String username = userInfo[2];
         String password = userInfo[3];
-        String userType =  = userInfo[4];
+        String userType = userInfo[4];
         char uT = userType.charAt(0);
         
         User user = new User(first, last, username, password, uT);
