@@ -48,14 +48,14 @@ public class DBController {
    */
   
   public Account findByUsername(String username) {
-   String[][] users = db.user_getUsers();
-   for(int i = 0; i < users.length; i++) {
-    if(users[i][2].equals(username)) {
-     Account u = new User(users[i][0], users[i][1], users[i][2], users[i][3], users[i][4].charAt(0));
-     return u;
+    String[][] users = db.user_getUsers();
+    for(int i = 0; i < users.length; i++) {
+      if(users[i][2].equals(username)) {
+        Account u = new User(users[i][0], users[i][1], users[i][2], users[i][3], users[i][4].charAt(0));
+        return u;
+      }
     }
-   }
-   return null;
+    return null;
   }
   
   /**
@@ -84,7 +84,7 @@ public class DBController {
   {
     
   }
-   
+  
   public boolean createUser(String firstName, String lastName, String username, String password, char type)
   {
     db.user_addUser(firstName, lastName, username, password, type);
@@ -96,12 +96,7 @@ public class DBController {
     {
       User admin = new User(firstName, lastName, username, password, type);
       return true;
-  }
-  }
-  
-  public void adminEditUser(String firstName, String lastName, String username, String password, char type, char status)
-  {
-    db.user_editUser(firstName, lastName, username, password, type, status);
+    }
   }
   
   public void getRecommendations()
@@ -126,14 +121,14 @@ public class DBController {
       for(int j = 0; j < colLength; j++) {
         if(universities[i][1].equals(state)  && Integer.parseInt(universities[i][4]) < numberOfStudents) {     //  <--- fix this boy
           matchUni[k] = universities[i][0];
-        k++;
+          k++;
         }
-        }
-     }
-     return matchUni;
-     }
-   
-   
+      }
+    }
+    return matchUni;
+  }
+  
+  
   /**
    * method to view a list of all universities
    * 
@@ -146,18 +141,18 @@ public class DBController {
   /**
    * view all users in database
    */
-   public List<User> getAllUsers() {
- //User user=new User();
- ArrayList<User> userList = new ArrayList<User>();
+  public List<User> getAllUsers() {
+    //User user=new User();
+    ArrayList<User> userList = new ArrayList<User>();
     String[][]usersInfo = db.user_getUsers();
     for(int j=0; j<usersInfo[1].length; j++) {
-     //String first = usersInfo[j][0];
-     //String last = usersInfo[j][1];
-     //String username = usersInfo[j][2];
-     //String password = usersInfo[j][3];
-     //char type = usersInfo[j][4];
-     User user = new User(usersInfo[j][0],usersInfo[j][1],usersInfo[j][2],usersInfo[j][3],usersInfo[j][4].charAt(0));
-     userList.add(user);
+      //String first = usersInfo[j][0];
+      //String last = usersInfo[j][1];
+      //String username = usersInfo[j][2];
+      //String password = usersInfo[j][3];
+      //char type = usersInfo[j][4];
+      User user = new User(usersInfo[j][0],usersInfo[j][1],usersInfo[j][2],usersInfo[j][3],usersInfo[j][4].charAt(0));
+      userList.add(user);
     }
     return userList;  
   }
@@ -168,7 +163,7 @@ public class DBController {
    */
   public User viewUser(String username)
   {
-  
+    
     String[][] users = db.user_getUsers();
     for (int i = 0; i < users[1].length; i++)
     {
@@ -181,17 +176,17 @@ public class DBController {
         }
       }
     }
-        String first = userInfo[0];
-        String last = userInfo[1];
-        String username = userInfo[2];
-        String password = userInfo[3];
-        String userType = userInfo[4];
-        char uT = userType.charAt(0);
-        
-        User user = new User(first, last, username, password, uT);
-        return user;  
+    String first = userInfo[0];
+    String last = userInfo[1];
+    String username = userInfo[2];
+    String password = userInfo[3];
+    String userType = userInfo[4];
+    char uT = userType.charAt(0);
+    
+    User user = new User(first, last, username, password, uT);
+    return user;  
   }
-
+  
   
   
   /**
@@ -216,6 +211,69 @@ public class DBController {
    */
   public void sortSavedSchools(int price, int numStudents, int acceptanceRate, String username) 
   {
-   
+    
   }
+  
+  public void login(String username, String password)
+  {
+    
+  }
+  
+  public void logoff();
+  {
+    
+  }
+  
+  public void removeUniversity(String name)
+  {
+    
+  }
+  
+  public void addUniversity(String school, String state, String location, String control, int numberOfStudents,
+                            double percentFemales, double SATVerbal, double SATMath, double expenses, 
+                            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
+                            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale)
+  {
+    //add university
+  }
+  
+  public void editUniversity(String school, String state, String location, String control, int numberOfStudents,
+                               double percentFemales, double SATVerbal, double SATMath, double expenses, 
+                               double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
+                               int academicsScale, int socialScale, int qualityOfLifeScale) 
+  {
+   //edit 
+  }
+  
+  public boolean searchUsers(String username)
+  {
+    
+  }
+  
+  public void viewSavedSchools(String username)
+{
+
+}
+
+public void getRecommendedList(List<University> list)
+{
+
+}
+
+public void searchUniversities(List<String> schools)
+{
+
+}
+
+public void addToSaved(String username, String university)
+{
+
+}
+
+public void romoveFromSaved(String username, String university)
+{
+
+}
+  
+  
 }

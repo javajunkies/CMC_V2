@@ -32,8 +32,8 @@ public class AdminController {
                                double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
     dbcontroller.addUniversity(school, state, location, control, numberOfStudents,
                                percentFemales, SATVerbal, SATMath, expenses, 
-                               percentFinancialAid, numberOfApplicants, percentEnrolled, 
-                               academicsScale, socialScale, qualityOfLifeScale) ;
+                               percentFinancialAid, numberOfApplicants, percentAdmitted, 
+                               percentEnrolled, academicsScale, socialScale, qualityOfLifeScale) ;
   }
 
 
@@ -54,14 +54,33 @@ public class AdminController {
   } 
 
   public List<User> viewUsers() {
-    dbcontroller.getUsers();
+    dbcontroller.getAllUsers();
   } 
 
   public boolean searchUsers(String username) {
     dbcontroller.searchUsers(username);
   }
 
-  public void addNewUser(String firstName, String lastName, String username, String password, String type) {
+  public void addNewUser(String firstName, String lastName, String username, String password, char type) {
     dbcontroller.createUser(firstName, lastName, username, password, type);
   } 
+  
+  
+  //to implement:
+  
+  public void viewUserInfo(String username)
+  {
+    
+  }
+  
+  public void editAdmin(String userName, String firstName, String lastName, String password, char type, char status)
+  {
+    
+  }
+  
+  public void deactivateUser(String username)
+  {
+    
+  }
+  
 } 
