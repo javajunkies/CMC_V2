@@ -28,10 +28,10 @@ public class UserController {
 	
 	/**
 	 * finds a users saved schools
-	 * @param user the users username
+	 * @param username the users username
 	 */
-	public void viewSavedSchool(String user) {
-		
+	public void viewSavedSchools(String username) {
+		dbcontroller.getUserSavedSchools(username);
 	}
 	
 	/**
@@ -39,7 +39,7 @@ public class UserController {
 	 * @param list	a university that will be used as a basis for recomendations
 	 */
 	public void getRecommendedList(List<University> list) {
-		
+		dbcontroller.getRecommendedList(list);
 	}
 
 	/**
@@ -47,7 +47,7 @@ public class UserController {
 	 * @param schools	a list containing desired search criteria
 	 */
 	public void search(List<String> schools) {
-		
+		dbcontroller.searchUniversities(schools);
 	}
 	
 	/**
@@ -56,7 +56,7 @@ public class UserController {
 	 * @param university	a university object to be saved to the users saved schools list
 	 */
 	public void saveSchool(String username, String university) {
-		
+		dbcontroller.user_saveSchool(username, university);
 	}
 	
 	/**
@@ -65,7 +65,7 @@ public class UserController {
 	 *@param univ2	A university to be compared to univ1
 	 */
 	public void compare(University univ1, University univ2) {
-		
+		dbcontroller.compare(univ1, univ2);
 	}
 	
 	/**
@@ -76,16 +76,16 @@ public class UserController {
 	 *@param password	the users new password
 	 */
 	public void editUserInfo(String username, String fistname, String lastname, String password) {
-		
+		dbcontroller.user_editUser(username, firstname, lastname, password);
 	}
 	
 	/**
-	 * checks if the users matches the password on the account
+	 *checks if the users matches the password on the account
 	 *@param p	the users password 
 	 *@return boboolean	if the users entered password  
 	 */
 	public boolean getPassword(String p) {
-		
+		dbcontroller.getPassword(p);
 	}
 	
 	/**
@@ -94,7 +94,7 @@ public class UserController {
 	 *@param school	the name of the school to be removed from the desired users saved school list
 	 */
 	public void removeSavedSchool(String user, String school) {
-		
+		dbcontroller.user_removeSchool(user, school);
 	}
 	
 	/**
@@ -102,7 +102,7 @@ public class UserController {
 	 *@param username	the username to return information for
 	 */
 	public void viewUserInfo(String username) {
-		
+		dbcontroller.viewUser(username);
 	}
 	
 	/**
