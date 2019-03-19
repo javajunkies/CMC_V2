@@ -77,15 +77,7 @@ public class DBController {
   
   public List<University> getReccomendations(University university)
   {
-	  
-	  String[][] universities = getAllUniversities();
-	  String[][] distance = new String[][];
-	  for(int j = 0; j<universities[0].length(); j++) {
-		  for(int i = 0; i<universities[1].length(); i++) {
-			  distance[j][i] = 
-		  }
-	  }
-	  return ;
+    return null;
   }
   
   public void editUnivInfo(University university, List<String> info) 
@@ -154,18 +146,37 @@ public class DBController {
   /**
    * view all users in database
    */
+<<<<<<< HEAD
+   public List<User> getAllUsers() 
+  {
+    List<User> users;
+    String[][]usersInfo=db.user_getUsers();
+    for(int j=0;j<usersInfo[1].length;j++) 
+    {
+      for(int i=0;i < usersInfo[0].length;i++) 
+      {
+        usersInfo[i]=users[j][i];
+      }
+     String first=usersInfo[j][0];
+     String last=usersInfo[j][1];
+     String username=usersInfo[j][2];
+     String password=usersInfo[j][3];
+     char type=usersInfo[j][4];
+     users[j]=new User(first,last,username,password,type)
+=======
    public List<User> getAllUsers() {
- //User user=new User();
- ArrayList<User> userList = new ArrayList<User>();
+	//User user=new User();
+	ArrayList<User> userList = new ArrayList<User>();
     String[][]usersInfo = db.user_getUsers();
     for(int j=0; j<usersInfo[1].length; j++) {
-     //String first = usersInfo[j][0];
-     //String last = usersInfo[j][1];
-     //String username = usersInfo[j][2];
-     //String password = usersInfo[j][3];
-     //char type = usersInfo[j][4];
-     User user = new User(usersInfo[j][0],usersInfo[j][1],usersInfo[j][2],usersInfo[j][3],usersInfo[j][4].charAt(0));
-     userList.add(user);
+    	//String first = usersInfo[j][0];
+    	//String last = usersInfo[j][1];
+    	//String username = usersInfo[j][2];
+    	//String password = usersInfo[j][3];
+    	//char type = usersInfo[j][4];
+    	User user = new User(usersInfo[j][0],usersInfo[j][1],usersInfo[j][2],usersInfo[j][3],usersInfo[j][4].charAt(0));
+    	userList.add(user);
+>>>>>>> c774493ed9e9b13cbba500e63dfe0e483f81ce0f
     }
     return userList;  
   }
@@ -193,7 +204,7 @@ public class DBController {
         String last = userInfo[1];
         String username = userInfo[2];
         String password = userInfo[3];
-        String userType = userInfo[4];
+        String userType =  = userInfo[4];
         char uT = userType.charAt(0);
         
         User user = new User(first, last, username, password, uT);

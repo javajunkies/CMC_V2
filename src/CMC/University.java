@@ -65,7 +65,7 @@ public class University {
   * @return String university name
   */
  public String getSchool() {
-  return school;
+  return this.school;
  }
 
  /**@Description set school name
@@ -170,7 +170,7 @@ public class University {
   * 
   * @param SATVerbal
   */
- public void setSATVerbal(double sATVerbal) {
+ public void setSATVerbal(double SATVerbal) {
   this.SATVerbal = SATVerbal;
  }
 
