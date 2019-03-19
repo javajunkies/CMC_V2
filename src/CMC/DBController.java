@@ -77,7 +77,15 @@ public class DBController {
   
   public List<University> getReccomendations(University university)
   {
-    return null;
+	  
+	  String[][] universities = getAllUniversities();
+	  String[][] distance = new String[][];
+	  for(int j = 0; j<universities[0].length(); j++) {
+		  for(int i = 0; i<universities[1].length(); i++) {
+			  distance[j][i] = 
+		  }
+	  }
+	  return ;
   }
   
   public void editUnivInfo(University university, List<String> info) 
