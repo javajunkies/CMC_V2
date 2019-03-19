@@ -54,11 +54,14 @@ public class AdminController {
   } 
 
   public List<User> viewUsers() {
-    dbcontroller.getAllUsers();
+    return dbcontroller.getAllUsers();
   } 
 
-  public boolean searchUsers(String username) {
-    dbcontroller.searchUsers(username);
+  public boolean isUniqueUsername(String username) {
+	  if(dbcontroller.isUniqueUsername(username)) {
+		  return true;
+	  }
+    return false;
   }
 
   public void addNewUser(String firstName, String lastName, String username, String password, char type) {

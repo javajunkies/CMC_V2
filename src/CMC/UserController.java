@@ -76,8 +76,8 @@ public class UserController {
   *@param lastname the users new last name
   *@param password the users new password
   */
- public void editUserInfo(String username, String fistname, String lastname, String password) {
-  dbcontroller.editUserInfo(username, firstname, lastname, password);
+ public void editUserInfo(String username, String firstname, String lastname, String password) {
+  dbcontroller.userEditUser(username, firstname, lastname, password);
  }
  
  /**

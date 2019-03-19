@@ -26,7 +26,7 @@ public class UserInteraction
   * @param username - user's username
   * @param password - user's password
   */
- public void login(String username, String password);
+ public void login(String username, String password)
  {
   UserController.login(username, password);
  }
@@ -94,7 +94,7 @@ public class UserInteraction
   * 
   * @param university - school
   */
- public void getRecommendedList(String university)   //List<University>)
+ public void getRecommendedList(University university)
  {
   UserController.getRecommendedList(university);
  }
