@@ -14,6 +14,7 @@ public class AdminInteraction{
  
  AdminController adminController = new AdminController();
  LoginController loginController = new LoginController();
+ AccountController accountController = new AccountController();
  
  /**@Description login, call method in AdminController
   * 
@@ -126,10 +127,18 @@ public class AdminInteraction{
   * @param username
   * @param password
   * @param type
+  * 
+  * @return boolean true if username is unique
   */
 
- public void addNewUser(String firstName,String lastName,String username,String password,char type){
-   adminController.addNewUser(firstName,lastName,username,password,type);
+ public boolean addNewUser(String firstName,String lastName,String username,String password,char type){
+	 if(adminController.isUniqueUsername(username) == true) {  
+		 adminController.addNewUser(firstName,lastName,username,password,type);
+		 return true;
+	 }
+	 else {
+		 return false;
+	 }
  }
  
 }

@@ -9,6 +9,7 @@ public class AdminController {
   // Creating instances of the other classes being used.
   DBController dbcontroller = new DBController();
   LoginController logInController = new LoginController();
+  AccountController accountController = new AccountController();
 
 /**
  * Calls the login method, passing the specified parameters.
@@ -118,16 +119,45 @@ public class AdminController {
   public List<User> viewUsers() {
     return dbcontroller.getAllUsers();
   } 
-
+  
+/**
+ * 
+ * @param username
+ * @return boolean if username is unique, returns true
+ */
   public boolean isUniqueUsername(String username) {
 	  if(dbcontroller.isUniqueUsername(username)) {
 		  return true;
 	  }
-    return false;
+	  else {
+		  return false;
+	  }
   }
 
-  public void addNewUser(String firstName, String lastName, String username, String password, char type) {
-    dbcontroller.createUser(firstName, lastName, username, password, type);
+  /**
+   * 
+   * @param firstName
+   * @param lastName
+   * @param username
+   * @param password
+   * @param type
+   * 
+   * @return boolean if password is valid and type is either u or a
+   */
+  public boolean addNewUser(String firstName, String lastName, String username, String password, char type) {
+	  if(accountController.checkPasswordCriteria(password) == true) {
+		  if(type =='u' || type == 'a'){
+			  dbcontroller.createUser(firstName, lastName, username, password, type);
+			  return true.
+		  }
+		  else {
+			  return false;
+		  }
+	  }
+	  else {
+		  return false;
+	  }
+	  
   } 
   
   
@@ -143,6 +173,12 @@ public class AdminController {
     
   }
   
+  /**
+   * 
+   * @param username
+   * 
+   * @return 
+   */
   public void deactivateUser(String username)
   {
     
