@@ -318,7 +318,7 @@ public class DBController {
    * 
    * a method to get the User's saved schools
    */
-  public List<University> getUserSavedSchools(int price, int numStudents, String username) 
+  public List<University> getUserSavedSchools(String username) 
   {
 
       
@@ -354,7 +354,7 @@ public class DBController {
    * 
    * This method sorts a users saved schools by attendance
    */
-  public List<University> sortSavedSchoolsByNumStudents(int numStudents) {
+  public List<University> sortSavedSchoolsByNumStudents(int numStudents, String username) {
   
    List<Universities> byNumStudents = new ArrayList<>();
    
@@ -366,7 +366,7 @@ public class DBController {
    * 
    * This method sorts a users saved schools by price
    */
-  public List<University> sortByPrice(int price) {
+  public List<University> sortByPrice(int price, String username) {
    
   }
   
@@ -376,9 +376,11 @@ public class DBController {
    * 
    * This method sorts a users saved school by acceptance rate
    */
-     public List<University> sortByAdmittance(int acceptanceRate, ) {
+     public List<University> sortByAcceptance(int acceptanceRate, ) {
    
   }
+     
+    //publicSortSavedSchools
   
 }
    

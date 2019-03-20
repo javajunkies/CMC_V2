@@ -86,6 +86,14 @@ public class AdminInteraction{
  public void editUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
    adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
  }
+ 
+ * Calls the getAllUniversities method from DBController.
+ */
+
+public void viewUniversities() {
+  adminController.getAllUniversities();
+}
+ 
  //@Description
  //@params
  public void viewUserInfo(String username){
