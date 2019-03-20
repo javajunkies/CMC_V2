@@ -104,8 +104,17 @@ if(loginController.login(username,password) == 3) {
   */
 
  public void editUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
-   adminController.editUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
+   adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
  }
+ 
+ * Calls the getAllUniversities method from DBController.
+ */
+
+public void viewUniversities() {
+  adminController.getAllUniversities();
+}
+ 
+
 
  /**
   * Calls the viewUserInfo method from AdminController and passes the specified paramter
