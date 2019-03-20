@@ -15,7 +15,7 @@ public class UserController {
   *@param password the users password
   */
  public void login(String username, String password) {
-  dbcontroller.login(username, password);
+  logInController.login(username, password);
  }
  
  /**
@@ -23,7 +23,7 @@ public class UserController {
   *
   */
  public void logoff() {
-  dbcontroller.logoff();
+  logInController.logoff();
  }
  
  /**
@@ -85,10 +85,12 @@ public class UserController {
   *@param p the users password 
   *@return boolean 
   */
- public boolean getPassword(String p) {
-  dbcontroller.getPassword(p);
-  ////????????
- }
+ /**
+  *public boolean getPassword(String p) {
+  *dbcontroller.getPassword(p);
+  *
+  * }
+  */
  
  /**
   * Removes a school from the users saved school list
