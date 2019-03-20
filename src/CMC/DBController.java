@@ -187,18 +187,9 @@ public class DBController {
     return db.university_editUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
   }
   
-  public boolean createUser(String firstName, String lastName, String username, String password, char type)
+  public int createUser(String firstName, String lastName, String username, String password, char type)
   {
-    db.user_addUser(firstName, lastName, username, password, type);
-    if(type == 'a') {
-      User user = new User(firstName, lastName, username, password, type);
-      return true;
-    }
-    else
-    {
-      User admin = new User(firstName, lastName, username, password, type);
-      return true;
-    }
+    return db.user_addUser(firstName, lastName, username, password, type);
   }
   
   /**
@@ -264,7 +255,7 @@ public class DBController {
     String[][] users = db.user_getUsers();
     for (int i = 0; i < users[1].length; i++)
     {
-      if (users[i][2] == username)
+      if (users[i][2].equals(username))
       {
         String [] userInfo;
         for(String s : userInfo)
@@ -293,7 +284,7 @@ public class DBController {
    * 
    * method to edit the current users information that is stored in the database
    */
-  public int adminEditUser(String firstName, String lastName, String username, String password, char type, char status)
+  public int adminEditUser(String username, String firstName, String lastName, String password, char type, char status)
   {
     return db.user_editUser(username, firstName, lastName, password, type, status);
   }
@@ -375,6 +366,4 @@ public int removeFromSaved(String username, String university)
 {
 	return db.user_removeSchool(username, university);
 }
-  
-  
 }

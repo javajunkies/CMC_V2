@@ -109,16 +109,39 @@ public class AdminController {
                                academicsScale, socialScale, qualityOfLifeScale);
   }
 
+  /**
+   * Calls the edit user for admin from DBControler
+   * 
+   * @param username is the username associated with this account
+   * @param firstName is the first name associated with this account
+   * @param lastName is the last name associated with this account
+   * @param password is the password associated with this account
+   * @param type is the type of this account
+   * @param status is the status of this account
+   */
+  
   public void editUser(String username, String firstName, String lastName, String password, char type, char status) {
     dbcontroller.adminEditUser(username, firstName, lastName, password, type, 
                                status);
 
   } 
 
+  /**
+   * Calls the getAllUsers method from DBController
+   * 
+   * @return A list of user objects
+   */
   public List<User> viewUsers() {
     return dbcontroller.getAllUsers();
   } 
 
+  /**
+   * Checks to see if a certain username is unique
+   * 
+   * @param username is the username that is being checked for uniqueness
+   * @return a boolean representation of if the specified username is unique
+   */
+  
   public boolean isUniqueUsername(String username) {
 	  if(dbcontroller.isUniqueUsername(username)) {
 		  return true;
@@ -126,6 +149,15 @@ public class AdminController {
     return false;
   }
 
+  /**
+   * Calls the createUser method from DBController and passing it the required parameters
+   * 
+   * @param firstName is the first name of the new user
+   * @param lastName is the last name of the new user
+   * @param username is the username of the new user
+   * @param password is the password of the new user
+   * @param type is the type of new user
+   */
   public void addNewUser(String firstName, String lastName, String username, String password, char type) {
     dbcontroller.createUser(firstName, lastName, username, password, type);
   } 
