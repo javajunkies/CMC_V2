@@ -84,9 +84,9 @@ public class DBController {
   {
     
     String[][] universities = this.getAllUniversities();
-    ArrayList[][] distance = new ArrayList[][];
-    ArrayList[][] maximum = new ArrayList[][];
-    ArrayList[][] minimum = new ArrayList[][];
+    ArrayList[][] distance = new ArrayList[5][];
+    ArrayList[][] maximum = new ArrayList[5][];
+    ArrayList[][] minimum = new ArrayList[5][];
     for(int j = 0; j<universities[0].length(); j++) {
       for(int i = 4; i < universities[1].length(); i++) {
         if(universities[j][i] > maximum[0][i]) {
@@ -474,9 +474,9 @@ public class DBController {
     
     //for those Universies , find the price of their saved schools
     for(int i = 0; users[0].length; i++) {
-      if (users[i] = username);
-      //go to their  price column of all of their saved universities
-      String[][] = price;
+      if (users[i] = username){
+        //go to their  price column of all of their saved universities
+        String[][9] = price;}
       //sort the price column using a temp variable
       
       return userSavedSchools; 
