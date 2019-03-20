@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ##########################
 ## Java
 ##########################
@@ -79,3 +80,7 @@ nb-configuration.xml
 ## OS X
 ##########################
 .DS_Store
+=======
+/.metadata/
+/.recommenders/
+>>>>>>> fa44308252d779acb054ac51db3eae01e801c4dc
