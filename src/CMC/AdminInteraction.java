@@ -98,7 +98,7 @@ public class AdminInteraction{
  /**
   * Calls the viewUserInfo method from AdminController and passes the specified paramter
   * 
-  * @param username is the user whos profile is being viewed
+  * @param username is the user whose profile is being viewed
   * @return an User object that belongs to the specified username
   */
  
