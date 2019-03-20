@@ -1,4 +1,8 @@
 package CMC;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Java Junkies
  *
@@ -41,7 +45,7 @@ public class UserInteraction
    * 
    * @param user - username of user
    */
-  public ArrayList<University> viewSavedSchools(String username)
+  public List<String> viewSavedSchools(String username)
   {
     return UserController.viewSavedSchools(username);
   }
@@ -79,10 +83,10 @@ public class UserInteraction
    * @param minQualityOfLife is an integer between 1 and 5 (5 being the best) indicating the min overall quality of life at this university
    * @param maxQualityOfLife is an integer between 1 and 5 (5 being the best) indicating the max overall quality of life at this university
    */
-  public ArrayList<University> searchForSchools(String mySchool,String myState,String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife)
+/*  public ArrayList<University> searchForSchools(String mySchool,String myState,String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife)
   {
     return UserController.search(mySchool, myState, myLocation, myControl, minNumStudents, maxNumStudents, minPercentFemale, maxPercentFemale, minSATVerbal, maxSATVerbal, minSATMath, maxSATMath, minExpenses, maxExpenses, minPercentFinancialAid, maxPercentFinancialAid, minNumApplicants, maxNumApplicants, minPercentAdmitted, maxPercentAdmitted, minPercentEnrolled, maxPercentEnrolled, minAcademicsScale, maxAcademicsScale, minSocialScale, maxSocialScale, minQualityOfLife, maxQualityOfLife);
-  }
+  }*/
   
   /**
    * registers the user if password is 8 characters long 
@@ -92,12 +96,27 @@ public class UserInteraction
    * @param last - last name
    * @param password - desired password
    */
-  public void register(String first, String last, String password)
+  public int register(String first, String last, String username, String password)
   {
-    if (password.length == 8 && password.contains("[a-zA-Z]*") && password.contains("[0-9]*"))
-    {
-      AccountController.register(first, last, password);
-    }
+	  if(AccountController.checkPasswordCriteria(password) == 0) {
+		  int i = AccountController.register(first, last, username, password);
+		  if(i == 1) {
+			  return 0;
+		  }
+		  else {
+		  return 4;
+		  }
+	  }
+	  else if(AccountController.checkPasswordCriteria(password) == 1) {
+		  return 1;
+	  }
+	  else if(AccountController.checkPasswordCriteria(password) == 2) {
+		  return 2;
+	  }
+	  else {
+		  return 3;
+	  }
+    
   }
   
   /**
@@ -107,22 +126,23 @@ public class UserInteraction
    * @param numOfStudents - number of students at school
    * @param percentAdmitted - acceptance rate
    * @param user - username to get saved schools
-   */
+   *
   public ArrayList<University> sortSavedSchools(int price, int numOfStudents, int percentAdmitted, String username)
   {
     return UniversityController.sortSavedSchools(price, numOfStudents, percentAdmitted, username);
   }
+  */
   
   /**
    * gets list of recommended universities 
    * 
    * @param university - school
    */
-  public ArrayList<University> getRecommendedList(University university)
+/*  public ArrayList<University> getRecommendedList(University university)
   {
     return UserController.getRecommendedList(university);
   }
-  
+  */
   /**
    * Removes school from list of saved school
    * 
@@ -137,11 +157,12 @@ public class UserInteraction
   /**
    * Saves the school to user's list
    * 
-   * @param university
+   * @param university is the university being saved to saved schools list
+   * @param username is the username of the profile the school is being saved to
    */
-  public int saveSchool(University university)
+  public int saveSchool(String username, String university)
   {
-    return UserController.saveSchool(university);
+    return UserController.saveSchool(username, university);
   }
   
   /**

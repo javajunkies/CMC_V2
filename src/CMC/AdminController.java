@@ -43,7 +43,7 @@ public class AdminController {
    * @return ArrayList<University> a list of universities
    */
   
-  public ArrayList<University> viewUniversities() {
+  public List<String> viewUniversities() {
     return dbcontroller.getAllUniversities();
   }
 
@@ -53,7 +53,6 @@ public class AdminController {
    * @param name is the name of the university being romved
    * @return int the status of removing a university
    */
-  
   public int removeUniversity(String name) {
     return dbcontroller.removeUniversity(name); 
   }
@@ -185,19 +184,20 @@ public class AdminController {
    * 
    * @return boolean If the user was added 
    */
-  public boolean addNewUser(String firstName, String lastName, String username, String password, char type) {
+  public int addNewUser(String firstName, String lastName, String username, String password, char type) {
 	  if(accountController.checkPasswordCriteria(password) == 0) {
-		  if(type =='u' || type == 'a'){
-			  dbcontroller.createUser(firstName, lastName, username, password, type);
-			  return true;
-		  }
-		  else {
-			  return false;
-		  }
+	     return dbcontroller.createUser(firstName, lastName, username, password, type);
+	  }
+	  else if(accountController.checkPasswordCriteria(password) == 1) {
+		  return -4;
+	  }
+	  else if(accountController.checkPasswordCriteria(password) == 2) {
+		  return -5;
 	  }
 	  else {
-		  return false;
+		  return -6;
 	  }
+	  
   }
   /**
    * Calls the viewUser method from DBController

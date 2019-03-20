@@ -40,7 +40,7 @@ public class UserController {
   * @param username the users username
   * @return ArrayList<University> a list of the users saved schools
   */
- public ArrayList<University> viewSavedSchools(String username) {
+ public List<String> viewSavedSchools(String username) {
   return dbcontroller.viewSavedSchools(username);
  }
  
@@ -49,9 +49,9 @@ public class UserController {
   * @param list a university that will be used as a basis for recomendations
   * @return ArrayList<University> a list of recommended universities
   */
- public ArrayList<University> getRecommendedList(University university) {
+ /*public ArrayList<University> getRecommendedList(University university) {
   return dbcontroller.getRecommendations(university);
- }
+ }*/
 
  /**
   * This method calls the DBController to complete the search algorithm
@@ -87,10 +87,10 @@ public class UserController {
   * 
   * @return ArrayList<University> a list of universities that met search criteria
   */
- public ArrayList<University> search(String mySchool,String myState,String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants, double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife)
+/* public ArrayList<University> search(String mySchool,String myState,String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants, double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife)
  {
   return dbcontroller.searchUniversities(mySchool, myState, myLocation, myControl, minNumStudents, maxNumStudents, minPercentFemale, maxPercentFemale, minSATVerbal, maxSATVerbal, minSATMath, maxSATMath, minExpenses, maxExpenses, minPercentFinancialAid, maxPercentFinancialAid, minNumApplicants, maxNumApplicants, minPercentAdmitted, maxPercentAdmitted, minPercentEnrolled, maxPercentEnrolled, minAcademicsScale, maxAcademicsScale, minSocialScale, maxSocialScale, minQualityOfLife, maxQualityOfLife);
- }
+ }*/
  
  /**
   * Saves a school to the users list of saved schools

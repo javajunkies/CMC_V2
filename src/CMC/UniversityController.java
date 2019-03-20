@@ -24,8 +24,8 @@ public class UniversityController {
   * 
   * method to sortSavedSchools
   */
- public void sortSavedSchools(int price, int numStudents, int acceptanceRate, String username) 
+/* public void sortSavedSchools(int price, int numStudents, int acceptanceRate, String username) 
  {
   dbcontroller.sortSavedSchools(price, numStudents, acceptanceRate, username);
- }
+ }*/
 }
