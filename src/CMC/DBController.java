@@ -363,7 +363,6 @@ public class DBController {
    */
   public ArrayList<University> viewSavedSchools(String username) 
   {
-
       
    ArrayList<University> userSavedSchools = new ArrayList<University>();
    
@@ -412,7 +411,6 @@ public class DBController {
   //return userSavedSchools; 
    //}
   //}
-   
 
    
   /**
@@ -487,8 +485,7 @@ public class DBController {
      return true;
   }
   
-<<<<<<< HEAD
-=======
+
   public void viewExistingUniversity(University university) {
     String [][] universities = db.university_getUniversities();
     for (int i = 0; i < universities[0].length(); i++){
@@ -513,15 +510,7 @@ public class DBController {
       }
     }
   }
-<<<<<<< HEAD
-  
->>>>>>> 6920587d60f42fcefbf02dc8aa9adeb9a123eb46
-  public void viewSavedSchools(String username)
-  {
-    
-  }
-=======
->>>>>>> 0db50a7777073befd72aadbef418b7db325c6e6a
+
 
 
 public int addToSaved(String username, String university)
