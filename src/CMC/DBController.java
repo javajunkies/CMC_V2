@@ -308,7 +308,7 @@ public class DBController {
   /**
    *  A method that Lists all of the users
    */
-  public List<User> getAllUsers() 
+  public ArrayList<User> getAllUsers() 
   {
     ArrayList<User> userList = new ArrayList<User>();
     String[][]usersInfo = db.user_getUsers();
@@ -373,10 +373,7 @@ public class DBController {
    * 
    * a method to get the User's saved schools
    */
-<<<<<<< HEAD
 
-=======
->>>>>>> 02ac38cee7fab130460a70c936758283b2c8f20f
   public ArrayList<University> viewSavedSchools(String username) 
   {
       
@@ -434,9 +431,9 @@ public class DBController {
    * 
    * This method sorts a users saved schools by attendance
    */
-  public List<University> sortByNumStudents(int numStudents, String username) {
+  public ArrayList<University> sortByNumStudents(int numStudents, String username) {
   
-   List<Universities> byNumStudents = new ArrayList<>();
+   ArrayList<Universities> byNumStudents = new ArrayList<>();
    byNumStudents.getUsersSavedSchools();
   }
      
@@ -445,7 +442,7 @@ public class DBController {
    * 
    * This method sorts a users saved schools by price
    */
-  public List<University> sortByPrice(int price, String username) {
+  public ArrayList<University> sortByPrice(int price, String username) {
     
 	  
 
@@ -458,7 +455,7 @@ public class DBController {
    * 
    * This method sorts a users saved school by acceptance rate
    */
-     public List<University> sortByAcceptance(int acceptanceRate) {
+     public ArrayList<University> sortByAcceptance(int acceptanceRate, String username) {
    
   }  
     //publicSortSavedSchools
@@ -482,13 +479,6 @@ public class DBController {
     return db.university_addUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
   }
   
-  public int editUniversity(String school, String state, String location, String control, int numberOfStudents,
-                               double percentFemales, double SATVerbal, double SATMath, double expenses, 
-                               double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
-                               int academicsScale, int socialScale, int qualityOfLifeScale) 
-  {
-   return db.university_editUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale); 
-  }
   
   public boolean isUniqueUsername(String username)
   {
@@ -501,11 +491,6 @@ public class DBController {
      return true;
   }
   
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> 02ac38cee7fab130460a70c936758283b2c8f20f
   public University viewExistingUniversity(University university) {
     String [][] universities = db.university_getUniversities();
     for (int i = 0; i < universities[0].length(); i++){
@@ -531,10 +516,6 @@ public class DBController {
     }
     return university;
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> 02ac38cee7fab130460a70c936758283b2c8f20f
 
 
 public int addToSaved(String username, String university)

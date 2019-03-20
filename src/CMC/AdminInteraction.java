@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class AdminInteraction{
  
-	// Initializes AdminController and LoginController objects
+	// Initializes AdminController, AccountContriller and LoginController objects
  AdminController adminController = new AdminController();
  LoginController loginController = new LoginController();
  AccountController accountController = new AccountController();
@@ -107,7 +107,10 @@ if(loginController.login(username,password) == 3) {
    return adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
  }
  
+ /**
+ *
  * Calls the getAllUniversities method from DBController.
+ * @return ArrayList<Universities>
  */
 
  public ArrayList<Universities> viewUniversities() {
@@ -150,6 +153,20 @@ if(loginController.login(username,password) == 3) {
 	   return "User already inactive.";
    }
  }
+ /**
+  * calls the adminController to edit a user
+  * @param username the users username
+  * @param firstName the users desired firstname
+  * @param lastName the users desired lastname
+  * @param password the users desired password
+  * @param type the type of user
+  * @param status the status of the account
+  * @return int
+  */
+ public int adminEditUser(String username, String firstName, String lastName, String password, char type, char status)
+ {
+   return adminController.editUser(username, firstName, lastName, password, type, status);
+ }
 
  /**
   * Calls the addNewUser method from AdminController and passes it the specified parameters
@@ -163,7 +180,7 @@ if(loginController.login(username,password) == 3) {
   * @return boolean true if username is unique
   */
 
- public boolean addNewUser(String firstName,String lastName,String username,String password,char type){
+ public boolean addNewUser(String firstName, String lastName, String username, String password, char type){
 	 if(adminController.isUniqueUsername(username) == true) {  
 		 adminController.addNewUser(firstName,lastName,username,password,type);
 		 return true;
