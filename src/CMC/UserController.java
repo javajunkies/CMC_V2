@@ -27,11 +27,11 @@ public class UserController {
  }
  
  public void viewExistingUniversity(University university) {
-   dbcontroller.viewExistingUniversity(University university);
+   dbcontroller.viewExistingUniversity(university);
  }
  
  /**
-  * finds a users saved schools
+  * call the DBController to find a users saved schools
   * @param username the users username
   */
  public void viewSavedSchools(String username) {
@@ -85,6 +85,7 @@ public class UserController {
  
  /**
   * Saves a school to the users list of saved schools
+  * 
   * @param username a username to save the school to
   * @param university a university object to be saved to the users saved schools list
   */
@@ -94,6 +95,7 @@ public class UserController {
  
  /**
   *finds information for two schools to be compared
+  *
   *@param univ1 A university to be compared to univ2
   *@param univ2 A university to be compared to univ1
   */
@@ -102,7 +104,8 @@ public class UserController {
  }
  
  /**
-  * updates the users information 
+  * calls the DBController to update the users information
+  *  
   *@param username the users username
   *@param firstname the users new first name 
   *@param lastname the users new last name

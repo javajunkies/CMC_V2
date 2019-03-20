@@ -130,8 +130,7 @@ public class AdminController {
    */
   
   public int editUser(String username, String firstName, String lastName, String password, char type, char status) {
-    return dbcontroller.adminEditUser(username, firstName, lastName, password, type, 
-                               status);
+    return dbcontroller.adminEditUser(username, firstName, lastName, password, type, status);
   } 
 
   /**
@@ -167,9 +166,18 @@ public class AdminController {
   }
 
   /**
-<<<<<<< HEAD
-   * 
    * Calls the createUser method from DBController and passing it the required parameters
+   * 
+<<<<<<< HEAD
+   * Calls the createUser method from DBController and passing it the required parameters
+=======
+   * @param firstName is the first name of the new user
+   * @param lastName is the last name of the new user
+   * @param username is the username of the new user
+   * @param password is the password of the new user
+   * @param type is the type of new user
+   *
+>>>>>>> 6920587d60f42fcefbf02dc8aa9adeb9a123eb46
    * 
    * @param firstName is the first name of the new user
    * @param lastName is the last name of the new user
@@ -178,7 +186,7 @@ public class AdminController {
    * @param type is the type of new user
    */
   public boolean addNewUser(String firstName, String lastName, String username, String password, char type) {
-	  if(accountController.checkPasswordCriteria(password) == true) {
+	  if(accountController.checkPasswordCriteria(password) == 0) {
 		  if(type =='u' || type == 'a'){
 			  dbcontroller.createUser(firstName, lastName, username, password, type);
 			  return true;
@@ -209,8 +217,7 @@ public class AdminController {
    * @param username is the user being deactivated
    */
 
-  public int deactivateUser(String username)
-  {
+  public int deactivateUser(String username){
     return dbcontroller.deactivateUser(username);
   }
 } 
