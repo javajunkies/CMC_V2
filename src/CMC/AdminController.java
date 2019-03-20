@@ -17,6 +17,7 @@ public class AdminController {
   // Creating instances of the other classes being used.
   DBController dbcontroller = new DBController();
   LoginController logInController = new LoginController();
+  AccountController accountController = new AccountController();
 
 /**
  * Calls the login method, passing the specified parameters.
@@ -142,6 +143,14 @@ public class AdminController {
   public List<User> viewUsers() {
     return dbcontroller.getAllUsers();
   } 
+<<<<<<< HEAD
+  
+/**
+ * 
+ * @param username
+ * @return boolean if username is unique, returns true
+ */
+=======
 
   /**
    * Checks to see if a certain username is unique
@@ -150,14 +159,43 @@ public class AdminController {
    * @return a boolean representation of if the specified username is unique
    */
   
+>>>>>>> 68c952f797d2591c92998e9c0dd0f28b0aac8af2
   public boolean isUniqueUsername(String username) {
 	  if(dbcontroller.isUniqueUsername(username)) {
 		  return true;
 	  }
-    return false;
+	  else {
+		  return false;
+	  }
   }
 
   /**
+<<<<<<< HEAD
+   * 
+   * @param firstName
+   * @param lastName
+   * @param username
+   * @param password
+   * @param type
+   * 
+   * @return boolean if password is valid and type is either u or a
+   */
+  public boolean addNewUser(String firstName, String lastName, String username, String password, char type) {
+	  if(accountController.checkPasswordCriteria(password) == true) {
+		  if(type =='u' || type == 'a'){
+			  dbcontroller.createUser(firstName, lastName, username, password, type);
+			  return true.
+		  }
+		  else {
+			  return false;
+		  }
+	  }
+	  else {
+		  return false;
+	  }
+	  
+  } 
+=======
    * Calls the createUser method from DBController and passing it the required parameters
    * 
    * @param firstName is the first name of the new user
@@ -166,6 +204,7 @@ public class AdminController {
    * @param password is the password of the new user
    * @param type is the type of new user
    */
+>>>>>>> 68c952f797d2591c92998e9c0dd0f28b0aac8af2
   
   public int addNewUser(String firstName, String lastName, String username, String password, char type) {
     return dbcontroller.createUser(firstName, lastName, username, password, type);
@@ -189,7 +228,17 @@ public class AdminController {
    * @param username is the user being deactivated
    */
   
+<<<<<<< HEAD
+  /**
+   * 
+   * @param username
+   * 
+   * @return 
+   */
+  public void deactivateUser(String username)
+=======
   public int deactivateUser(String username)
+>>>>>>> 68c952f797d2591c92998e9c0dd0f28b0aac8af2
   {
     return dbcontroller.deactivateUser(username);
   }

@@ -16,6 +16,7 @@ public class AdminInteraction{
 	// Initializes AdminController and LoginController objects
  AdminController adminController = new AdminController();
  LoginController loginController = new LoginController();
+ AccountController accountController = new AccountController();
  
  /** 
   * Calls the login method from LoginController with given parameters.
@@ -137,6 +138,25 @@ public void viewUniversities() {
  /**
   * Calls the addNewUser method from AdminController and passes it the specified parameters
   * 
+<<<<<<< HEAD
+  * @param firstName
+  * @param lastName
+  * @param username
+  * @param password
+  * @param type
+  * 
+  * @return boolean true if username is unique
+  */
+
+ public boolean addNewUser(String firstName,String lastName,String username,String password,char type){
+	 if(adminController.isUniqueUsername(username) == true) {  
+		 adminController.addNewUser(firstName,lastName,username,password,type);
+		 return true;
+	 }
+	 else {
+		 return false;
+	 }
+=======
   * @param firstName is the first name of the new user
   * @param lastName is the last name of the new user
   * @param username is the username of the new user
@@ -146,6 +166,7 @@ public void viewUniversities() {
 
  public int addNewUser(String firstName,String lastName,String username,String password,char type){
    return adminController.addNewUser(firstName,lastName,username,password,type);
+>>>>>>> 68c952f797d2591c92998e9c0dd0f28b0aac8af2
  }
  
 }
