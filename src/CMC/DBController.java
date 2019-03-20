@@ -60,7 +60,7 @@ public class DBController {
   
   /**
    * Searches for a specified users password in database.
-   * @param username user whos password is being searched for.
+   * @param username user whose password is being searched for.
    * @return String String representation of the users password.
    */
   
@@ -188,25 +188,26 @@ public class DBController {
   }
   
   /**
-   * @param String firstName
-   * @param String lastName
-   * @param String username
-   * @param String password
-   * @param char type
+   * 
+   * 
+   * @param firstName is the first name of the new user
+   * @param lastName is the last name of the new user
+   * @param username is the username of the new user
+   * @param password is the password of the new user
+   * @param type is the type of new user
    * 
    * @return boolean if user was created, return true
    */
   public boolean createUser(String firstName, String lastName, String username, String password, char type)
   {
-    db.user_addUser(firstName, lastName, username, password, type);
     if(type == 'a') {
-      User admin = new User(firstName, lastName, username, password, type);
+    db.user_addUser(firstName, lastName, username, password, type);
       return true;
     }
     else if(type == 'u')
     {
-      User user = new User(firstName, lastName, username, password, type);
       return true;
+      db.user_addUser(firstName, lastName, username, password, type);
     }
     else {
     return false;
@@ -304,7 +305,6 @@ public class DBController {
     return matchUni;
   }
   
-  
   /**
    * A method to view a List of all universities
    * 
@@ -318,15 +318,9 @@ public class DBController {
    *  A method that Lists all of the users
    */
   public List<User> getAllUsers() {
-    //User user=new User();
     ArrayList<User> userList = new ArrayList<User>();
     String[][]usersInfo = db.user_getUsers();
     for(int j=0; j<usersInfo[1].length; j++) {
-      //String first = usersInfo[j][0];
-      //String last = usersInfo[j][1];
-      //String username = usersInfo[j][2];
-      //String password = usersInfo[j][3];
-      //char type = usersInfo[j][4];
       User user = new User(usersInfo[j][0],usersInfo[j][1],usersInfo[j][2],usersInfo[j][3],usersInfo[j][4].charAt(0));
       userList.add(user);
     }
@@ -391,9 +385,6 @@ public class DBController {
    */
   public List<University> getUserSavedSchools(String username) 
   {
-<<<<<<< HEAD
-   
-=======
 
       
    List<Universities> userSavedSchools = new ArrayList<>();
@@ -420,7 +411,6 @@ public class DBController {
      
   return userSavedSchools; 
    }
->>>>>>> 59a507aae60e92cb828c8495acbd957d57b4c9dc
   }
    
    
@@ -456,11 +446,6 @@ public class DBController {
 }
    
 
-    
-  
-   
-     
-   
    // make a point system or assign a to add up all of the 
   
   public int removeUniversity(String name)
@@ -495,29 +480,46 @@ public class DBController {
      return true;
   }
   
-  public void viewExistingUniversity(University university) {
+  public University viewExistingUniversity(University university) {
     String [][] universities = db.university_getUniversities();
-    for (int i = 0; i < universities[0].length(); i++){
+    String school = "";
+    String state = "";
+    String location = "";
+    String control = "";
+    int numStudents = 0;
+    int numApplicants = 0;
+    int academicsScale = 0;
+    int socialScale = 0;
+    int qualityOfLife = 0;
+    double percentFemale = 0;
+    double SATVerbal = 0;
+    double SATMath = 0; 
+    double expenses = 0;
+    double percentFinancialAid = 0;
+    double percentAdmitted = 0;
+    double percentEnrolled = 0; 
+    for (int i = 0; i < universities.length; i++){
       if (universities[i][0].equals(university.getSchool())) {
-        String school = universities[i][0];
-      String state = universities[i][1];
-      String location = universities[i][2];
-      String control = universities[i][3];
-      int numStudents = Integer.parseInt(universities[i][4]);
-      double percentFemale = Double.parseDouble(universities[i][5]);
-      double SATVerbal = Double.parseDouble(universities[i][6]);
-      double SATMath = Double.parseDouble(universities[i][7]);
-      double expenses = Double.parseDouble(universities[i][8]);
-      double percentFinancialAid = Double.parseDouble(universities[i][9]);
-      int numApplicants = Integer.parseInt(universities[i][10]);
-      double percentAdmitted = Double.parseDouble(universities[i][11]);
-      double percentEnrolled = Double.parseDouble(universities[i][12]);
-      int academicsScale = Integer.parseInt(universities[i][13]);
-      int socialScale = Integer.parseInt(universities[i][14]);
-      int qualityOfLife = Integer.parseInt(universities[i][15]);
-      University university = new University(school, state, location, control, numStudents, percentFemale, mySATVerbal, mySATMath, myExpenses, myPercentFinancialAid, myNumApplicants, myPercentAdmitted, myPercentEnrolled, myAcademicsScale, mySocialScale, myQualityOfLife);
+      school = universities[i][0];
+      state = universities[i][1];
+      location = universities[i][2];
+      control = universities[i][3];
+      numStudents = Integer.parseInt(universities[i][4]);
+      percentFemale = Double.parseDouble(universities[i][5]);
+      SATVerbal = Double.parseDouble(universities[i][6]);
+      SATMath = Double.parseDouble(universities[i][7]);
+      expenses = Double.parseDouble(universities[i][8]);
+      percentFinancialAid = Double.parseDouble(universities[i][9]);
+      numApplicants = Integer.parseInt(universities[i][10]);
+      percentAdmitted = Double.parseDouble(universities[i][11]);
+      percentEnrolled = Double.parseDouble(universities[i][12]);
+      academicsScale = Integer.parseInt(universities[i][13]);
+      socialScale = Integer.parseInt(universities[i][14]);
+      qualityOfLife = Integer.parseInt(universities[i][15]);
       }
   }
+    University university1 = new University(school, state, location, control, numStudents, percentFemale, SATVerbal, SATMath, expenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLife);
+    return university1;
   }
   
   public void viewSavedSchools(String username)

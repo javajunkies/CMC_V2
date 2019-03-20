@@ -96,11 +96,12 @@ public class AdminInteraction{
    adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
  }
  
- * Calls the getAllUniversities method from DBController.
- */
+ /**
+  * Calls the getAllUniversities method from DBController.
+  */
 
 public void viewUniversities() {
-  adminController.getAllUniversities();
+  adminController.viewUniversities();
 }
  
 
@@ -138,13 +139,11 @@ public void viewUniversities() {
  /**
   * Calls the addNewUser method from AdminController and passes it the specified parameters
   * 
-<<<<<<< HEAD
-  * @param firstName
-  * @param lastName
-  * @param username
-  * @param password
-  * @param type
-  * 
+  * @param firstName is the first name of the new user
+  * @param lastName is the last name of the new user
+  * @param username is the username of the new user
+  * @param password is the password of the new user
+  * @param type is the type of new user
   * @return boolean true if username is unique
   */
 
@@ -156,17 +155,7 @@ public void viewUniversities() {
 	 else {
 		 return false;
 	 }
-=======
-  * @param firstName is the first name of the new user
-  * @param lastName is the last name of the new user
-  * @param username is the username of the new user
-  * @param password is the password of the new user
-  * @param type is the type of new user
-  */
 
- public int addNewUser(String firstName,String lastName,String username,String password,char type){
-   return adminController.addNewUser(firstName,lastName,username,password,type);
->>>>>>> 68c952f797d2591c92998e9c0dd0f28b0aac8af2
  }
  
 }
