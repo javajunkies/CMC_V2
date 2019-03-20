@@ -17,11 +17,18 @@ public class AccountController implements DBController {
     UniversityDBController.user_addUser(first, last, username, password, Type);
   }
   
-  public void checkPasswordCriteria(String password) {
+  /**
+   * 
+   * @param password
+   * @return boolean true if password has all criteria
+   */
+  public boolean checkPasswordCriteria(String password) {
     Boolean hasLetter = False;
     Boolean hasNumber = False;
     if (password.length() < 8) {
-      System.out.println("Password must be at least 8 characters.");
+      
+    	return false;
+    	//System.out.println("Password must be at least 8 characters.");
     }
     for (int i = 0; i < password.length(); i++) {
       if (Character.isLetter(password.charAt(i))) {
@@ -32,10 +39,15 @@ public class AccountController implements DBController {
       }
     }
     if (!hasLetter) {
-      System.out.println("Password must have at least 1 letter.");
+    	return false;
+      //System.out.println("Password must have at least 1 letter.");
     }
     if (!hasNumber) {
-      System.out.println("Password must have at least 1 number.");
+    	return false;
+      //System.out.println("Password must have at least 1 number.");
+    }
+    if (hasLetter == true && hasNumber == true && password.length() >= 8) {
+    	return true;
     }
   }
   
