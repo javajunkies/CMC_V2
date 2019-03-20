@@ -146,7 +146,7 @@ public class AdminController {
    * @return ArrayList<University> A list of user objects
    */
   
-  public ArrayList<User> viewUsers() {
+  public List<User> viewUsers() {
     return dbcontroller.getAllUsers();
   } 
   
