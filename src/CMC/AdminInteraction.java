@@ -107,7 +107,8 @@ if(loginController.login(username,password) == 3) {
    adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
  }
  
- * Calls the getAllUniversities method from DBController.
+/**Calls the getAllUniversities method from DBController.
+ * 
  */
 
 public void viewUniversities() {
