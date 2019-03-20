@@ -14,16 +14,16 @@ public class UserController {
   *@param username the users unique username
   *@param password the users password
   */
- public void login(String username, String password) {
-  logInController.login(username, password);
+ public int login(String username, String password) {
+  return logInController.login(username, password);
  }
  
  /**
   * method to log the user off the CMC system
   *
   */
- public void logoff() {
-  logInController.logoff();
+ public int logoff() {
+  return logInController.logoff();
  }
  
  /**
@@ -125,16 +125,16 @@ public class UserController {
   *@param user the users username
   *@param school the name of the school to be removed from the desired users saved school list
   */
- public void removeSavedSchool(String user, String school) {
-  dbcontroller.removeFromSaved(user, school);
+ public int removeSavedSchool(String user, String school) {
+  return dbcontroller.removeFromSaved(user, school);
  }
  
  /**
   *gets the users information
   *@param username the username to return information for
   */
- public void viewUserInfo(String username) {
-  dbcontroller.viewUser(username);
+ public User viewUserInfo(String username) {
+  return dbcontroller.viewUser(username);
  }
  
 }
