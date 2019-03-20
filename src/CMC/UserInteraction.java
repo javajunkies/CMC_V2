@@ -92,9 +92,12 @@ public class UserInteraction
   * @param last - last name
   * @param password - desired password
   */
- public void register(String userName, String first, String last, String password String password2)
+ public void register(String first, String last, String password)
  {
-   AccountController.register(String userName, first, last, password, password2);
+  if (password.length == 8 && password.contains("[a-zA-Z]*") && password.contains("[0-9]*"))
+  {
+   AccountController.register(first, last, password);
+  }
  }
  
  /**
@@ -105,9 +108,9 @@ public class UserInteraction
   * @param percentAdmitted - acceptance rate
   * @param user - username to get saved schools
   */
- public void sortSavedSchools(int price, int numOfStudents, int percentAdmitted, String user)
+ public ArrayList<University> sortSavedSchools(int price, int numOfStudents, int percentAdmitted, String username)
  {
-  UniversityController.sortSavedSchools(price, numOfStudents, percentAdmitted, user);
+   return UniversityController.sortSavedSchools(price, numOfStudents, percentAdmitted, username);
  }
  
  /**
@@ -115,9 +118,9 @@ public class UserInteraction
   * 
   * @param university - school
   */
- public void getRecommendedList(University university)
+ public ArrayList<University> getRecommendedList(University university)
  {
-  UserController.getRecommendedList(university);
+  return UserController.getRecommendedList(university);
  }
  
  /**
@@ -126,9 +129,9 @@ public class UserInteraction
   * @param user - current user
   * @param school - school to remove
   */
- public void removeSavedSchool(String user, String school)
+ public int removeSavedSchool(String user, String school)
  {
-  UserController.removeSavedSchool(user, school);
+  return UserController.removeSavedSchool(user, school);
  }
  
  /**
@@ -136,9 +139,9 @@ public class UserInteraction
   * 
   * @param university
   */
- public void saveSchool(String user, University university)
+ public int saveSchool(University university)
  {
-  UserController.saveSchool(user, university);
+  return UserController.saveSchool(university);
  }
  
  /**
@@ -147,9 +150,9 @@ public class UserInteraction
   * @param u1
   * @param u2
   */
- public void compare(University u1, University u2)
+ public ArrayList<University> compare(University u1, University u2)
  {
-  UserController.compare(u1,u2);
+  return UserController.compare(u1,u2);
  }
 
  /**
@@ -157,9 +160,9 @@ public class UserInteraction
   * 
   * @param user - username
   */
- public void viewUserInfo(String user)
+ public User viewUserInfo(String user)
  {
-  UserController.viewUserInfo(user);
+  return UserController.viewUserInfo(user);
  }
  
  /**
@@ -170,9 +173,9 @@ public class UserInteraction
   * @param lastName - last name
   * @param password - password
   */
- public void editUserInfo(String userName, String firstName, String lastName, String password)
+ public int editUserInfo(String userName, String firstName, String lastName, String password)
  {
-  UserController.editUserInfo(userName, firstName, lastName, password);
+  return UserController.editUserInfo(userName, firstName, lastName, password);
  }
  
 }

@@ -5,7 +5,7 @@
 package CMC;
 
 public class University {
- private String school;
+ public String school;
  private String state;
  private String location;
  private String control;

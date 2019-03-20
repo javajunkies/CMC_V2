@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * Controller class that handles all of Admin functionalities
  * 
- * @ author Java Junkies
+ * @author Java Junkies
  * @version March 19, 2019
  */
 
@@ -42,8 +42,8 @@ public class AdminController {
    * Calls the getAllUniversities method from DBController.
    */
   
-  public void viewUniversities() {
-    dbcontroller.getAllUniversities();
+  public ArrayList<University> viewUniversities() {
+    return dbcontroller.getAllUniversities();
   }
 
   /**
@@ -141,13 +141,13 @@ public class AdminController {
   
   public List<User> viewUsers() {
     return dbcontroller.getAllUsers();
-<<<<<<< HEAD
   } 
-=======
-  }
   
->>>>>>> d5a761c041476387f626ac82503a6493bee47677
-
+/**
+ * 
+ * @param username
+ * @return boolean if username is unique, returns true
+ */
 
   /**
    * Checks to see if a certain username is unique
@@ -156,10 +156,6 @@ public class AdminController {
    * @return a boolean representation of if the specified username is unique
    */
   
-<<<<<<< HEAD
-
-=======
->>>>>>> d5a761c041476387f626ac82503a6493bee47677
   public boolean isUniqueUsername(String username) {
 	  if(dbcontroller.isUniqueUsername(username)) {
 		  return true;
@@ -170,9 +166,6 @@ public class AdminController {
   }
 
   /**
-<<<<<<< HEAD
-  * Calls the createUser method from DBController and passing it the required parameters
-=======
    * Calls the createUser method from DBController and passing it the required parameters
    * 
    * @param firstName is the first name of the new user
@@ -180,8 +173,6 @@ public class AdminController {
    * @param username is the username of the new user
    * @param password is the password of the new user
    * @param type is the type of new user
-   *
->>>>>>> d5a761c041476387f626ac82503a6493bee47677
    * 
    * @param firstName is the first name of the new user
    * @param lastName is the last name of the new user
@@ -190,10 +181,10 @@ public class AdminController {
    * @param type is the type of new user
    */
   public boolean addNewUser(String firstName, String lastName, String username, String password, char type) {
-	  if(accountController.checkPasswordCriteria(password) == true) {
+	  if(accountController.checkPasswordCriteria(password) == 0) {
 		  if(type =='u' || type == 'a'){
 			  dbcontroller.createUser(firstName, lastName, username, password, type);
-			  return true.
+			  return true;
 		  }
 		  else {
 			  return false;
@@ -202,13 +193,7 @@ public class AdminController {
 	  else {
 		  return false;
 	  }
-	  
-  } 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> d5a761c041476387f626ac82503a6493bee47677
+  }
   /**
    * Calls the viewUser method from DBController
    * 
@@ -225,24 +210,9 @@ public class AdminController {
    * Deactivates an user
    * 
    * @param username is the user being deactivated
-<<<<<<< HEAD
-   */
-  
-
-  /**
-   * 
-   * @param username
-=======
->>>>>>> d5a761c041476387f626ac82503a6493bee47677
-   * 
-   * @return 
    */
 
   public int deactivateUser(String username)
-<<<<<<< HEAD
-=======
-
->>>>>>> d5a761c041476387f626ac82503a6493bee47677
   {
     return dbcontroller.deactivateUser(username);
   }
