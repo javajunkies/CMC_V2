@@ -20,12 +20,17 @@ public class UserController {
  
  /**
   * method to log the user off the CMC system
-  *
+  *@return int the status of the users log off
   */
  public int logoff() {
   return logInController.logoff();
  }
  
+ /**
+  * views a university in the database
+  * @param university the university to find information for
+  * @return University A university from the database
+  */
  public University viewExistingUniversity(University university) {
    return dbcontroller.viewExistingUniversity(university);
  }
@@ -33,6 +38,7 @@ public class UserController {
  /**
   * call the DBController to find a users saved schools
   * @param username the users username
+  * @return ArrayList<University> a list of the users saved schools
   */
  public ArrayList<University> viewSavedSchools(String username) {
   return dbcontroller.viewSavedSchools(username);
@@ -41,6 +47,7 @@ public class UserController {
  /**
   * finds recommended schools based a certain school
   * @param list a university that will be used as a basis for recomendations
+  * @return ArrayList<University> a list of recommended universities
   */
  public ArrayList<University> getRecommendedList(University university) {
   return dbcontroller.getRecommendations(university);
@@ -77,6 +84,8 @@ public class UserController {
   * @param maxSocialScale is an integer between 1 and 5 (5 being the best) indicating the max quality of the social life at this university
   * @param minQualityOfLife is an integer between 1 and 5 (5 being the best) indicating the min overall quality of life at this university
   * @param maxQualityOfLife is an integer between 1 and 5 (5 being the best) indicating the max overall quality of life at this university
+  * 
+  * @return ArrayList<University> a list of universities that met search criteria
   */
  public ArrayList<University> search(String mySchool,String myState,String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants, double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife)
  {
@@ -88,6 +97,7 @@ public class UserController {
   * 
   * @param username a username to save the school to
   * @param university a university object to be saved to the users saved schools list
+  * @return int the status of saving the school
   */
  public int saveSchool(String username, String university) {
    return dbcontroller.addToSaved(username, university);
@@ -98,6 +108,7 @@ public class UserController {
   *
   *@param univ1 A university to be compared to univ2
   *@param univ2 A university to be compared to univ1
+  *@return ArrayList<University> list of two universities to compare
   */
  public ArrayList<University> compare(University univ1, University univ2) {
   return dbcontroller.compare(univ1, univ2);
@@ -110,6 +121,8 @@ public class UserController {
   *@param firstname the users new first name 
   *@param lastname the users new last name
   *@param password the users new password
+  *
+  *@return int the status of the editing user info
   */
  public int editUserInfo(String username, String firstname, String lastname, String password) {
   return dbcontroller.userEditUser(username, firstname, lastname, password);

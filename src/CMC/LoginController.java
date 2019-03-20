@@ -48,8 +48,10 @@ public class LoginController {
 	}
 	
 	/**
+	 
 	 * Checks username.
 	 * @param username
+	 * @return boolean if there is a user in the Database with that username
 	 */
 	public boolean findUser(String username) {
 		if(db.isUser(username)) {
@@ -63,6 +65,7 @@ public class LoginController {
 	/**
 	 * Checks password.
 	 * @param password
+	 * @return String the users password?
 	 */
 	public String findPassword(String username){
 		return db.findUserPassword(username);
@@ -71,6 +74,8 @@ public class LoginController {
 	/**
 	 * Checks status of this user.
 	 * @param account
+	 * 
+	 * @return boolean if the status of the account was active
 	 */
 	public boolean checkStatus(String username) {
 		Account user = db.findByUsername(username);
@@ -84,6 +89,7 @@ public class LoginController {
 	
 	/**
 	 * Logs this user off of CMC system.
+	 * @return int the status of the log off
 	 */
 	public int logoff() {
 		return 1;
