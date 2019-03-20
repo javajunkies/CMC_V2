@@ -457,7 +457,7 @@ public class DBController {
   {
     
     
-    List<Universities> userSavedSchools = new ArrayList<>();
+    List<University> userSavedSchools = new ArrayList<>();
     
     //get all of the users with saved schools
     String[][] users = db.user_getUsernamesWithSavedSchools();
@@ -468,7 +468,7 @@ public class DBController {
     int colLength = universities[1].length;
     
     for(int i = 0; db.length; i++) {
-      db.
+      db.;
     }
     
     
@@ -490,7 +490,7 @@ public class DBController {
   public List<University> viewSavedSchools(String username) 
   {
     
-    List<Universities> userSavedSchools = new ArrayList<>();
+    List<University> userSavedSchools = new ArrayList<>();
     
     //get all of the users with saved schools
     String[][] users = db.user_getUsernamesWithSavedSchools();
@@ -523,7 +523,7 @@ public class DBController {
    */
   public ArrayList<University> sortByNumStudents(int numStudents, String username) {
     
-    ArrayList<Universities> byNumStudents = new ArrayList<>();
+    ArrayList<University> byNumStudents = new ArrayList<University>();
   }
   
   /**
