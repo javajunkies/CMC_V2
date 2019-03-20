@@ -26,24 +26,24 @@ public class UserController {
   return logInController.logoff();
  }
  
- public void viewExistingUniversity(University university) {
-   dbcontroller.viewExistingUniversity(university);
+ public University viewExistingUniversity(University university) {
+   return dbcontroller.viewExistingUniversity(university);
  }
  
  /**
   * call the DBController to find a users saved schools
   * @param username the users username
   */
- public void viewSavedSchools(String username) {
-  dbcontroller.viewSavedSchools(username);
+ public ArrayList<University> viewSavedSchools(String username) {
+  return dbcontroller.viewSavedSchools(username);
  }
  
  /**
   * finds recommended schools based a certain school
   * @param list a university that will be used as a basis for recomendations
   */
- public void getRecommendedList(University university) {
-  dbcontroller.getRecommendations(university);
+ public ArrayList<University> getRecommendedList(University university) {
+  return dbcontroller.getRecommendations(university);
  }
 
  /**
@@ -78,9 +78,9 @@ public class UserController {
   * @param minQualityOfLife is an integer between 1 and 5 (5 being the best) indicating the min overall quality of life at this university
   * @param maxQualityOfLife is an integer between 1 and 5 (5 being the best) indicating the max overall quality of life at this university
   */
- public void search(String mySchool,String myState,String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants, double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife)
+ public ArrayList<University> search(String mySchool,String myState,String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants, double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife)
  {
-  dbcontroller.searchUniversities(mySchool, myState, myLocation, myControl, minNumStudents, maxNumStudents, minPercentFemale, maxPercentFemale, minSATVerbal, maxSATVerbal, minSATMath, maxSATMath, minExpenses, maxExpenses, minPercentFinancialAid, maxPercentFinancialAid, minNumApplicants, maxNumApplicants, minPercentAdmitted, maxPercentAdmitted, minPercentEnrolled, maxPercentEnrolled, minAcademicsScale, maxAcademicsScale, minSocialScale, maxSocialScale, minQualityOfLife, maxQualityOfLife);
+  return dbcontroller.searchUniversities(mySchool, myState, myLocation, myControl, minNumStudents, maxNumStudents, minPercentFemale, maxPercentFemale, minSATVerbal, maxSATVerbal, minSATMath, maxSATMath, minExpenses, maxExpenses, minPercentFinancialAid, maxPercentFinancialAid, minNumApplicants, maxNumApplicants, minPercentAdmitted, maxPercentAdmitted, minPercentEnrolled, maxPercentEnrolled, minAcademicsScale, maxAcademicsScale, minSocialScale, maxSocialScale, minQualityOfLife, maxQualityOfLife);
  }
  
  /**
@@ -89,8 +89,8 @@ public class UserController {
   * @param username a username to save the school to
   * @param university a university object to be saved to the users saved schools list
   */
- public void saveSchool(String username, String university) {
-   dbcontroller.addToSaved(username, university);
+ public int saveSchool(String username, String university) {
+   return dbcontroller.addToSaved(username, university);
  }
  
  /**
@@ -99,8 +99,8 @@ public class UserController {
   *@param univ1 A university to be compared to univ2
   *@param univ2 A university to be compared to univ1
   */
- public void compare(University univ1, University univ2) {
-  dbcontroller.compare(univ1, univ2);
+ public ArrayList<University> compare(University univ1, University univ2) {
+  return dbcontroller.compare(univ1, univ2);
  }
  
  /**
@@ -111,9 +111,11 @@ public class UserController {
   *@param lastname the users new last name
   *@param password the users new password
   */
- public void editUserInfo(String username, String firstname, String lastname, String password) {
-  dbcontroller.userEditUser(username, firstname, lastname, password);
+ public int editUserInfo(String username, String firstname, String lastname, String password) {
+  return dbcontroller.userEditUser(username, firstname, lastname, password);
  }
+ 
+ 
  
  /**
   *checks if the users password matches the password on the account
@@ -126,6 +128,7 @@ public class UserController {
   *
   * }
   */
+ 
  
  /**
   * Removes a school from the users saved school list

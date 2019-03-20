@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class AdminInteraction{
  
-	// Initializes AdminController and LoginController objects
+	// Initializes AdminController, AccountContriller and LoginController objects
  AdminController adminController = new AdminController();
  LoginController loginController = new LoginController();
  AccountController accountController = new AccountController();
@@ -38,6 +38,7 @@ if(loginController.login(username,password) == 2) {
 if(loginController.login(username,password) == 3) {
 	   return "Status inactive.";
 }
+return "Please Try Again.";
  }
  
  /**
@@ -103,15 +104,20 @@ if(loginController.login(username,password) == 3) {
   * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
   */
 
- public void editUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
-   adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
+ public int editUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
+   return adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
  }
  
+ /**
+ *
  * Calls the getAllUniversities method from DBController.
+ * @return ArrayList<Universities>
  */
 
-public void viewUniversities() {
-  adminController.getAllUniversities();
+ public ArrayList<University> viewUniversities() {
+  return adminController.viewUniversities();
+
+
 }
  
 
@@ -119,7 +125,7 @@ public void viewUniversities() {
  /**
   * Calls the viewUserInfo method from AdminController and passes the specified paramter
   * 
-  * @param username is the user whos profile is being viewed
+  * @param username is the user whose profile is being viewed
   * @return an User object that belongs to the specified username
   */
  
@@ -146,9 +152,21 @@ public void viewUniversities() {
    if(adminController.deactivateUser(username) == 0) {
 	   return "User deactivated.";
    }
-   else if(adminController.deactivateUser(username) == 1){
 	   return "User already inactive.";
-   }
+ }
+ /**
+  * calls the adminController to edit a user
+  * @param username the users username
+  * @param firstName the users desired firstname
+  * @param lastName the users desired lastname
+  * @param password the users desired password
+  * @param type the type of user
+  * @param status the status of the account
+  * @return int
+  */
+ public int adminEditUser(String username, String firstName, String lastName, String password, char type, char status)
+ {
+   return adminController.editUser(username, firstName, lastName, password, type, status);
  }
 
  /**
@@ -159,11 +177,10 @@ public void viewUniversities() {
   * @param username is the username of the new user
   * @param password is the password of the new user
   * @param type is the type of new user
-  * 
   * @return boolean true if username is unique
   */
 
- public boolean addNewUser(String firstName,String lastName,String username,String password,char type){
+ public boolean addNewUser(String firstName, String lastName, String username, String password, char type){
 	 if(adminController.isUniqueUsername(username) == true) {  
 		 adminController.addNewUser(firstName,lastName,username,password,type);
 		 return true;
@@ -171,5 +188,5 @@ public void viewUniversities() {
 	 else {
 		 return false;
 	 }
- 
+}
 }
