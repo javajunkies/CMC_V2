@@ -1,135 +1,175 @@
-package CMC;
-import java.util.*;
-/**@author dkuhr001
- *@version 1.1 added methods
- *Class to handle admin interactions in the system and pass further commands to controller classes
- * 
- * @author dkuhr001
- *
+/**
+ * File: AdminInteraction.java
  */
 
+package CMC;
+import java.util.*;
 
-
+/**
+ * Interaction class for the admin functionalities
+ * 
+ * @author Java Junkies
+ * @version March 19, 2019
+ */
 public class AdminInteraction{
  
+	// Initializes AdminController and LoginController objects
  AdminController adminController = new AdminController();
  LoginController loginController = new LoginController();
+ AccountController accountController = new AccountController();
  
- /**@Description login, call method in AdminController
+ /** 
+  * Calls the login method from LoginController with given parameters.
   * 
-  * @param username
-  * @param password
+  * @param username is the username provided for login
+  * @param password is the password provided for login
   */
 
- public void login(String username, String password){
-   loginController.login(username,password);
+ public String login(String username, String password){
+   if(loginController.login(username,password) == 0) {
+	   return "Logged in.";
+   }
+if(loginController.login(username,password) == 1) {
+	return "Username not found.";
+   }
+if(loginController.login(username,password) == 2) {
+	return "Password invalid.";
+}
+if(loginController.login(username,password) == 3) {
+	   return "Status inactive.";
+}
  }
- /**@Description logoff current admin
+ 
+ /**
+  * Calls the logoff method from the LoginController
   * 
   */
 
- public void logoff(){
-   loginController.logoff();
+ public int logoff(){
+   return loginController.logoff();
  }
- /**@Description remove a university
+ 
+ /**
+  * Calls the removeUniversity method in adminController passing it the specified parameter
   * 
-  * @param school
+  * @param school is the name of the school being removed
   */
 
- public void removeUniversity(String school){
-   adminController.removeUniversity(school);
+ public int removeUniversity(String school){
+   return adminController.removeUniversity(school);
  }
- /**@Description add new university
+ 
+ /**
+  * Calls the addUniversity method from AdminController passing the specified parameters
   * 
-  * @param school
-  * @param state
-  * @param location
-  * @param control
-  * @param numStudents
-  * @param percentFemale
-  * @param SATVerbal
-  * @param SATMath
-  * @param expenses
-  * @param percentFinancialAid
-  * @param numApplicants
-  * @param percentAdmitted
-  * @param percentEnrolled
-  * @param academicsScale
-  * @param socialScale
-  * @param qualityOfLife
+  * @param school is the name of the school
+  * @param state is the state that the school is located
+  * @param location is the type of area in which the school is located (i.e. Suburban, Small-city, ...)
+  * @param control specifies who controls the university (i.e. Public, Private, ...)
+  * @param numberOfStudents is the number of students at this university
+  * @param percentFemales is the percentage of females at this university
+  * @param SATVerbal is the average SAT Verbal score, out of 800, for the students at this university
+  * @param SATMath is the average SAT Math score, out of 800, for the students at this university
+  * @param expenses is the annual tuition for this university
+  * @param percentFinancialAid is the percentage of students who received some sort of financial aid from this university
+  * @param numberOfApplicants is the number of students who typically apply to this university
+  * @param percentAdmitted is the percentage of students who are admitted annually to this university   * @param percentEnrolled is the percentage of students who are currently enrolled at this university
+  * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
+  * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
+  * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
   */
 
- public void addUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
-   adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
+ public int addUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
+   return adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
  }
- /**@Description edit existing university
+ /**
+  * Calls the editUniversity method from AdminController and passes it the specified parameters
   * 
-  * @param school
-  * @param state
-  * @param location
-  * @param control
-  * @param numStudents
-  * @param percentFemale
-  * @param SATVerbal
-  * @param SATMath
-  * @param expenses
-  * @param percentFinancialAid
-  * @param numApplicants
-  * @param percentAdmitted
-  * @param percentEnrolled
-  * @param academicsScale
-  * @param socialScale
-  * @param qualityOfLife
+  * @param school is the name of the school
+  * @param state is the state that the school is located
+  * @param location is the type of area in which the school is located (i.e. Suburban, Small-city, ...)
+  * @param control specifies who controls the university (i.e. Public, Private, ...)
+  * @param numberOfStudents is the number of students at this university
+  * @param percentFemales is the percentage of females at this university
+  * @param SATVerbal is the average SAT Verbal score, out of 800, for the students at this university
+  * @param SATMath is the average SAT Math score, out of 800, for the students at this university
+  * @param expenses is the annual tuition for this university
+  * @param percentFinancialAid is the percentage of students who received some sort of financial aid from this university
+  * @param numberOfApplicants is the number of students who typically apply to this university
+  * @param percentAdmitted is the percentage of students who are admitted annually to this university
+  * @param percentEnrolled is the percentage of students who are currently enrolled at this university
+  * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
+  * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
+  * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
   */
 
- //@params
  public void editUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
    adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
  }
- //@Description
- //@params
- public void viewUserInfo(String username){
-   adminController.viewUserInfo(username);
- }
- //@Description
- //@params
- public void editAdmin(String userName, String firstName, String lastName, String password, char type, char status){
-   adminController.editAdmin(userName,firstName,lastName,password,type,status);
- }
- /**@Description
+ 
+ * Calls the getAllUniversities method from DBController.
+ */
+
+public void viewUniversities() {
+  adminController.getAllUniversities();
+}
+ 
+
+
+ /**
+  * Calls the viewUserInfo method from AdminController and passes the specified paramter
   * 
+  * @param username is the user whos profile is being viewed
+  * @return an User object that belongs to the specified username
+  */
+ 
+ public User viewUserInfo(String username){
+   return adminController.viewUserInfo(username);
+ }
+
+ /**
+  * Calls the viewUsers method from the AdminController
+  * 
+  * @return A list of all the users
   */
  public List<User> viewUsers(){
    return adminController.viewUsers();
  }
- //@Description
- //@params
- public void deactivateUser(String username){
-   adminController.deactivateUser(username);
- }
- /**@Description
+ 
+ /**
+  * Calls the deactivateUser method from AdminController and passes it the specified parameter
   * 
-  * @param username
-  * @return boolean whether username is taken or not
+  * @param username is the username of the user being deactivated
+  * @return an int representation of the deactivation, 1 if successful, -1 if failure
+  */
+ public String deactivateUser(String username){
+   if(adminController.deactivateUser(username) == 0) {
+	   return "User deactivated.";
+   }
+   else if(adminController.deactivateUser(username) == 1){
+	   return "User already inactive.";
+   }
+ }
+
+ /**
+  * Calls the addNewUser method from AdminController and passes it the specified parameters
+  * 
+  * @param firstName is the first name of the new user
+  * @param lastName is the last name of the new user
+  * @param username is the username of the new user
+  * @param password is the password of the new user
+  * @param type is the type of new user
+  * 
+  * @return boolean true if username is unique
   */
 
- public boolean isUniqueUsername(String username){
-	 if(adminController.isUniqueUsername(username)) {
+ public boolean addNewUser(String firstName,String lastName,String username,String password,char type){
+	 if(adminController.isUniqueUsername(username) == true) {  
+		 adminController.addNewUser(firstName,lastName,username,password,type);
 		 return true;
 	 }
-	 return false;
- }
- /**@Description add new user, passes user info to admin controller
-  * 
-  * @param firstName
-  * @param lastName
-  * @param username
-  * @param password
-  * @param type
-  */
-
- public void addNewUser(String firstName,String lastName,String username,String password,char type){
-   adminController.addNewUser(firstName,lastName,username,password,type);
- }
+	 else {
+		 return false;
+	 }
  
 }
