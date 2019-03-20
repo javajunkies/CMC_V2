@@ -314,16 +314,6 @@ public class DBController {
     
   }
   
-  public void login(String username, String password)
-  {
-    
-  }
-  
-  public void logoff()
-  {
-    
-  }
-  
   public int removeUniversity(String name)
   {
     return db.university_deleteUniversity(name);
