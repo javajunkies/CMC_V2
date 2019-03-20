@@ -25,8 +25,19 @@ public class AdminInteraction{
   * @param password is the password provided for login
   */
 
- public void login(String username, String password){
-   loginController.login(username,password);
+ public String login(String username, String password){
+   if(loginController.login(username,password) == 0) {
+	   return "Logged in.";
+   }
+if(loginController.login(username,password) == 1) {
+	return "Username not found.";
+   }
+if(loginController.login(username,password) == 2) {
+	return "Password invalid.";
+}
+if(loginController.login(username,password) == 3) {
+	   return "Status inactive.";
+}
  }
  
  /**
@@ -122,19 +133,23 @@ public class AdminInteraction{
   * @param username is the username of the user being deactivated
   * @return an int representation of the deactivation, 1 if successful, -1 if failure
   */
- public int deactivateUser(String username){
-   return adminController.deactivateUser(username);
+ public String deactivateUser(String username){
+   if(adminController.deactivateUser(username) == 0) {
+	   return "User deactivated.";
+   }
+   else if(adminController.deactivateUser(username) == 1){
+	   return "User already inactive.";
+   }
  }
 
  /**
   * Calls the addNewUser method from AdminController and passes it the specified parameters
   * 
-<<<<<<< HEAD
-  * @param firstName
-  * @param lastName
-  * @param username
-  * @param password
-  * @param type
+  * @param firstName is the first name of the new user
+  * @param lastName is the last name of the new user
+  * @param username is the username of the new user
+  * @param password is the password of the new user
+  * @param type is the type of new user
   * 
   * @return boolean true if username is unique
   */
@@ -147,17 +162,5 @@ public class AdminInteraction{
 	 else {
 		 return false;
 	 }
-=======
-  * @param firstName is the first name of the new user
-  * @param lastName is the last name of the new user
-  * @param username is the username of the new user
-  * @param password is the password of the new user
-  * @param type is the type of new user
-  */
-
- public int addNewUser(String firstName,String lastName,String username,String password,char type){
-   return adminController.addNewUser(firstName,lastName,username,password,type);
->>>>>>> 68c952f797d2591c92998e9c0dd0f28b0aac8af2
- }
  
 }

@@ -350,8 +350,6 @@ public class DBController {
   }
   
 
-  
-
   public int userEditUser(String username, String first, String last, String password) {
    return db.user_editUser(username, first, last, password, 'u', 'Y');
   }
@@ -426,12 +424,6 @@ public class DBController {
   
 }
    
-
-    
-  
-   
-     
-   
    // make a point system or assign a to add up all of the 
    
 
@@ -493,20 +485,25 @@ public int removeFromSaved(String username, String university)
 
 public int deactivateUser(String username) {
  String[][] users = db.user_getUsers();
- String first = "";
- String last = "";
- String user = ""; 
- String password = "";
- char type = 'N';
+ //String first = "";
+ //String last = "";
+ //String user = ""; 
+ //String password = "";
+ //char type = 'N';
  for(int i = 0; i < users.length; i++) {
   if(users[i][2].equals(username)) {
-   first = users[i][0];
-   last = users[i][1];
-   user = users[i][2];
-   password = users[i][3];
-   type = users[i][4].charAt(0);
+   //first = users[i][0];
+   //last = users[i][1];
+   //user = users[i][2];
+   //password = users[i][3];
+   //type = users[i][4].charAt(0);
+   users[i][4]='N';
+   return 0;
+  }
+  else if(users[i[4] == 'N'||'n']) {
+	  return 1;
   }
  }
- return db.user_editUser(user, first, last, password, type, 'N');
-}
+ 
+//db.user_editUser(user, first, last, password, type, 'N');
 }

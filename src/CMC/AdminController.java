@@ -130,8 +130,7 @@ public class AdminController {
    */
   
   public int editUser(String username, String firstName, String lastName, String password, char type, char status) {
-    return dbcontroller.adminEditUser(username, firstName, lastName, password, type, 
-                               status);
+    return dbcontroller.adminEditUser(username, firstName, lastName, password, type, status);
   } 
 
   /**
@@ -142,15 +141,9 @@ public class AdminController {
   
   public List<User> viewUsers() {
     return dbcontroller.getAllUsers();
-  } 
-<<<<<<< HEAD
+  }
   
-/**
- * 
- * @param username
- * @return boolean if username is unique, returns true
- */
-=======
+
 
   /**
    * Checks to see if a certain username is unique
@@ -159,7 +152,6 @@ public class AdminController {
    * @return a boolean representation of if the specified username is unique
    */
   
->>>>>>> 68c952f797d2591c92998e9c0dd0f28b0aac8af2
   public boolean isUniqueUsername(String username) {
 	  if(dbcontroller.isUniqueUsername(username)) {
 		  return true;
@@ -170,13 +162,14 @@ public class AdminController {
   }
 
   /**
-<<<<<<< HEAD
+   * Calls the createUser method from DBController and passing it the required parameters
    * 
-   * @param firstName
-   * @param lastName
-   * @param username
-   * @param password
-   * @param type
+   * @param firstName is the first name of the new user
+   * @param lastName is the last name of the new user
+   * @param username is the username of the new user
+   * @param password is the password of the new user
+   * @param type is the type of new user
+   *
    * 
    * @return boolean if password is valid and type is either u or a
    */
@@ -195,21 +188,7 @@ public class AdminController {
 	  }
 	  
   } 
-=======
-   * Calls the createUser method from DBController and passing it the required parameters
-   * 
-   * @param firstName is the first name of the new user
-   * @param lastName is the last name of the new user
-   * @param username is the username of the new user
-   * @param password is the password of the new user
-   * @param type is the type of new user
-   */
->>>>>>> 68c952f797d2591c92998e9c0dd0f28b0aac8af2
-  
-  public int addNewUser(String firstName, String lastName, String username, String password, char type) {
-    return dbcontroller.createUser(firstName, lastName, username, password, type);
-  } 
-  
+
   /**
    * Calls the viewUser method from DBController
    * 
@@ -226,19 +205,12 @@ public class AdminController {
    * Deactivates an user
    * 
    * @param username is the user being deactivated
-   */
-  
-<<<<<<< HEAD
-  /**
-   * 
-   * @param username
    * 
    * @return 
    */
-  public void deactivateUser(String username)
-=======
+
   public int deactivateUser(String username)
->>>>>>> 68c952f797d2591c92998e9c0dd0f28b0aac8af2
+
   {
     return dbcontroller.deactivateUser(username);
   }
