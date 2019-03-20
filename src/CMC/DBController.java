@@ -343,8 +343,13 @@ public class DBController {
   /**
    *  A method that Lists all of the users
    */
+<<<<<<< HEAD
+  public ArrayList<User> getAllUsers() 
+  {
+=======
 
   public List<User> getAllUsers() {
+>>>>>>> a3328f220ef97b1ff9d68f240a5c8a985667b9d8
     ArrayList<User> userList = new ArrayList<User>();
     String[][]usersInfo = db.user_getUsers();
     for(int j=0; j<usersInfo[1].length; j++) {
@@ -408,6 +413,9 @@ public class DBController {
    * 
    * a method to get the User's saved schools
    */
+<<<<<<< HEAD
+
+=======
   public List<University> getUserSavedSchools(String username) 
   {
     
@@ -438,6 +446,7 @@ public class DBController {
     }
   }
   
+>>>>>>> a3328f220ef97b1ff9d68f240a5c8a985667b9d8
   public ArrayList<University> viewSavedSchools(String username) 
   {
       
@@ -495,11 +504,17 @@ public class DBController {
    * 
    * This method sorts a users saved schools by attendance
    */
+<<<<<<< HEAD
+  public ArrayList<University> sortByNumStudents(int numStudents, String username) {
+  
+   ArrayList<Universities> byNumStudents = new ArrayList<>();
+=======
   public List<University> sortSavedSchoolsByNumStudents(int numStudents, String username) {
     List<University> byNumStudents = new ArrayList<>();
   public List<University> sortByNumStudents(int numStudents, String username) {
   
    List<University> byNumStudents = new ArrayList<>();
+>>>>>>> a3328f220ef97b1ff9d68f240a5c8a985667b9d8
    byNumStudents.getUsersSavedSchools();
   }
   
@@ -508,7 +523,7 @@ public class DBController {
    * 
    * This method sorts a users saved schools by price
    */
-  public List<University> sortByPrice(int price, String username) {
+  public ArrayList<University> sortByPrice(int price, String username) {
     
   }
   
@@ -518,8 +533,12 @@ public class DBController {
    * 
    * This method sorts a users saved school by acceptance rate
    */
+<<<<<<< HEAD
+     public ArrayList<University> sortByAcceptance(int acceptanceRate, String username) {
+=======
 // make a point system or assign a to add up all of the 
      public List<University> sortByAcceptance(int acceptanceRate) {
+>>>>>>> a3328f220ef97b1ff9d68f240a5c8a985667b9d8
    
   }  
 
@@ -538,6 +557,8 @@ public class DBController {
     return db.university_addUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
   }
   
+<<<<<<< HEAD
+=======
   public int editUniversity(String school, String state, String location, String control, int numberOfStudents,
                             double percentFemales, double SATVerbal, double SATMath, double expenses, 
                             double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
@@ -545,6 +566,7 @@ public class DBController {
   {
     return db.university_editUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale); 
   }
+>>>>>>> a3328f220ef97b1ff9d68f240a5c8a985667b9d8
   
   public boolean isUniqueUsername(String username)
   {
@@ -598,6 +620,10 @@ public class DBController {
     University university1 = new University(school, state, location, control, numStudents, percentFemale, SATVerbal, SATMath, expenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLife);
     return university1;
   }
+<<<<<<< HEAD
+
+=======
+>>>>>>> a3328f220ef97b1ff9d68f240a5c8a985667b9d8
 
 public int addToSaved(String username, String university)
 {
