@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class AdminInteraction{
  
- // Initializes AdminController and LoginController objects
+	// Initializes AdminController and LoginController objects
  AdminController adminController = new AdminController();
  LoginController loginController = new LoginController();
  AccountController accountController = new AccountController();
@@ -27,16 +27,16 @@ public class AdminInteraction{
 
  public String login(String username, String password){
    if(loginController.login(username,password) == 0) {
-    return "Logged in.";
+	   return "Logged in.";
    }
 if(loginController.login(username,password) == 1) {
- return "Username not found.";
+	return "Username not found.";
    }
 if(loginController.login(username,password) == 2) {
- return "Password invalid.";
+	return "Password invalid.";
 }
 if(loginController.login(username,password) == 3) {
-    return "Status inactive.";
+	   return "Status inactive.";
 }
  }
  
@@ -107,7 +107,7 @@ if(loginController.login(username,password) == 3) {
    adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
  }
  
- /* Calls the getAllUniversities method from DBController.
+ * Calls the getAllUniversities method from DBController.
  */
 
 public void viewUniversities() {
@@ -144,10 +144,10 @@ public void viewUniversities() {
   */
  public String deactivateUser(String username){
    if(adminController.deactivateUser(username) == 0) {
-    return "User deactivated.";
+	   return "User deactivated.";
    }
    else if(adminController.deactivateUser(username) == 1){
-    return "User already inactive.";
+	   return "User already inactive.";
    }
  }
 
@@ -164,23 +164,12 @@ public void viewUniversities() {
   */
 
  public boolean addNewUser(String firstName,String lastName,String username,String password,char type){
-  if(adminController.isUniqueUsername(username) == true) {  
-   adminController.addNewUser(firstName,lastName,username,password,type);
-   return true;
-  }
-  else {
-   return false;
-  }
-  
-  /**
-   * Deletes a user
-   * 
-   * @param user - user to delete
-   */
-  
-  public void deleteUser(String userName);
-  {
-    
-  }
+	 if(adminController.isUniqueUsername(username) == true) {  
+		 adminController.addNewUser(firstName,lastName,username,password,type);
+		 return true;
+	 }
+	 else {
+		 return false;
+	 }
  
 }

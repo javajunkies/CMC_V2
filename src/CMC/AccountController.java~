@@ -1,4 +1,5 @@
 import UniversityDBController;
+import System.out.*;
 
 public class AccountController implements DBController {
   
@@ -26,8 +27,8 @@ public class AccountController implements DBController {
     Boolean hasNumber = False;
     if (password.length() < 8) {
       
-     return false;
-     //System.out.println("Password must be at least 8 characters.");
+    	return false;
+    	//System.out.println("Password must be at least 8 characters.");
     }
     for (int i = 0; i < password.length(); i++) {
       if (Character.isLetter(password.charAt(i))) {
@@ -38,15 +39,15 @@ public class AccountController implements DBController {
       }
     }
     if (!hasLetter) {
-     return false;
+    	return false;
       //System.out.println("Password must have at least 1 letter.");
     }
     if (!hasNumber) {
-     return false;
+    	return false;
       //System.out.println("Password must have at least 1 number.");
     }
     if (hasLetter == true && hasNumber == true && password.length() >= 8) {
-     return true;
+    	return true;
     }
   }
   
