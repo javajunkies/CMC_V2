@@ -130,8 +130,7 @@ public class AdminController {
    */
   
   public int editUser(String username, String firstName, String lastName, String password, char type, char status) {
-    return dbcontroller.adminEditUser(username, firstName, lastName, password, type, 
-                               status);
+    return dbcontroller.adminEditUser(username, firstName, lastName, password, type, status);
   } 
 
   /**
@@ -142,7 +141,12 @@ public class AdminController {
   
   public List<User> viewUsers() {
     return dbcontroller.getAllUsers();
+<<<<<<< HEAD
   } 
+=======
+  }
+  
+>>>>>>> d5a761c041476387f626ac82503a6493bee47677
 
 
   /**
@@ -152,7 +156,10 @@ public class AdminController {
    * @return a boolean representation of if the specified username is unique
    */
   
+<<<<<<< HEAD
 
+=======
+>>>>>>> d5a761c041476387f626ac82503a6493bee47677
   public boolean isUniqueUsername(String username) {
 	  if(dbcontroller.isUniqueUsername(username)) {
 		  return true;
@@ -163,7 +170,18 @@ public class AdminController {
   }
 
   /**
+<<<<<<< HEAD
   * Calls the createUser method from DBController and passing it the required parameters
+=======
+   * Calls the createUser method from DBController and passing it the required parameters
+   * 
+   * @param firstName is the first name of the new user
+   * @param lastName is the last name of the new user
+   * @param username is the username of the new user
+   * @param password is the password of the new user
+   * @param type is the type of new user
+   *
+>>>>>>> d5a761c041476387f626ac82503a6493bee47677
    * 
    * @param firstName is the first name of the new user
    * @param lastName is the last name of the new user
@@ -187,7 +205,10 @@ public class AdminController {
 	  
   } 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d5a761c041476387f626ac82503a6493bee47677
   /**
    * Calls the viewUser method from DBController
    * 
@@ -204,17 +225,24 @@ public class AdminController {
    * Deactivates an user
    * 
    * @param username is the user being deactivated
+<<<<<<< HEAD
    */
   
 
   /**
    * 
    * @param username
+=======
+>>>>>>> d5a761c041476387f626ac82503a6493bee47677
    * 
    * @return 
    */
 
   public int deactivateUser(String username)
+<<<<<<< HEAD
+=======
+
+>>>>>>> d5a761c041476387f626ac82503a6493bee47677
   {
     return dbcontroller.deactivateUser(username);
   }
