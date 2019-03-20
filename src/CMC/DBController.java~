@@ -482,7 +482,11 @@ public class DBController {
       return userSavedSchools; 
     }
   }
-  
+  /**
+   * View saved schools
+   * 
+   * @param username - person
+   */
   public List<University> viewSavedSchools(String username) 
   {
     

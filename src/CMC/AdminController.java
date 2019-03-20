@@ -184,6 +184,16 @@ public class AdminController {
 	  if(accountController.checkPasswordCriteria(password) == 0) {
 	     return dbcontroller.createUser(firstName, lastName, username, password, type);
 	  }
+	  else if(accountController.checkPasswordCriteria(password) == 1) {
+		  return -4;
+	  }
+	  else if(accountController.checkPasswordCriteria(password) == 2) {
+		  return -5;
+	  }
+	  else {
+		  return -6;
+	  }
+	  
   }
   /**
    * Calls the viewUser method from DBController
