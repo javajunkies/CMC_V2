@@ -187,10 +187,30 @@ public class DBController {
     return db.university_editUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
   }
   
-  public int createUser(String firstName, String lastName, String username, String password, char type)
+  /**
+   * @param String firstName
+   * @param String lastName
+   * @param String username
+   * @param String password
+   * @param char type
+   * 
+   * @return boolean if user was created, return true
+   */
+  public boolean createUser(String firstName, String lastName, String username, String password, char type)
   {
-    return db.user_addUser(firstName, lastName, username, password, type);
-  }
+    db.user_addUser(firstName, lastName, username, password, type);
+    if(type == 'a') {
+      User admin = new User(firstName, lastName, username, password, type);
+      return true;
+    }
+    else if(type == 'u')
+    {
+      User user = new User(firstName, lastName, username, password, type);
+      return true;
+    }
+    else {
+    return false;
+    }
   
   /**
    * method to search for a university 
@@ -206,27 +226,53 @@ public class DBController {
     int k = 0;
     
     for(int i = 0; i < rowLength; i++) {
-      //for(int j = 0; j < colLength; j++) {
-        if(universities[i][0].contains(mySchool) || mySchool.equals("0") 
-          && universities[i][1].contains(myState) || myState.equals("0") 
-          && universities[i][2].equals(myLocation) || myLocation.equals("0") 
-          && universities[i][3].contains(myControl) || myControl.equals("0") 
-          && minNumStudents <= Integer.parseInt(universities[i][4]) <= maxNumStudents || minNumStudents <= Integer.parseInt(universities[i][4]) && maxNumStudents == 0 
-          && minPercentFemale <= Double.parseDouble(universities[i][5]) <= maxPercentFemale || minPercentFemale <= Integer.parseInt(universities[i][5]) && maxPercentFemale == 0 
-          && minSATVerbal <= Double.parseDouble(universities[i][6]) <= maxSATVerbal || minSATVerbal <= Double.parseDouble(universities[i][6]) && maxSATVerbal == 0 
-          && minSATMath <= Double.parseDouble(universities[i][7]) <= maxSATMath || minSATMath <= Double.parseDouble(universities[i][7]) && maxSATMath == 0 
-          && minExpenses <= Double.parseDouble(universities[i][8]) <= maxExpenses || minExpenses <= Double.parseDouble(universities[i][8]) && maxExpenses == 0 
-          && minPercentFinancialAid <= Double.parseDouble(universities[i][9]) <= maxFinancialAid || minPercentFinancialAid <= Double.parseDouble(universities[i][9]) && maxPercentFinancialAid == 0 
-          && minNumApplicants <= Integer.parseInt(universities[i][10]) <= maxNumApplicants || minNumApplicants <= Integer.parseInt(universities[i][10]) && maxNumApplicants == 0 
-          && minPercentAdmitted <= Double.parseDouble(universities[i][11]) <= maxPercentAdmitted || minPercentAdmitted <= Double.parseDouble(universities[i][11]) && maxPercentAdmitted == 0 
-          && minPercentEnrolled <= Double.parseDouble(universities[i][12]) <= maxPercentEnrolled || minPercentEnrolled <= Double.parseDouble(universities[i][12]) && maxPercentEnrolled == 0 
-          && minAcademicsScale <= Integer.parseInt(universities[i][13]) <= maxAcademicsScale || minAcademicsScale <= Integer.parseInt(universities[i][13]) && maxAcademicsScale == 0 
-          && minSocialScale <= Integer.parseInt(universities[i][14]) <= maxSocialScale || minSocialScale <= Integer.parseInt(universities[i][14]) && maxSocialScale == 0 
-          && minQualityOfLife <= Integer.parseInt(universities[j][15]) <= maxQualityOfLife || minQualityOfLife <= Integer.parseInt(universities[j][15]) && maxQualityOfLife == 0) {
-         University univ = new University(university[i][0],university[i][1],university[i][2],university[i][3],university[i][4],university[i][5],university[i][6],university[i][7],university[i][8],university[i][9],university[i][10],university[i][11],university[i][12],university[i][13],university[i][14],university[i][15]);
-         matchUni.add(univ);
+        if(universities[i][0].contains(mySchool) 
+        		|| mySchool.equals("0") 
+        		&& universities[i][1].contains(myState) 
+        		|| myState.equals("0") 
+        		&& universities[i][2].equals(myLocation) 
+        		|| myLocation.equals("0") 
+        		&& universities[i][3].contains(myControl) 
+        		|| myControl.equals("0") 
+        		&& minNumStudents <= Integer.parseInt(universities[i][4]) <= maxNumStudents 
+        		|| minNumStudents <= Integer.parseInt(universities[i][4]) 
+        		&& maxNumStudents == 0 
+        		&& minPercentFemale <= Double.parseDouble(universities[i][5]) <= maxPercentFemale 
+        		|| minPercentFemale <= Integer.parseInt(universities[i][5]) 
+        		&& maxPercentFemale == 0 
+        		&& minSATVerbal <= Double.parseDouble(universities[i][6]) <= maxSATVerbal 
+        		|| minSATVerbal <= Double.parseDouble(universities[i][6]) 
+        		&& maxSATVerbal == 0 
+        		&& minSATMath <= Double.parseDouble(universities[i][7]) <= maxSATMath 
+        		|| minSATMath <= Double.parseDouble(universities[i][7]) 
+        		&& maxSATMath == 0 
+        		&& minExpenses <= Double.parseDouble(universities[i][8]) <= maxExpenses 
+        		|| minExpenses <= Double.parseDouble(universities[i][8]) 
+        		&& maxExpenses == 0 
+        		&& minPercentFinancialAid <= Double.parseDouble(universities[i][9]) <= maxFinancialAid 
+        		|| minPercentFinancialAid <= Double.parseDouble(universities[i][9]) 
+        		&& maxPercentFinancialAid == 0 
+        		&& minNumApplicants <= Integer.parseInt(universities[i][10]) <= maxNumApplicants 
+        		|| minNumApplicants <= Integer.parseInt(universities[i][10]) 
+        		&& maxNumApplicants == 0 
+        		&& minPercentAdmitted <= Double.parseDouble(universities[i][11]) <= maxPercentAdmitted 
+        		|| minPercentAdmitted <= Double.parseDouble(universities[i][11]) 
+        		&& maxPercentAdmitted == 0 
+        		&& minPercentEnrolled <= Double.parseDouble(universities[i][12]) <= maxPercentEnrolled 
+        		|| minPercentEnrolled <= Double.parseDouble(universities[i][12]) 
+        		&& maxPercentEnrolled == 0 
+        		&& minAcademicsScale <= Integer.parseInt(universities[i][13]) <= maxAcademicsScale 
+        		|| minAcademicsScale <= Integer.parseInt(universities[i][13]) 
+        		&& maxAcademicsScale == 0 
+        		&& minSocialScale <= Integer.parseInt(universities[i][14]) <= maxSocialScale 
+        		|| minSocialScale <= Integer.parseInt(universities[i][14]) 
+        		&& maxSocialScale == 0 
+        		&& minQualityOfLife <= Integer.parseInt(universities[j][15]) <= maxQualityOfLife 
+        		|| minQualityOfLife <= Integer.parseInt(universities[j][15]) 
+        		&& maxQualityOfLife == 0) {
+        	University univ = new University(university[i][0],university[i][1],university[i][2],university[i][3],university[i][4],university[i][5],university[i][6],university[i][7],university[i][8],university[i][9],university[i][10],university[i][11],university[i][12],university[i][13],university[i][14],university[i][15]);
+        	matchUni.add(univ);
         }
-      //}
     }
     return matchUni;
   }
@@ -316,7 +362,7 @@ public class DBController {
    * 
    * a method to get the User's saved schools
    */
-  public List<University> getUserSavedSchools(int price, int numStudents, String username) 
+  public List<University> getUserSavedSchools(String username) 
   {
 
       
@@ -352,7 +398,7 @@ public class DBController {
    * 
    * This method sorts a users saved schools by attendance
    */
-  public List<University> sortSavedSchoolsByNumStudents(int numStudents) {
+  public List<University> sortSavedSchoolsByNumStudents(int numStudents, String username) {
   
 <<<<<<< HEAD
 =======
@@ -366,7 +412,7 @@ public class DBController {
    * 
    * This method sorts a users saved schools by price
    */
-  public List<University> sortByPrice(int price) {
+  public List<University> sortByPrice(int price, String username) {
    
   }
   
@@ -376,9 +422,11 @@ public class DBController {
    * 
    * This method sorts a users saved school by acceptance rate
    */
-     public List<University> sortByAdmittance(int acceptanceRate, ) {
+     public List<University> sortByAcceptance(int acceptanceRate, ) {
    
   }
+     
+    //publicSortSavedSchools
   
 }
    
