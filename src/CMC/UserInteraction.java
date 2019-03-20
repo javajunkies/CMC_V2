@@ -67,12 +67,9 @@ public class UserInteraction
   * @param last - last name
   * @param password - desired password
   */
- public void register(String first, String last, String password)
+ public void register(String userName, String first, String last, String password String password2)
  {
-  if (password.length == 8 && password.contains("[a-zA-Z]*") && password.contains("[0-9]*"))
-  {
-   AccountController.register(first, last, password);
-  }
+   AccountController.register(String userName, first, last, password, password2);
  }
  
  /**
@@ -124,9 +121,9 @@ public class UserInteraction
   * 
   * @param university
   */
- public void saveSchool(University university)
+ public void saveSchool(String user, University university)
  {
-  UserController.saveSchool(university);
+  UserController.saveSchool(user, university);
  }
  
  /**
