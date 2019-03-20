@@ -350,47 +350,11 @@ public class DBController {
   }
   
 
-  
-
   public int userEditUser(String username, String first, String last, String password) {
    return db.user_editUser(username, first, last, password, 'u', 'Y');
   }
 
-  /**
-   *  
-   * @param username username of the user 
-   * 
-   * a method to get the User's saved schools
-   */
-  public List<University> getUserSavedSchools(String username) 
-  {
-   
-   List<Universities> userSavedSchools = new ArrayList<>();
-   
-   //get all of the users with saved schools
-   String[][] users = db.user_getUsernamesWithSavedSchools();
-   
-   //get the Universities from db and make a new list with them
-   String[][] universities = db.university_getUniversities();
-  
-  
-  int rowLength = universities[0].length;
-  int colLength = universities[1].length;
-   
-  
-   
- 
-   //for those Universiies , find the price of their saved schools
-   for(int i = 0; users[0].length; i++) {
-   if (users[i] = username);
-   //go to their  price column of all of their saved universities
-   String [][] = price
-   //sort the price column using a temp variable
-     
-  return userSavedSchools; 
-   }
-  }
-   
+
    
   /**
    * @param numStudent  the number of students attending a university
@@ -431,10 +395,15 @@ public class DBController {
     //publicSortSavedSchools
 }
 
+   
+   // make a point system or assign a to add up all of the 
+  
+
   public int removeUniversity(String name)
   {
     return db.university_deleteUniversity(name);
   }
+  
   
   public int addUniversity(String school, String state, String location, String control, int numberOfStudents,
                             double percentFemales, double SATVerbal, double SATMath, double expenses, 
@@ -463,6 +432,34 @@ public class DBController {
      return true;
   }
   
+<<<<<<< HEAD
+=======
+  public void viewExistingUniversity(University university) {
+    String [][] universities = db.university_getUniversities();
+    for (int i = 0; i < universities[0].length(); i++){
+      if (universities[i][0].equals(university.getSchool())) {
+        String school = universities[i][0];
+      String state = universities[i][1];
+      String location = universities[i][2];
+      String control = universities[i][3];
+      int numStudents = Integer.parseInt(universities[i][4]);
+      double percentFemale = Double.parseDouble(universities[i][5]);
+      double SATVerbal = Double.parseDouble(universities[i][6]);
+      double SATMath = Double.parseDouble(universities[i][7]);
+      double expenses = Double.parseDouble(universities[i][8]);
+      double percentFinancialAid = Double.parseDouble(universities[i][9]);
+      int numApplicants = Integer.parseInt(universities[i][10]);
+      double percentAdmitted = Double.parseDouble(universities[i][11]);
+      double percentEnrolled = Double.parseDouble(universities[i][12]);
+      int academicsScale = Integer.parseInt(universities[i][13]);
+      int socialScale = Integer.parseInt(universities[i][14]);
+      int qualityOfLife = Integer.parseInt(universities[i][15]);
+      University university = new University(school, state, location, control, numStudents, percentFemale, mySATVerbal, mySATMath, myExpenses, myPercentFinancialAid, myNumApplicants, myPercentAdmitted, myPercentEnrolled, myAcademicsScale, mySocialScale, myQualityOfLife);
+      }
+    }
+  }
+  
+>>>>>>> 6920587d60f42fcefbf02dc8aa9adeb9a123eb46
   public void viewSavedSchools(String username)
   {
     
@@ -488,20 +485,25 @@ public int removeFromSaved(String username, String university)
 
 public int deactivateUser(String username) {
  String[][] users = db.user_getUsers();
- String first = "";
- String last = "";
- String user = ""; 
- String password = "";
- char type = 'N';
+ //String first = "";
+ //String last = "";
+ //String user = ""; 
+ //String password = "";
+ //char type = 'N';
  for(int i = 0; i < users.length; i++) {
   if(users[i][2].equals(username)) {
-   first = users[i][0];
-   last = users[i][1];
-   user = users[i][2];
-   password = users[i][3];
-   type = users[i][4].charAt(0);
+   //first = users[i][0];
+   //last = users[i][1];
+   //user = users[i][2];
+   //password = users[i][3];
+   //type = users[i][4].charAt(0);
+   users[i][4]='N';
+   return 0;
+  }
+  else if(users[i[4] == 'N'||'n']) {
+	  return 1;
   }
  }
- return db.user_editUser(user, first, last, password, type, 'N');
-}
+ 
+//db.user_editUser(user, first, last, password, type, 'N');
 }
