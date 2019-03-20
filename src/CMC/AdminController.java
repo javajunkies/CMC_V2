@@ -42,7 +42,7 @@ public class AdminController {
    * Calls the getAllUniversities method from DBController.
    */
   
-  public void viewUniversities() {
+  public ArrayList<Universities> viewUniversities() {
     dbcontroller.getAllUniversities();
   }
 
@@ -142,7 +142,7 @@ public class AdminController {
   public List<User> viewUsers() {
     return dbcontroller.getAllUsers();
   }
-  
+
 
 
   /**
@@ -169,9 +169,6 @@ public class AdminController {
    * @param username is the username of the new user
    * @param password is the password of the new user
    * @param type is the type of new user
-   *
-   * 
-   * @return boolean if password is valid and type is either u or a
    */
   public boolean addNewUser(String firstName, String lastName, String username, String password, char type) {
 	  if(accountController.checkPasswordCriteria(password) == true) {
@@ -205,12 +202,11 @@ public class AdminController {
    * Deactivates an user
    * 
    * @param username is the user being deactivated
+   * @return int
    * 
-   * @return 
    */
 
   public int deactivateUser(String username)
-
   {
     return dbcontroller.deactivateUser(username);
   }
