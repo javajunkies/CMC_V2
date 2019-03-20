@@ -18,7 +18,7 @@ public class DBController {
    * database controller
    */
   public DBController() {
-    // TODO Auto-generated constructor stub
+    
   }
   
   UniversityDBLibrary db = new UniversityDBLibrary("javajunk", "CSCI230");
@@ -266,14 +266,13 @@ public class DBController {
    */
   public User viewUser(String username)
   {
-    
+    String[] userInfo = new String[5];
     String[][] users = db.user_getUsers();
-    for (int i = 0; i < users[1].length; i++)
+    for (int i = 0; i < users.length; i++)
     {
       if (users[i][2].equals(username))
       {
-        String [] userInfo;
-        for(String s : userInfo)
+        for(int s = 0; s < 5; s++)
         {
           userInfo[s] = users[i][s];
         }
@@ -281,13 +280,12 @@ public class DBController {
     }
     String first = userInfo[0];
     String last = userInfo[1];
-    String username = userInfo[2];
+    String user = userInfo[2];
     String password = userInfo[3];
-    String userType = userInfo[4];
-    char uT = userType.charAt(0);
+    char userType = userInfo[4].charAt(0);
     
-    User user = new User(first, last, username, password, uT);
-    return user;  
+    User user1 = new User(first, last, user, password, userType);
+    return user1;  
   }
   
   

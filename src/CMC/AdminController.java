@@ -1,9 +1,17 @@
+/**
+ * File: AdminController.java
+ */
+
 package CMC;
 import java.util.*;
 
 /**
- * @ author bwest001
+ * Controller class that handles all of Admin functionalities
+ * 
+ * @ author Java Junkies
+ * @version March 19, 2019
  */
+
 public class AdminController {
 
   // Creating instances of the other classes being used.
@@ -26,7 +34,7 @@ public class AdminController {
    */
   
   public void logoff(){
-    dbcontroller.logoff();
+    logInController.logoff();
   }
 
   /**
@@ -163,12 +171,16 @@ public class AdminController {
     return dbcontroller.createUser(firstName, lastName, username, password, type);
   } 
   
+  /**
+   * Calls the viewUser method from DBController
+   * 
+   * @param username is the user being viewed
+   * @return User object of the specified user
+   */
   
-  //to implement:
-  
-  public void viewUserInfo(String username)
+  public User viewUserInfo(String username)
   {
-    
+    return dbcontroller.viewUser(username);
   }
   
   /**
@@ -176,9 +188,9 @@ public class AdminController {
    * 
    * @param username is the user being deactivated
    */
+  
   public int deactivateUser(String username)
   {
     return dbcontroller.deactivateUser(username);
   }
-  
 } 
