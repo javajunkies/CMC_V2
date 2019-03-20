@@ -12,14 +12,23 @@ package CMC;
  */
 public class AccountController{
   
+	//object
   DBController db = new DBController();
   
+  /**
+   * method for a user to register
+   * @param first the users desired firstname
+   * @param last the users desired lastname
+   * @param username the users desired unique username
+   * @param password the users desired password
+   * @return int the status of the registration and entering into the database
+   */
   public int register(String first, String last, String username, String password) {
     return db.registerNewUser(first, last, username, password);
   }
   
   /**
-   * 
+   * checks the users password for the required criteria
    * @param password
    * @return boolean representation of checking the password, 0 if meets all criteria
    *   1 if less than 8 characters, 2 if it does not contain a letter or 3 if it does not contain a number
@@ -51,7 +60,12 @@ public class AccountController{
     }
     return 1;
   }
-  
+  /**
+   * checks if the entered passwords match
+   * @param password the users password
+   * @param password1 the users password confirmed
+   * @return boolean if the users passwords match its true
+   */
   public boolean checkPasswordMatch(String password, String password1) {
     if(password.equals(password1)) {
       return true;

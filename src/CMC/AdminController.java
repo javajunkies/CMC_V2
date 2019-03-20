@@ -40,6 +40,7 @@ public class AdminController {
 
   /**
    * Calls the getAllUniversities method from DBController.
+   * @return ArrayList<University> a list of universities
    */
   
   public List<String> viewUniversities() {
@@ -49,9 +50,9 @@ public class AdminController {
   /**
    * Calls the removeUniversity method from DBController.
    * 
-   * @param name is the name of the university being removed
+   * @param name is the name of the university being romved
+   * @return int the status of removing a university
    */
-  
   public int removeUniversity(String name) {
     return dbcontroller.removeUniversity(name); 
   }
@@ -75,6 +76,8 @@ public class AdminController {
    * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
    * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
    * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
+   * 
+   * @return int the status of adding a university
    */
   
   public int addUniversity(String school, String state, String location, String control, int numberOfStudents,
@@ -106,6 +109,8 @@ public class AdminController {
    * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
    * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
    * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
+   * 
+   * @return int the status of editing a university
    */
   
   public int editUniversity(String school, String state, String location, String control, int numberOfStudents,
@@ -127,6 +132,8 @@ public class AdminController {
    * @param password is the password associated with this account
    * @param type is the type of this account
    * @param status is the status of this account
+   * 
+   * @return int the status of editing a user
    */
   
   public int editUser(String username, String firstName, String lastName, String password, char type, char status) {
@@ -136,18 +143,13 @@ public class AdminController {
   /**
    * Calls the getAllUsers method from DBController
    * 
-   * @return A list of user objects
+   * @return ArrayList<University> A list of user objects
    */
   
-  public List<User> viewUsers() {
+  public ArrayList<User> viewUsers() {
     return dbcontroller.getAllUsers();
   } 
   
-/**
- * 
- * @param username
- * @return boolean if username is unique, returns true
- */
 
   /**
    * Checks to see if a certain username is unique
@@ -179,6 +181,8 @@ public class AdminController {
    * @param username is the username of the new user
    * @param password is the password of the new user
    * @param type is the type of new user
+   * 
+   * @return boolean If the user was added 
    */
   public int addNewUser(String firstName, String lastName, String username, String password, char type) {
 	  if(accountController.checkPasswordCriteria(password) == 0) {
@@ -211,6 +215,7 @@ public class AdminController {
    * Deactivates an user
    * 
    * @param username is the user being deactivated
+   * @return int the status of deactivating the user
    */
 
   public int deactivateUser(String username)

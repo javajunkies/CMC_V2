@@ -23,6 +23,8 @@ public class AdminInteraction{
   * 
   * @param username is the username provided for login
   * @param password is the password provided for login
+  * 
+  * @return String tells user the login status
   */
 
  public int login(String username, String password){
@@ -31,7 +33,7 @@ public class AdminInteraction{
  
  /**
   * Calls the logoff method from the LoginController
-  * 
+  * @return int tells user the status of log off
   */
 
  public int logoff(){
@@ -42,6 +44,7 @@ public class AdminInteraction{
   * Calls the removeUniversity method in adminController passing it the specified parameter
   * 
   * @param school is the name of the school being removed
+  * @return tells admin the status of removing the university
   */
 
  public String removeUniversity(String school){
@@ -71,6 +74,8 @@ public class AdminInteraction{
   * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
   * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
   * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
+  * 
+  * @return int tells admin the status of adding the university
   */
 
  public String addUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
@@ -100,6 +105,8 @@ public class AdminInteraction{
   * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
   * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
   * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
+  * 
+  * @return int tells admin the status of editing a university
   */
 
  public String editUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
@@ -114,7 +121,7 @@ public class AdminInteraction{
  /**
  *
  * Calls the getAllUniversities method from DBController.
- * @return ArrayList<Universities>
+ * @return ArrayList<Universities> the list of universities
  */
 
  public List<String> viewUniversities() {
@@ -137,7 +144,7 @@ public class AdminInteraction{
  /**
   * Calls the viewUsers method from the AdminController
   * 
-  * @return A list of all the users
+  * @return List<user> list of all the users
   */
  public List<User> viewUsers(){
    return adminController.viewUsers();

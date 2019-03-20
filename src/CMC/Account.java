@@ -97,7 +97,7 @@ public abstract class Account {
 	/**
 	 * Getter method for the status.
 	 * 
-	 * @return the status associated with the account.
+	 * @return char the status associated with the account.
 	 */
 	
 	public char getStatus() {
@@ -128,7 +128,7 @@ public abstract class Account {
 	/**
 	 * Getter method for password.
 	 * 
-	 * @return the password associated with the account.
+	 * @return String the password associated with the account.
 	 */
 	
 	public String getPassword() {
@@ -148,7 +148,7 @@ public abstract class Account {
 	/**
 	 * Getter method for user type.
 	 * 
-	 * @return the type of user
+	 * @return char the type of user
 	 */
 	
 	public char getUsertype() {
