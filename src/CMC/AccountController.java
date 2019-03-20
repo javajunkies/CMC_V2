@@ -1,62 +1,62 @@
-import UniversityDBController;
-import System.out.*;
+/**
+ * File: AccountController.java
+ */
 
-public class AccountController implements DBController {
+package CMC;
+
+/**
+ * Controller class for Account functionalities
+ * 
+ * @author Java Junkies
+ * @version March 19, 2019
+ */
+public class AccountController{
   
-  public void editUser(String username) {
-    Account user = DBController.findByUsername(username);
-    String firstName = user.getFirst();
-    String lastName = user.getLast();
-    String password = user.getPassword();
-    char Type = user.getUserType();
-    char Status = user.getStatus();
-    UniversityDBController.user_editUser(username, firstName, lastName, password, Type, Status);
-  }
+	DBController db = new DBController();
   
-  public void register(String first, String last, String username, String password, char Type) {
-    UniversityDBController.user_addUser(first, last, username, password, Type);
+  public int register(String first, String last, String username, String password) {
+    return db.registerNewUser(first, last, username, password);
   }
   
   /**
    * 
    * @param password
-   * @return boolean true if password has all criteria
+   * @return boolean representation of checking the password, 0 if meets all criteria
+   * 		1 if less than 8 characters, 2 if it does not contain a letter or 3 if it does not contain a number
    */
-  public boolean checkPasswordCriteria(String password) {
-    Boolean hasLetter = False;
-    Boolean hasNumber = False;
+  public int checkPasswordCriteria(String password) {
+    boolean hasLetter = false;
+    boolean hasNumber = false;
     if (password.length() < 8) {
-      
-    	return false;
-    	//System.out.println("Password must be at least 8 characters.");
+    	return 1;
     }
+    else {
     for (int i = 0; i < password.length(); i++) {
       if (Character.isLetter(password.charAt(i))) {
-        hasLetter = True;
+        hasLetter = true;
       }
       else if (Character.isDigit(password.charAt(i))) {
-        hasNumber = True;
+        hasNumber = true;
       }
     }
+    }
     if (!hasLetter) {
-    	return false;
-      //System.out.println("Password must have at least 1 letter.");
+    	return 2;
     }
     if (!hasNumber) {
-    	return false;
-      //System.out.println("Password must have at least 1 number.");
+    	return 3;
     }
-    if (hasLetter == true && hasNumber == true && password.length() >= 8) {
-    	return true;
+    if (hasLetter == true && hasNumber == true) {
+    	return 0;
     }
+    return 1;
   }
   
-  public void checkPasswordMatch(String username, String password) {
-    Account user = DBController.findByUsername(username);
-    String myPassword = DBController.findUserPassword(user);
-    if (password != myPassword) {
-      System.out.println("Passwords do not match.");
-    }
+  public boolean checkPasswordMatch(String password, String password1) {
+	  if(password.equals(password1)) {
+		  return true;
+	  }
+	  return false;
   }
   
 }

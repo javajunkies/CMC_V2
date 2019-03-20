@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * Controller class that handles all of Admin functionalities
  * 
- * @ author Java Junkies
+ * @author Java Junkies
  * @version March 19, 2019
  */
 
@@ -42,7 +42,7 @@ public class AdminController {
    * Calls the getAllUniversities method from DBController.
    */
   
-  public ArrayList<Universities> viewUniversities() {
+  public ArrayList<University> viewUniversities() {
     dbcontroller.getAllUniversities();
   }
 
@@ -141,9 +141,13 @@ public class AdminController {
   
   public List<User> viewUsers() {
     return dbcontroller.getAllUsers();
-  }
-
-
+  } 
+  
+/**
+ * 
+ * @param username
+ * @return boolean if username is unique, returns true
+ */
 
   /**
    * Checks to see if a certain username is unique
@@ -169,12 +173,18 @@ public class AdminController {
    * @param username is the username of the new user
    * @param password is the password of the new user
    * @param type is the type of new user
+   * 
+   * @param firstName is the first name of the new user
+   * @param lastName is the last name of the new user
+   * @param username is the username of the new user
+   * @param password is the password of the new user
+   * @param type is the type of new user
    */
   public boolean addNewUser(String firstName, String lastName, String username, String password, char type) {
-	  if(accountController.checkPasswordCriteria(password) == true) {
+	  if(accountController.checkPasswordCriteria(password) == 0) {
 		  if(type =='u' || type == 'a'){
 			  dbcontroller.createUser(firstName, lastName, username, password, type);
-			  return true.
+			  return true;
 		  }
 		  else {
 			  return false;
@@ -183,9 +193,7 @@ public class AdminController {
 	  else {
 		  return false;
 	  }
-	  
-  } 
-
+  }
   /**
    * Calls the viewUser method from DBController
    * 
@@ -202,8 +210,6 @@ public class AdminController {
    * Deactivates an user
    * 
    * @param username is the user being deactivated
-   * @return int
-   * 
    */
 
   public int deactivateUser(String username)

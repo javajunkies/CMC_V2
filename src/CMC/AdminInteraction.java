@@ -38,6 +38,7 @@ if(loginController.login(username,password) == 2) {
 if(loginController.login(username,password) == 3) {
 	   return "Status inactive.";
 }
+return "Please Try Again.";
  }
  
  /**
@@ -113,8 +114,10 @@ if(loginController.login(username,password) == 3) {
  * @return ArrayList<Universities>
  */
 
- public ArrayList<Universities> viewUniversities() {
-  return adminController.getUniversities();
+ public ArrayList<University> viewUniversities() {
+  return adminController.viewUniversities();
+
+
 }
  
 
@@ -122,7 +125,7 @@ if(loginController.login(username,password) == 3) {
  /**
   * Calls the viewUserInfo method from AdminController and passes the specified paramter
   * 
-  * @param username is the user whos profile is being viewed
+  * @param username is the user whose profile is being viewed
   * @return an User object that belongs to the specified username
   */
  
@@ -135,7 +138,7 @@ if(loginController.login(username,password) == 3) {
   * 
   * @return A list of all the users
   */
- public ArrayList<User> viewUsers(){
+ public List<User> viewUsers(){
    return adminController.viewUsers();
  }
  
@@ -149,9 +152,7 @@ if(loginController.login(username,password) == 3) {
    if(adminController.deactivateUser(username) == 0) {
 	   return "User deactivated.";
    }
-   else if(adminController.deactivateUser(username) == 1){
 	   return "User already inactive.";
-   }
  }
  /**
   * calls the adminController to edit a user
@@ -176,7 +177,6 @@ if(loginController.login(username,password) == 3) {
   * @param username is the username of the new user
   * @param password is the password of the new user
   * @param type is the type of new user
-  * 
   * @return boolean true if username is unique
   */
 
@@ -188,5 +188,5 @@ if(loginController.login(username,password) == 3) {
 	 else {
 		 return false;
 	 }
- 
+}
 }
