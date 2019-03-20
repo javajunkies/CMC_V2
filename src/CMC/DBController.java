@@ -243,6 +243,8 @@ public class DBController {
      * @param maxSocialScale is an integer between 1 and 5 (5 being the best) indicating the max quality of the social life at this university
      * @param minQualityOfLife is an integer between 1 and 5 (5 being the best) indicating the min overall quality of life at this university
      * @param maxQualityOfLife is an integer between 1 and 5 (5 being the best) indicating the max overall quality of life at this university
+     * 
+     * @return ArrayList<Universities> an array list of university objects that matched search criteria
      */
   public ArrayList<University> searchUniversities(String mySchool,String myState,String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife) 
   {
@@ -306,7 +308,7 @@ public class DBController {
   
   
   /**
-   * A method to view a List of all universities
+   * A method to view a List of all universities in the DB
    * 
    */
   public ArrayList<University> getAllUniversities()
@@ -315,7 +317,7 @@ public class DBController {
   }
   
   /**
-   *  A method that Lists all of the users
+   *  A method that Lists all of the users in the DB
    */
   public List<User> getAllUsers() {
     //User user=new User();

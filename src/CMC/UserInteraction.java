@@ -137,16 +137,6 @@ public class UserInteraction
  }
  
  /**
-  * Searches database of schools
-  * 
-  * @param search - search criteria
-  */
- public void search(List<string> search) 
- {
-  UserController.search(search);
- }
- 
- /**
   * Saves the school to user's list
   * 
   * @param university
@@ -157,7 +147,7 @@ public class UserInteraction
  }
  
  /**
-  * Compares two schools
+  * calls the UserController to compare two schools
   * 
   * @param u1
   * @param u2
