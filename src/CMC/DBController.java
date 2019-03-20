@@ -399,12 +399,7 @@ public class DBController {
    * This method sorts a users saved schools by attendance
    */
   public List<University> sortSavedSchoolsByNumStudents(int numStudents, String username) {
-  
-<<<<<<< HEAD
-=======
    List<Universities> byNumStudents = new ArrayList<>();
-   
-   
   }
      
   /**
@@ -426,7 +421,6 @@ public class DBController {
    
   }
      
-    //publicSortSavedSchools
   
 }
    
@@ -437,10 +431,7 @@ public class DBController {
      
    
    // make a point system or assign a to add up all of the 
-   
-
   
->>>>>>> 68c952f797d2591c92998e9c0dd0f28b0aac8af2
   public int removeUniversity(String name)
   {
     return db.university_deleteUniversity(name);
