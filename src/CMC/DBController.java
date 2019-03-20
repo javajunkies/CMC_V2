@@ -206,19 +206,17 @@ public class DBController {
    * @param state the search criteria
    * @param numberOfStudents the search criteria
    */
-  public String[] searchUniversities(String state, int numberOfStudents) 
+  public String[] searchUniversities(String mySchool,String myState,String myLocation,String myControl,int myNumStudents,double myPercentFemale,double mySATVerbal,double mySATMath,double myExpenses,double myPercentFinancialAid,int myNumApplicants,double myPercentAdmitted,double myPercentEnrolled,int myAcademicsScale,int mySocialScale,int myQualityOfLife) 
   {
     String[][] universities = db.university_getUniversities();
     int rowLength = universities[0].length;
     int colLength = universities[1].length; 
-    String[] matchUni;
+    ArrayList<University> matchUni = new ArrayList<University>();
     int k = 0;
     
     for(int i = 0; i < rowLength; i++) {
       for(int j = 0; j < colLength; j++) {
-        if(universities[i][1].equals(state)  && Integer.parseInt(universities[i][4]) < numberOfStudents) {     //  <--- fix this boy
-          matchUni[k] = universities[i][0];
-          k++;
+        if(universities[i][0].contains(mySchool) || mySchool.equals("0") && universities[i][1].contains(myState) || myState.equals("0") && universities[i][2].equals(myLocation) || myLocation.equals("0") && universities[i][3].contains(myControl) || myControl.equals("0") && minNumStudents <= Integer.parseInt(universities[j][4]) <= maxNumStudents && minPercentFemale <= Double.parseDouble(universities[j][5]) <= maxPercentFemale && minSATVerbal = Double.parseDouble(universities[j][6]) <= maxSATVerbal && minSATMath = Double.parseDouble(universities[j][7]) <= maxSATMath && minExpenses = Double.parseDouble(universities[j][8]) <= maxExpenses && minPercentFinancialAid <= Double.parseDouble(universities[j][9]) <= maxFinancialAid && minNumApplicants <= Integer.parseInt(universities[j][10]) <= maxNumApplicants && minPercentAdmitted <= Double.parseDouble(universities[j][11]) <= maxPercentAdmitted && minEercentEnrolled <= Double.parseDouble(universities[j][12]) <= maxPercentEnrolled && minAcademicsScale <= Integer.parseInt(universities[j][13]) <= maxAcademicsScale && minSocialScale <= Integer.parseInt(universities[j][14]) <= maxSocialScale && minQualityOfLife <= Integer.parseInt(universities[j][15]) <= maxQualityOfLife) {
         }
       }
     }
