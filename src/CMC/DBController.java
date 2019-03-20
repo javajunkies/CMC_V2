@@ -355,6 +355,65 @@ public class DBController {
   }
 
 
+  /**
+   *  
+   * @param username username of the user 
+   * 
+   * a method to get the User's saved schools
+   */
+  public ArrayList<University> viewSavedSchools(String username) 
+  {
+
+      
+   ArrayList<University> userSavedSchools = new ArrayList<University>();
+   
+   //get all of the users with saved schools
+   String[][] users = db.user_getUsernamesWithSavedSchools();
+   
+  //get the Universities from db and make a new list with them
+  String[][] universities = db.university_getUniversities();
+  int rowLength = universities[0].length;
+  int colLength = universities[1].length;
+  for(int i = 0; users[0].length; i++) {
+   for(int j = 0; j <rowLength; i++) {
+	   if(users[i][1].equals(universities[j][0]){
+		   String school = universities[j][0];
+		   String state = universities[j][1];
+		   String location = universities[j][2];
+		   String control = universities[j][3];
+		   int numStudents = Integer.parseInt(universities[j][4]);	
+		   double percentFemale = Double.parseDouble(universities[j][5]);
+		   double SATVerbal = Double.parseDouble(universities[j][6]);
+		   double SATMath = Double.parseDouble(universities[j][7]);
+		   double expenses = Double.parseDouble(universities[j][8]);
+		   double percentFinancialAid = Double.parseDouble(universities[j][9]);
+		   int numApplicants = Integer.parseInt(universities[j][10]);
+		   double percentAdmitted = Double.parseDouble(universities[j][11]);
+		   double percentEnrolled = Double.parseDouble(universities[j][12]);
+		   int academicsScale = Integer.parseInt(universities[j][13]);
+		   int socialScale = Integer.parseInt(universities[j][14]);
+		   int qualityOfLife = Integer.parseInt(universities[j][15]);
+		   University univ = new University(school, state, location, control, numStudents, percentFemale, mySATVerbal, mySATMath, myExpenses, myPercentFinancialAid, myNumApplicants, myPercentAdmitted, myPercentEnrolled, myAcademicsScale, mySocialScale, myQualityOfLife);
+		   userSavedSchools.add(univ);
+	   }
+   }
+  }
+  return userSavedSchools;
+  }
+   
+ 
+   //for those Universiies , find the price of their saved schools
+   
+   //if (users[i] = username);
+   //go to their  price column of all of their saved universities
+   //String [][] = price
+   //sort the price column using a temp variable
+     
+  //return userSavedSchools; 
+   //}
+  //}
+   
+
    
   /**
    * @param numStudent  the number of students attending a university
@@ -365,10 +424,6 @@ public class DBController {
   
    List<Universities> byNumStudents = new ArrayList<>();
    byNumStudents.getUsersSavedSchools();
-   
-   
-   
-   
   }
      
   /**
@@ -458,12 +513,15 @@ public class DBController {
       }
     }
   }
+<<<<<<< HEAD
   
 >>>>>>> 6920587d60f42fcefbf02dc8aa9adeb9a123eb46
   public void viewSavedSchools(String username)
   {
     
   }
+=======
+>>>>>>> 0db50a7777073befd72aadbef418b7db325c6e6a
 
 
 public int addToSaved(String username, String university)
