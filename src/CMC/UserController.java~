@@ -26,16 +26,12 @@ public class UserController {
   logInController.logoff();
  }
  
- public void viewExistingUniversity(University university) {
-   dbcontroller.viewExistingUniversity(University university);
- }
- 
  /**
   * finds a users saved schools
   * @param username the users username
   */
  public void viewSavedSchools(String username) {
-  dbcontroller.viewSavedSchools(username);
+  dbcontroller.getUserSavedSchools(username);
  }
  
  /**
