@@ -6,24 +6,19 @@ package CMC;
  * Driver for all use cases
  */
 public class Phase2Driver { 
-  
-  /* ---- Dane stuff ------
-   Scanner sc = new Scanner(System.in);
-   System.out.println("Enter username to login");
-   String username = sc.nextLine();
-   System.out.println("Enter password to login");
-   String password = sc.nextLine(); */
-  
-  
-  //objects
-  UserInteraction  ui = new UserInteraction();
-  AdminInteraction ai = new AdminInteraction();
+	
+	
+  public String 
   
   public static void main(String[] args)
   {
+	//objects
+	UserInteraction  ui = new UserInteraction();
+	AdminInteraction ai = new AdminInteraction();
+	
     //create testers
-    ai.addNewUser("test", "user", "testUser", "Password1", a);
-    ai.addUniversity("testSchool", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 );
+    ai.addNewUser("test", "user", "testUser", "Password1", 'a');
+    ai.addUniversity("testSchool", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 );
     
     
     //U1 Login

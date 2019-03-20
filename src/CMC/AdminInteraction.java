@@ -56,8 +56,13 @@ return "Please Try Again.";
   * @param school is the name of the school being removed
   */
 
- public int removeUniversity(String school){
-   return adminController.removeUniversity(school);
+ public String removeUniversity(String school){
+   if(adminController.removeUniversity(school) == 1) {
+	   return "School: " + school + " was successfully removed.";
+   }
+   else {
+	   return "Something went wrong! Please try again.";
+   }
  }
  
  /**
@@ -80,8 +85,13 @@ return "Please Try Again.";
   * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
   */
 
- public int addUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
-   return adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
+ public String addUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
+    if(adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife) == 1) {
+    	return "School: " + school + " was successfully added.";
+    }
+    else {
+    	return "Something went wrong! Please try again.";
+    }
  }
  /**
   * Calls the editUniversity method from AdminController and passes it the specified parameters
@@ -104,8 +114,13 @@ return "Please Try Again.";
   * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
   */
 
- public int editUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
-   return adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
+ public String editUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
+   if(adminController.editUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife) == 1) {
+	   return "School: " + school + " was successfully updated.";
+   }
+   else {
+	   return "Something went wrong! Please try again.";
+   }
  }
  
  /**
@@ -114,10 +129,8 @@ return "Please Try Again.";
  * @return ArrayList<Universities>
  */
 
- public ArrayList<University> viewUniversities() {
+ public List<String> viewUniversities() {
   return adminController.viewUniversities();
-
-
 }
  
 
@@ -180,13 +193,15 @@ return "Please Try Again.";
   * @return boolean true if username is unique
   */
 
- public boolean addNewUser(String firstName, String lastName, String username, String password, char type){
+ public int addNewUser(String firstName, String lastName, String username, String password, char type){
 	 if(adminController.isUniqueUsername(username) == true) {  
-		 adminController.addNewUser(firstName,lastName,username,password,type);
-		 return true;
+		return  adminController.addNewUser(firstName,lastName,username,password,type);
+	 }
+	 else if(adminController.isUniqueUsername(username) == false){
+		 return -2;
 	 }
 	 else {
-		 return false;
+		 return -3;
 	 }
 }
 }

@@ -34,7 +34,7 @@ public class UserController {
   * call the DBController to find a users saved schools
   * @param username the users username
   */
- public ArrayList<University> viewSavedSchools(String username) {
+ public List<String> viewSavedSchools(String username) {
   return dbcontroller.viewSavedSchools(username);
  }
  

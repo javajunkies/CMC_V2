@@ -1,4 +1,8 @@
 package CMC;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Java Junkies
  *
@@ -41,7 +45,7 @@ public class UserInteraction
    * 
    * @param user - username of user
    */
-  public ArrayList<University> viewSavedSchools(String username)
+  public List<String> viewSavedSchools(String username)
   {
     return UserController.viewSavedSchools(username);
   }
@@ -92,12 +96,27 @@ public class UserInteraction
    * @param last - last name
    * @param password - desired password
    */
-  public void register(String first, String last, String password)
+  public int register(String first, String last, String username, String password)
   {
-    if (password.length == 8 && password.contains("[a-zA-Z]*") && password.contains("[0-9]*"))
-    {
-      AccountController.register(first, last, password);
-    }
+	  if(AccountController.checkPasswordCriteria(password) == 0) {
+		  int i = AccountController.register(first, last, username, password);
+		  if(i == 1) {
+			  return 0;
+		  }
+		  else {
+		  return 4;
+		  }
+	  }
+	  else if(AccountController.checkPasswordCriteria(password) == 1) {
+		  return 1;
+	  }
+	  else if(AccountController.checkPasswordCriteria(password) == 2) {
+		  return 2;
+	  }
+	  else {
+		  return 3;
+	  }
+    
   }
   
   /**
@@ -107,11 +126,12 @@ public class UserInteraction
    * @param numOfStudents - number of students at school
    * @param percentAdmitted - acceptance rate
    * @param user - username to get saved schools
-   */
+   *
   public ArrayList<University> sortSavedSchools(int price, int numOfStudents, int percentAdmitted, String username)
   {
     return UniversityController.sortSavedSchools(price, numOfStudents, percentAdmitted, username);
   }
+  */
   
   /**
    * gets list of recommended universities 
@@ -137,11 +157,12 @@ public class UserInteraction
   /**
    * Saves the school to user's list
    * 
-   * @param university
+   * @param university is the university being saved to saved schools list
+   * @param username is the username of the profile the school is being saved to
    */
-  public int saveSchool(University university)
+  public int saveSchool(String username, String university)
   {
-    return UserController.saveSchool(university);
+    return UserController.saveSchool(username, university);
   }
   
   /**

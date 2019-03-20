@@ -42,14 +42,14 @@ public class AdminController {
    * Calls the getAllUniversities method from DBController.
    */
   
-  public ArrayList<University> viewUniversities() {
+  public List<String> viewUniversities() {
     return dbcontroller.getAllUniversities();
   }
 
   /**
    * Calls the removeUniversity method from DBController.
    * 
-   * @param name is the name of the university being romved
+   * @param name is the name of the university being removed
    */
   
   public int removeUniversity(String name) {
@@ -180,18 +180,9 @@ public class AdminController {
    * @param password is the password of the new user
    * @param type is the type of new user
    */
-  public boolean addNewUser(String firstName, String lastName, String username, String password, char type) {
+  public int addNewUser(String firstName, String lastName, String username, String password, char type) {
 	  if(accountController.checkPasswordCriteria(password) == 0) {
-		  if(type =='u' || type == 'a'){
-			  dbcontroller.createUser(firstName, lastName, username, password, type);
-			  return true;
-		  }
-		  else {
-			  return false;
-		  }
-	  }
-	  else {
-		  return false;
+	     return dbcontroller.createUser(firstName, lastName, username, password, type);
 	  }
   }
   /**
