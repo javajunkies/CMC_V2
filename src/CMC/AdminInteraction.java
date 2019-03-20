@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class AdminInteraction{
  
- // Initializes AdminController and LoginController objects
+	// Initializes AdminController, AccountContriller and LoginController objects
  AdminController adminController = new AdminController();
  LoginController loginController = new LoginController();
  AccountController accountController = new AccountController();
@@ -27,17 +27,18 @@ public class AdminInteraction{
 
  public String login(String username, String password){
    if(loginController.login(username,password) == 0) {
-    return "Logged in.";
+	   return "Logged in.";
    }
 if(loginController.login(username,password) == 1) {
- return "Username not found.";
+	return "Username not found.";
    }
 if(loginController.login(username,password) == 2) {
- return "Password invalid.";
+	return "Password invalid.";
 }
 if(loginController.login(username,password) == 3) {
-    return "Status inactive.";
+	   return "Status inactive.";
 }
+return "Please Try Again.";
  }
  
  /**
@@ -107,11 +108,16 @@ if(loginController.login(username,password) == 3) {
    return adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife);
  }
  
- /* Calls the getAllUniversities method from DBController.
+ /**
+ *
+ * Calls the getAllUniversities method from DBController.
+ * @return ArrayList<Universities>
  */
 
- public ArrayList<Universities> viewUniversities() {
-  return adminController.getUniversities();
+ public ArrayList<University> viewUniversities() {
+  return adminController.viewUniversities();
+
+
 }
  
 
@@ -119,7 +125,7 @@ if(loginController.login(username,password) == 3) {
  /**
   * Calls the viewUserInfo method from AdminController and passes the specified paramter
   * 
-  * @param username is the user whos profile is being viewed
+  * @param username is the user whose profile is being viewed
   * @return an User object that belongs to the specified username
   */
  
@@ -132,7 +138,7 @@ if(loginController.login(username,password) == 3) {
   * 
   * @return A list of all the users
   */
- public ArrayList<User> viewUsers(){
+ public List<User> viewUsers(){
    return adminController.viewUsers();
  }
  
@@ -144,11 +150,23 @@ if(loginController.login(username,password) == 3) {
   */
  public String deactivateUser(String username){
    if(adminController.deactivateUser(username) == 0) {
-    return "User deactivated.";
+	   return "User deactivated.";
    }
-   else if(adminController.deactivateUser(username) == 1){
-    return "User already inactive.";
-   }
+	   return "User already inactive.";
+ }
+ /**
+  * calls the adminController to edit a user
+  * @param username the users username
+  * @param firstName the users desired firstname
+  * @param lastName the users desired lastname
+  * @param password the users desired password
+  * @param type the type of user
+  * @param status the status of the account
+  * @return int
+  */
+ public int adminEditUser(String username, String firstName, String lastName, String password, char type, char status)
+ {
+   return adminController.editUser(username, firstName, lastName, password, type, status);
  }
 
  /**
@@ -159,28 +177,16 @@ if(loginController.login(username,password) == 3) {
   * @param username is the username of the new user
   * @param password is the password of the new user
   * @param type is the type of new user
-  * 
   * @return boolean true if username is unique
   */
 
- public boolean addNewUser(String firstName,String lastName,String username,String password,char type){
-  if(adminController.isUniqueUsername(username) == true) {  
-   adminController.addNewUser(firstName,lastName,username,password,type);
-   return true;
-  }
-  else {
-   return false;
-  }
-  
-  /**
-   * Deletes a user
-   * 
-   * @param user - user to delete
-   */
-  
-  public void deleteUser(String userName);
-  {
-    
-  }
- 
+ public boolean addNewUser(String firstName, String lastName, String username, String password, char type){
+	 if(adminController.isUniqueUsername(username) == true) {  
+		 adminController.addNewUser(firstName,lastName,username,password,type);
+		 return true;
+	 }
+	 else {
+		 return false;
+	 }
+}
 }
