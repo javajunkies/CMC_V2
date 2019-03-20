@@ -366,4 +366,30 @@ public int removeFromSaved(String username, String university)
 {
 	return db.user_removeSchool(username, university);
 }
+
+/**
+ * Deactivates user by setting status to 'N'
+ * 
+ * @param username is the user being deactivated
+ * @return an int representation of the deactivation, 1 means successful, -1 means unsuccessful
+ */
+
+public int deactivateUser(String username) {
+	String[][] users = db.user_getUsers();
+	String first = "";
+	String last = "";
+	String user = ""; 
+	String password = "";
+	char type = 'N';
+	for(int i = 0; i < users.length; i++) {
+		if(users[i][2].equals(username)) {
+			first = users[i][0];
+			last = users[i][1];
+			user = users[i][2];
+			password = users[i][3];
+			type = users[i][4].charAt(0);
+		}
+	}
+	return db.user_editUser(user, first, last, password, type, 'N');
+}
 }
