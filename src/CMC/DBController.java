@@ -391,7 +391,7 @@ public class DBController {
    * 
    * a method to get the User's saved schools
    */
-  public List<University> getUserSavedSchools(String username) 
+  public List<University> viewSavedSchools(String username) 
   {
 
       
@@ -493,29 +493,30 @@ public class DBController {
      return true;
   }
   
-  public void viewExistingUniversity(University university) {
+  public University viewExistingUniversity(University university) {
     String [][] universities = db.university_getUniversities();
     for (int i = 0; i < universities[0].length(); i++){
       if (universities[i][0].equals(university.getSchool())) {
         String school = universities[i][0];
-      String state = universities[i][1];
-      String location = universities[i][2];
-      String control = universities[i][3];
-      int numStudents = Integer.parseInt(universities[i][4]);
-      double percentFemale = Double.parseDouble(universities[i][5]);
-      double SATVerbal = Double.parseDouble(universities[i][6]);
-      double SATMath = Double.parseDouble(universities[i][7]);
-      double expenses = Double.parseDouble(universities[i][8]);
-      double percentFinancialAid = Double.parseDouble(universities[i][9]);
-      int numApplicants = Integer.parseInt(universities[i][10]);
-      double percentAdmitted = Double.parseDouble(universities[i][11]);
-      double percentEnrolled = Double.parseDouble(universities[i][12]);
-      int academicsScale = Integer.parseInt(universities[i][13]);
-      int socialScale = Integer.parseInt(universities[i][14]);
-      int qualityOfLife = Integer.parseInt(universities[i][15]);
-      University university = new University(school, state, location, control, numStudents, percentFemale, mySATVerbal, mySATMath, myExpenses, myPercentFinancialAid, myNumApplicants, myPercentAdmitted, myPercentEnrolled, myAcademicsScale, mySocialScale, myQualityOfLife);
+        String state = universities[i][1];
+        String location = universities[i][2];
+        String control = universities[i][3];
+        int numStudents = Integer.parseInt(universities[i][4]);
+        double percentFemale = Double.parseDouble(universities[i][5]);
+        double SATVerbal = Double.parseDouble(universities[i][6]);
+        double SATMath = Double.parseDouble(universities[i][7]);
+        double expenses = Double.parseDouble(universities[i][8]);
+        double percentFinancialAid = Double.parseDouble(universities[i][9]);
+        int numApplicants = Integer.parseInt(universities[i][10]);
+        double percentAdmitted = Double.parseDouble(universities[i][11]);
+        double percentEnrolled = Double.parseDouble(universities[i][12]);
+        int academicsScale = Integer.parseInt(universities[i][13]);
+        int socialScale = Integer.parseInt(universities[i][14]);
+        int qualityOfLife = Integer.parseInt(universities[i][15]);
+        University university = new University(school, state, location, control, numStudents, percentFemale, mySATVerbal, mySATMath, myExpenses, myPercentFinancialAid, myNumApplicants, myPercentAdmitted, myPercentEnrolled, myAcademicsScale, mySocialScale, myQualityOfLife);
       }
     }
+    return university;
   }
   
   public void viewSavedSchools(String username)
