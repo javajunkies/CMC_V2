@@ -135,7 +135,7 @@ public class DBController {
    
    
   /**
-   * method to view a list of all universities
+   * A method to view a List of all universities
    * 
    */
   public String[][] getAllUniversities()
@@ -144,7 +144,7 @@ public class DBController {
   }
   
   /**
-   * view all users in database
+   *  A method that Lists all of the users
    */
    public List<User> getAllUsers() 
   {
@@ -168,6 +168,7 @@ public class DBController {
   
   /**
    * @param username the active users username 
+   * 
    * method to view retrieve a users info from the database and display it. 
    */
   public User viewUser(String username)
@@ -210,16 +211,83 @@ public class DBController {
     db.user_editUser(firstName, lastName, username, password, type, status);
   }
   
+  
   /**
-   * @param price price of the school 
-   * @param numStudents number of students attending the university 
-   * @param acceptanceRate acceptance rate of the university
-   * @param username username 
+   *  
+   * @param username username of the user 
    * 
-   * a method to sort a users Saved schools
+   * a method to get the User's saved schools
    */
-  public void sortSavedSchools(int price, int numStudents, int acceptanceRate, String username) 
+  public List<University> getUserSavedSchools(int price, int numStudents,, String username) 
   {
+      
+	  List<Universities> userSavedSchools = new ArrayList<>();
+	  
+	  //get all of the users with saved schools
+	  String[][] users = db.user_getUsernamesWithSavedSchools();
+	  
+	 //get the Universities from db and make a new list with them
+	 String[][] universities = db.university_getUniversities();
+	 int rowLength = universities[0].length;
+	 int colLength = universities[1].length;
+	  
+	  for(int i = 0; db.length; i++) {
+		  db.
+	  }
+	  
+	
+	  //for those Universiies , find the price of their saved schools
+	  for(int i = 0; users[0].length; i++) {
+		 if (users[i] = username);
+		 //go to their  price column of all of their saved universities
+		 String [][] = price
+		 //sort the price column using a temp variable
+				 
+		return userSavedSchools; 
+	  }
+  }
+	  
+	  
+	 /**
+	  * @param numStudent  the number of students attending a university
+	  * 
+	  * This method sorts a users saved schools by attendance
+	  */
+	 public List<University> sortSavedSchoolsByNumStudents(int numStudents) {
+		
+		 List<Universities> byNumStudents = new ArrayList<>();
+		 
+		 
+	 }
+     
+	 /**
+	  * @param price price of the school
+	  * 
+	  * This method sorts a users saved schools by price
+	  */
+	 public List<University> sortByPrice(int price) {
+		 
+	 }
+	 
+	 //should this be an int?????
+	 /**
+	  * @param acceptanceRate 
+	  * 
+	  * This method sorts a users saved school by acceptance rate
+	  */
+     public List<University> sortByAdmittance(int acceptanceRate, ) {
+		 
+	 }
+	 
+}
+	  
+
+	   
+	 
+	  
+			  
+	  
+   // make a point system or assign a to add up all of the 
 	  
   }
 }
