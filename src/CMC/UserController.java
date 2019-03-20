@@ -27,7 +27,7 @@ public class UserController {
  }
  
  public void viewExistingUniversity(University university) {
-   dbcontroller.viewExistingUniversity(University university);
+   dbcontroller.viewExistingUniversity(university);
  }
  
  /**

@@ -6,13 +6,6 @@ package CMC;
  */
 public class UserInteraction 
 {
-
- /**
-  * Constructor
-  */
- public UserInteraction() {
-  
- }
  
  //objects
  UserController UserController = new UserController();
@@ -38,8 +31,9 @@ public class UserInteraction
   UserController.logoff();
  }
  
+ 
  public void viewExistingUniversity(University university) {
-   UserController.viewExistingUniversity(University university);
+   UserController.viewExistingUniversity(university);
  }
  
  /**

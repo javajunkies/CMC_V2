@@ -393,9 +393,6 @@ public class DBController {
    */
   public List<University> getUserSavedSchools(String username) 
   {
-<<<<<<< HEAD
-   
-=======
 
       
    List<Universities> userSavedSchools = new ArrayList<>();
@@ -422,7 +419,6 @@ public class DBController {
      
   return userSavedSchools; 
    }
->>>>>>> 59a507aae60e92cb828c8495acbd957d57b4c9dc
   }
    
    
@@ -519,7 +515,7 @@ public class DBController {
       int qualityOfLife = Integer.parseInt(universities[i][15]);
       University university = new University(school, state, location, control, numStudents, percentFemale, mySATVerbal, mySATMath, myExpenses, myPercentFinancialAid, myNumApplicants, myPercentAdmitted, myPercentEnrolled, myAcademicsScale, mySocialScale, myQualityOfLife);
       }
-  }
+    }
   }
   
   public void viewSavedSchools(String username)
