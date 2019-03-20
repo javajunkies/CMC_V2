@@ -188,6 +188,19 @@ public class DBController {
   }
   
   /**
+   * @param u1 the first university to compare
+   * @param u2 the second university to compare
+   * 
+   * This methods puts two universities side by side so that they may be compared
+   */
+  public ArrayList<University> compare(University u1, University u2) {
+	  ArrayList<University> list = new ArrayList<University>();
+	  list.add(u1);
+	  list.add(u2);
+	  return list;
+  }
+  
+  /**
    * @param String firstName
    * @param String lastName
    * @param String username
