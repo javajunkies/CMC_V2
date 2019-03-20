@@ -38,6 +38,10 @@ public class UserInteraction
   UserController.logoff();
  }
  
+ public void viewExistingUniversity(University university) {
+   UserController.viewExistingUniversity(University university);
+ }
+ 
  /**
   * calls the UserController to view a users saved schools
   * 
