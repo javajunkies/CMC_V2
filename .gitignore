@@ -6,26 +6,7 @@
 *.jar
 *.war
 *.ear
-*.java~
-*.temp
 hs_err_pid*
-
-##########################
-# Packages #
-##########################
-# it's better to unpack these files and commit the raw source
-# git has its own built in compression methods
-*.jar
-*.rar
-*.tar
-*.zip
-
-##########################
-# Others #
-##########################
-*.jpg
-*.jpeg
-Thumbs.db
 
 ##########################
 ## Maven
