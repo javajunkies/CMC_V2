@@ -582,7 +582,7 @@ public class DBController {
    * @param qualityOfLifeScale (a number between 1 and 5 with 5 being the best indicating the quality of the students' lives at the university)
    * 
    * method allows admin to add a university to the database with all the given information
-   * returns 1 if university was successfully added, 0 if not.
+   * @return 1 if university was successfully added, -1 if not.
    */
   
   public int addUniversity(String school, String state, String location, String control, int numberOfStudents,
@@ -613,7 +613,7 @@ public class DBController {
    * @param qualityOfLifeScale (a number between 1 and 5 with 5 being the best indicating the quality of the students' lives at the university)
    * 
    * method allows admin to edit information about a university given the current criteria.
-   * returns 1 if university successfully edited, 0 if not
+   * @return 1 if university successfully edited, -1 if not
    */
   
   
@@ -624,6 +624,13 @@ public class DBController {
   {
     return db.university_editUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale); 
   }
+  
+  /**
+   * @param username (the username being checked)
+   * 
+   * method searches through the list of usernames to ensure that the given username does not already refer to an existing account.
+   * @return true if username is unique, otherwise false
+   */
   
   public boolean isUniqueUsername(String username)
   {
@@ -636,6 +643,12 @@ public class DBController {
     return true;
   }
   
+  /**
+   * @param university (the university being viewed)
+   * 
+   * method displays information on a university from the database
+   * @return the university with all the given information
+   */
   
   public University viewExistingUniversity(University university) {
     String [][] universities = db.university_getUniversities();
@@ -655,7 +668,7 @@ public class DBController {
     double percentFinancialAid = 0;
     double percentAdmitted = 0;
     double percentEnrolled = 0; 
-    for (int i = 0; i < universities.length; i++){
+    for (int i = 0; i < universities.length(); i++){
       if (universities[i][0].equals(university.getSchool())) {
         school = universities[i][0];
         state = universities[i][1];
@@ -683,6 +696,14 @@ public class DBController {
   {
     
   }
+  
+  /**
+   * @param username (the username of the user)
+   * @param university (the university being added to the user's saved schools)
+   * 
+   * method adds university to a user's list of saved school's
+   * @return int 1 if school successfully added, -1 otherwise
+   */
   
   public int addToSaved(String username, String university)
   {
@@ -714,6 +735,13 @@ public class DBController {
     }
     return db.user_editUser(user, first, last, password, type, 'N');
   }
+  /**
+   * @param username (the username of the user)
+   * @param university (the university being removed from the user's saved schools)
+   * 
+   * method removes a school from the user's list of saved schools.
+   * @return 1 if school successfully removed from user's saved schools, otherwise -1
+   */
   
   public int removeFromSaved(String username, String university)
   {
@@ -746,9 +774,26 @@ public class DBController {
     return db.user_editUser(user, first, last, password, type, 'N');
   }
   
+  /**
+   * @param username (the username of the user)
+   * 
+   * method allows admin to delete user from db
+   * @return 1 if the user was successfully deleted, otherwise -1
+   */
+  
   public int deleteUser(String username){
     return db.user_deleteUser(username);
   }
+  
+  /**
+   * @param first (the first name of the new user)
+   * @param last (the last name of the new user)
+   * @param user (the username of the new user's account)
+   * @param pass (the password of the new user's account)
+   * 
+   * method allows user to become registered into the database
+   * @return 1 if user was successfully registered, otherwise -1
+   */
   
   public int registerNewUser(String first, String last, String user, String pass) {
     return db.user_addUser(first, last, user, pass, 't');
