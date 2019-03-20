@@ -21,7 +21,7 @@ public class DBController {
     
   }
   
-  UniversityDBLibrary db = new UniversityDBLibrary("javajunk", "CSCI230");
+  UniversityDBLibrary db = new UniversityDBLibrary("javajunk", "csci230");
   
   /**
    * Searches for a specified user in the database.
@@ -429,11 +429,11 @@ public class DBController {
    * 
    * This method sorts a users saved schools by attendance
    */
-  public void sortByNumStudents(int numStudents, String username) {
+/*  public void sortByNumStudents(int numStudents, String username) {
     
     ArrayList<University> byNumStudents = new ArrayList<University>();
 
-  }
+  }*/
   
   /**
    * @param price price of the school
@@ -669,4 +669,11 @@ public class DBController {
   public int registerNewUser(String first, String last, String user, String pass) {
     return db.user_addUser(first, last, user, pass, 't');
   }
-}
+  
+  public static void main(String[] args) {
+	  DBController dbc = new DBController();
+	  System.out.println(dbc.isUser("juser"));
+  }
+  
+  }
+

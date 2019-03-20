@@ -25,20 +25,8 @@ public class AdminInteraction{
   * @param password is the password provided for login
   */
 
- public String login(String username, String password){
-   if(loginController.login(username,password) == 0) {
-	   return "Logged in.";
-   }
-if(loginController.login(username,password) == 1) {
-	return "Username not found.";
-   }
-if(loginController.login(username,password) == 2) {
-	return "Password invalid.";
-}
-if(loginController.login(username,password) == 3) {
-	   return "Status inactive.";
-}
-return "Please Try Again.";
+ public int login(String username, String password){
+  return loginController.login(username, password);
  }
  
  /**
@@ -161,11 +149,9 @@ return "Please Try Again.";
   * @param username is the username of the user being deactivated
   * @return an int representation of the deactivation, 1 if successful, -1 if failure
   */
- public String deactivateUser(String username){
-   if(adminController.deactivateUser(username) == 0) {
-	   return "User deactivated.";
-   }
-	   return "User already inactive.";
+ public int deactivateUser(String username){
+	   return adminController.deactivateUser(username);
+	 
  }
  /**
   * calls the adminController to edit a user

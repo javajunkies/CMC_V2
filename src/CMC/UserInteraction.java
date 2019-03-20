@@ -96,8 +96,9 @@ public class UserInteraction
    * @param last - last name
    * @param password - desired password
    */
-  public int register(String first, String last, String username, String password)
+  public int register(String first, String last, String username, String password, String password1)
   {
+	  if(AccountController.checkPasswordMatch(password, password1)) {
 	  if(AccountController.checkPasswordCriteria(password) == 0) {
 		  int i = AccountController.register(first, last, username, password);
 		  if(i == 1) {
@@ -116,7 +117,10 @@ public class UserInteraction
 	  else {
 		  return 3;
 	  }
-    
+	  }
+	  else {
+		  return 5;
+	  }
   }
   
   /**
