@@ -43,7 +43,7 @@ public class AdminController {
    */
   
   public ArrayList<University> viewUniversities() {
-    dbcontroller.getAllUniversities();
+    return dbcontroller.getAllUniversities();
   }
 
   /**
