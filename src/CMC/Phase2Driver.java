@@ -5,27 +5,32 @@ package CMC;
  *
  */
 public class Phase2Driver {	
+	Scanner sc = new Scanner(System.in);
+	System.out.println("Enter username to login");
+	String username = sc.nextLine();
+	System.out.println("Enter password to login");
+	String password = sc.nextLine();
 	
 	
 	
-	/**
-	 * private UniversityDBLibrary univDBLib;
+	
+	/**private UniversityDBLibrary univDBLib;
 	 public  Phase2Driver(String username, String password){
 		    univDBLib = new UniversityDBLibrary(username,password);
 		  }
 
 	 DBController db = new DBController();
   
+  **/
   
-  public UniversityDBLibrary getUnivDBLib() {
-    return univDBLib;
-  }
   
-  /**
-   * @param args
+	
+  @param args
    
   public static void main(String[] args) {
-    
+	  public UniversityDBLibrary getUnivDBLib() {
+		    return univDBLib;
+		  }
   }
   
   //for testing

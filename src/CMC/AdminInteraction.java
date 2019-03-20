@@ -1,4 +1,5 @@
 package CMC;
+import java.util.*;
 /**@author dkuhr001
  *@version 1.1 added methods
  *Class to handle admin interactions in the system and pass further commands to controller classes
@@ -99,7 +100,7 @@ public class AdminInteraction{
   * 
   */
  public List<User> viewUsers(){
-   adminController.viewUsers();
+   return adminController.viewUsers();
  }
  //@Description
  //@params
@@ -112,8 +113,11 @@ public class AdminInteraction{
   * @return boolean whether username is taken or not
   */
 
- public boolean searchUsers(String username){
-   adminController.searchUsers(username);
+ public boolean isUniqueUsername(String username){
+	 if(adminController.isUniqueUsername(username)) {
+		 return true;
+	 }
+	 return false;
  }
  /**@Description add new user, passes user info to admin controller
   * 
@@ -124,7 +128,7 @@ public class AdminInteraction{
   * @param type
   */
 
- public void addNewUser(String firstName,String lastName,String username,String password,String type){
+ public void addNewUser(String firstName,String lastName,String username,String password,char type){
    adminController.addNewUser(firstName,lastName,username,password,type);
  }
  

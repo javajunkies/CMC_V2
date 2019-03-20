@@ -16,7 +16,6 @@ public class UserInteraction
  
  //objects
  UserController UserController = new UserController();
- //User User = new User();
  AccountController AccountController = new AccountController();
  UniversityController UniversityController = new UniversityController();
  
@@ -26,7 +25,7 @@ public class UserInteraction
   * @param username - user's username
   * @param password - user's password
   */
- public void login(String username, String password);
+ public void login(String username, String password)
  {
   UserController.login(username, password);
  }
@@ -70,7 +69,7 @@ public class UserInteraction
   */
  public void register(String first, String last, String password)
  {
-  if (password.length = 8 && password.contains("[a-zA-Z]*") && password.contains("[0-9]*"))
+  if (password.length == 8 && password.contains("[a-zA-Z]*") && password.contains("[0-9]*"))
   {
    AccountController.register(first, last, password);
   }
@@ -94,7 +93,7 @@ public class UserInteraction
   * 
   * @param university - school
   */
- public void getRecommendedList(String university)   //List<University>)
+ public void getRecommendedList(University university)
  {
   UserController.getRecommendedList(university);
  }
@@ -105,7 +104,7 @@ public class UserInteraction
   * @param user - current user
   * @param school - school to remove
   */
- public void removeSavedSchool(String user, University school)
+ public void removeSavedSchool(String user, String school)
  {
   UserController.removeSavedSchool(user, school);
  }
