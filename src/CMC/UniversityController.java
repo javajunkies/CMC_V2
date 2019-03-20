@@ -1,12 +1,19 @@
+/**
+ * File: UniversityController.java
+ */
+
 package CMC;
 
 /**
- * @author bwest001
- *
- * University controller class
+ * Controller class for University functionalities.
+ * 
+ * @author Java Junkies
+ * @version March 19, 2019
  */
+
 public class UniversityController {
  
+	// Initialize a DBController object
  DBController dbcontroller = new DBController();
  
  /**

@@ -28,7 +28,7 @@ public class LoginController {
 			return 1;
 		}
 		if(u == 1) {
-			String correctPassword = db.findUserPassword(username);
+			String correctPassword = this.findPassword(username);
 			if(correctPassword.equals(pass)) {
 				p = 1;
 			}
@@ -64,8 +64,8 @@ public class LoginController {
 	 * Checks password.
 	 * @param password
 	 */
-	public boolean checkPassword(String password){
-		return false;
+	public String findPassword(String username){
+		return db.findUserPassword(username);
 	}
 	
 	/**
@@ -85,7 +85,7 @@ public class LoginController {
 	/**
 	 * Logs this user off of CMC system.
 	 */
-	public void logoff() {
-		
+	public int logoff() {
+		return 1;
 	}
 }
