@@ -1,9 +1,17 @@
+/**
+ * File: AdminController.java
+ */
+
 package CMC;
 import java.util.*;
 
 /**
- * @ author bwest001
+ * Controller class that handles all of Admin functionalities
+ * 
+ * @ author Java Junkies
+ * @version March 19, 2019
  */
+
 public class AdminController {
 
   // Creating instances of the other classes being used.
@@ -18,8 +26,8 @@ public class AdminController {
  * @param password is the password used to login with
  */
   
-  public void login(String username, String password) {
-    dbcontroller.login(username, password);
+  public int login(String username, String password) {
+    return logInController.login(username, password);
   }
 
   /**
@@ -27,7 +35,7 @@ public class AdminController {
    */
   
   public void logoff(){
-    dbcontroller.logoff();
+    logInController.logoff();
   }
 
   /**
@@ -44,8 +52,8 @@ public class AdminController {
    * @param name is the name of the university being romved
    */
   
-  public void removeUniversity(String name) {
-    dbcontroller.removeUniversity(name); 
+  public int removeUniversity(String name) {
+    return dbcontroller.removeUniversity(name); 
   }
 
   /**
@@ -69,11 +77,11 @@ public class AdminController {
    * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
    */
   
-  public void addUniversity(String school, String state, String location, String control, int numberOfStudents,
+  public int addUniversity(String school, String state, String location, String control, int numberOfStudents,
                                double percentFemales, double SATVerbal, double SATMath, double expenses, 
                                double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
                                double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-    dbcontroller.addUniversity(school, state, location, control, numberOfStudents,
+    return dbcontroller.addUniversity(school, state, location, control, numberOfStudents,
                                percentFemales, SATVerbal, SATMath, expenses, 
                                percentFinancialAid, numberOfApplicants, percentAdmitted, 
                                percentEnrolled, academicsScale, socialScale, qualityOfLifeScale) ;
@@ -100,31 +108,58 @@ public class AdminController {
    * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
    */
   
-  public void editUniversity(String school, String state, String location, String control, int numberOfStudents,
+  public int editUniversity(String school, String state, String location, String control, int numberOfStudents,
                                double percentFemales, double SATVerbal, double SATMath, double expenses, 
                                double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
                                int academicsScale, int socialScale, int qualityOfLifeScale) {
-    dbcontroller.editUniversity(school, state, location, control, numberOfStudents,
+    return dbcontroller.editUniversity(school, state, location, control, numberOfStudents,
                                percentFemales, SATVerbal, SATMath, expenses, 
                                percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, 
                                academicsScale, socialScale, qualityOfLifeScale);
   }
 
-  public void editUser(String username, String firstName, String lastName, String password, char type, char status) {
-    dbcontroller.adminEditUser(username, firstName, lastName, password, type, 
+  /**
+   * Calls the edit user for admin from DBControler
+   * 
+   * @param username is the username associated with this account
+   * @param firstName is the first name associated with this account
+   * @param lastName is the last name associated with this account
+   * @param password is the password associated with this account
+   * @param type is the type of this account
+   * @param status is the status of this account
+   */
+  
+  public int editUser(String username, String firstName, String lastName, String password, char type, char status) {
+    return dbcontroller.adminEditUser(username, firstName, lastName, password, type, 
                                status);
-
   } 
 
+  /**
+   * Calls the getAllUsers method from DBController
+   * 
+   * @return A list of user objects
+   */
+  
   public List<User> viewUsers() {
     return dbcontroller.getAllUsers();
   } 
+<<<<<<< HEAD
   
 /**
  * 
  * @param username
  * @return boolean if username is unique, returns true
  */
+=======
+
+  /**
+   * Checks to see if a certain username is unique
+   * 
+   * @param username is the username that is being checked for uniqueness
+   * @return a boolean representation of if the specified username is unique
+   */
+  
+>>>>>>> 68c952f797d2591c92998e9c0dd0f28b0aac8af2
   public boolean isUniqueUsername(String username) {
 	  if(dbcontroller.isUniqueUsername(username)) {
 		  return true;
@@ -135,6 +170,7 @@ public class AdminController {
   }
 
   /**
+<<<<<<< HEAD
    * 
    * @param firstName
    * @param lastName
@@ -159,20 +195,40 @@ public class AdminController {
 	  }
 	  
   } 
+=======
+   * Calls the createUser method from DBController and passing it the required parameters
+   * 
+   * @param firstName is the first name of the new user
+   * @param lastName is the last name of the new user
+   * @param username is the username of the new user
+   * @param password is the password of the new user
+   * @param type is the type of new user
+   */
+>>>>>>> 68c952f797d2591c92998e9c0dd0f28b0aac8af2
   
+  public int addNewUser(String firstName, String lastName, String username, String password, char type) {
+    return dbcontroller.createUser(firstName, lastName, username, password, type);
+  } 
   
-  //to implement:
+  /**
+   * Calls the viewUser method from DBController
+   * 
+   * @param username is the user being viewed
+   * @return User object of the specified user
+   */
   
-  public void viewUserInfo(String username)
+  public User viewUserInfo(String username)
   {
-    
+    return dbcontroller.viewUser(username);
   }
   
-  public void editAdmin(String userName, String firstName, String lastName, String password, char type, char status)
-  {
-    
-  }
+  /**
+   * Deactivates an user
+   * 
+   * @param username is the user being deactivated
+   */
   
+<<<<<<< HEAD
   /**
    * 
    * @param username
@@ -180,8 +236,10 @@ public class AdminController {
    * @return 
    */
   public void deactivateUser(String username)
+=======
+  public int deactivateUser(String username)
+>>>>>>> 68c952f797d2591c92998e9c0dd0f28b0aac8af2
   {
-    
+    return dbcontroller.deactivateUser(username);
   }
-  
 } 
