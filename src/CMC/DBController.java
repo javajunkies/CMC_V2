@@ -187,6 +187,13 @@ public class DBController {
     return db.university_editUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
   }
   
+  public ArrayList<University> compare(University u1, University u2) {
+	  ArrayList<University> list = new ArrayList<University>();
+	  list.add(u1);
+	  list.add(u2);
+	  return list;
+  }
+  
   /**
    * @param String firstName
    * @param String lastName
