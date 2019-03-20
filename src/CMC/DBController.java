@@ -352,7 +352,7 @@ public class DBController {
 	      }
 	    }
 	    return true;
-	  }
+  }
   
   public void viewSavedSchools(String username)
   {
