@@ -18,22 +18,22 @@ public class UserInteraction
   * @param username - user's username
   * @param password - user's password
   */
- public void login(String username, String password)
+ public int login(String username, String password)
  {
-  UserController.login(username, password);
+  return UserController.login(username, password);
  }
  
  /**
   * logs the user off from CMC
   */
- public void logoff()
+ public int logoff()
  {
-  UserController.logoff();
+  return UserController.logoff();
  }
  
  
- public void viewExistingUniversity(University university) {
-   UserController.viewExistingUniversity(university);
+ public University viewExistingUniversity(University university) {
+   return UserController.viewExistingUniversity(university);
  }
  
  /**
@@ -41,9 +41,9 @@ public class UserInteraction
   * 
   * @param user - username of user
   */
- public void viewSavedSchools(String username)
+ public ArrayList<University> viewSavedSchools(String username)
  {
-  UserController.viewSavedSchools(username);
+  return UserController.viewSavedSchools(username);
  }
  
  
@@ -79,9 +79,9 @@ public class UserInteraction
   * @param minQualityOfLife is an integer between 1 and 5 (5 being the best) indicating the min overall quality of life at this university
   * @param maxQualityOfLife is an integer between 1 and 5 (5 being the best) indicating the max overall quality of life at this university
   */
- public void searchForSchools(String mySchool,String myState,String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife)
+ public ArrayList<University> searchForSchools(String mySchool,String myState,String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife)
  {
-  UserController.search(mySchool, myState, myLocation, myControl, minNumStudents, maxNumStudents, minPercentFemale, maxPercentFemale, minSATVerbal, maxSATVerbal, minSATMath, maxSATMath, minExpenses, maxExpenses, minPercentFinancialAid, maxPercentFinancialAid, minNumApplicants, maxNumApplicants, minPercentAdmitted, maxPercentAdmitted, minPercentEnrolled, maxPercentEnrolled, minAcademicsScale, maxAcademicsScale, minSocialScale, maxSocialScale, minQualityOfLife, maxQualityOfLife);
+  return UserController.search(mySchool, myState, myLocation, myControl, minNumStudents, maxNumStudents, minPercentFemale, maxPercentFemale, minSATVerbal, maxSATVerbal, minSATMath, maxSATMath, minExpenses, maxExpenses, minPercentFinancialAid, maxPercentFinancialAid, minNumApplicants, maxNumApplicants, minPercentAdmitted, maxPercentAdmitted, minPercentEnrolled, maxPercentEnrolled, minAcademicsScale, maxAcademicsScale, minSocialScale, maxSocialScale, minQualityOfLife, maxQualityOfLife);
  }
  
  /**

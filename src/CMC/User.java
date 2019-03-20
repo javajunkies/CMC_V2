@@ -13,6 +13,7 @@ package CMC;
  */
 
 public class User extends Account{
+
 	/**
 	 * Constructs a new User object with specified parameters.
 	 * 
