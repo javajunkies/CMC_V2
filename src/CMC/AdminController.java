@@ -42,7 +42,7 @@ public class AdminController {
    * Calls the getAllUniversities method from DBController.
    */
   
-  public void viewUniversities() {
+  public ArrayList<University> viewUniversities() {
     dbcontroller.getAllUniversities();
   }
 
@@ -168,16 +168,11 @@ public class AdminController {
   /**
    * Calls the createUser method from DBController and passing it the required parameters
    * 
-<<<<<<< HEAD
-   * Calls the createUser method from DBController and passing it the required parameters
-=======
    * @param firstName is the first name of the new user
    * @param lastName is the last name of the new user
    * @param username is the username of the new user
    * @param password is the password of the new user
    * @param type is the type of new user
-   *
->>>>>>> 6920587d60f42fcefbf02dc8aa9adeb9a123eb46
    * 
    * @param firstName is the first name of the new user
    * @param lastName is the last name of the new user
@@ -217,7 +212,8 @@ public class AdminController {
    * @param username is the user being deactivated
    */
 
-  public int deactivateUser(String username){
+  public int deactivateUser(String username)
+  {
     return dbcontroller.deactivateUser(username);
   }
 } 
