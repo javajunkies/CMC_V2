@@ -322,7 +322,7 @@ public class DBController {
   public List<String> getAllUniversities()
   {
 	  String [][] univs = db.university_getUniversities();
-	  List<String> result = new ArrayList<>();
+	  List<String> result = new ArrayList<String>();
 	  for(int i = 0; i < univs.length; i++) {
 		 result.add(univs[i][0]);
 	  }
@@ -411,7 +411,7 @@ public class DBController {
   public List<String> viewSavedSchools(String username) 
   {
     
-    List<String> userSavedSchools = new ArrayList<>();
+    List<String> userSavedSchools = new ArrayList<String>();
     
     //get all of the users with saved schools
     String[][] users = db.user_getUsernamesWithSavedSchools();
