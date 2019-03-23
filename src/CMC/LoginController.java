@@ -40,11 +40,11 @@ public class LoginController {
 			if(this.checkStatus(username)) {
 				return 0;
 			}
+			else { 
+				return 3;
+			}
 		}
-		else { 
-			return 3;
-		}
-		return 1;
+		return 4;
 	}
 	
 	/**

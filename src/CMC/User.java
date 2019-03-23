@@ -24,8 +24,8 @@ public class User extends Account{
 	 * @param usertype specifies the type of user of this account
 	 */
 
-	public User(String first, String last, String username, String password, char usertype) {
-		super(first, last, username, password, usertype, 'Y');
+	public User(String first, String last, String username, String password, char usertype, char status) {
+		super(first, last, username, password, usertype, status);
 	}
  
 /**

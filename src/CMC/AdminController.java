@@ -222,4 +222,14 @@ public class AdminController {
   {
     return dbcontroller.deactivateUser(username);
   }
+  
+  /**
+   * Deletes a specified user
+   * 
+   * @param username is the user being deleted
+   * @return int representation of the deletion
+   */
+  public int deleteUser(String username) {
+	  return dbcontroller.deleteUser(username);
+  }
 } 

@@ -10,6 +10,13 @@
 		UserInteraction  ui1 = new UserInteraction();
 		AdminInteraction ai1 = new AdminInteraction();
 		
+		/**
+		 * Tests the login functionality
+		 * 
+		 * @param username
+		 * @param password
+		 * @return String representation of outcome
+		 */
 	  public String testLogin(String username, String password) {
 		  if(ai1.login(username, password) == 0) {
 			  return "Login Successful!";
@@ -24,6 +31,35 @@
 			  return "We are unsure of the problem, please try again. Sorry for the inconvenience.";
 		  }
 	  }
+	  
+	  /**
+	   * Tests the register functionality
+	   * 
+	   * @param 
+	   */
+	  public String testRegister(String first, String last, String user, String pass1, String pass2) {
+		  if(ui1.register(first, last, user, pass1, pass2) == 0) {
+			  return "Registration Successful";
+		  }
+		  else if (ui1.register(first, last, user, pass1, pass2) == 1) {
+			  return "Password is too short.";
+		  }
+		  else if (ui1.register(first, last, user, pass1, pass2) == 2) {
+			  return "Password does not contain a letter";
+		  }
+		  else if (ui1.register(first, last, user, pass1, pass2) == 3) {
+			  return "Password does not contain a number.";
+		  }
+		  else if (ui1.register(first, last, user, pass1, pass2) == 4) {
+			  return "Username is not unique";
+		  }
+		  else if (ui1.register(first, last, user, pass1, pass2) == 5) {
+			  return "Passwords do not match.";
+		  }
+		  else {
+			  return "We are unsure of the problem, please try again. Sorry for the inconvenience.";
+		  }
+		  }
 	  
 	  public static void main(String[] args)
 	  {
@@ -49,6 +85,7 @@
 	    //U1 A3 Inactive Account
 	    ai.deactivateUser("testUser");
 	    System.out.println(p.testLogin("testUser", "Password1"));
+	   
 	    
 	    //U1 A4 Temporary Account
 	    ui.register("Tyreese", "Fake", "TyDog", "Password2", "Password2");
@@ -56,13 +93,22 @@
 	    
 	    System.out.println('\n');
 	    
+	    // Reset Account
+	    ai.deleteUser("testUser");
+	    
 	    //U2 Register
 	    System.out.println("U2: Register");
 	    ui.register("TyreeseIsCool1","Tyreese","Man","Password1","Password1");
+	    
+	    
 	    System.out.println("A1: Username is not unique");
 	    ui.register("nadmin","Tyreese","Man","Password1","Password1");
+	    
+	    
 	    System.out.println("A2: Password isn't good enough");
 	    ui.register("TyreeseIsCool2","Tyreese","Man","pass","pass");
+	    
+	    
 	    System.out.println("A3: Passwords don't match");
 	    ui.register("TyreeseIsCool3","Tyreese","Man","Password1","WrongPassword1");
 	    

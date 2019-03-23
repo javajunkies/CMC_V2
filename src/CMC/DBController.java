@@ -51,7 +51,7 @@ public class DBController {
     String[][] users = db.user_getUsers();
     for(int i = 0; i < users.length; i++) {
       if(users[i][2].equals(username)) {
-        Account u = new User(users[i][0], users[i][1], users[i][2], users[i][3], users[i][4].charAt(0));
+        Account u = new User(users[i][0], users[i][1], users[i][2], users[i][3], users[i][4].charAt(0), users[i][5].charAt(0));
         return u;
       }
     }
@@ -338,7 +338,7 @@ public class DBController {
     ArrayList<User> userList = new ArrayList<User>();
     String[][]usersInfo = db.user_getUsers();
     for(int j=0; j<usersInfo[1].length; j++) {
-      User user = new User(usersInfo[j][0],usersInfo[j][1],usersInfo[j][2],usersInfo[j][3],usersInfo[j][4].charAt(0));
+      User user = new User(usersInfo[j][0],usersInfo[j][1],usersInfo[j][2],usersInfo[j][3],usersInfo[j][4].charAt(0), usersInfo[j][5].charAt(0));
       userList.add(user);
     }
     return userList;  
@@ -351,13 +351,13 @@ public class DBController {
    */
   public User viewUser(String username)
   {
-    String[] userInfo = new String[5];
+    String[] userInfo = new String[6];
     String[][] users = db.user_getUsers();
     for (int i = 0; i < users.length; i++)
     {
       if (users[i][2].equals(username))
       {
-        for(int s = 0; s < 5; s++)
+        for(int s = 0; s < 6; s++)
         {
           userInfo[s] = users[i][s];
         }
@@ -368,8 +368,9 @@ public class DBController {
     String user = userInfo[2];
     String password = userInfo[3];
     char userType = userInfo[4].charAt(0);
+    char status = userInfo[5].charAt(0);
     
-    User user1 = new User(first, last, user, password, userType);
+    User user1 = new User(first, last, user, password, userType, status);
     return user1;  
   }
   
@@ -667,6 +668,7 @@ public class DBController {
    */
   
   public int registerNewUser(String first, String last, String user, String pass) {
+	  this.deactivateUser(user);
     return db.user_addUser(first, last, user, pass, 't');
   }
   

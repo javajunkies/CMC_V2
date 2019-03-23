@@ -98,6 +98,7 @@ public class UserInteraction
    */
   public int register(String first, String last, String username, String password, String password1)
   {
+	  if(AccountController.isUniqueUsername(username)) {
 	  if(AccountController.checkPasswordMatch(password, password1)) {
 	  if(AccountController.checkPasswordCriteria(password) == 0) {
 		  int i = AccountController.register(first, last, username, password);
@@ -105,7 +106,7 @@ public class UserInteraction
 			  return 0;
 		  }
 		  else {
-		  return 4;
+		  return 6;
 		  }
 	  }
 	  else if(AccountController.checkPasswordCriteria(password) == 1) {
@@ -120,6 +121,10 @@ public class UserInteraction
 	  }
 	  else {
 		  return 5;
+	  }
+  }
+	  else {
+		  return 4;
 	  }
   }
   

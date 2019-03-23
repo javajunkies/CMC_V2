@@ -60,6 +60,7 @@ public class AccountController{
     }
     return 1;
   }
+  
   /**
    * checks if the entered passwords match
    * @param password the users password
@@ -73,4 +74,13 @@ public class AccountController{
     return false;
   }
   
+  /**
+   * Checks to see if a username is unique
+   * 
+   * @param username is the username being checked for uniqueness
+   * @return boolean representation
+   */
+  public boolean isUniqueUsername(String username) {
+	  return db.isUniqueUsername(username);
+  }
 }

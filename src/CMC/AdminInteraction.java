@@ -197,4 +197,14 @@ public class AdminInteraction{
 		 return -3;
 	 }
 }
+ 
+ /**
+  * Deletes a specified account
+  * 
+  * @param username is the username of account being deleted
+  * @return int representation of deletion
+  */
+ public int deleteUser(String username) {
+	 return adminController.deleteUser(username);
+ }
 }
