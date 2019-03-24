@@ -262,10 +262,10 @@ import java.util.List;
 	    
 	    
 	    //U7 View Existing University
-	    System.out.println(p.testViewExistingUniv("BUTLER"));
+	    System.out.println(p.testViewExistingUniv("BUTLER" + "\n"));
 	    
 	    //U7 view non existent univ
-	    System.out.println(p.testViewExistingUniv("FAKE" + "/n"));
+	    System.out.println(p.testViewExistingUniv("FAKE" + "\n"));
 	    
 	    
 	    
