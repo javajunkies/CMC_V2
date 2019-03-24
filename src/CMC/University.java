@@ -81,10 +81,20 @@ public class University {
   * @return String state
   */
  public String getState() {
-  return state;
+  return this.state;
  }
 
- /**@Description set state
+ @Override
+public String toString() {
+	return "University: " + school + "\n" + state + "\n" + location + "\n" + control
+			+ "\n" + numStudents + "\n" + percentFemale + "\n" + SATVerbal
+			+ "\n" + SATMath + "\n" + expenses + "\n" + percentFinancialAid
+			+ "\n" + numApplicants + "\n" + percentAdmitted + "\n"
+			+ percentEnrolled + "\n" + academicsScale + "\n" + socialScale
+			+ "\n" + qualityOfLife + "\n";
+}
+
+/**@Description set state
   * 
   * @param state
   */

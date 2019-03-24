@@ -416,10 +416,12 @@ public class DBController {
     
     //get all of the users with saved schools
     String[][] users = db.user_getUsernamesWithSavedSchools();
+    if(!(users == null)) {
     for(int i = 0; i < users.length; i++) {
     	if(users[i][0].equals(username)) {
     		userSavedSchools.add(users[i][1]);
     	}
+    }
     }
     return userSavedSchools;
     }
@@ -461,6 +463,13 @@ public class DBController {
   
   public int removeUniversity(String name)
   {
+	  String[][] howMany = db.university_getNamesWithEmphases();
+	  for(int i = 0; i < howMany.length; i++) {
+		  if(howMany[i][0].equals(name)) {
+			  String emphasis = howMany[i][1];
+			  db.university_removeUniversityEmphasis(name, emphasis);
+		  }
+	  }
     return db.university_deleteUniversity(name);
   }
   
@@ -551,7 +560,7 @@ public class DBController {
    * @return the university with all the given information
    */
   
-  public University viewExistingUniversity(University university) {
+  public University viewExistingUniversity(String university) {
     String [][] universities = db.university_getUniversities();
     String school = "";
     String state = "";
@@ -570,7 +579,7 @@ public class DBController {
     double percentAdmitted = 0;
     double percentEnrolled = 0; 
     for (int i = 0; i < universities.length; i++){
-      if (universities[i][0].equals(university.getSchool())) {
+      if (universities[i][0].equals(university)) {
         school = universities[i][0];
         state = universities[i][1];
         location = universities[i][2];

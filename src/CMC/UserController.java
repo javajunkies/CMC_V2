@@ -31,7 +31,7 @@ public class UserController {
   * @param university the university to find information for
   * @return University A university from the database
   */
- public University viewExistingUniversity(University university) {
+ public University viewExistingUniversity(String university) {
    return dbcontroller.viewExistingUniversity(university);
  }
  

@@ -36,7 +36,7 @@ public class UserInteraction
   }
   
   
-  public University viewExistingUniversity(University university) {
+  public University viewExistingUniversity(String university) {
     return UserController.viewExistingUniversity(university);
   }
   

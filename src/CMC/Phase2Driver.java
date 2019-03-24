@@ -77,6 +77,94 @@ import java.util.List;
 		  return result;
 	  }
 	  
+	  /**
+	   * Test Removing a saved school
+	   * 
+	   * @param username is the user whos account is being modified
+	   * @param university is the school being removed
+	   * @return String representation of removal
+	   */
+	  public String testRemoveSaved(String username, String university) {
+		  if(ui1.removeSavedSchool(username, university) == 1) {
+			  return "School successfully removed.";
+		  }
+		  return "Failure";
+	  }
+	  
+	  /**
+	   * Test the view exisisting university functionality
+	   * 
+	   * @param univ is the university being viewed
+	   * @return String respresentation of the university
+	   */
+	  public String testViewExistingUniv(String univ) {
+		  University result = ui1.viewExistingUniversity(univ); 
+		  if(result.getControl().equals("")) {
+			  return "Could not find that university";
+		  }
+		  String result1 = result.toString();
+		  return result1;
+	  }
+	  
+	  /**
+	   * Tests the view all universities functionality
+	   * 
+	   * @return String representation of all universities.
+	   */
+	  public String testViewUniversities() {
+		  List<String> schools = ai1.viewUniversities();
+		  String result = "";
+		  int x = 0;
+		  while(x < schools.size()) {
+			  result = result + schools.get(x) + "\n";
+		  x++;
+		  }
+		  return result;
+	  }	  
+	  
+	  /**
+	   * Tests the remove university functionality
+	   * 
+	   * @param school is the university being removed
+	   * @return String representation of removal
+	   */
+	  public String testRemoveUniversity(String school) {
+		  if(ai1.removeUniversity(school) == 1) {
+			  return "School was successfully removed";
+		  }
+		  return "Failure";
+	  }
+	  
+	  /**
+	   * Tests the add university funtionality
+	   * 
+	   * @param school is the name of the school
+	   * @param state is the state that the school is located
+	   * @param location is the type of area in which the school is located (i.e. Suburban, Small-city, ...)
+	   * @param control specifies who controls the university (i.e. Public, Private, ...)
+	   * @param numberOfStudents is the number of students at this university
+	   * @param percentFemales is the percentage of females at this university
+	   * @param SATVerbal is the average SAT Verbal score, out of 800, for the students at this university
+	   * @param SATMath is the average SAT Math score, out of 800, for the students at this university
+	   * @param expenses is the annual tuition for this university
+	   * @param percentFinancialAid is the percentage of students who received some sort of financial aid from this university
+	   * @param numberOfApplicants is the number of students who typically apply to this university
+	   * @param percentAdmitted is the percentage of students who are admitted annually to this university
+	   * @param percentEnrolled is the percentage of students who are currently enrolled at this university
+	   * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
+	   * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
+	   * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university	   
+	   */
+	  public String testAddUniversity(String school, String state, String location, String control, int numberOfStudents,
+              double percentFemales, double SATVerbal, double SATMath, double expenses, 
+              double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
+              double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
+		  if(ai1.addUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale) == 1) {
+			  return "University successfully added.";
+		  }
+		  return "Failure";
+	  }
+	  
 	  public static void main(String[] args)
 	  {
 		//objects
@@ -140,48 +228,68 @@ import java.util.List;
 	    // U3 A1 User has no saved schools
 	    ai.addNewUser("Test", "Fail", "Test3", "Password1", 'u');
 	    System.out.println(p.testViewSavedSchools("Test3"));
+	    
+	    //Delete Accounts
 	    ai.deleteUser("Test2");
 	    ai.deleteUser("Test3");
-	    /*
-	    //U4 Sort Saved Schools
+	    
+	/*    //U4 Sort Saved Schools
 	    System.out.println("U4: Sort Saved Schools");
 	    //ui.sortSavedSchools(1 ,0 , 0, "testUser");
 	    System.out.println('\n');
+	    */
 	    
+	    
+	    /*
 	    //U5 View Recommended Schools    
 	    System.out.println("U5: View Recommended Schools");
 	    //ui.getRecommendedList(testSchool);              //takes type university
 	    //System.out.println("A1: No recommendations");
 	    System.out.println('\n');
 	    
+	    
+	    */
+	    
 	    //U6 Remove Saved School
-	    System.out.println("U6: Remove Saved School");
-	    ui.removeSavedSchool("testUser", "ADELPHI");
-	    System.out.println('\n');
+	    ai.addNewUser("Remove", "Saved", "Test1", "Password1", 'u');
+	    ui.saveSchool("Test1", "Butler");
+	    System.out.println(p.testViewSavedSchools("Test1"));
+	    System.out.println(p.testRemoveSaved("Test1", "Butler"));
+	    System.out.println(p.testViewSavedSchools("Test1"));
+
+	    ai.deleteUser("Test1");
+	    
+	    
 	    
 	    //U7 View Existing University
-	    System.out.println("U7: View Existing University");
-	    //ui.viewExistingUniversity("ADELPHI");
-	    System.out.println('\n');
+	    System.out.println(p.testViewExistingUniv("BUTLER"));
+	    
+	    //U7 view non existent univ
+	    System.out.println(p.testViewExistingUniv("FAKE" + "/n"));
+	    
+	    
 	    
 	    //U8 View Universities
-	    System.out.println("U8: View Universities");
-	    ai.viewUniversities();
-	    System.out.println('\n');
+	    System.out.println(p.testViewUniversities() + "\n");
+	    
+	    
 	    
 	    //U9 Remove University
-	    System.out.println("U9: Remove University");
-	    ai.removeUniversity("testSchool");
-	    System.out.println('\n');
+	    System.out.println(p.testRemoveUniversity("AUGSBURG" + "\n"));
+	    
+	    
 	    
 	    //U10 Add University   
-	    System.out.println("U10: Add University");
-	  //  ai.addUniversity("School", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 );
-	    //ai.removeUniversity("School");
-	    //System.out.println("A1: ");  //errors
-	    //ai.addUniversity("School", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, null);
+	    System.out.println(p.testAddUniversity("School", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5));
+	    
+	    //U10 A1 Erroe
+	    System.out.println(p.testAddUniversity("School", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5));
 	    System.out.println('\n');
 	    
+	    ai.removeUniversity("School");
+
+	    
+	    /*
 	    //U11 Edit Universities 
 	    System.out.println("U11: Edit University");
 	    //ai.editUniversity("School", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 );

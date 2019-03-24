@@ -47,13 +47,8 @@ public class AdminInteraction{
   * @return tells admin the status of removing the university
   */
 
- public String removeUniversity(String school){
-   if(adminController.removeUniversity(school) == 1) {
-	   return "School: " + school + " was successfully removed.";
-   }
-   else {
-	   return "Something went wrong! Please try again.";
-   }
+ public int removeUniversity(String school){
+  return adminController.removeUniversity(school);
  }
  
  /**
@@ -78,13 +73,8 @@ public class AdminInteraction{
   * @return int tells admin the status of adding the university
   */
 
- public String addUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
-    if(adminController.addUniversity(school,state,location,control,numStudents,percentFemale,SATVerbal,SATMath,expenses,percentFinancialAid,numApplicants,percentAdmitted,percentEnrolled,academicsScale,socialScale,qualityOfLife) == 1) {
-    	return "School: " + school + " was successfully added.";
-    }
-    else {
-    	return "Something went wrong! Please try again.";
-    }
+ public int addUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
+   return adminController.addUniversity(school, state, location, control, numStudents, percentFemale, SATVerbal, SATMath, expenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLife);
  }
  /**
   * Calls the editUniversity method from AdminController and passes it the specified parameters
