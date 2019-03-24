@@ -654,7 +654,15 @@ public class DBController {
    */
   
   public int deleteUser(String username){
+	  String[][] howMany = db.user_getUsernamesWithSavedSchools();
+	  if(!(howMany == null)) {
+	  for(int x = 0; x < howMany.length; x++) {
+		  String school = howMany[x][1];
+		  db.user_removeSchool(username, school);
+	  }
+	  }
     return db.user_deleteUser(username);
+  
   }
   
   /**
@@ -668,8 +676,9 @@ public class DBController {
    */
   
   public int registerNewUser(String first, String last, String user, String pass) {
-	  this.deactivateUser(user);
-    return db.user_addUser(first, last, user, pass, 't');
+    int result = db.user_addUser(first, last, user, pass, 't');
+    this.deactivateUser(user);
+    return result;
   }
   
   public static void main(String[] args) {

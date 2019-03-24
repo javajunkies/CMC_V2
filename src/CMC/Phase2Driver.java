@@ -1,6 +1,8 @@
 	package CMC;
-	
-	/**
+
+import java.util.List;
+
+/**
 	 * @author Java Junkies
 	 *
 	 * Driver for all use cases
@@ -41,14 +43,8 @@
 		  if(ui1.register(first, last, user, pass1, pass2) == 0) {
 			  return "Registration Successful";
 		  }
-		  else if (ui1.register(first, last, user, pass1, pass2) == 1) {
-			  return "Password is too short.";
-		  }
-		  else if (ui1.register(first, last, user, pass1, pass2) == 2) {
-			  return "Password does not contain a letter";
-		  }
-		  else if (ui1.register(first, last, user, pass1, pass2) == 3) {
-			  return "Password does not contain a number.";
+		  else if (ui1.register(first, last, user, pass1, pass2) == 1 || ui1.register(first, last, user, pass1, pass2) == 2 || ui1.register(first, last, user, pass1, pass2) == 3) {
+			  return "Password does not meet critera.";
 		  }
 		  else if (ui1.register(first, last, user, pass1, pass2) == 4) {
 			  return "Username is not unique";
@@ -60,6 +56,26 @@
 			  return "We are unsure of the problem, please try again. Sorry for the inconvenience.";
 		  }
 		  }
+	  
+	  /**
+	   * Tests the view saved schools functionality
+	   * 
+	   * @param username is the user whos schools list is being viewed
+	   * @return String representation of method call
+	   */
+	  public String testViewSavedSchools(String username) {
+		  List<String> schools = ui1.viewSavedSchools(username);
+		  String result = "";
+		  int x = 0;
+		  while(x < schools.size()) {
+			  result = result + schools.get(x) + "\n";
+		  x++;
+		  }
+		  if(result.equals("")) {
+			  return "User has no saved schools";
+		  }
+		  return result;
+	  }
 	  
 	  public static void main(String[] args)
 	  {
@@ -95,31 +111,38 @@
 	    
 	    // Reset Account
 	    ai.deleteUser("testUser");
+	    ai.deleteUser("TyDog");
+	    
 	    
 	    //U2 Register
-	    System.out.println("U2: Register");
-	    ui.register("TyreeseIsCool1","Tyreese","Man","Password1","Password1");
+	    System.out.println(p.testRegister("Reg","ister","Test1","Password1","Password1"));
 	    
+	    //U2 A1 Duplicate username
+	    System.out.println(p.testRegister("Test","sameUser","Test1","Password1","Password1"));
 	    
-	    System.out.println("A1: Username is not unique");
-	    ui.register("nadmin","Tyreese","Man","Password1","Password1");
+	    //U2 A2 Invalid password
+	    System.out.println(p.testRegister("Bad", "Pass", "Test2", "pass", "pass"));
 	    
+	    //U2 A3 Passwords dont match
+	    System.out.println(p.testRegister("Password","dontMatch","Test3","Password1","Password2"));
 	    
-	    System.out.println("A2: Password isn't good enough");
-	    ui.register("TyreeseIsCool2","Tyreese","Man","pass","pass");
-	    
-	    
-	    System.out.println("A3: Passwords don't match");
-	    ui.register("TyreeseIsCool3","Tyreese","Man","Password1","WrongPassword1");
-	    
+	    //Delete account from database
+	    ai.deleteUser("Test1");
 	    System.out.println('\n');
+
 	    
 	    //U3 View Saved Schools
-	    System.out.println("U3: View Saved Schools");
-	    ui.viewSavedSchools("juser");
-	    System.out.println("A1: User has no saved schools");
-	    ui.viewSavedSchools("admin");
+	    ai.addNewUser("Test", "viewSaved", "Test2", "Password1", 'u');
+	    ui.saveSchool("Test2", "Butler");
+	    ui.saveSchool("Test2", "Augsburg");
+	    System.out.println(p.testViewSavedSchools("Test2"));
 	    
+	    // U3 A1 User has no saved schools
+	    ai.addNewUser("Test", "Fail", "Test3", "Password1", 'u');
+	    System.out.println(p.testViewSavedSchools("Test3"));
+	    ai.deleteUser("Test2");
+	    ai.deleteUser("Test3");
+	    /*
 	    //U4 Sort Saved Schools
 	    System.out.println("U4: Sort Saved Schools");
 	    //ui.sortSavedSchools(1 ,0 , 0, "testUser");
@@ -217,9 +240,7 @@
 	    ui.logoff();
 	    System.out.println('\n');
 	    
-	    //clean up after yourself
-	    //ai.deleteUser("testUser");
-	    //ai.deleteUser("DMan");
+	  */
 	  }
 	}
 	
