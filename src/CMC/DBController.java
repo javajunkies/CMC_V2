@@ -80,7 +80,7 @@ public class DBController {
    * @param University object 
    * @return List<University> of length 5 for the recommended schools
    */
-/*  public ArrayList<University> getRecommendations(University university)
+  public ArrayList<University> getRecommendations(University university)
   {
     
     String[][] universities = db.university_getUniversities();
@@ -177,8 +177,11 @@ public class DBController {
       }
     }
     return recommendedSchools;
-  }*/
+  }
   
+  /**
+   * 
+   */
   public int editUnivInfo(String school, String state, String location, String control, int numberOfStudents,
                           double percentFemales, double SATVerbal, double SATMath, double expenses, 
                           double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
@@ -253,16 +256,15 @@ public class DBController {
    * @param minQualityOfLife is an integer between 1 and 5 (5 being the best) indicating the min overall quality of life at this university
    * @param maxQualityOfLife is an integer between 1 and 5 (5 being the best) indicating the max overall quality of life at this university
    * 
-   * @return ArrayList<Universities> an array list of university objects that matched search criteria
+   * @return ArrayList<University> an array list of university objects that matched search criteria
    */
-public ArrayList<University> searchUniversities(String mySchool, String myState,String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife) 
+  public ArrayList<University> searchUniversities(String mySchool, String myState, String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife) 
   {
     String[][] universities = db.university_getUniversities();
     int rowLength = universities[0].length;
     int colLength = universities[1].length; 
     ArrayList<University> matchUni = new ArrayList<University>();
     int k = 0;
-    
     for(int i = 0; i < rowLength; i++) {
       if(universities[i][0].contains(mySchool) 
            || mySchool.equals("0") 
