@@ -171,8 +171,8 @@ public class DBController {
           int academicsScale = Integer.parseInt(universities[j][13]);
           int socialScale = Integer.parseInt(universities[j][14]);
           int qualityOfLife = Integer.parseInt(universities[j][15]);
-          University recommendedUniv = new University(school, state, location, control, numStudents, percentFemale, mySATVerbal, mySATMath, myExpenses, myPercentFinancialAid, myNumApplicants, myPercentAdmitted, myPercentEnrolled, myAcademicsScale, mySocialScale, myQualityOfLife);
-          recommendedSchools.add(univ);
+          University recommendedUniv = new University(school, state, location, control, numStudents, percentFemale, SATVerbal, SATMath, expenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLife);
+          recommendedSchools.add(recommendedUniv);
         }
       }
     }
@@ -280,7 +280,7 @@ public class DBController {
            || minNumStudents <= Integer.parseInt(universities[i][4]) 
            && maxNumStudents == 0 
            && minPercentFemale <= Double.parseDouble(universities[i][5]) <= maxPercentFemale 
-           || minPercentFemale <= Integer.parseInt(universities[i][5]) 
+           || minPercentFemale <= Double.parseDouble(universities[i][5]) 
            && maxPercentFemale == 0 
            && minSATVerbal <= Double.parseDouble(universities[i][6]) <= maxSATVerbal 
            || minSATVerbal <= Double.parseDouble(universities[i][6]) 
@@ -309,10 +309,10 @@ public class DBController {
            && minSocialScale <= Integer.parseInt(universities[i][14]) <= maxSocialScale 
            || minSocialScale <= Integer.parseInt(universities[i][14]) 
            && maxSocialScale == 0 
-           && minQualityOfLife <= Integer.parseInt(universities[j][15]) <= maxQualityOfLife 
-           || minQualityOfLife <= Integer.parseInt(universities[j][15]) 
+           && minQualityOfLife <= Integer.parseInt(universities[i][15]) <= maxQualityOfLife 
+           || minQualityOfLife <= Integer.parseInt(universities[i][15]) 
            && maxQualityOfLife == 0) {
-        University univ = new University(university[i][0],university[i][1],university[i][2],university[i][3],university[i][4],university[i][5],university[i][6],university[i][7],university[i][8],university[i][9],university[i][10],university[i][11],university[i][12],university[i][13],university[i][14],university[i][15]);
+        University univ = new University(universities[i][0],universities[i][1],universities[i][2],universities[i][3],Integer.parseInt(universities[i][4]),Double.parseDouble(universities[i][5]),Double.parseDouble(universities[i][6]),Double.parseDouble(universities[i][7]),Double.parseDouble(universities[i][8]),Double.parseDouble(universities[i][9]),Integer.parseInt(universities[i][10]),Double.parseDouble(universities[i][11]),Double.parseDouble(universities[i][12]),Integer.parseInt(universities[i][13]),Integer.parseInt(universities[i][14]),Integer.parseInt(universities[i][15]));
         matchUni.add(univ);
       }
     }
@@ -763,7 +763,7 @@ public class DBController {
     byNumStudents = viewSavedSchools(username);
     
     //sort the list in descending order
-    for(int i = 0; byNumStudents.length; i++) {
+    for(int i = 0; byNumStudents.length(); i++) {
       if(byNumStudents[i].getNumstudents() > byNumStudents[i+1].getNumStudents()) {
         swap(byNumStudents[i], byNumStudents[i+1]);
       }
@@ -771,10 +771,10 @@ public class DBController {
     }
   }
   
-  public static void main(String[] args) {
-	  DBController dbc = new DBController();
-	  System.out.println(dbc.isUser("juser"));
-  }
+//  public static void main(String[] args) {
+//	  DBController dbc = new DBController();
+//	  System.out.println(dbc.isUser("juser"));
+//  }
   }
   
 

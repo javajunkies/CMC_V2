@@ -33,7 +33,6 @@ public class User extends Account{
 		return "User " + first + "\n" + last + "\n" + username + "\n" + password
 				+ "\n" + usertype + "\n" + status + "\n";
 	}
-	
-	
+
 
 }
