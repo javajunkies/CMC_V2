@@ -635,7 +635,7 @@ public ArrayList<University> searchUniversities(String mySchool, String myState,
    * @param username is the user being deactivated
    * @return an int representation of the deactivation, 1 means successful, -1 means unsuccessful
    */
-  
+ 
   public int deactivateUser(String username) {
     String[][] users = db.user_getUsers();
     String first = "";
@@ -661,7 +661,6 @@ public ArrayList<University> searchUniversities(String mySchool, String myState,
    * method allows admin to delete user from db
    * @return 1 if the user was successfully deleted, otherwise -1
    */
-  
   public int deleteUser(String username){
 	  String[][] howMany = db.user_getUsernamesWithSavedSchools();
 	  if(!(howMany == null)) {
@@ -712,8 +711,8 @@ public ArrayList<University> searchUniversities(String mySchool, String myState,
  public ArrayList<University> sortByAcceptance(String username) 
   {
     //make an ArrayList of the users saved schools and assign them a position
-    ArrayList<Universities> byAcceptance = new ArrayList<University>();
-    byAcceptaince = username.viewSavedSchools(username);
+    ArrayList<University> byAcceptance = new ArrayList<University>();
+    byAcceptance = viewSavedSchools(username); 
     
     //sort the list in descending order
     for(int i = 0; byAcceptance.length; i++) {
@@ -734,8 +733,8 @@ public ArrayList<University> searchUniversities(String mySchool, String myState,
  public ArrayList<University> sortByExpenses(String username) 
   {
     //make an ArrayList of the users saved schools and assign them a position
-    ArrayList<Universities> byExpenses = new ArrayList<University>();
-    byExpenses = username.viewSavedSchools(username);
+    ArrayList<University> byExpenses = new ArrayList<University>();
+    byExpenses = viewSavedSchools(username);
     
     //sort the list in descending order
     for(int i = 0; byExpenses.length; i++) {
@@ -756,8 +755,8 @@ public ArrayList<University> searchUniversities(String mySchool, String myState,
  public ArrayList<University> sortByNumStudents(String username) 
   {
     //make an ArrayList of the users saved schools and assign them a position
-    ArrayList<Universities> byNumStudents = new ArrayList<University>();
-    byNumStudents = username.viewSavedSchools(username);
+    ArrayList<University> byNumStudents = new ArrayList<University>();
+    byNumStudents = viewSavedSchools(username);
     
     //sort the list in descending order
     for(int i = 0; byNumStudents.length; i++) {
@@ -772,7 +771,6 @@ public ArrayList<University> searchUniversities(String mySchool, String myState,
 	  DBController dbc = new DBController();
 	  System.out.println(dbc.isUser("juser"));
   }
-  
   }
   
 
