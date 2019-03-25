@@ -180,7 +180,7 @@ public class UserInteraction
    * @param u1
    * @param u2
    */
-  public ArrayList<University> compare(University u1, University u2)
+  public ArrayList<University> compare(String u1, String u2)
   {
     return UserController.compare(u1,u2);
   }

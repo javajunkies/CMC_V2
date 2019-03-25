@@ -203,10 +203,12 @@ public class DBController {
    * 
    * This methods puts two universities side by side so that they may be compared
    */
-  public ArrayList<University> compare(University u1, University u2) {
+  public ArrayList<University> compare(String u1, String u2) {
     ArrayList<University> list = new ArrayList<University>();
-    list.add(u1);
-    list.add(u2);
+    University univ1 = this.viewExistingUniversity(u1);
+    University univ2 = this.viewExistingUniversity(u2);
+    list.add(univ1);
+    list.add(univ2);
     return list;
   }
   

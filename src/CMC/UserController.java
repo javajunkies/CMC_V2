@@ -110,7 +110,7 @@ public class UserController {
   *@param univ2 A university to be compared to univ1
   *@return ArrayList<University> list of two universities to compare
   */
- public ArrayList<University> compare(University univ1, University univ2) {
+ public ArrayList<University> compare(String univ1, String univ2) {
   return dbcontroller.compare(univ1, univ2);
  }
  
