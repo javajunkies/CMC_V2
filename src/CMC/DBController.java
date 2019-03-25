@@ -255,7 +255,7 @@ public class DBController {
    * 
    * @return ArrayList<Universities> an array list of university objects that matched search criteria
    */
-/*  public ArrayList<University> searchUniversities(String mySchool, String myState,String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife) 
+public ArrayList<University> searchUniversities(String mySchool, String myState,String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife) 
   {
     String[][] universities = db.university_getUniversities();
     int rowLength = universities[0].length;
@@ -313,7 +313,7 @@ public class DBController {
       }
     }
     return matchUni;
-  }*/
+  }
   
   /**
    * A method to view a List of all universities in the DB
@@ -690,10 +690,89 @@ public class DBController {
     return result;
   }
   
+  /** @Description a swap method to assist in sorting universities 
+   * 
+   * @param U1 the first university to be swapped
+   * @param U2 the socond university to be swapped
+   * 
+   */
+ public void swap(University U1, University U2) 
+ {
+   University temp = U1;
+   U1 = U2;
+   U2 = temp;
+ }
+
+ /** @Description sort a users saved schools by percent of students admitted
+   * 
+   * @param username   the username supplied for retrieving a list of saved schools
+   * 
+   * @return byAcceptance
+   */
+ public ArrayList<University> sortByAcceptance(String username) 
+  {
+    //make an ArrayList of the users saved schools and assign them a position
+    ArrayList<Universities> byAcceptance = new ArrayList<University>();
+    byAcceptaince = username.viewSavedSchools(username);
+    
+    //sort the list in descending order
+    for(int i = 0; byAcceptance.length; i++) {
+      if(byAcceptance[i].getPercentAdmitted() > byAcceptance[i+1].getPercentAdmitted()) {
+        swap(byAcceptance[i], byAcceptance[i+1]);
+      }
+    return byAcceptance;
+  }
+    
+    
+
+ /** @Description sort a users saved schools by price
+   * 
+   * @param username   the username supplied for retrieving a list of saved schools
+   * 
+   * @return byExpenses
+   */
+ public ArrayList<University> sortByExpenses(String username) 
+  {
+    //make an ArrayList of the users saved schools and assign them a position
+    ArrayList<Universities> byExpenses = new ArrayList<University>();
+    byExpenses = username.viewSavedSchools(username);
+    
+    //sort the list in descending order
+    for(int i = 0; byExpenses.length; i++) {
+      if(byExpenses[i].getExpenses() > byExpenses[i+1].getExpenses()) {
+        swap(byExpenses[i], byExpenses[i+1]);
+      }
+    return byExpenses;
+  }
+    
+
+ /** @Description sort a users saved schools by number of students 
+   *              attending the school
+   * 
+   * @param username  the username supplied for retrieving a list of saved schools
+   * 
+   * @return      byNumStudents
+   */
+ public ArrayList<University> sortByNumStudents(String username) 
+  {
+    //make an ArrayList of the users saved schools and assign them a position
+    ArrayList<Universities> byNumStudents = new ArrayList<University>();
+    byNumStudents = username.viewSavedSchools(username);
+    
+    //sort the list in descending order
+    for(int i = 0; byNumStudents.length; i++) {
+      if(byNumStudents[i].getNumstudents() > byNumStudents[i+1].getNumStudents()) {
+        swap(byNumStudents[i], byNumStudents[i+1]);
+      }
+    return byNumStudents;
+    }
+  }
+  
   public static void main(String[] args) {
 	  DBController dbc = new DBController();
 	  System.out.println(dbc.isUser("juser"));
   }
   
   }
+  
 
