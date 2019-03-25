@@ -165,6 +165,78 @@ import java.util.List;
 		  return "Failure";
 	  }
 	  
+	  /**
+	   * Tests the edit university functionality.
+	   * 
+	   * @param school is the name of the school
+	   * @param state is the state that the school is located
+	   * @param location is the type of area in which the school is located (i.e. Suburban, Small-city, ...)
+	   * @param control specifies who controls the university (i.e. Public, Private, ...)
+	   * @param numberOfStudents is the number of students at this university
+	   * @param percentFemales is the percentage of females at this university
+	   * @param SATVerbal is the average SAT Verbal score, out of 800, for the students at this university
+	   * @param SATMath is the average SAT Math score, out of 800, for the students at this university
+	   * @param expenses is the annual tuition for this university
+	   * @param percentFinancialAid is the percentage of students who received some sort of financial aid from this university
+	   * @param numberOfApplicants is the number of students who typically apply to this university
+	   * @param percentAdmitted is the percentage of students who are admitted annually to this university
+	   * @param percentEnrolled is the percentage of students who are currently enrolled at this university
+	   * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
+	   * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
+	   * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university	   
+	   */
+	  public String testEditUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife) {
+		  if(ai1.editUniversity(school, state, location, control, numStudents, percentFemale, SATVerbal, SATMath, expenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLife) == 1) {
+			  return "School successfully edited.";
+		  }
+		  return "Failure";
+	  }
+	  
+	  /**
+	   * Tests the save school functionality
+	   * 
+	   * @param username is user who is saving school
+	   * @param school is the school being saved
+	   * @return String representation of outcome
+	   */
+	  public String testSaveSchool(String username, String school) {
+		  if(ui1.saveSchool(username, school) == 1) {
+			  return "School successfully added.";
+		  }
+		  return "Failure.";
+	  }
+	  
+	  /**
+	   * Tests the compare functionality
+	   * 
+	   * @param u1 is the first university being compared
+	   * @param u2 is the second university being compared
+	   * @return String represenation of comparison
+	   */
+	  public String testCompare(String u1, String u2) {
+		List<University> schools = ui1.compare(u1, u2);
+		if(!(schools.size() == 2)) {
+			return "Failure, less than 2.";
+		}
+		if(schools.get(0).getControl().equals("") || schools.get(1).getControl().equals("")) {
+			return "Failure.";
+		}
+		String result = schools.get(0).toString() + schools.get(1).toString();
+		return result;
+	  }
+	  
+	  /**
+	   * Tests the view user info functionality
+	   * 
+	   * @param username is the user who is being viewed
+	   * @return String representation of profile
+	   */
+	  public String testViewUserInfo(String username) {
+		User user = ai1.viewUserInfo(username);
+		String result = user.toString();
+		return result;
+	  }
+	  
 	  public static void main(String[] args)
 	  {
 		//objects
@@ -198,7 +270,6 @@ import java.util.List;
 	    System.out.println('\n');
 	    
 	    // Reset Account
-	    ai.deleteUser("testUser");
 	    ai.deleteUser("TyDog");
 	    
 	    
@@ -270,31 +341,31 @@ import java.util.List;
 	    
 	    
 	    //U8 View Universities
-	    System.out.println(p.testViewUniversities() + "\n");
+	    System.out.println(p.testViewUniversities());
 	    
 	    
 	    
 	    //U9 Remove University
-	    System.out.println(p.testRemoveUniversity("AUGSBURG" + "\n"));
+	    System.out.println(p.testRemoveUniversity("AUGSBURG") + "\n");
 	    
 	    
 	    
 	    //U10 Add University   
-	    System.out.println(p.testAddUniversity("School", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5));
+	    System.out.println(p.testAddUniversity("AUGSBURG", "MINNESOTA", "SMALL-CITY", "PRIVATE" , 10000, 43, 420, 490, 29991, 80, 4000, 85, 50, 1, 3, 4) + "\n");
 	    
-	    //U10 A1 Erroe
-	    System.out.println(p.testAddUniversity("School", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5));
-	    System.out.println('\n');
-	    
-	    ai.removeUniversity("School");
+	    //U10 A1 Error
+	    System.out.println(p.testAddUniversity("AUGSBURG", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5) + "\n");	    
 
 	    
-	    /*
-	    //U11 Edit Universities 
-	    System.out.println("U11: Edit University");
-	    //ai.editUniversity("School", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 );
-	    System.out.println('\n');
 	    
+	    //U11 Edit Universities 
+	    ai.addUniversity("School", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5);
+
+	    System.out.println(p.testEditUniversity("School", "MN", "SMALL-CITY", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5) + "\n");
+	    System.out.println(p.testEditUniversity("Fake", "MN", "SMALL-CITY", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5) + "\n");
+	    
+	    
+	    /*
 	    //U12 Search
 	    System.out.println("U12: Search");
 	    //ui.search("testSchool");
@@ -304,21 +375,25 @@ import java.util.List;
 	    System.out.println("U13: View Results"); //same as U12
 	    System.out.println('\n');
 	    
+	    
+	    */
+	    
+	    
 	    //U14 Save School
-	    System.out.println("U14: Save a school");
-	    ui.saveSchool("testUser", "BARD");
-	    System.out.println('\n');
+	    System.out.println(p.testSaveSchool("testUser", "BARD") + "\n");
+	    System.out.println(p.testViewSavedSchools("testUser"));
+	    
 	    
 	    //U15 Compare two schools
-	    System.out.println("U15: Compare Two Schools");
-	   // ui.compare("BARD", "ADELPHI");
-	    System.out.println('\n');
+	    System.out.println(p.testCompare("AUGSBURG", "BUTLER"));
+	    
+	    
 	    
 	    //U16 View Other User's Info
-	    System.out.println("U16: View Other User's Profile");
-	    ai.viewUserInfo("nadmin");
-	    System.out.println('\n');
+	    System.out.println(p.testViewUserInfo("juser") + "\n");
 	    
+	    
+	    /*
 	    //U17 View Own Profile
 	    System.out.println("U17: Edit info (reset)");
 	    System.out.println('\n');
@@ -349,6 +424,9 @@ import java.util.List;
 	    System.out.println('\n');
 	    
 	  */
+	    
+	    ai.deleteUser("testUser");
+
 	  }
 	}
 	

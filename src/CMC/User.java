@@ -27,9 +27,12 @@ public class User extends Account{
 	public User(String first, String last, String username, String password, char usertype, char status) {
 		super(first, last, username, password, usertype, status);
 	}
- 
-/**
- *  UserInteraction userInteraction=new UserInteraction;
-*/
+
+	@Override
+	public String toString() {
+		return "User " + first + "\n" + last + "\n" + username + "\n" + password
+				+ "\n" + usertype + "\n" + status + "\n";
+	}
+
 
 }
