@@ -60,11 +60,11 @@ import java.util.List;
 	  /**
 	   * Tests the view saved schools functionality
 	   * 
-	   * @param username is the user whos schools list is being viewed
+	   * @param username is the user whose schools list is being viewed
 	   * @return String representation of method call
 	   */
 	  public String testViewSavedSchools(String username) {
-		  List<String> schools = ui1.viewSavedSchools(username);
+		  List<University> schools = ui1.viewSavedSchools(username);
 		  String result = "";
 		  int x = 0;
 		  while(x < schools.size()) {
@@ -112,7 +112,7 @@ import java.util.List;
 	   * @return String representation of all universities.
 	   */
 	  public String testViewUniversities() {
-		  List<String> schools = ai1.viewUniversities();
+		  List<University> schools = ai1.viewUniversities();
 		  String result = "";
 		  int x = 0;
 		  while(x < schools.size()) {

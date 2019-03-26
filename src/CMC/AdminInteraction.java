@@ -109,7 +109,7 @@ public class AdminInteraction{
  * @return ArrayList<Universities> the list of universities
  */
 
- public List<String> viewUniversities() {
+ public List<University> viewUniversities() {
   return adminController.viewUniversities();
 }
  

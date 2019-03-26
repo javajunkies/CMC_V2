@@ -84,11 +84,11 @@ public class DBController {
   {
     
     String[][] universities = db.university_getUniversities();
-    ArrayList[][] distance = new ArrayList[5][];
-    ArrayList[][] maximum = new ArrayList[5][];
-    ArrayList[][] minimum = new ArrayList[5][];
-    for(int j = 0; j<universities[0].length(); j++) {
-      for(int i = 4; i < universities[1].length(); i++) {
+    ArrayList<Double> distance = new ArrayList<Double>();
+    ArrayList<Double> maximum = new ArrayList<Double>();
+    ArrayList<Double> minimum = new ArrayList<Double>();
+    for(int j = 0; j<universities[0].length; j++) {
+      for(int i = 4; i < universities[1].length; i++) {
         if(universities[j][i] > maximum[0][i]) {
           maximum[0][i] = universities[j][i];
         }
@@ -97,7 +97,7 @@ public class DBController {
         }
       }
     }
-    for(int j = 0; j < universities[0].length(); j++) {
+    for(int j = 0; j < universities[0].length; j++) {
       distance[j][0] = universities[j][0];
       String state = universities[j][1];
       String location = universities[j][2];
@@ -140,7 +140,7 @@ public class DBController {
       
     }
     
-    for(int j = 0; j < distance[0].length(); j++) {
+    for(int j = 0; j < distance[0].length; j++) {
       if(distance[j+1][1] < distance[j][1]) {
         double tempDist = distance[j][1];
         distance[j][1] = distance[j+1][1];
@@ -153,7 +153,7 @@ public class DBController {
     ArrayList<University> recommendedSchools = new ArrayList<University>();
     
     for(int i = 0; i<5; i++) {
-      for(int j = 0; j < universities[0].length(); j++) {
+      for(int j = 0; j < universities[0].length; j++) {
         if(distance[i][0].equals(universities[j][0])){
           String school = universities[j][0];
           String state = universities[j][1];
@@ -334,15 +334,18 @@ public class DBController {
   /**
    * A method to view a List of all universities in the DB
    * 
+   * @return ArrayList of all the universities
    */
-  public List<String> getAllUniversities()
+  public ArrayList<University> getAllUniversities()
   {
 	  String [][] univs = db.university_getUniversities();
-	  List<String> result = new ArrayList<String>();
-	  for(int i = 0; i < univs.length; i++) {
-		 result.add(univs[i][0]);
+	  ArrayList<University> result = new ArrayList<University>();
+	  for(int i = 0; i < univs.length; i++) 
+	  {
+		University uni = new University(univs[i][0], univs[i][1], univs[i][2], univs[i][3], Integer.parseInt(univs[i][4]), Double.parseDouble(univs[i][5]), Double.parseDouble(univs[i][6]), Double.parseDouble(univs[i][7]), Double.parseDouble(univs[i][8]), Double.parseDouble(univs[i][9]), Integer.parseInt(univs[i][10]), Double.parseDouble(univs[i][11]), Double.parseDouble(univs[i][12]), Integer.parseInt(univs[i][13]), Integer.parseInt(univs[i][14]), Integer.parseInt(univs[i][15]) ) ;
+		result.add(uni);
 	  }
-	  return result;
+		 return result;
   }
   
   /**
@@ -425,22 +428,49 @@ public class DBController {
    * 
    * @param username - person
    */
-  public List<String> viewSavedSchools(String username) 
+  public ArrayList<University> viewSavedSchools(String username) 
   {
-    // go through the list of universities
-    // create an University object of each one 
-    List<String> userSavedSchools = new ArrayList<String>();
     
+    String[] userSavedSchools;
+    String[][] universities = db.university_getUniversities();
+    ArrayList<University> savedSchools = new ArrayList<University>();
     //get all of the users with saved schools
     String[][] users = db.user_getUsernamesWithSavedSchools();
+    int k = 0;
     if(!(users == null)) {
     for(int i = 0; i < users.length; i++) {
     	if(users[i][0].equals(username)) {
-    		userSavedSchools.add(users[i][1]);
+    		userSavedSchools[k] = users[i][1];
+    		k++;
     	}
     }
     }
-    return userSavedSchools;
+    for(int i = 0; i < userSavedSchools.length; i++) {
+    	for(int j = 0; j < universities.length; j++) {
+        	if(userSavedSchools[i].equals(universities[j][0])) {
+        		String school = universities[j][0];
+                String state = universities[j][1];
+                String location = universities[j][2];
+                String control = universities[j][3];
+                int numStudents = Integer.parseInt(universities[j][4]);
+                double percentFemale = Double.parseDouble(universities[j][5]);
+                double SATVerbal = Double.parseDouble(universities[j][6]);
+                double SATMath = Double.parseDouble(universities[j][7]);
+                double expenses = Double.parseDouble(universities[j][8]);
+                double percentFinancialAid = Double.parseDouble(universities[j][9]);
+                int numApplicants = Integer.parseInt(universities[j][10]);
+                double percentAdmitted = Double.parseDouble(universities[j][11]);
+                double percentEnrolled = Double.parseDouble(universities[j][12]);
+                int academicsScale = Integer.parseInt(universities[j][13]);
+                int socialScale = Integer.parseInt(universities[j][14]);
+                int qualityOfLife = Integer.parseInt(universities[j][15]);
+                University savedUniv = new University(school, state, location, control, numStudents, percentFemale, SATVerbal, SATMath, expenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLife);
+                savedSchools.add(savedUniv);
+        	}
+        }
+    }
+    
+    return savedSchools;
     }
   
   
@@ -728,13 +758,13 @@ public class DBController {
  public ArrayList<University> sortByAcceptance(String username) 
   {
     //make an ArrayList of the users saved schools and assign them a position
-    ArrayList<University> byAcceptance = new ArrayList<University>();
-    byAcceptance = viewSavedSchools(username); 
+    ArrayList<University> byAcceptance = viewSavedSchools(username); 
+    //University[] byAcceptance = acceptance.toArray();
     
     //sort the list in descending order
-    for(int i = 0; byAcceptance.length; i++) {
-      if(byAcceptance[i].getPercentAdmitted() > byAcceptance[i+1].getPercentAdmitted()) {
-        swap(byAcceptance[i], byAcceptance[i+1]);
+    for(int i = 0; i < byAcceptance.size(); i++) {
+      if(byAcceptance.get(i).getPercentAdmitted() > byAcceptance.get(i+1).getPercentAdmitted()) {
+        swap(byAcceptance.get(i), byAcceptance.get(i+1));
       }
     return byAcceptance;
   }
@@ -792,4 +822,4 @@ public class DBController {
 //  }
   
   
-
+}

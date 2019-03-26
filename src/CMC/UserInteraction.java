@@ -45,7 +45,7 @@ public class UserInteraction
    * 
    * @param user - username of user
    */
-  public List<String> viewSavedSchools(String username)
+  public List<University> viewSavedSchools(String username)
   {
     return UserController.viewSavedSchools(username);
   }
