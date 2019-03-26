@@ -341,7 +341,7 @@ public class DBController {
   public List<User> getAllUsers() {
     ArrayList<User> userList = new ArrayList<User>();
     String[][]usersInfo = db.user_getUsers();
-    for(int j=0; j<usersInfo[1].length; j++) {
+    for(int j=0; j<usersInfo.length; j++) {
       User user = new User(usersInfo[j][0],usersInfo[j][1],usersInfo[j][2],usersInfo[j][3],usersInfo[j][4].charAt(0), usersInfo[j][5].charAt(0));
       userList.add(user);
     }
@@ -404,7 +404,7 @@ public class DBController {
    */
   
   public int userEditUser(String username, String first, String last, String password) {
-    return db.user_editUser(username, first, last, password, 'u', 'Y');
+	  return db.user_editUser(username, first, last, password, 'u', 'Y');
   }
   
  
