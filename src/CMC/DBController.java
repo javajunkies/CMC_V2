@@ -84,11 +84,11 @@ public class DBController {
   {
     
     String[][] universities = db.university_getUniversities();
-    ArrayList<double> distance = new ArrayList<double>();
-    ArrayList<double> maximum = new ArrayList<double>();
-    ArrayList<double> minimum = new ArrayList<double>();
-    for(int j = 0; j<universities[0].length(); j++) {
-      for(int i = 4; i < universities[1].length(); i++) {
+    ArrayList<Double> distance = new ArrayList<Double>();
+    ArrayList<Double> maximum = new ArrayList<Double>();
+    ArrayList<Double> minimum = new ArrayList<Double>();
+    for(int j = 0; j<universities[0].length; j++) {
+      for(int i = 4; i < universities[1].length; i++) {
         if(universities[j][i] > maximum[0][i]) {
           maximum[0][i] = universities[j][i];
         }
@@ -97,7 +97,7 @@ public class DBController {
         }
       }
     }
-    for(int j = 0; j < universities[0].length(); j++) {
+    for(int j = 0; j < universities[0].length; j++) {
       distance[j][0] = universities[j][0];
       String state = universities[j][1];
       String location = universities[j][2];
@@ -140,7 +140,7 @@ public class DBController {
       
     }
     
-    for(int j = 0; j < distance[0].length(); j++) {
+    for(int j = 0; j < distance[0].length; j++) {
       if(distance[j+1][1] < distance[j][1]) {
         double tempDist = distance[j][1];
         distance[j][1] = distance[j+1][1];
@@ -153,7 +153,7 @@ public class DBController {
     ArrayList<University> recommendedSchools = new ArrayList<University>();
     
     for(int i = 0; i<5; i++) {
-      for(int j = 0; j < universities[0].length(); j++) {
+      for(int j = 0; j < universities[0].length; j++) {
         if(distance[i][0].equals(universities[j][0])){
           String school = universities[j][0];
           String state = universities[j][1];
