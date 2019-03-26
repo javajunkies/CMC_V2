@@ -276,40 +276,52 @@ public class DBController {
            || myLocation.equals("0") 
            && universities[i][3].contains(myControl) 
            || myControl.equals("0") 
-           && minNumStudents <= Integer.parseInt(universities[i][4]) <= maxNumStudents 
+           && minNumStudents <= Integer.parseInt(universities[i][4]) 
+           && Integer.parseInt(universities[i][4]) <= maxNumStudents 
            || minNumStudents <= Integer.parseInt(universities[i][4]) 
            && maxNumStudents == 0 
-           && minPercentFemale <= Double.parseDouble(universities[i][5]) <= maxPercentFemale 
+           && minPercentFemale <= Double.parseDouble(universities[i][5]) 
+           && Double.parseDouble(universities[i][5]) <= maxPercentFemale 
            || minPercentFemale <= Double.parseDouble(universities[i][5]) 
            && maxPercentFemale == 0 
-           && minSATVerbal <= Double.parseDouble(universities[i][6]) <= maxSATVerbal 
+           && minSATVerbal <= Double.parseDouble(universities[i][6]) 
+           && Double.parseDouble(universities[i][6]) <= maxSATVerbal 
            || minSATVerbal <= Double.parseDouble(universities[i][6]) 
            && maxSATVerbal == 0 
-           && minSATMath <= Double.parseDouble(universities[i][7]) <= maxSATMath 
+           && minSATMath <= Double.parseDouble(universities[i][7]) 
+           && Double.parseDouble(universities[i][7]) <= maxSATMath 
            || minSATMath <= Double.parseDouble(universities[i][7]) 
            && maxSATMath == 0 
-           && minExpenses <= Double.parseDouble(universities[i][8]) <= maxExpenses 
+           && minExpenses <= Double.parseDouble(universities[i][8]) 
+           && Double.parseDouble(universities[i][8]) <= maxExpenses 
            || minExpenses <= Double.parseDouble(universities[i][8]) 
            && maxExpenses == 0 
-           && minPercentFinancialAid <= Double.parseDouble(universities[i][9]) <= maxFinancialAid 
+           && minPercentFinancialAid <= Double.parseDouble(universities[i][9]) 
+           && Double.parseDouble(universities[i][9]) <= maxPercentFinancialAid 
            || minPercentFinancialAid <= Double.parseDouble(universities[i][9]) 
            && maxPercentFinancialAid == 0 
-           && minNumApplicants <= Integer.parseInt(universities[i][10]) <= maxNumApplicants 
+           && minNumApplicants <= Integer.parseInt(universities[i][10]) 
+           && Integer.parseInt(universities[i][10]) <= maxNumApplicants 
            || minNumApplicants <= Integer.parseInt(universities[i][10]) 
            && maxNumApplicants == 0 
-           && minPercentAdmitted <= Double.parseDouble(universities[i][11]) <= maxPercentAdmitted 
+           && minPercentAdmitted <= Double.parseDouble(universities[i][11]) 
+           && Double.parseDouble(universities[i][11]) <= maxPercentAdmitted 
            || minPercentAdmitted <= Double.parseDouble(universities[i][11]) 
            && maxPercentAdmitted == 0 
-           && minPercentEnrolled <= Double.parseDouble(universities[i][12]) <= maxPercentEnrolled 
+           && minPercentEnrolled <= Double.parseDouble(universities[i][12]) 
+           && Double.parseDouble(universities[i][12]) <= maxPercentEnrolled 
            || minPercentEnrolled <= Double.parseDouble(universities[i][12]) 
            && maxPercentEnrolled == 0 
-           && minAcademicsScale <= Integer.parseInt(universities[i][13]) <= maxAcademicsScale 
+           && minAcademicsScale <= Integer.parseInt(universities[i][13]) 
+           && Integer.parseInt(universities[i][13]) <= maxAcademicsScale 
            || minAcademicsScale <= Integer.parseInt(universities[i][13]) 
            && maxAcademicsScale == 0 
-           && minSocialScale <= Integer.parseInt(universities[i][14]) <= maxSocialScale 
+           && minSocialScale <= Integer.parseInt(universities[i][14]) 
+           && Integer.parseInt(universities[i][14]) <= maxSocialScale 
            || minSocialScale <= Integer.parseInt(universities[i][14]) 
            && maxSocialScale == 0 
-           && minQualityOfLife <= Integer.parseInt(universities[i][15]) <= maxQualityOfLife 
+           && minQualityOfLife <= Integer.parseInt(universities[i][15]) 
+           && Integer.parseInt(universities[i][15]) <= maxQualityOfLife 
            || minQualityOfLife <= Integer.parseInt(universities[i][15]) 
            && maxQualityOfLife == 0) {
         University univ = new University(universities[i][0],universities[i][1],universities[i][2],universities[i][3],Integer.parseInt(universities[i][4]),Double.parseDouble(universities[i][5]),Double.parseDouble(universities[i][6]),Double.parseDouble(universities[i][7]),Double.parseDouble(universities[i][8]),Double.parseDouble(universities[i][9]),Integer.parseInt(universities[i][10]),Double.parseDouble(universities[i][11]),Double.parseDouble(universities[i][12]),Integer.parseInt(universities[i][13]),Integer.parseInt(universities[i][14]),Integer.parseInt(universities[i][15]));
@@ -415,7 +427,8 @@ public class DBController {
    */
   public List<String> viewSavedSchools(String username) 
   {
-    
+    // go through the list of universities
+    // create an University object of each one 
     List<String> userSavedSchools = new ArrayList<String>();
     
     //get all of the users with saved schools
@@ -746,6 +759,7 @@ public class DBController {
         swap(byExpenses[i], byExpenses[i+1]);
       }
     return byExpenses;
+    }
   }
     
 
@@ -757,7 +771,7 @@ public class DBController {
    * @return      byNumStudents
    */
  public ArrayList<University> sortByNumStudents(String username) 
-  {
+s  {
     //make an ArrayList of the users saved schools and assign them a position
     ArrayList<University> byNumStudents = new ArrayList<University>();
     byNumStudents = viewSavedSchools(username);
