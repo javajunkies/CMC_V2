@@ -64,7 +64,7 @@ import java.util.List;
 	   * @return String representation of method call
 	   */
 	  public String testViewSavedSchools(String username) {
-		  List<String> schools = ui1.viewSavedSchools(username);
+		  List<University> schools = ui1.viewSavedSchools(username);
 		  String result = "";
 		  int x = 0;
 		  while(x < schools.size()) {
@@ -112,7 +112,7 @@ import java.util.List;
 	   * @return String representation of all universities.
 	   */
 	  public String testViewUniversities() {
-		  List<String> schools = ai1.viewUniversities();
+		  List<University> schools = ai1.viewUniversities();
 		  String result = "";
 		  int x = 0;
 		  while(x < schools.size()) {
