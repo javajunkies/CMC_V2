@@ -334,15 +334,18 @@ public class DBController {
   /**
    * A method to view a List of all universities in the DB
    * 
+   * @return ArrayList of all the universities
    */
-  public List<String> getAllUniversities()
+  public ArrayList<University> getAllUniversities()
   {
 	  String [][] univs = db.university_getUniversities();
-	  List<String> result = new ArrayList<String>();
-	  for(int i = 0; i < univs.length; i++) {
-		 result.add(univs[i][0]);
+	  ArrayList<University> result = new ArrayList<University>();
+	  for(int i = 0; i < univs.length; i++) 
+	  {
+		University uni = new University(univs[i][0], univs[i][1], univs[i][2], univs[i][3], Integer.parseInt(univs[i][4]), Double.parseDouble(univs[i][5]), Double.parseDouble(univs[i][6]), Double.parseDouble(univs[i][7]), Double.parseDouble(univs[i][8]), Double.parseDouble(univs[i][9]), Integer.parseInt(univs[i][10]), Double.parseDouble(univs[i][11]), Double.parseDouble(univs[i][12]), Integer.parseInt(univs[i][13]), Integer.parseInt(univs[i][14]), Integer.parseInt(univs[i][15]) ) ;
+		result.add(uni);
 	  }
-	  return result;
+		 return result;
   }
   
   /**
