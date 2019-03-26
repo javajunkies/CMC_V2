@@ -84,9 +84,9 @@ public class DBController {
   {
     
     String[][] universities = db.university_getUniversities();
-    ArrayList<double> distance = new ArrayList<double>();
-    ArrayList<double> maximum = new ArrayList<double>();
-    ArrayList<double> minimum = new ArrayList<double>();
+    double[][] distance = new double[][];
+    List<double> maximum = new ArrayList<double>();
+    List<double> minimum = new ArrayList<double>();
     for(int j = 0; j<universities[0].length(); j++) {
       for(int i = 4; i < universities[1].length(); i++) {
         if(universities[j][i] > maximum[0][i]) {
