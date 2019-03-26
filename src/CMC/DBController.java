@@ -427,7 +427,8 @@ public class DBController {
    */
   public List<String> viewSavedSchools(String username) 
   {
-    
+    // go through the list of universities
+    // create an University object of each one 
     List<String> userSavedSchools = new ArrayList<String>();
     
     //get all of the users with saved schools
