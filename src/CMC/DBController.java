@@ -771,7 +771,7 @@ public class DBController {
    * @return      byNumStudents
    */
  public ArrayList<University> sortByNumStudents(String username) 
-s  {
+  {
     //make an ArrayList of the users saved schools and assign them a position
     ArrayList<University> byNumStudents = new ArrayList<University>();
     byNumStudents = viewSavedSchools(username);
@@ -784,11 +784,12 @@ s  {
     return byNumStudents;
     }
   }
+  }
   
 //  public static void main(String[] args) {
 //	  DBController dbc = new DBController();
 //	  System.out.println(dbc.isUser("juser"));
 //  }
-  }
+  
   
 

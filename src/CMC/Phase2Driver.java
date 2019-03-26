@@ -478,7 +478,14 @@ import java.util.List;
 	    
 	    
 	    //U19 Add new User
-	    System.out.println(p.testAddNewUser("Test", "Adding", "Test6", "Password1", 'u') + "\n");
+	    System.out.println(p.testAddNewUser("Test", "Adding", "Test6", "Password1", 'u'));
+	    
+	    //U19 A1 Username not unique
+	    System.out.println(p.testAddNewUser("Test", "Fail", "Test6", "Password2", 'u'));
+	    
+	    //U19 A2 Password does not meet criteria
+	    System.out.println(p.testAddNewUser("Test", "BadPass", "Test7", "bad", 'u') + "\n");
+	    
 	    
 	    //U20 Deactivate user
 	    System.out.println(p.testDeactivateUser("Test6") + "\n");
