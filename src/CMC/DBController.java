@@ -755,13 +755,13 @@ public class DBController {
  public ArrayList<University> sortByAcceptance(String username) 
   {
     //make an ArrayList of the users saved schools and assign them a position
-    ArrayList<University> byAcceptance = new ArrayList<University>();
-    byAcceptance = viewSavedSchools(username); 
+    ArrayList<University> byAcceptance = viewSavedSchools(username); 
+    //University[] byAcceptance = acceptance.toArray();
     
     //sort the list in descending order
-    for(int i = 0; byAcceptance.length; i++) {
-      if(byAcceptance[i].getPercentAdmitted() > byAcceptance[i+1].getPercentAdmitted()) {
-        swap(byAcceptance[i], byAcceptance[i+1]);
+    for(int i = 0; i < byAcceptance.size(); i++) {
+      if(byAcceptance.get(i).getPercentAdmitted() > byAcceptance.get(i+1).getPercentAdmitted()) {
+        swap(byAcceptance.get(i), byAcceptance.get(i+1));
       }
     return byAcceptance;
   }
