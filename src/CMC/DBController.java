@@ -264,9 +264,9 @@ public class DBController {
   {
     String[][] universities = db.university_getUniversities();
     int rowLength = universities[0].length;
-    int colLength = universities[1].length; 
+    //int colLength = universities[1].length; 
     ArrayList<University> matchUni = new ArrayList<University>();
-    int k = 0;
+    //int k = 0;
     for(int i = 0; i < rowLength; i++) {
       if(universities[i][0].contains(mySchool) 
            || mySchool.equals("0") 
@@ -425,23 +425,24 @@ public class DBController {
    * 
    * @param username - person
    */
-  public ArrayList<University> viewSavedSchools(String username) 
+  public List<University> viewSavedSchools(String username) 
   {
     
-    String[] userSavedSchools;
+	List<String> userSavedSchools = new ArrayList<String>();
     String[][] universities = db.university_getUniversities();
-    ArrayList<University> savedSchools = new ArrayList<University>();
+    List<University> savedSchools = new ArrayList<University>();
     //get all of the users with saved schools
     String[][] users = db.user_getUsernamesWithSavedSchools();
     int k = 0;
     if(!(users == null)) {
     for(int i = 0; i < users.length; i++) {
     	if(users[i][0].equals(username)) {
-    		userSavedSchools[k] = users[i][1];
+    		userSavedSchools.add(users[i][1]);
     		k++;
     	}
     }
-    }
+    
+    
     for(int i = 0; i < userSavedSchools.length; i++) {
     	for(int j = 0; j < universities.length; j++) {
         	if(userSavedSchools[i].equals(universities[j][0])) {
@@ -466,7 +467,7 @@ public class DBController {
         	}
         }
     }
-    
+    }
     return savedSchools;
     }
   
@@ -811,11 +812,6 @@ public class DBController {
     return byNumStudents;
     }
   }
-  
-//  public static void main(String[] args) {
-//	  DBController dbc = new DBController();
-//	  System.out.println(dbc.isUser("juser"));
-//  }
   }
   
 
