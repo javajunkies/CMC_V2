@@ -431,11 +431,10 @@ public class DBController {
   public ArrayList<University> viewSavedSchools(String username) 
   {
     
-    String[] userSavedSchools;
     String[][] universities = db.university_getUniversities();
     ArrayList<University> savedSchools = new ArrayList<University>();
-    //get all of the users with saved schools
     String[][] users = db.user_getUsernamesWithSavedSchools();
+    String[] userSavedSchools = new String[users.length];
     int k = 0;
     if(!(users == null)) {
     for(int i = 0; i < users.length; i++) {
