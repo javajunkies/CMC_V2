@@ -60,7 +60,7 @@ import java.util.List;
 	  /**
 	   * Tests the view saved schools functionality
 	   * 
-	   * @param username is the user whos schools list is being viewed
+	   * @param username is the user whose schools list is being viewed
 	   * @return String representation of method call
 	   */
 	  public String testViewSavedSchools(String username) {
