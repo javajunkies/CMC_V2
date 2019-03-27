@@ -118,7 +118,7 @@ import java.util.List;
 		  String result = "";
 		  int x = 0;
 		  while(x < schools.size()) {
-			  result = result + schools.get(x) + "\n";
+			  result = result + schools.get(x).getSchool() + "\n";
 		  x++;
 		  }
 		  return result;
@@ -313,7 +313,23 @@ import java.util.List;
 		  }
 		  return "Failure.";
 	  }
-	  public static void main(String[] args)
+	  
+	  public String testSearchUniversities(String mySchool, String myState, String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife){
+		  ArrayList<University> univs = ui1.searchUniversities(mySchool, myState, myLocation, myControl, minNumStudents, maxNumStudents, minPercentFemale, maxPercentFemale, minSATVerbal, maxSATVerbal, minSATMath, maxSATMath, minExpenses, maxExpenses, minPercentFinancialAid, maxPercentFinancialAid, minNumApplicants, maxNumApplicants, minPercentAdmitted, maxPercentAdmitted, minPercentEnrolled, maxPercentEnrolled, minAcademicsScale, maxAcademicsScale, minSocialScale, maxSocialScale, minQualityOfLife, maxQualityOfLife);
+		  /*for(int i = 0; i < univs.size(); i++) {
+			  String result = univs.get(i).toString();
+		  }*/
+		  String result = univs.get(0).toString();
+		  return result;
+	  
+	  }
+	  
+	  public static void main(String[] args) {
+		  Phase2Driver p = new Phase2Driver();
+
+	  }
+
+/*	  public static void main(String[] args)
 	  {
 		//objects
 		Phase2Driver p = new Phase2Driver();
@@ -377,14 +393,14 @@ import java.util.List;
 	    ai.deleteUser("Test2");
 	    ai.deleteUser("Test3");
 	    
-	/*    //U4 Sort Saved Schools
+	    //U4 Sort Saved Schools
 	    System.out.println("U4: Sort Saved Schools");
 	    //ui.sortSavedSchools(1 ,0 , 0, "testUser");
 	    System.out.println('\n');
-	    */
 	    
 	    
-	    /*
+	    
+	    
 	    //U5 View Recommended Schools    
 	    System.out.println("U5: View Recommended Schools");
 	    //ui.getRecommendedList(testSchool);              //takes type university
@@ -392,7 +408,7 @@ import java.util.List;
 	    System.out.println('\n');
 	    
 	    
-	    */
+	    
 	    
 	    //U6 Remove Saved School
 	    ai.addNewUser("Remove", "Saved", "Test1", "Password1", 'u');
@@ -427,20 +443,11 @@ import java.util.List;
 	    ai.addUniversity("School", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5);
 
 	    System.out.println(p.testEditUniversity("School", "MN", "SMALL-CITY", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5) + "\n");	    
+	    System.out.println(p.testSearchUniversities("AU", "M", "", "", 10, 1000000, 0, 100, 0, 800, 0, 800, 0, 1000000, 0, 100, 0, 100000, 0, 100, 0, 90, 1, 5, 1, 5, 1, 5));
+	   
 	    
 	    
-	    /*
-	    //U12 Search
-	    System.out.println("U12: Search");
-	    //ui.search("testSchool");
-	    System.out.println('\n');
 	    
-	    //U13 View Search Results
-	    System.out.println("U13: View Results"); //same as U12
-	    System.out.println('\n');
-	    
-	    
-	    */
 	    
 	    
 	    //U14 Save School
@@ -501,6 +508,6 @@ import java.util.List;
 	    ai.deleteUser("testUser");
 	    ai.removeUniversity("testSchool");
 	    ai.removeUniversity("School");
-	  }
+	  }*/
 	}
 	

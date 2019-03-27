@@ -743,16 +743,16 @@ public class DBController {
    */
  public ArrayList<University> sortByAcceptance(String username) 
   {
-    //make an ArrayList of the users saved schools and assign them a position
-    ArrayList<University> byAcceptance = viewSavedSchools(username); 
-    //University[] byAcceptance = acceptance.toArray();
-    
-    //sort the list in descending order
-    for(int i = 0; i < byAcceptance.size();) {
-      if(byAcceptance.get(i).getPercentAdmitted() > byAcceptance.get(i+1).getPercentAdmitted()) {
-        swap(byAcceptance.get(i), byAcceptance.get(i+1));
-      }
-   }
+    ArrayList<University> byAcceptance = this.viewSavedSchools(username); 
+    for(int i = 0; i < byAcceptance.size(); i ++) {
+    	for(int k = i + 1; k < byAcceptance.size(); k++) {
+    		if(byAcceptance.get(i).getPercentAdmitted() > byAcceptance.get(k).getPercentAdmitted()) {
+    			University temp = byAcceptance.get(i);
+    			byAcceptance.set(i, byAcceptance.get(k));
+    			byAcceptance.set(k, temp);
+    		}
+    	}
+    }
     return byAcceptance;
  }
     
@@ -796,7 +796,7 @@ public class DBController {
     //sort the list in descending order
     for(int i = 0; i < byNumStudents.size(); i++) {
       if(byNumStudents.get(i).getNumStudents() > byNumStudents.get(i+1).getNumStudents()) {
-        swap(byNumStudents.get(i), byNumStudents.get(i+1));
+        swap(byNumStudents.get(i), byNumStudents.get(i + 1));
       }
     }
     return byNumStudents;
