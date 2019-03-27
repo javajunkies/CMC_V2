@@ -84,6 +84,9 @@ public class DBController {
     String[][] distance;
     Double[] maximum;
     Double[] minimum;
+    double x1;
+    double x2;
+    double x3;
     //int maxIndex = 0;
     //int minIndex = 0;
     for(int j = 0; j<universities[0].length; j++) {
@@ -104,40 +107,64 @@ public class DBController {
       String location = universities[j][2];
       String control = universities[j][3];
       int numStudents = Integer.parseInt(universities[j][4]);
+      double maxNumStudents = maximum[4];
+      double minNumStudents = minimum[4];
       double percentFemale = Double.parseDouble(universities[j][5]);
+      double maxPercentFemale = maximum[5];
+      double minPercentFemale = minimum[5];
       double SATVerbal = Double.parseDouble(universities[j][6]);
+      double maxSATVerbal = maximum[6];
+      double minSATVerbal = minimum[6];
       double SATMath = Double.parseDouble(universities[j][7]);
+      double maxSATMath = maximum[7];
+      double minSATMath = minimum[7];
       double expenses = Double.parseDouble(universities[j][8]);
+      double maxExpenses = maximum[8];
+      double minExpenses = minimum[8];
       double percentFinancialAid = Double.parseDouble(universities[j][9]);
+      double maxPercentFinancialAid = maximum[9];
+      double minPercentFinancialAid = minimum[9];
       int numApplicants = Integer.parseInt(universities[j][10]);
+      double maxNumApplicants = maximum[10];
+      double minNumApplicants = minimum[10];
       double percentAdmitted = Double.parseDouble(universities[j][11]);
+      double maxPercentAdmitted = maximum[11];
+      double minPercentAdmitted = minimum[11];
       double percentEnrolled = Double.parseDouble(universities[j][12]);
+      double maxPercentEnrolled = maximum[12];
+      double minPercentEnrolled = minimum[12];
       int academicsScale = Integer.parseInt(universities[j][13]);
+      double maxAcademicsScale = maximum[13];
+      double minAcademicsScale = minimum[13];
       int socialScale = Integer.parseInt(universities[j][14]);
+      double maxSocialScale = maximum[14];
+      double minSocialScale = minimum[14];
       int qualityOfLife = Integer.parseInt(universities[j][15]);
+      double maxQualityOfLife = maximum[15];
+      double minQualityOfLife = minimum[15];
       
       if(state.equals(university.getState())) {
-        double x1=0;
+        x1=0;
       }
       else {
-        double x1=1;
+        x1=1;
       }
       
       if(location.equals(university.getState())) {
-        double x2=0;
+        x2=0;
       }
       else {
-        double x2=1;
+        x2=1;
       }
       
       if(control.equals(university.getState())) {
-        double x3=0;
+        x3=0;
       }
       else {
-        double x3=1;
+        x3=1;
       }
-      double schoolDistance = x1 + x2 + x3 + Math.abs(numStudents-Integer.parseInteger(university.getNumStudents()))/Math.abs(maximum[0][4]-minimum[0][4]) + Math.abs(percentFemale-Double.parseDouble(university.getPercentFemale()))/Math.abs(maximum[0][5]-minimum[0][5]) + Math.abs(SATVerbal-Double.parseDouble(university.getSATVerbal()))/Math.abs(maximum[0][6]-minimum[0][6]) + Math.abs(SATMath-Double.parseDouble(university.getSATMath()))/Math.abs(maximum[0][7]-minimum[0][7]) + Math.abs(expenses-Double.parseDouble(university.getExpenses()))/Math.abs(maximum[0][8]-minimum[0][8]) + Math.abs(percentFinancialAid-Double.parseDouble(university.getPercentFinancialAid()))/Math.abs(maximum[0][9]-minimum[0][9]) + Math.abs(numApplicants-Double.parseDouble(university.getnumApplicants()))/Math.abs(maximum[0][10]-minimum[0][10]) + Math.abs(percentAdmitted-Double.parseDouble(university.getPercentAdmitted()))/Math.abs(maximum[0][11]-minimum[0][11]) + Math.abs(percentEnrolled-Double.parseDouble(university.getPercentEnrolled()))/Math.abs(maximum[0][12]-minimum[0][12]) + Math.abs(academicsScale-Double.parseDouble(university.getAcademicsScale()))/Math.abs(maximum[0][13]-minimum[0][13]) + Math.abs(socialScale-Double.parseDouble(university.getSocialScale()))/Math.abs(maximum[0][14]-minimum[0][14]) + Math.abs(qualityOfLife-Double.parseDouble(university.getQualityOfLife()))/Math.abs(maximum[0][15]-minimum[0][15]);
-      distance[j][1] = schoolDistance.toString();
+      double schoolDistance = x1 + x2 + x3 + Math.abs(numStudents-university.getNumStudents())/Math.abs(maxNumStudents-minNumStudents) + Math.abs(percentFemale-university.getPercentFemale())/Math.abs(maxPercentFemale-minPercentFemale) + Math.abs(SATVerbal-university.getSATVerbal())/Math.abs(maxSATVerbal-minSATVerbal) + Math.abs(SATMath-university.getSATMath())/Math.abs(maxSATMath-minSATMath) + Math.abs(expenses-university.getExpenses())/Math.abs(maxExpenses - minExpenses) + Math.abs(percentFinancialAid-university.getPercentFinancialAid())/Math.abs(maxPercentFinancialAid - minPercentFinancialAid) + Math.abs(numApplicants-university.getNumApplicants())/Math.abs(maxNumApplicants - minNumApplicants) + Math.abs(percentAdmitted-university.getPercentAdmitted())/Math.abs(maxPercentAdmitted - minPercentAdmitted) + Math.abs(percentEnrolled-university.getPercentEnrolled())/Math.abs(maxPercentEnrolled - minPercentEnrolled) + Math.abs(academicsScale-university.getAcademicsScale())/Math.abs(maxAcademicsScale - minAcademicsScale) + Math.abs(socialScale-university.getSocialScale())/Math.abs(maxSocialScale - minSocialScale) + Math.abs(qualityOfLife-university.getQualityOfLife())/Math.abs(maxQualityOfLife - minQualityOfLife);
+      distance[j][1] = Double.toString(schoolDistance);
       
     }
     
@@ -426,7 +453,7 @@ public class DBController {
    * 
    * @param username - person
    */
-  public List<University> viewSavedSchools(String username) 
+  public ArrayList<University> viewSavedSchools(String username) 
   {
     String[][] universities = db.university_getUniversities();
     ArrayList<University> savedSchools = new ArrayList<University>();
