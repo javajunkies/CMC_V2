@@ -1,5 +1,4 @@
-	package CMC;
-
+package CMC;
 import java.util.List;
 
 /**

@@ -87,8 +87,8 @@ public class DBController {
     ArrayList[][] distance = new ArrayList[5][];
     ArrayList[][] maximum = new ArrayList[5][];
     ArrayList[][] minimum = new ArrayList[5][];
-    for(int j = 0; j<universities[0].length(); j++) {
-      for(int i = 4; i < universities[1].length(); i++) {
+    for(int j = 0; j<universities[0].length; j++) {
+      for(int i = 4; i < universities[1].length; i++) {
         if(universities[j][i] > maximum[0][i]) {
           maximum[0][i] = universities[j][i];
         }
@@ -140,7 +140,7 @@ public class DBController {
       
     }
     
-    for(int j = 0; j < distance[0].length(); j++) {
+    for(int j = 0; j < distance[0].length; j++) {
       if(distance[j+1][1] < distance[j][1]) {
         double tempDist = distance[j][1];
         distance[j][1] = distance[j+1][1];
@@ -153,7 +153,7 @@ public class DBController {
     ArrayList<University> recommendedSchools = new ArrayList<University>();
     
     for(int i = 0; i<5; i++) {
-      for(int j = 0; j < universities[0].length(); j++) {
+      for(int j = 0; j < universities[0].length; j++) {
         if(distance[i][0].equals(universities[j][0])){
           String school = universities[j][0];
           String state = universities[j][1];
@@ -719,7 +719,7 @@ public class DBController {
     byAcceptance = viewSavedSchools(username); 
     
     //sort the list in descending order
-    for(int i = 0; byAcceptance.length; i++) {
+    for(int i = 0; byAcceptance.length(); i++) {
       if(byAcceptance[i].getPercentAdmitted() > byAcceptance[i+1].getPercentAdmitted()) {
         swap(byAcceptance[i], byAcceptance[i+1]);
       }
