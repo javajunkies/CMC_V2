@@ -81,9 +81,9 @@ public class DBController {
   {
     
     String[][] universities = db.university_getUniversities();
-    ArrayList[][] distance = new ArrayList[5][];
-    ArrayList[][] maximum = new ArrayList[5][];
-    ArrayList[][] minimum = new ArrayList[5][];
+    ArrayList<Double> distance = new ArrayList<Double>();
+    ArrayList<Double> maximum = new ArrayList<Double>();
+    ArrayList<Double> minimum = new ArrayList<Double>();
     for(int j = 0; j<universities[0].length; j++) {
       for(int i = 4; i < universities[1].length; i++) {
         if(universities[j][i] > maximum[0][i]) {
@@ -331,15 +331,18 @@ public class DBController {
   /**
    * A method to view a List of all universities in the DB
    * 
+   * @return ArrayList of all the universities
    */
-  public List<String> getAllUniversities()
+  public ArrayList<University> getAllUniversities()
   {
-   String [][] univs = db.university_getUniversities();
-   List<String> result = new ArrayList<String>();
-   for(int i = 0; i < univs.length; i++) {
-   result.add(univs[i][0]);
-   }
-   return result;
+	  String [][] univs = db.university_getUniversities();
+	  ArrayList<University> result = new ArrayList<University>();
+	  for(int i = 0; i < univs.length; i++) 
+	  {
+		University uni = new University(univs[i][0], univs[i][1], univs[i][2], univs[i][3], Integer.parseInt(univs[i][4]), Double.parseDouble(univs[i][5]), Double.parseDouble(univs[i][6]), Double.parseDouble(univs[i][7]), Double.parseDouble(univs[i][8]), Double.parseDouble(univs[i][9]), Integer.parseInt(univs[i][10]), Double.parseDouble(univs[i][11]), Double.parseDouble(univs[i][12]), Integer.parseInt(univs[i][13]), Integer.parseInt(univs[i][14]), Integer.parseInt(univs[i][15]) ) ;
+		result.add(uni);
+	  }
+		 return result;
   }
   
   /**
@@ -349,7 +352,7 @@ public class DBController {
   public List<User> getAllUsers() {
     ArrayList<User> userList = new ArrayList<User>();
     String[][]usersInfo = db.user_getUsers();
-    for(int j=0; j<usersInfo[1].length; j++) {
+    for(int j=0; j<usersInfo.length; j++) {
       User user = new User(usersInfo[j][0],usersInfo[j][1],usersInfo[j][2],usersInfo[j][3],usersInfo[j][4].charAt(0), usersInfo[j][5].charAt(0));
       userList.add(user);
     }
@@ -410,7 +413,7 @@ public class DBController {
    * returns 1 if user edited successfully, 0 if not
    */
   public int userEditUser(String username, String first, String last, String password) {
-    return db.user_editUser(username, first, last, password, 'u', 'Y');
+	  return db.user_editUser(username, first, last, password, 'u', 'Y');
   }
   
  
@@ -419,21 +422,54 @@ public class DBController {
    * 
    * @param username - person
    */
-  public List<String> viewSavedSchools(String username) 
+  public ArrayList<University> viewSavedSchools(String username) 
   {
     
-    List<String> userSavedSchools = new ArrayList<String>();
-    
-    //get all of the users with saved schools
+    String[][] universities = db.university_getUniversities();
+    ArrayList<University> savedSchools = new ArrayList<University>();
     String[][] users = db.user_getUsernamesWithSavedSchools();
+    String[] userSavedSchools = new String[users.length];
+    int k = 0;
     if(!(users == null)) {
     for(int i = 0; i < users.length; i++) {
+<<<<<<< HEAD
      if(users[i][0].equals(username)) {
       userSavedSchools.add(users[i][1]);
      }
+=======
+    	if(users[i][0].equals(username)) {
+    		userSavedSchools[k] = users[i][1];
+    		k++;
+    	}
+>>>>>>> af5e2c47e93806835cb764d867ea6a641309ff26
     }
     }
-    return userSavedSchools;
+    for(int i = 0; i < userSavedSchools.length; i++) {
+    	for(int j = 0; j < universities.length; j++) {
+        	if(userSavedSchools[i].equals(universities[j][0])) {
+        		String school = universities[j][0];
+                String state = universities[j][1];
+                String location = universities[j][2];
+                String control = universities[j][3];
+                int numStudents = Integer.parseInt(universities[j][4]);
+                double percentFemale = Double.parseDouble(universities[j][5]);
+                double SATVerbal = Double.parseDouble(universities[j][6]);
+                double SATMath = Double.parseDouble(universities[j][7]);
+                double expenses = Double.parseDouble(universities[j][8]);
+                double percentFinancialAid = Double.parseDouble(universities[j][9]);
+                int numApplicants = Integer.parseInt(universities[j][10]);
+                double percentAdmitted = Double.parseDouble(universities[j][11]);
+                double percentEnrolled = Double.parseDouble(universities[j][12]);
+                int academicsScale = Integer.parseInt(universities[j][13]);
+                int socialScale = Integer.parseInt(universities[j][14]);
+                int qualityOfLife = Integer.parseInt(universities[j][15]);
+                University savedUniv = new University(school, state, location, control, numStudents, percentFemale, SATVerbal, SATMath, expenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLife);
+                savedSchools.add(savedUniv);
+        	}
+        }
+    }
+    
+    return savedSchools;
     }
   
   
@@ -712,13 +748,13 @@ public class DBController {
  public ArrayList<University> sortByAcceptance(String username) 
   {
     //make an ArrayList of the users saved schools and assign them a position
-    ArrayList<University> byAcceptance = new ArrayList<University>();
-    byAcceptance = viewSavedSchools(username); 
+    ArrayList<University> byAcceptance = viewSavedSchools(username); 
+    //University[] byAcceptance = acceptance.toArray();
     
     //sort the list in descending order
-    for(int i = 0; byAcceptance.length; i++) {
-      if(byAcceptance[i].getPercentAdmitted() > byAcceptance[i+1].getPercentAdmitted()) {
-        swap(byAcceptance[i], byAcceptance[i+1]);
+    for(int i = 0; i < byAcceptance.size(); i++) {
+      if(byAcceptance.get(i).getPercentAdmitted() > byAcceptance.get(i+1).getPercentAdmitted()) {
+        swap(byAcceptance.get(i), byAcceptance.get(i+1));
       }
     return byAcceptance;
   }
@@ -755,7 +791,7 @@ public class DBController {
    * 
    * @return      byNumStudents
    */
- public ArrayList<University> sortByNumStudents(String username) 
+ public ArrayList<University> sortByNumStudents(String username)
  {
     //make an ArrayList of the users saved schools and assign them a position
     ArrayList<University> byNumStudents = new ArrayList<University>();
@@ -769,11 +805,10 @@ public class DBController {
     return byNumStudents;
     }
   }
+}
   
 //  public static void main(String[] args) {
 //   DBController dbc = new DBController();
 //   System.out.println(dbc.isUser("juser"));
 //  }
-  }
-
 
