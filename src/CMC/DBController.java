@@ -84,20 +84,24 @@ public class DBController {
   {
     
     String[][] universities = db.university_getUniversities();
-    double[][] distance = new double[][];
-    List<double> maximum = new ArrayList<double>();
-    List<double> minimum = new ArrayList<double>();
-    for(int j = 0; j<universities[0].length(); j++) {
-      for(int i = 4; i < universities[1].length(); i++) {
-        if(universities[j][i] > maximum[0][i]) {
-          maximum[0][i] = universities[j][i];
+    String[][] distance;
+    Double[] maximum;
+    Double[] minimum;
+    //int maxIndex = 0;
+    //int minIndex = 0;
+    for(int j = 0; j<universities[0].length; j++) {
+      for(int i = 4; i < universities[1].length; i++) {
+        if(Double.parseDouble(universities[j][i]) > maximum[i]) {	// || Integer.parseInt(universities[j][i] > maximum[0][i])) {
+          maximum[i] = Double.parseDouble(universities[j][i]);
+          //maxIndex++;
         }
-        if(universities[j][i] < minimum[0][i]) {
-          minimum[0][i] = universities[j][i];
+        if(Double.parseDouble(universities[j][i]) < minimum[i]) {	//|| Integer.parseInt(universities[j][i] < maximum[0][i]) {
+          minimum[i] = Double.parseDouble(universities[j][i]);
+          //minIndex++;
         }
       }
     }
-    for(int j = 0; j < universities[0].length(); j++) {
+    for(int j = 0; j < universities[0].length; j++) {
       distance[j][0] = universities[j][0];
       String state = universities[j][1];
       String location = universities[j][2];
@@ -135,14 +139,14 @@ public class DBController {
       else {
         double x3=1;
       }
-      
-      distance[j][1] = x1 + x2 + x3 + abs(numStudents-university.getNumStudents())/abs(maximum[0][4]-minimum[0][4]) + abs(percentFemale-university.getNPercentFemale())/abs(maximum[0][5]-minimum[0][5]) + abs(SATVerbal-university.getSATVerbal())/abs(maximum[0][6]-minimum[0][6]) + abs(SATMath-university.getSATMath())/abs(maximum[0][7]-minimum[0][7]) + abs(expenses-university.getExpenses())/abs(maximum[0][8]-minimum[0][8]) + abs(percentFinancialAid-university.getPercentFinancialAid())/abs(maximum[0][9]-minimum[0][9]) + abs(numApplicants-university.getnumApplicants())/abs(maximum[0][10]-minimum[0][10]) + abs(percentAdmitted-university.getPercentAdmitted())/abs(maximum[0][11]-minimum[0][11]) + abs(percentEnrolled-university.getPercentEnrolled())/abs(maximum[0][12]-minimum[0][12]) + abs(academicsScale-university.getAcademicsScale())/abs(maximum[0][13]-minimum[0][13]) + abs(socialScale-university.getSocialScale())/abs(maximum[0][14]-minimum[0][14]) + abs(qualityOfLife-university.getQualityOfLife())/abs(maximum[0][15]-minimum[0][15]);
+      double schoolDistance = x1 + x2 + x3 + abs(numStudents-university.getNumStudents())/Math.abs(maximum[0][4]-minimum[0][4]) + Math.abs(percentFemale-university.getPercentFemale())/Math.abs(maximum[0][5]-minimum[0][5]) + Math.abs(SATVerbal-university.getSATVerbal())/Math.abs(maximum[0][6]-minimum[0][6]) + Math.abs(SATMath-university.getSATMath())/Math.abs(maximum[0][7]-minimum[0][7]) + Math.abs(expenses-university.getExpenses())/Math.abs(maximum[0][8]-minimum[0][8]) + Math.abs(percentFinancialAid-university.getPercentFinancialAid())/Math.abs(maximum[0][9]-minimum[0][9]) + Math.abs(numApplicants-university.getnumApplicants())/Math.abs(maximum[0][10]-minimum[0][10]) + Math.abs(percentAdmitted-university.getPercentAdmitted())/Math.abs(maximum[0][11]-minimum[0][11]) + Math.abs(percentEnrolled-university.getPercentEnrolled())/Math.abs(maximum[0][12]-minimum[0][12]) + Math.abs(academicsScale-university.getAcademicsScale())/Math.abs(maximum[0][13]-minimum[0][13]) + Math.abs(socialScale-university.getSocialScale())/Math.abs(maximum[0][14]-minimum[0][14]) + Math.abs(qualityOfLife-university.getQualityOfLife())/Math.abs(maximum[0][15]-minimum[0][15]);
+      distance[j][1] = schoolDistance;
       
     }
     
-    for(int j = 0; j < distance[0].length(); j++) {
-      if(distance[j+1][1] < distance[j][1]) {
-        double tempDist = distance[j][1];
+    for(int j = 0; j < distance[0].length; j++) {
+      if(Double.parseDouble(distance[j+1][1]) < Double.parseDouble(distance[j][1])) {
+        double tempDist = Double.parseDouble(distance[j][1]);
         distance[j][1] = distance[j+1][1];
         distance[j+1][1] = distance[j][1];
         String tempName = distance[j][0];
