@@ -432,16 +432,10 @@ public class DBController {
     int k = 0;
     if(!(users == null)) {
     for(int i = 0; i < users.length; i++) {
-<<<<<<< HEAD
-     if(users[i][0].equals(username)) {
-      userSavedSchools.add(users[i][1]);
-     }
-=======
     	if(users[i][0].equals(username)) {
     		userSavedSchools[k] = users[i][1];
     		k++;
     	}
->>>>>>> af5e2c47e93806835cb764d867ea6a641309ff26
     }
     }
     for(int i = 0; i < userSavedSchools.length; i++) {
