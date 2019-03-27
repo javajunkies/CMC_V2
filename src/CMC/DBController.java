@@ -752,8 +752,8 @@ public class DBController {
       if(byAcceptance.get(i).getPercentAdmitted() > byAcceptance.get(i+1).getPercentAdmitted()) {
         swap(byAcceptance.get(i), byAcceptance.get(i+1));
       }
+   }
     return byAcceptance;
-  }
  }
     
     
@@ -775,8 +775,8 @@ public class DBController {
       if(byExpenses.get(i).getExpenses() > byExpenses.get(i+1).getExpenses()) {
         swap(byExpenses.get(i), byExpenses.get(i+1));
       }
-    return byExpenses;
     }
+    return byExpenses;
   }
     
 
@@ -796,10 +796,10 @@ public class DBController {
     //sort the list in descending order
     for(int i = 0; i < byNumStudents.size(); i++) {
       if(byNumStudents.get(i).getNumStudents() > byNumStudents.get(i+1).getNumStudents()) {
-        swap(byNumStudents.get(i), byNumStudents.get(i+1);
+        swap(byNumStudents.get(i), byNumStudents.get(i+1));
       }
-    return byNumStudents;
     }
+    return byNumStudents;
   }
 }
 
