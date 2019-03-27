@@ -443,39 +443,7 @@ public class DBController {
     return userSavedSchools;
     }
   
-  
-  /**
-   * @param numStudent  the number of students attending a university
-   * 
-   * This method sorts a users saved schools by attendance
-   */
-/*  public void sortByNumStudents(int numStudents, String username) {
-    
-    ArrayList<University> byNumStudents = new ArrayList<University>();
-
-  }*/
-  
-  /**
-   * @param price price of the school
-   * 
-   * This method sorts a users saved schools by price
-   */
-  
-  public void sortByPrice(int price, String username) {
-    
-  }
-  
-  
-  /*
-   * @param name (name of the university to remove)
-   * 
-   * method that allows admin to remove a specific university from the database
-   * returns 1 if adm removed university successfully, 0 if not
-   */
-  //point system or assign a to add up all of the 
-  public void sortByAcceptance(int acceptanceRate) {   
-  }  
-  
+ 
   
   
   public int removeUniversity(String name)
