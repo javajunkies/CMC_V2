@@ -458,7 +458,7 @@ public class DBController {
     String[][] universities = db.university_getUniversities();
     ArrayList<University> savedSchools = new ArrayList<University>();
     String[][] users = db.user_getUsernamesWithSavedSchools();
-    String[] userSavedSchools = new String[users.length];
+    String[][] userSavedSchools = new String[users.length][];
     int k = 0;
     if(!(users == null)) {
     for(int i = 0; i < users.length; i++) {
@@ -720,7 +720,7 @@ public class DBController {
   /** @Description a swap method to assist in sorting universities 
    * 
    * @param U1 the first university to be swapped
-   * @param U2 the socond university to be swapped
+   * @param U2 the second university to be swapped
    * 
    */
  public void swap(University U1, University U2) 
@@ -766,9 +766,9 @@ public class DBController {
     byExpenses = viewSavedSchools(username);
     
     //sort the list in descending order
-    for(int i = 0; byExpenses.length; i++) {
-      if(byExpenses[i].getExpenses() > byExpenses[i+1].getExpenses()) {
-        swap(byExpenses[i], byExpenses[i+1]);
+    for(int i = 0; i < byExpenses.size(); i++) {
+      if(byExpenses.get(i).getExpenses() > byExpenses.get(i+1).getExpenses()) {
+        swap(byExpenses.get(i), byExpenses.get(i+1));
       }
     return byExpenses;
     }
@@ -789,17 +789,13 @@ public class DBController {
     byNumStudents = viewSavedSchools(username);
     
     //sort the list in descending order
-    for(int i = 0; byNumStudents.length(); i++) {
-      if(byNumStudents[i].getNumstudents() > byNumStudents[i+1].getNumStudents()) {
-        swap(byNumStudents[i], byNumStudents[i+1]);
+    for(int i = 0; i < byNumStudents.size(); i++) {
+      if(byNumStudents.get(i).getNumStudents() > byNumStudents.get(i+1).getNumStudents()) {
+        swap(byNumStudents.get(i), byNumStudents.get(i+1);
       }
     return byNumStudents;
     }
   }
 }
-  
-//  public static void main(String[] args) {
-//   DBController dbc = new DBController();
-//   System.out.println(dbc.isUser("juser"));
-//  }
+
 
