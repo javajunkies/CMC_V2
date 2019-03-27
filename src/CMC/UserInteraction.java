@@ -1,7 +1,6 @@
 package CMC;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Java Junkies
@@ -21,6 +20,7 @@ public class UserInteraction
    * 
    * @param username - user's username
    * @param password - user's password
+   * @return int the status of the login
    */
   public int login(String username, String password)
   {
@@ -29,13 +29,18 @@ public class UserInteraction
   
   /**
    * logs the user off from CMC
+   * @return int the status of the logoff
    */
   public int logoff()
   {
     return UserController.logoff();
   }
   
-  
+  /**
+   * views a universities information
+   * @param university the name of a university
+   * @return University a universities information
+   */
   public University viewExistingUniversity(String university) {
     return UserController.viewExistingUniversity(university);
   }
@@ -43,9 +48,10 @@ public class UserInteraction
   /**
    * calls the UserController to view a users saved schools
    * 
-   * @param user - username of user
+   * @param username the users username 
+   * @return ArrayList a list of the users saved schools
    */
-  public List<University> viewSavedSchools(String username)
+  public ArrayList<University> viewSavedSchools(String username)
   {
     return UserController.viewSavedSchools(username);
   }
@@ -92,9 +98,12 @@ public class UserInteraction
    * registers the user if password is 8 characters long 
    * and contains a letter and number
    * 
-   * @param first - first name
-   * @param last - last name
-   * @param password - desired password
+   * @param first  the users first name
+   * @param last the users last name
+   * @param username the users desired username
+   * @param password the users desired password
+   * @param password1 the users password confirmed
+   * @return int the status of the registration
    */
   public int register(String first, String last, String username, String password, String password1)
   {
@@ -157,6 +166,7 @@ public class UserInteraction
    * 
    * @param user - current user
    * @param school - school to remove
+   * @return int the status of removing a saved school
    */
   public int removeSavedSchool(String user, String school)
   {
@@ -168,6 +178,7 @@ public class UserInteraction
    * 
    * @param university is the university being saved to saved schools list
    * @param username is the username of the profile the school is being saved to
+   * @return int the status of saving a school to a users saved schools list
    */
   public int saveSchool(String username, String university)
   {
@@ -189,7 +200,8 @@ public class UserInteraction
   /**
    * gets users information
    * 
-   * @param user - username
+   * @param user the users username
+   * @return User a user object with its information
    */
   public User viewUserInfo(String user)
   {
@@ -203,6 +215,7 @@ public class UserInteraction
    * @param firstName - first name
    * @param lastName - last name
    * @param password - password
+   * @return int the status of the edit
    */
   public int editUserInfo(String userName, String firstName, String lastName, String password)
   {

@@ -1,5 +1,6 @@
 	package CMC;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -70,11 +71,12 @@ import java.util.List;
 	   * @return String representation of method call
 	   */
 	  public String testViewSavedSchools(String username) {
-		  List<University> schools = ui1.viewSavedSchools(username);
+
+		  ArrayList<University> schools = ui1.viewSavedSchools(username);
 		  String result = "";
 		  int x = 0;
 		  while(x < schools.size()) {
-			  result = result + schools.get(x) + "\n";
+			  result = result + schools.get(x).getSchool() + "\n";
 		  x++;
 		  }
 		  if(result.equals("")) {
@@ -160,6 +162,7 @@ import java.util.List;
 	   * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
 	   * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
 	   * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university	   
+	   * @return String if the add was successful or not
 	   */
 	  public String testAddUniversity(String school, String state, String location, String control, int numberOfStudents,
               double percentFemales, double SATVerbal, double SATMath, double expenses, 
@@ -189,7 +192,8 @@ import java.util.List;
 	   * @param percentEnrolled is the percentage of students who are currently enrolled at this university
 	   * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
 	   * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
-	   * @param qualityOfLife is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university	   
+	   * @param qualityOfLife is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
+	   * @return String if the edit was successful or not	   
 	   */
 	  public String testEditUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife) {
 		  if(ai1.editUniversity(school, state, location, control, numStudents, percentFemale, SATVerbal, SATMath, expenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLife) == 1) {
@@ -246,7 +250,7 @@ import java.util.List;
 	  /**
 	   * Tests the view user info functionality for users
 	   * 
-	   * @param username
+	   * @param username the users username
 	   * @return String tests the users info
 	   */
 	  public String testViewUserInfoUser(String username) {
@@ -258,7 +262,11 @@ import java.util.List;
 	  /**
 	   * Tests the edit user functionality for users
 	   * 
-	   * @param args
+	   * @param username the users username
+	   * @param first the users firstname
+	   * @param last the users lastname
+	   * @param pass the users password
+	   * @return String if the edit was successful or not
 	   */
 	  public String testEditUserInfoUser(String username, String first, String last, String pass) {
 		  if(ui1.editUserInfo(username, first, last, pass) == 1) {
@@ -270,7 +278,7 @@ import java.util.List;
 	  /**
 	   * Tests the view all users functionality
 	   * 
-	   * @param args
+	   * @return String users
 	   */
 	  public String testViewUsers() {
 		  List<User> users = ai1.viewUsers();
@@ -286,7 +294,12 @@ import java.util.List;
 	  /**
 	   * Tests the add new user functionality
 	   * 
-	   * @param args
+	   * @param first the users firstname
+	   * @param last the users lastname
+	   * @param username the users username
+	   * @param pass the users password
+	   * @param type the users type of account
+	   * @return String if adding a user was successful or not
 	   */
 	  public String testAddNewUser(String first, String last, String username, String pass, char type) {
 		  if(ai1.addNewUser(first, last, username, pass, type) == 1) {
@@ -299,6 +312,7 @@ import java.util.List;
 		   * Tests the deactivate user functionality.
 		   * 
 		   * @param user is the user being deactivated
+		   * @return String if the deactivate was successful or not
 		   */
 	  public String testDeactivateUser(String user) {
 		  if(ai1.deactivateUser(user) == 1) {
@@ -504,7 +518,8 @@ import java.util.List;
 	  
 	    ai.deleteUser("Test6");
 	    ai.deleteUser("testUser");
-
+	    ai.removeUniversity("testSchool");
+	    ai.removeUniversity("School");
 	  }
 	}
 	

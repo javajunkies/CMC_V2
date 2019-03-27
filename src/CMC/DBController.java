@@ -80,16 +80,24 @@ public class DBController {
   {
     
     String[][] universities = db.university_getUniversities();
-    ArrayList<Double> distance = new ArrayList<Double>();
-    ArrayList<Double> maximum = new ArrayList<Double>();
-    ArrayList<Double> minimum = new ArrayList<Double>();
+    String[][] distance = new String[universities[0].length][1];
+    Double[] maximum = new Double[12];
+    Double[] minimum = new Double[12];
+    double tempDist;
+    double x1;
+    double x2;
+    double x3;
+    //int maxIndex = 0;
+    //int minIndex = 0;
     for(int j = 0; j<universities[0].length; j++) {
       for(int i = 4; i < universities[1].length; i++) {
-        if(universities[j][i] > maximum[0][i]) {
-          maximum[0][i] = universities[j][i];
+        if(Double.parseDouble(universities[j][i]) > maximum[i]) {	// || Integer.parseInt(universities[j][i] > maximum[0][i])) {
+          maximum[i] = Double.parseDouble(universities[j][i]);
+          //maxIndex++;
         }
-        if(universities[j][i] < minimum[0][i]) {
-          minimum[0][i] = universities[j][i];
+        if(Double.parseDouble(universities[j][i]) < minimum[i]) {	//|| Integer.parseInt(universities[j][i] < maximum[0][i]) {
+          minimum[i] = Double.parseDouble(universities[j][i]);
+          //minIndex++;
         }
       }
     }
@@ -99,50 +107,74 @@ public class DBController {
       String location = universities[j][2];
       String control = universities[j][3];
       int numStudents = Integer.parseInt(universities[j][4]);
+      double maxNumStudents = maximum[4];
+      double minNumStudents = minimum[4];
       double percentFemale = Double.parseDouble(universities[j][5]);
+      double maxPercentFemale = maximum[5];
+      double minPercentFemale = minimum[5];
       double SATVerbal = Double.parseDouble(universities[j][6]);
+      double maxSATVerbal = maximum[6];
+      double minSATVerbal = minimum[6];
       double SATMath = Double.parseDouble(universities[j][7]);
+      double maxSATMath = maximum[7];
+      double minSATMath = minimum[7];
       double expenses = Double.parseDouble(universities[j][8]);
+      double maxExpenses = maximum[8];
+      double minExpenses = minimum[8];
       double percentFinancialAid = Double.parseDouble(universities[j][9]);
+      double maxPercentFinancialAid = maximum[9];
+      double minPercentFinancialAid = minimum[9];
       int numApplicants = Integer.parseInt(universities[j][10]);
+      double maxNumApplicants = maximum[10];
+      double minNumApplicants = minimum[10];
       double percentAdmitted = Double.parseDouble(universities[j][11]);
+      double maxPercentAdmitted = maximum[11];
+      double minPercentAdmitted = minimum[11];
       double percentEnrolled = Double.parseDouble(universities[j][12]);
+      double maxPercentEnrolled = maximum[12];
+      double minPercentEnrolled = minimum[12];
       int academicsScale = Integer.parseInt(universities[j][13]);
+      double maxAcademicsScale = maximum[13];
+      double minAcademicsScale = minimum[13];
       int socialScale = Integer.parseInt(universities[j][14]);
+      double maxSocialScale = maximum[14];
+      double minSocialScale = minimum[14];
       int qualityOfLife = Integer.parseInt(universities[j][15]);
+      double maxQualityOfLife = maximum[15];
+      double minQualityOfLife = minimum[15];
       
       if(state.equals(university.getState())) {
-        double x1=0;
+        x1=0;
       }
       else {
-        double x1=1;
+        x1=1;
       }
       
       if(location.equals(university.getState())) {
-        double x2=0;
+        x2=0;
       }
       else {
-        double x2=1;
+        x2=1;
       }
       
       if(control.equals(university.getState())) {
-        double x3=0;
+        x3=0;
       }
       else {
-        double x3=1;
+        x3=1;
       }
-      
-      distance[j][1] = x1 + x2 + x3 + abs(numStudents-university.getNumStudents())/abs(maximum[0][4]-minimum[0][4]) + abs(percentFemale-university.getNPercentFemale())/abs(maximum[0][5]-minimum[0][5]) + abs(SATVerbal-university.getSATVerbal())/abs(maximum[0][6]-minimum[0][6]) + abs(SATMath-university.getSATMath())/abs(maximum[0][7]-minimum[0][7]) + abs(expenses-university.getExpenses())/abs(maximum[0][8]-minimum[0][8]) + abs(percentFinancialAid-university.getPercentFinancialAid())/abs(maximum[0][9]-minimum[0][9]) + abs(numApplicants-university.getnumApplicants())/abs(maximum[0][10]-minimum[0][10]) + abs(percentAdmitted-university.getPercentAdmitted())/abs(maximum[0][11]-minimum[0][11]) + abs(percentEnrolled-university.getPercentEnrolled())/abs(maximum[0][12]-minimum[0][12]) + abs(academicsScale-university.getAcademicsScale())/abs(maximum[0][13]-minimum[0][13]) + abs(socialScale-university.getSocialScale())/abs(maximum[0][14]-minimum[0][14]) + abs(qualityOfLife-university.getQualityOfLife())/abs(maximum[0][15]-minimum[0][15]);
+      double schoolDistance = x1 + x2 + x3 + Math.abs(numStudents-university.getNumStudents())/Math.abs(maxNumStudents-minNumStudents) + Math.abs(percentFemale-university.getPercentFemale())/Math.abs(maxPercentFemale-minPercentFemale) + Math.abs(SATVerbal-university.getSATVerbal())/Math.abs(maxSATVerbal-minSATVerbal) + Math.abs(SATMath-university.getSATMath())/Math.abs(maxSATMath-minSATMath) + Math.abs(expenses-university.getExpenses())/Math.abs(maxExpenses - minExpenses) + Math.abs(percentFinancialAid-university.getPercentFinancialAid())/Math.abs(maxPercentFinancialAid - minPercentFinancialAid) + Math.abs(numApplicants-university.getNumApplicants())/Math.abs(maxNumApplicants - minNumApplicants) + Math.abs(percentAdmitted-university.getPercentAdmitted())/Math.abs(maxPercentAdmitted - minPercentAdmitted) + Math.abs(percentEnrolled-university.getPercentEnrolled())/Math.abs(maxPercentEnrolled - minPercentEnrolled) + Math.abs(academicsScale-university.getAcademicsScale())/Math.abs(maxAcademicsScale - minAcademicsScale) + Math.abs(socialScale-university.getSocialScale())/Math.abs(maxSocialScale - minSocialScale) + Math.abs(qualityOfLife-university.getQualityOfLife())/Math.abs(maxQualityOfLife - minQualityOfLife);
+      distance[j][1] = Double.toString(schoolDistance);
       
     }
     
     for(int j = 0; j < distance[0].length; j++) {
-      if(distance[j+1][1] < distance[j][1]) {
-        double tempDist = distance[j][1];
+      if(Double.parseDouble(distance[j+1][1]) < Double.parseDouble(distance[j][1])) {
+        tempDist = Double.parseDouble(distance[j][1]);
         distance[j][1] = distance[j+1][1];
-        distance[j+1][1] = distance[j][1];
+        distance[j+1][1] = Double.toString(tempDist);
         String tempName = distance[j][0];
-        distance[j][0] = distancs[j+1][0];
+        distance[j][0] = distance[j+1][0];
         distance[j+1][0] = tempName;
       }
     }
@@ -276,9 +308,9 @@ public class DBController {
   {
     String[][] universities = db.university_getUniversities();
     int rowLength = universities[0].length;
-    int colLength = universities[1].length; 
+    //int colLength = universities[1].length; 
     ArrayList<University> matchUni = new ArrayList<University>();
-    int k = 0;
+    //int k = 0;
     for(int i = 0; i < rowLength; i++) {
       if(universities[i][0].contains(mySchool) 
            || mySchool.equals("0") 
@@ -448,26 +480,28 @@ public class DBController {
    */
   public ArrayList<University> viewSavedSchools(String username) 
   {
-    
     String[][] universities = db.university_getUniversities();
     ArrayList<University> savedSchools = new ArrayList<University>();
     String[][] users = db.user_getUsernamesWithSavedSchools();
     String[] userSavedSchools = new String[users.length];
     int k = 0;
+    int x = 0;
     if(!(users == null)) {
     for(int i = 0; i < users.length; i++) {
-     if(users[i][0].equals(username)) {
-       userSavedSchools.add(users[i][1]);
-     }
+
     	if(users[i][0].equals(username)) {
     		userSavedSchools[k] = users[i][1];
     		k++;
+    		x = 1;
     	}
     }
     }
+    if(x == 0) {
+    	return savedSchools;
+    }
     for(int i = 0; i < userSavedSchools.length; i++) {
     	for(int j = 0; j < universities.length; j++) {
-        	if(userSavedSchools[i].equals(universities[j][0])) {
+        	if(userSavedSchools[i].toUpperCase().equals(universities[j][0])) {
         		String school = universities[j][0];
                 String state = universities[j][1];
                 String location = universities[j][2];
@@ -491,7 +525,7 @@ public class DBController {
     }
     
     return savedSchools;
-    }
+  }
   
   /**
    * removes a university from the CMC system
@@ -514,10 +548,10 @@ public class DBController {
   /**
    * method allows admin to add a university to the database with all the given information
    * 
-   * @param School name of university
-   * @param State name of state university is in
-   * @param Location name of location of the university
-   * @param Control name of person who controls university
+   * @param school name of university
+   * @param state name of state university is in
+   * @param location name of location of the university
+   * @param control name of person who controls university
    * @param numberOfStudents number of students attending university
    * @param percentFemales percentage of students attending university that are female
    * @param SATVerbal average score of student at university on SAT Verbal
@@ -545,22 +579,22 @@ public class DBController {
   /**
    *  method allows admin to edit information about a university given the current criteria.
    *  
-   * @param School (name of university)
-   * @param State (name of state university is in)
-   * @param Location (name of location of the university)
-   * @param Control (name of person who controls university)
-   * @param numberOfStudents (number of students attending university)
-   * @param percentFemales (percentage of students attending university that are female)
-   * @param SATVerbal (average score of student at university on SAT Verbal)
-   * @param SATMath (average score of student at university on SAT Math)
-   * @param expenses (cost of expenses for students attending university)
-   * @param percentFinancialAid (percent of financial aid offered to accepted students at university)
-   * @param numberOfApplicants (number of people who applied to university)
-   * @param percentAdmitted (percent of applicants accepted to university)
-   * @param percentEnrolled (percent of accepted applicants who enrolled at the university)
-   * @param academicsScale (a number between 1 and 5 with 5 being the best indicating the quality of academics at the university)
-   * @param socialScale (a number between 1 and 5 with 5 being the best indicating the quality of the social atmosphere at the university)
-   * @param qualityOfLifeScale (a number between 1 and 5 with 5 being the best indicating the quality of the students' lives at the university)
+   * @param school name of university
+   * @param state name of state university is in
+   * @param location name of location of the university
+   * @param control name of person who controls university)
+   * @param numberOfStudents number of students attending university
+   * @param percentFemales percentage of students attending university that are female
+   * @param SATVerbal average score of student at university on SAT Verbal
+   * @param SATMath average score of student at university on SAT Math
+   * @param expenses cost of expenses for students attending university
+   * @param percentFinancialAid percent of financial aid offered to accepted students at university
+   * @param numberOfApplicants number of people who applied to university
+   * @param percentAdmitted percent of applicants accepted to university
+   * @param percentEnrolled percent of accepted applicants who enrolled at the university
+   * @param academicsScale a number between 1 and 5 with 5 being the best indicating the quality of academics at the university
+   * @param socialScale a number between 1 and 5 with 5 being the best indicating the quality of the social atmosphere at the university
+   * @param qualityOfLifeScale a number between 1 and 5 with 5 being the best indicating the quality of the students' lives at the university
    * 
    * @return int the status of the edit 
    */
@@ -667,7 +701,7 @@ public class DBController {
    * Deactivates user by setting status to 'N'
    * 
    * @param username is the user being deactivated
-   * @return integer representation of the deactivation, 1 means successful, -1 means unsuccessful
+   * @return int representation of the deactivation, 1 means successful, -1 means unsuccessful
    */
   public int deactivateUser(String username) {
     String[][] users = db.user_getUsers();
@@ -692,7 +726,7 @@ public class DBController {
    * @param username (the username of the user)
    * 
    * method allows admin to delete user from db
-   * @return 1 if the user was successfully deleted, otherwise -1
+   * @return int if the user was successfully deleted, otherwise -1
    */
   public int deleteUser(String username){
    String[][] howMany = db.user_getUsernamesWithSavedSchools();
@@ -707,13 +741,14 @@ public class DBController {
   }
   
   /**
+   * method allows user to become registered into the database
+   * 
    * @param first (the first name of the new user)
    * @param last (the last name of the new user)
    * @param user (the username of the new user's account)
    * @param pass (the password of the new user's account)
    * 
-   * method allows user to become registered into the database
-   * @return 1 if user was successfully registered, otherwise -1
+   * @return int if user was successfully registered, otherwise -1
    */
   public int registerNewUser(String first, String last, String user, String pass) {
     int result = db.user_addUser(first, last, user, pass, 't');
@@ -721,10 +756,11 @@ public class DBController {
     return result;
   }
   
-  /** @Description a swap method to assist in sorting universities 
+  /** 
+   * a swap method to assist in sorting universities 
    * 
    * @param U1 the first university to be swapped
-   * @param U2 the socond university to be swapped
+   * @param U2 the second university to be swapped
    * 
    */
  public void swap(University U1, University U2) 
@@ -734,11 +770,11 @@ public class DBController {
    U2 = temp;
  }
 
- /** @Description sort a users saved schools by percent of students admitted
-   * 
+ /** 
+   * sort a users saved schools by percent of students admitted 
    * @param username   the username supplied for retrieving a list of saved schools
    * 
-   * @return byAcceptance
+   * @return ArrayList a list sorted by Acceptance
    */
  public ArrayList<University> sortByAcceptance(String username) 
   {
@@ -747,21 +783,22 @@ public class DBController {
     //University[] byAcceptance = acceptance.toArray();
     
     //sort the list in descending order
-    for(int i = 0; i < byAcceptance.size(); i++) {
+    for(int i = 0; i < byAcceptance.size();) {
       if(byAcceptance.get(i).getPercentAdmitted() > byAcceptance.get(i+1).getPercentAdmitted()) {
         swap(byAcceptance.get(i), byAcceptance.get(i+1));
       }
+   }
     return byAcceptance;
-  }
  }
     
     
 
- /** @Description sort a users saved schools by price
+ /** 
+   * sort a users saved schools by price
    * 
-   * @param username   the username supplied for retrieving a list of saved schools
+   * @param username the username supplied for retrieving a list of saved schools
    * 
-   * @return byExpenses
+   * @return ArrayList a list sorted by the expenses
    */
  public ArrayList<University> sortByExpenses(String username) 
  {
@@ -770,21 +807,22 @@ public class DBController {
     byExpenses = viewSavedSchools(username);
     
     //sort the list in descending order
-    for(int i = 0; byExpenses.length; i++) {
-      if(byExpenses[i].getExpenses() > byExpenses[i+1].getExpenses()) {
-        swap(byExpenses[i], byExpenses[i+1]);
+    for(int i = 0; i < byExpenses.size(); i++) {
+      if(byExpenses.get(i).getExpenses() > byExpenses.get(i+1).getExpenses()) {
+        swap(byExpenses.get(i), byExpenses.get(i+1));
       }
-    return byExpenses;
     }
+    return byExpenses;
   }
     
 
- /** @Description sort a users saved schools by number of students 
+ /** 
+   *  sort a users saved schools by number of students 
    *              attending the school
    * 
-   * @param username  the username supplied for retrieving a list of saved schools
+   * @param username the username supplied for retrieving a list of saved schools
    * 
-   * @return      byNumStudents
+   * @return ArrayList list sorted by the number of students
    */
  public ArrayList<University> sortByNumStudents(String username)
  {
@@ -793,17 +831,13 @@ public class DBController {
     byNumStudents = viewSavedSchools(username);
     
     //sort the list in descending order
-    for(int i = 0; byNumStudents.length(); i++) {
-      if(byNumStudents[i].getNumstudents() > byNumStudents[i+1].getNumStudents()) {
-        swap(byNumStudents[i], byNumStudents[i+1]);
+    for(int i = 0; i < byNumStudents.size(); i++) {
+      if(byNumStudents.get(i).getNumStudents() > byNumStudents.get(i+1).getNumStudents()) {
+        swap(byNumStudents.get(i), byNumStudents.get(i+1));
       }
-    return byNumStudents;
     }
+    return byNumStudents;
   }
 }
-  
-//  public static void main(String[] args) {
-//   DBController dbc = new DBController();
-//   System.out.println(dbc.isUser("juser"));
-//  }
+
 

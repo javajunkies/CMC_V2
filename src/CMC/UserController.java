@@ -13,6 +13,7 @@ public class UserController {
   *Logs the user onto their account
   *@param username the users unique username
   *@param password the users password
+  *@return int the status of the login
   */
  public int login(String username, String password) {
   return logInController.login(username, password);
@@ -38,9 +39,9 @@ public class UserController {
  /**
   * call the DBController to find a users saved schools
   * @param username the users username
-  * @return ArrayList<University> a list of the users saved schools
+  * @return ArrayList a list of the users saved schools
   */
- public List<University> viewSavedSchools(String username) {
+ public ArrayList<University> viewSavedSchools(String username) {
   return dbcontroller.viewSavedSchools(username);
  }
  
@@ -85,7 +86,7 @@ public class UserController {
   * @param minQualityOfLife is an integer between 1 and 5 (5 being the best) indicating the min overall quality of life at this university
   * @param maxQualityOfLife is an integer between 1 and 5 (5 being the best) indicating the max overall quality of life at this university
   * 
-  * @return ArrayList<University> a list of universities that met search criteria
+  * @return ArrayList a list of universities that met search criteria
   */
 /* public ArrayList<University> search(String mySchool,String myState,String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants, double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife)
  {
@@ -108,7 +109,7 @@ public class UserController {
   *
   *@param univ1 A university to be compared to univ2
   *@param univ2 A university to be compared to univ1
-  *@return ArrayList<University> list of two universities to compare
+  *@return ArrayList list of two universities to compare
   */
  public ArrayList<University> compare(String univ1, String univ2) {
   return dbcontroller.compare(univ1, univ2);
@@ -147,6 +148,7 @@ public class UserController {
   * Removes a school from the users saved school list
   *@param user the users username
   *@param school the name of the school to be removed from the desired users saved school list
+  *@return int the status of removing the saved school
   */
  public int removeSavedSchool(String user, String school) {
   return dbcontroller.removeFromSaved(user, school);
@@ -155,6 +157,7 @@ public class UserController {
  /**
   *gets the users information
   *@param username the username to return information for
+  *@return User a user object with their information
   */
  public User viewUserInfo(String username) {
   return dbcontroller.viewUser(username);

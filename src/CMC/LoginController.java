@@ -49,9 +49,8 @@ public class LoginController {
  }
  
  /**
-  
-  * Checks username.
-  * @param username
+  * Checks if there is a username in the database
+  * @param username the users username
   * @return boolean if there is a user in the Database with that username
   */
  public boolean findUser(String username) {
@@ -64,18 +63,17 @@ public class LoginController {
  }
  
  /**
-  * Checks password.
-  * @param password
-  * @return String the users password?
+  * Checks the user password
+  * @param username the users password
+  * @return String the users password
   */
  public String findPassword(String username){
   return db.findUserPassword(username);
  }
  
  /**
-  * Checks status of this user.
-  * @param account
-  * 
+  * Checks status of this user
+  * @param username the users username
   * @return boolean if the status of the account was active
   */
  public boolean checkStatus(String username) {

@@ -1,4 +1,5 @@
-/**@author javajunkies
+/**
+ *@author javajunkies
  * @version 1.0
  */
 
@@ -22,23 +23,26 @@ public class University {
  private int socialScale;
  private int qualityOfLife;
  
- /**constructor method
-  *@param String mySchool
-  *@param String myState
-  *@param String myLocation
-  *@param String myControl
-  *@param int myNumStudents
-  *@param double myPercentFemale
-  *@param double mySATVerbal
-  *@param double mySATMath
-  *@param double myExpenses
-  *@param double myPercentFinancialAid
-  *@param int myNumApplicants
-  *@param double myPercentAdmitted
-  *@param double myPercentEnrolled
-  *@param int myAcademicsScale
-  *@param int mySocialScale
-  *@param int myQualityOfLife
+ /**
+  * constructor method
+  * 
+  * @param mySchool the schools name
+  * @param myState the schools state
+  * @param myLocation the schools location
+  * @param myControl the schools control
+  * @param myNumStudents the schools number of students
+  * @param myPercentFemale the percent female at the school
+  * @param mySATVerbal the average SATVerbal
+  * @param mySATMath the average SATMATH
+  * @param myExpenses the average expenses
+  * @param myPercentFinancialAid the average percent Financial aid received
+  * @param myNumApplicants the number of applicants
+  * @param myPercentAdmitted the percent admitted
+  * @param myPercentEnrolled the percent of admitted enrolled
+  * @param myAcademicsScale the academic scale rating
+  * @param mySocialScale the social scale rating
+  * @param myQualityOfLife the quality of life rating
+  *
   */
  public University(String mySchool,String myState,String myLocation,String myControl,int myNumStudents,double myPercentFemale,double mySATVerbal,double mySATMath,double myExpenses,double myPercentFinancialAid,int myNumApplicants,double myPercentAdmitted,double myPercentEnrolled,int myAcademicsScale,int mySocialScale,int myQualityOfLife) {
 
@@ -63,7 +67,7 @@ public class University {
  /**
   * get school name
   * 
-  * @return String university name
+  * @return String a university name
   */
  public String getSchool() {
   return this.school;
@@ -72,7 +76,7 @@ public class University {
  /**
   * set school name
   * 
-  * @param String school name
+  * @param school the schools desired name
   */
  public void setSchool(String school) {
   this.school = school;
@@ -100,7 +104,7 @@ public String toString() {
 /**
  * set state
   * 
-  * @param state
+  * @param state the name of the state
   */
  public void setState(String state) {
   this.state = state;
@@ -118,7 +122,7 @@ public String toString() {
  /**
   * set location
   * 
-  * @param location
+  * @param location the location to be set
   */
  public void setLocation(String location) {
   this.location = location;
@@ -127,7 +131,7 @@ public String toString() {
  /**
   * get control
   * 
-  * @return control
+  * @return String the control
   */
  public String getControl() {
   return control;
@@ -137,7 +141,7 @@ public String toString() {
  /**
   * set control
   * 
-  * @param control
+  * @param control the control to be set
   */
  public void setControl(String control) {
   this.control = control;
@@ -146,7 +150,7 @@ public String toString() {
  /**
   * get number of students
   * 
-  * @return numStudents
+  * @return int the number of students
   */
  public int getNumStudents() {
   return numStudents;
@@ -155,7 +159,7 @@ public String toString() {
  /**
   * set number of students
   * 
-  * @param numStudents
+  * @param numStudents the number of students to be set
   */
  public void setNumStudents(int numStudents) {
   this.numStudents = numStudents;
@@ -173,7 +177,7 @@ public String toString() {
  /**
   * set percent female
   * 
-  * @param percentFemale
+  * @param percentFemale the percent female to be set
   */
  public void setPercentFemale(double percentFemale) {
   this.percentFemale = percentFemale;
@@ -182,7 +186,7 @@ public String toString() {
  /**
   * get SAT Verbal average score
   * 
-  * @return SATVerbal
+  * @return double the satverbal average score
   */
  public double getSATVerbal() {
   return this.SATVerbal;
@@ -191,23 +195,25 @@ public String toString() {
  /**
   * set SAT Verbal average score
   * 
-  * @param SATVerbal
+  * @param SATVerbal the satverbal to be set
   */
  public void setSATVerbal(double SATVerbal) {
   this.SATVerbal = SATVerbal;
  }
 
- /**@Description get SAT Math average score
+ /**
+  * get SAT Math average score
   * 
-  * @return SATMath
+  * @return double the satmath average score
   */
  public double getSATMath() {
   return this.SATMath;
  }
 
- /**@Description set SAT Math average score
+ /**
+  * set SAT Math average score
   * 
-  * @param SATMath
+  * @param SATMath the satmath average score to be set
   */
  public void setSATMath(double SATMath) {
   this.SATMath = SATMath;
@@ -216,7 +222,7 @@ public String toString() {
  /**
   * get expenses
   * 
-  * @return expenses
+  * @return double the expenses
   */
  public double getExpenses() {
   return expenses;
@@ -225,119 +231,133 @@ public String toString() {
  /**
   * set expenses
   * 
-  * @param expenses
+  * @param expenses the expenses to be set
   */
  public void setExpenses(double expenses) {
   this.expenses = expenses;
  }
 
- /**@Description get percent of students receiving financial aid 
+ /**
+  * get percent of students receiving financial aid 
   * 
-  * @return percentFinancialAid
+  * @return double the percent financial aid
   */
  public double getPercentFinancialAid() {
   return percentFinancialAid;
  }
 
- /**@Description set percent of students receiving financial aid
+ /**
+  * set percent of students receiving financial aid
   * 
-  * @param percentFinancialAid
+  * @param percentFinancialAid the percent financial aid to be set
   */
  public void setPercentFinancialAid(double percentFinancialAid) {
   this.percentFinancialAid = percentFinancialAid;
  }
 
- /**@Description get number of applicants
+ /**
+  * get number of applicants
   * 
-  * @return numApplicants
+  * @return int the number of applicants
   */
  public int getNumApplicants() {
   return numApplicants;
  }
 
- /**@Description set number of applicants
+ /**
+  * set number of applicants
   * 
-  * @param numApplicants
+  * @param numApplicants the number of applicants to be set
   */
  public void setNumApplicants(int numApplicants) {
   this.numApplicants = numApplicants;
  }
 
- /**@Description get percent of admitted students
+ /**
+  * get percent of admitted students
   * 
-  * @return percentAdmitted
+  * @return double the percent admitted
   */
  public double getPercentAdmitted() {
   return percentAdmitted;
  }
 
- /**@Description set percent of admitted students
+ /**
+  * set percent of admitted students
   * 
-  * @param percentAdmitted
+  * @param percentAdmitted the percent admitted to be set
   */
  public void setPercentAdmitted(double percentAdmitted) {
   this.percentAdmitted = percentAdmitted;
  }
 
- /**@Description get percent enrolled
+ /**
+  * get percent enrolled
   * 
-  * @return percentEnrolled
+  * @return double the percent enrolled 
   */
  public double getPercentEnrolled() {
   return percentEnrolled;
  }
 
- /**@Description set percent enrolled
+ /**
+  * set percent enrolled
   * 
-  * @param percentEnrolled
+  * @param percentEnrolled the percent enrolled to set
   */
  public void setPercentEnrolled(double percentEnrolled) {
   this.percentEnrolled = percentEnrolled;
  }
 
- /**@Description get academic scale
+ /**
+  * get academic scale
   * 
-  * @return academicsScale
+  * @return int the academics Scale
   */
  public int getAcademicsScale() {
   return academicsScale;
  }
 
- /**@Description set academic scale
+ /**
+  * set academic scale
   * 
-  * @param academicsScale
+  * @param academicsScale the academic scale to be set
   */
  public void setAcademicsScale(int academicsScale) {
   this.academicsScale = academicsScale;
  }
 
- /**@Description get social scale
+ /**
+  * get social scale
   * 
-  * @return socialScale
+  * @return int the social scale
   */
  public int getSocialScale() {
   return socialScale;
  }
 
- /**@Description set social scale
+ /**
+  * set social scale
   * 
-  * @param socialScale
+  * @param socialScale the social scale to be set
   */
  public void setSocialScale(int socialScale) {
   this.socialScale = socialScale;
  }
 
- /**@Description get quality of life
+ /**
+  * get quality of life
   * 
-  * @return qualityOfLife
+  * @return int the quality of life rating
   */
  public int getQualityOfLife() {
   return qualityOfLife;
  }
 
- /**@Description set quality of life
+ /**
+  * set quality of life
   * 
-  * @param qualityOfLife
+  * @param qualityOfLife the quality of life rating to be set
   */
  public void setQualityOfLife(int qualityOfLife) {
   this.qualityOfLife = qualityOfLife;
