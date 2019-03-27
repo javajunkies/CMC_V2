@@ -43,14 +43,14 @@ public class AdminController {
    * @return ArrayList<University> a list of universities
    */
   
-  public List<String> viewUniversities() {
+  public List<University> viewUniversities() {
     return dbcontroller.getAllUniversities();
   }
 
   /**
    * Calls the removeUniversity method from DBController.
    * 
-   * @param name is the name of the university being romved
+   * @param name is the name of the university being removed
    * @return int the status of removing a university
    */
   public int removeUniversity(String name) {
