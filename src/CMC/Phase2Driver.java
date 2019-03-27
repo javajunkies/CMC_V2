@@ -82,7 +82,7 @@ import java.util.List;
 	  /**
 	   * Test Removing a saved school
 	   * 
-	   * @param username is the user whos account is being modified
+	   * @param username is the user who's account is being modified
 	   * @param university is the school being removed
 	   * @return String representation of removal
 	   */
@@ -94,10 +94,10 @@ import java.util.List;
 	  }
 	  
 	  /**
-	   * Test the view exisisting university functionality
+	   * Test the view existing university functionality
 	   * 
 	   * @param univ is the university being viewed
-	   * @return String respresentation of the university
+	   * @return String representation of the university
 	   */
 	  public String testViewExistingUniv(String univ) {
 		  University result = ui1.viewExistingUniversity(univ); 
@@ -138,7 +138,7 @@ import java.util.List;
 	  }
 	  
 	  /**
-	   * Tests the add university funtionality
+	   * Tests the add university functionality
 	   * 
 	   * @param school is the name of the school
 	   * @param state is the state that the school is located
@@ -213,7 +213,7 @@ import java.util.List;
 	   * 
 	   * @param u1 is the first university being compared
 	   * @param u2 is the second university being compared
-	   * @return String represenation of comparison
+	   * @return String representation of comparison
 	   */
 	  public String testCompare(String u1, String u2) {
 		List<University> schools = ui1.compare(u1, u2);
@@ -328,7 +328,7 @@ import java.util.List;
 	    //U1 Login Success
 	    System.out.println(p.testLogin("testUser", "Password1"));
 	    
-	    //U1 A1 Username is incorrect
+	    //U1 A1 username is incorrect
 	    System.out.println(p.testLogin("asdfdf", "Password1"));
 	    
 	    //U1 A2 Password is incorrect
