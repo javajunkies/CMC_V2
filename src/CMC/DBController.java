@@ -81,9 +81,10 @@ public class DBController {
   {
     
     String[][] universities = db.university_getUniversities();
-    String[][] distance = null;
-    Double[] maximum = null;
-    Double[] minimum = null;
+    String[][] distance = new String[universities[0].length][1];
+    Double[] maximum = new Double[12];
+    Double[] minimum = new Double[12];
+    double tempDist;
     double x1;
     double x2;
     double x3;
@@ -170,9 +171,9 @@ public class DBController {
     
     for(int j = 0; j < distance[0].length; j++) {
       if(Double.parseDouble(distance[j+1][1]) < Double.parseDouble(distance[j][1])) {
-        double tempDist = Double.parseDouble(distance[j][1]);
+        tempDist = Double.parseDouble(distance[j][1]);
         distance[j][1] = distance[j+1][1];
-        distance[j+1][1] = distance[j][1];
+        distance[j+1][1] = Double.toString(tempDist);
         String tempName = distance[j][0];
         distance[j][0] = distance[j+1][0];
         distance[j+1][0] = tempName;
