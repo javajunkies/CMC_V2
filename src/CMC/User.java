@@ -21,6 +21,7 @@ public class User extends Account{
   * @param username is the username associated with the account
   * @param password is the password associated with the account
   * @param usertype specifies the type of user of this account
+  * @param status the status of the account
   */
  public User(String first, String last, String username, String password, char usertype, char status) {
   super(first, last, username, password, usertype, status);
