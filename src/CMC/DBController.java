@@ -796,10 +796,10 @@ public class DBController {
     return byNumStudents;
     }
   }
+}
   
 //  public static void main(String[] args) {
 //   DBController dbc = new DBController();
 //   System.out.println(dbc.isUser("juser"));
 //  }
 
->>>>>>> ab49ed32dbe0222fd76808678316c1e37988dbcb
