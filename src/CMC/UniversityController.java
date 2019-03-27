@@ -10,10 +10,9 @@ package CMC;
  * @author Java Junkies
  * @version March 19, 2019
  */
-
 public class UniversityController {
  
-	// Initialize a DBController object
+ // Initialize a DBController object
  DBController dbcontroller = new DBController();
  
  /**

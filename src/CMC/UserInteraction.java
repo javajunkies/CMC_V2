@@ -205,7 +205,18 @@ public class UserInteraction
    */
   public int editUserInfo(String userName, String firstName, String lastName, String password)
   {
+	  if(AccountController.checkPasswordCriteria(password) == 0) {
     return UserController.editUserInfo(userName, firstName, lastName, password);
+	  }
+	  else if(AccountController.checkPasswordCriteria(password) == 1) {
+		  return 0;
+	  }
+	  else if(AccountController.checkPasswordCriteria(password) == 2) {
+		  return 2;
+	  }
+	  else{
+		  return 3;
+	  }
   }
   
 }
