@@ -72,10 +72,9 @@ public class DBController {
     return "Could not find " + username;
   }
   /**
-   * @description
-   * 
-   * @param University object 
-   * @return List<University> of length 5 for the recommended schools
+   * Gets recommended schools
+   * @param university a university object 
+   * @return ArrayList of length 5 for the recommended schools
    */
   public ArrayList<University> getRecommendations(University university)
   {
@@ -177,7 +176,26 @@ public class DBController {
   }
   
   /**
+   * edits a universities information
    * 
+   * @param school is the name of the school
+   * @param state is the state that the school is located
+   * @param location is the type of area in which the school is located (i.e. Suburban, Small-city, ...)
+   * @param control specifies who controls the university (i.e. Public, Private, ...)
+   * @param numberOfStudents is the number of students at this university
+   * @param percentFemales is the percentage of females at this university
+   * @param SATVerbal is the average SAT Verbal score, out of 800, for the students at this university
+   * @param SATMath is the average SAT Math score, out of 800, for the students at this university
+   * @param expenses is the annual tuition for this university
+   * @param percentFinancialAid is the percentage of students who received some sort of financial aid from this university
+   * @param numberOfApplicants is the number of students who typically apply to this university
+   * @param percentAdmitted is the percentage of students who are admitted annually to this university
+   * @param percentEnrolled is the percentage of students who are currently enrolled at this university
+   * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
+   * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
+   * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
+   * 
+   * @return int represents the status of the editUnivInfo
    */
   public int editUnivInfo(String school, String state, String location, String control, int numberOfStudents,
                           double percentFemales, double SATVerbal, double SATMath, double expenses, 
@@ -188,17 +206,12 @@ public class DBController {
   }
   
   /**
+   * This methods puts two universities side by side so that they may be compared
    * 
-   * 
-   * @param firstName is the first name of the new user
-   * @param lastName is the last name of the new user
-   * @param username is the username of the new user
-   * @param password is the password of the new user
-   * @param type is the type of new user
    * @param u1 the first university to compare
    * @param u2 the second university to compare
    * 
-   * This methods puts two universities side by side so that they may be compared
+   * @return ArrayList a list of 2 schools
    */
   public ArrayList<University> compare(String u1, String u2) {
     ArrayList<University> list = new ArrayList<University>();
@@ -210,13 +223,15 @@ public class DBController {
   }
   
   /**
-   * @param String firstName
-   * @param String lastName
-   * @param String username
-   * @param String password
-   * @param char type
+   * Creates a user in the CMC system
    * 
-   * @return boolean if user was created, return true
+   * @param firstName the users firstname
+   * @param lastName the users lastname
+   * @param username the users username
+   * @param password the users password
+   * @param type the users type
+   * 
+   * @return int if user was created, return true
    */
   public int createUser(String firstName, String lastName, String username, String password, char type)
   {
@@ -255,7 +270,7 @@ public class DBController {
    * @param minQualityOfLife is an integer between 1 and 5 (5 being the best) indicating the min overall quality of life at this university
    * @param maxQualityOfLife is an integer between 1 and 5 (5 being the best) indicating the max overall quality of life at this university
    * 
-   * @return ArrayList<University> an array list of university objects that matched search criteria
+   * @return ArrayList an array list of university objects that matched search criteria
    */
   public ArrayList<University> searchUniversities(String mySchool, String myState, String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife) 
   {
@@ -331,7 +346,7 @@ public class DBController {
   /**
    * A method to view a List of all universities in the DB
    * 
-   * @return ArrayList of all the universities
+   * @return ArrayList list of all the universities
    */
   public ArrayList<University> getAllUniversities()
   {
@@ -347,7 +362,8 @@ public class DBController {
   
   /**
    * A method that Lists all of the users in the DB
-   * @return List<User> a list of all the users 
+   * 
+   * @return List a list of all the users 
    */
   public List<User> getAllUsers() {
     ArrayList<User> userList = new ArrayList<User>();
@@ -362,6 +378,7 @@ public class DBController {
   /**
    * method to view retrieve a users info from the database and display it. 
    * @param username the active users username 
+   * @return User a user to be viewed
    */
   public User viewUser(String username)
   {
@@ -391,11 +408,16 @@ public class DBController {
   
   
   /**
+   * method to edit the current users information that is stored in the database
+   * 
+   * @param username the new username
    * @param firstName the new username to be updated
    * @param lastName the new lastname to be updated
    * @param password the new password to be updated
+   * @param type the type to be updated
+   * @param status the status to be updated
    * 
-   * method to edit the current users information that is stored in the database
+   * @return int the status of the edit
    */
   public int adminEditUser(String username, String firstName, String lastName, String password, char type, char status)
   {
@@ -404,13 +426,14 @@ public class DBController {
   
   
   /**
-   * @param username
-   * @param first (user's first name)
-   * @param last (user's last name)
-   * @param password
-   * 
    * method that allows user to edit their account
-   * returns 1 if user edited successfully, 0 if not
+   * 
+   * @param username the users desired username
+   * @param first user's first name
+   * @param last user's last name
+   * @param password the users desired password
+   * 
+   * @return int the status of the edit
    */
   public int userEditUser(String username, String first, String last, String password) {
 	  return db.user_editUser(username, first, last, password, 'u', 'Y');
@@ -420,7 +443,8 @@ public class DBController {
   /**
    * View saved schools
    * 
-   * @param username - person
+   * @param username a users username
+   * @return ArrayList a list of the users saved schools
    */
   public ArrayList<University> viewSavedSchools(String username) 
   {
@@ -432,12 +456,9 @@ public class DBController {
     int k = 0;
     if(!(users == null)) {
     for(int i = 0; i < users.length; i++) {
-<<<<<<< HEAD
-=======
      if(users[i][0].equals(username)) {
-      userSavedSchools.add(users[i][1]);
+       userSavedSchools.add(users[i][1]);
      }
->>>>>>> ab49ed32dbe0222fd76808678316c1e37988dbcb
     	if(users[i][0].equals(username)) {
     		userSavedSchools[k] = users[i][1];
     		k++;
@@ -472,7 +493,12 @@ public class DBController {
     return savedSchools;
     }
   
-  
+  /**
+   * removes a university from the CMC system
+   * 
+   * @param name the name of the university to remove
+   * @return int the status of the university being removed
+   */
   public int removeUniversity(String name)
   {
    String[][] howMany = db.university_getNamesWithEmphases();
@@ -486,25 +512,26 @@ public class DBController {
   }
   
   /**
-   * @param School (name of university)
-   * @param State (name of state university is in)
-   * @param Location (name of location of the university)
-   * @param Control (name of person who controls university)
-   * @param numberOfStudents (number of students attending university)
-   * @param percentFemales (percentage of students attending university that are female)
-   * @param SATVerbal (average score of student at university on SAT Verbal)
-   * @param SATMath (average score of student at university on SAT Math)
-   * @param expenses (cost of expenses for students attending university)
-   * @param percentFinancialAid (percent of financial aid offered to accepted students at university)
-   * @param numberOfApplicants (number of people who applied to university)
-   * @param percentAdmitted (percent of applicants accepted to university)
-   * @param percentEnrolled (percent of accepted applicants who enrolled at the university)
+   * method allows admin to add a university to the database with all the given information
+   * 
+   * @param School name of university
+   * @param State name of state university is in
+   * @param Location name of location of the university
+   * @param Control name of person who controls university
+   * @param numberOfStudents number of students attending university
+   * @param percentFemales percentage of students attending university that are female
+   * @param SATVerbal average score of student at university on SAT Verbal
+   * @param SATMath average score of student at university on SAT Mat
+   * @param expenses cost of expenses for students attending university
+   * @param percentFinancialAid (percent of financial aid offered to accepted students at university
+   * @param numberOfApplicants (number of people who applied to university
+   * @param percentAdmitted (percent of applicants accepted to university
+   * @param percentEnrolled (percent of accepted applicants who enrolled at the university
    * @param academicsScale (a number between 1 and 5 with 5 being the best indicating the quality of academics at the university)
    * @param socialScale (a number between 1 and 5 with 5 being the best indicating the quality of the social atmosphere at the university)
    * @param qualityOfLifeScale (a number between 1 and 5 with 5 being the best indicating the quality of the students' lives at the university)
    * 
-   * method allows admin to add a university to the database with all the given information
-   * @return 1 if university was successfully added, -1 if not.
+   * @return int the status of the university being added
    */
   public int addUniversity(String school, String state, String location, String control, int numberOfStudents,
                            double percentFemales, double SATVerbal, double SATMath, double expenses, 
@@ -516,6 +543,8 @@ public class DBController {
   
   
   /**
+   *  method allows admin to edit information about a university given the current criteria.
+   *  
    * @param School (name of university)
    * @param State (name of state university is in)
    * @param Location (name of location of the university)
@@ -533,8 +562,7 @@ public class DBController {
    * @param socialScale (a number between 1 and 5 with 5 being the best indicating the quality of the social atmosphere at the university)
    * @param qualityOfLifeScale (a number between 1 and 5 with 5 being the best indicating the quality of the students' lives at the university)
    * 
-   * method allows admin to edit information about a university given the current criteria.
-   * @return 1 if university successfully edited, -1 if not
+   * @return int the status of the edit 
    */
   public int editUniversity(String school, String state, String location, String control, int numberOfStudents,
                             double percentFemales, double SATVerbal, double SATMath, double expenses, 
@@ -545,10 +573,10 @@ public class DBController {
   }
   
   /**
-   * @param username (the username being checked)
-   * 
    * method searches through the list of usernames to ensure that the given username does not already refer to an existing account.
-   * @return true if username is unique, otherwise false
+   * 
+   * @param username the username being checked
+   * @return boolean if username is unique, otherwise false
    */
   public boolean isUniqueUsername(String username)
   {
@@ -562,10 +590,10 @@ public class DBController {
   }
   
   /**
-   * @param university (the university being viewed)
-   * 
    * method displays information on a university from the database
-   * @return the university with all the given information
+   * 
+   * @param university the university being viewed
+   * @return University the university with all the given information
    */
   public University viewExistingUniversity(String university) {
     String [][] universities = db.university_getUniversities();
@@ -611,11 +639,12 @@ public class DBController {
 
   
   /**
-   * @param username (the username of the user)
-   * @param university (the university being added to the user's saved schools)
-   * 
    * method adds university to a user's list of saved school's
-   * @return integer 1 if school successfully added, -1 otherwise
+   * 
+   * @param username the username of the user
+   * @param university the university being added to the user's saved schools
+   * 
+   * @return int the status of the add to saved schools, 1 if school successfully added, -1 otherwise
    */
   public int addToSaved(String username, String university)
   {
@@ -623,11 +652,11 @@ public class DBController {
   }
   
   /**
-   * @param username (the username of the user)
-   * @param university (the university being removed from the user's saved schools)
-   * 
    * method removes a school from the user's list of saved schools.
-   * @return 1 if school successfully removed from user's saved schools, otherwise -1
+   * @param username the username of the user
+   * @param university the university being removed from the user's saved schools
+   * 
+   * @return int if school successfully removed from user's saved schools, otherwise -1
    */
   public int removeFromSaved(String username, String university)
   {

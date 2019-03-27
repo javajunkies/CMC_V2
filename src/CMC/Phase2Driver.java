@@ -15,8 +15,8 @@ import java.util.List;
 		/**
 		 * Tests the login functionality
 		 * 
-		 * @param username
-		 * @param password
+		 * @param username the users username
+		 * @param password the users password
 		 * @return String representation of outcome
 		 */
 	  public String testLogin(String username, String password) {
@@ -37,7 +37,13 @@ import java.util.List;
 	  /**
 	   * Tests the register functionality
 	   * 
-	   * @param 
+	   * @param first the users firstname
+	   * @param last the users lastname
+	   * @param user the users username
+	   * @param pass1 the users password
+	   * @param pass2 password confirmation
+	   * 
+	   * @return String the status of the login
 	   */
 	  public String testRegister(String first, String last, String user, String pass1, String pass2) {
 		  if(ui1.register(first, last, user, pass1, pass2) == 0) {
@@ -172,18 +178,18 @@ import java.util.List;
 	   * @param state is the state that the school is located
 	   * @param location is the type of area in which the school is located (i.e. Suburban, Small-city, ...)
 	   * @param control specifies who controls the university (i.e. Public, Private, ...)
-	   * @param numberOfStudents is the number of students at this university
-	   * @param percentFemales is the percentage of females at this university
+	   * @param numStudents is the number of students at this university
+	   * @param percentFemale is the percentage of females at this university
 	   * @param SATVerbal is the average SAT Verbal score, out of 800, for the students at this university
 	   * @param SATMath is the average SAT Math score, out of 800, for the students at this university
 	   * @param expenses is the annual tuition for this university
 	   * @param percentFinancialAid is the percentage of students who received some sort of financial aid from this university
-	   * @param numberOfApplicants is the number of students who typically apply to this university
+	   * @param numApplicants is the number of students who typically apply to this university
 	   * @param percentAdmitted is the percentage of students who are admitted annually to this university
 	   * @param percentEnrolled is the percentage of students who are currently enrolled at this university
 	   * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
 	   * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
-	   * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university	   
+	   * @param qualityOfLife is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university	   
 	   */
 	  public String testEditUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife) {
 		  if(ai1.editUniversity(school, state, location, control, numStudents, percentFemale, SATVerbal, SATMath, expenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLife) == 1) {
@@ -240,7 +246,8 @@ import java.util.List;
 	  /**
 	   * Tests the view user info functionality for users
 	   * 
-	   * @param args
+	   * @param username
+	   * @return String tests the users info
 	   */
 	  public String testViewUserInfoUser(String username) {
 		  User user = ui1.viewUserInfo(username);

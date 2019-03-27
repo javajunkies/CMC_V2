@@ -177,8 +177,9 @@ public class UserInteraction
   /**
    * calls the UserController to compare two schools
    * 
-   * @param u1
-   * @param u2
+   * @param u1 a university name
+   * @param u2 a university name
+   * @return ArrayList a list of two universities to be compared
    */
   public ArrayList<University> compare(String u1, String u2)
   {

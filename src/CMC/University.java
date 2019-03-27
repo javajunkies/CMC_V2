@@ -60,7 +60,8 @@ public class University {
   this.qualityOfLife = myQualityOfLife;
  }
  
- /**get school name
+ /**
+  * get school name
   * 
   * @return String university name
   */
@@ -68,7 +69,8 @@ public class University {
   return this.school;
  }
 
- /**@Description set school name
+ /**
+  * set school name
   * 
   * @param String school name
   */
@@ -76,7 +78,8 @@ public class University {
   this.school = school;
  }
 
- /**@Description get state
+ /**
+  * get state
   * 
   * @return String state
   */
@@ -94,7 +97,8 @@ public String toString() {
    + "\n" + qualityOfLife + "\n";
 }
 
-/**@Description set state
+/**
+ * set state
   * 
   * @param state
   */
@@ -102,7 +106,8 @@ public String toString() {
   this.state = state;
  }
 
- /**@Description get location
+ /**
+  * get location
   * 
   * @return location
   */
@@ -111,15 +116,16 @@ public String toString() {
  }
 
  /**
-  * @Description set location
-  * @param location
+  * set location
   * 
+  * @param location
   */
  public void setLocation(String location) {
   this.location = location;
  }
 
- /**@Description get control
+ /**
+  * get control
   * 
   * @return control
   */
@@ -128,7 +134,8 @@ public String toString() {
  }
 
 
- /**@Description set control
+ /**
+  * set control
   * 
   * @param control
   */
@@ -136,7 +143,8 @@ public String toString() {
   this.control = control;
  }
  
- /**@Description get number of students
+ /**
+  * get number of students
   * 
   * @return numStudents
   */
@@ -144,7 +152,8 @@ public String toString() {
   return numStudents;
  }
 
- /**@Description set number of students
+ /**
+  * set number of students
   * 
   * @param numStudents
   */
@@ -152,7 +161,8 @@ public String toString() {
   this.numStudents = numStudents;
  }
 
- /**@Description get percent female
+ /**
+  * get percent female
   * 
   * @return percentFemale
   */
@@ -160,7 +170,8 @@ public String toString() {
   return percentFemale;
  }
 
- /**@Description set percent female
+ /**
+  * set percent female
   * 
   * @param percentFemale
   */
@@ -168,7 +179,8 @@ public String toString() {
   this.percentFemale = percentFemale;
  }
 
- /**@Description get SAT Verbal average score
+ /**
+  * get SAT Verbal average score
   * 
   * @return SATVerbal
   */
@@ -176,7 +188,8 @@ public String toString() {
   return this.SATVerbal;
  }
 
- /**@Description set SAT Verbal average score
+ /**
+  * set SAT Verbal average score
   * 
   * @param SATVerbal
   */
@@ -200,7 +213,8 @@ public String toString() {
   this.SATMath = SATMath;
  }
 
- /**@Description get expenses
+ /**
+  * get expenses
   * 
   * @return expenses
   */
@@ -208,7 +222,8 @@ public String toString() {
   return expenses;
  }
 
- /**@Description set expenses
+ /**
+  * set expenses
   * 
   * @param expenses
   */
