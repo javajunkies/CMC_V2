@@ -81,9 +81,9 @@ public class DBController {
   {
     
     String[][] universities = db.university_getUniversities();
-    String[][] distance;
-    Double[] maximum;
-    Double[] minimum;
+    String[][] distance = null;
+    Double[] maximum = null;
+    Double[] minimum = null;
     double x1;
     double x2;
     double x3;
@@ -747,7 +747,7 @@ public class DBController {
     //University[] byAcceptance = acceptance.toArray();
     
     //sort the list in descending order
-    for(int i = 0; i < byAcceptance.size(); i++) {
+    for(int i = 0; i < byAcceptance.size();) {
       if(byAcceptance.get(i).getPercentAdmitted() > byAcceptance.get(i+1).getPercentAdmitted()) {
         swap(byAcceptance.get(i), byAcceptance.get(i+1));
       }
