@@ -1,4 +1,5 @@
-package CMC;
+	package CMC;
+
 import java.util.List;
 
 /**
@@ -59,11 +60,11 @@ import java.util.List;
 	  /**
 	   * Tests the view saved schools functionality
 	   * 
-	   * @param username is the user whos schools list is being viewed
+	   * @param username is the user whose schools list is being viewed
 	   * @return String representation of method call
 	   */
 	  public String testViewSavedSchools(String username) {
-		  List<String> schools = ui1.viewSavedSchools(username);
+		  List<University> schools = ui1.viewSavedSchools(username);
 		  String result = "";
 		  int x = 0;
 		  while(x < schools.size()) {
@@ -79,7 +80,7 @@ import java.util.List;
 	  /**
 	   * Test Removing a saved school
 	   * 
-	   * @param username is the user whos account is being modified
+	   * @param username is the user who's account is being modified
 	   * @param university is the school being removed
 	   * @return String representation of removal
 	   */
@@ -91,10 +92,10 @@ import java.util.List;
 	  }
 	  
 	  /**
-	   * Test the view exisisting university functionality
+	   * Test the view existing university functionality
 	   * 
 	   * @param univ is the university being viewed
-	   * @return String respresentation of the university
+	   * @return String representation of the university
 	   */
 	  public String testViewExistingUniv(String univ) {
 		  University result = ui1.viewExistingUniversity(univ); 
@@ -111,7 +112,7 @@ import java.util.List;
 	   * @return String representation of all universities.
 	   */
 	  public String testViewUniversities() {
-		  List<String> schools = ai1.viewUniversities();
+		  List<University> schools = ai1.viewUniversities();
 		  String result = "";
 		  int x = 0;
 		  while(x < schools.size()) {
@@ -135,7 +136,7 @@ import java.util.List;
 	  }
 	  
 	  /**
-	   * Tests the add university funtionality
+	   * Tests the add university functionality
 	   * 
 	   * @param school is the name of the school
 	   * @param state is the state that the school is located
@@ -210,7 +211,7 @@ import java.util.List;
 	   * 
 	   * @param u1 is the first university being compared
 	   * @param u2 is the second university being compared
-	   * @return String represenation of comparison
+	   * @return String representation of comparison
 	   */
 	  public String testCompare(String u1, String u2) {
 		List<University> schools = ui1.compare(u1, u2);
@@ -225,17 +226,91 @@ import java.util.List;
 	  }
 	  
 	  /**
-	   * Tests the view user info functionality
+	   * Tests the view user info functionality for admin
 	   * 
 	   * @param username is the user who is being viewed
 	   * @return String representation of profile
 	   */
-	  public String testViewUserInfo(String username) {
+	  public String testViewUserInfoAdmin(String username) {
 		User user = ai1.viewUserInfo(username);
 		String result = user.toString();
 		return result;
 	  }
 	  
+	  /**
+	   * Tests the view user info functionality for users
+	   * 
+	   * @param args
+	   */
+	  public String testViewUserInfoUser(String username) {
+		  User user = ui1.viewUserInfo(username);
+		  String result = user.toString();
+		  return result;
+	  }
+	  
+	  /**
+	   * Tests the edit user functionality for users
+	   * 
+	   * @param args
+	   */
+	  public String testEditUserInfoUser(String username, String first, String last, String pass) {
+		  if(ui1.editUserInfo(username, first, last, pass) == 1) {
+			  return "User successfully edited.";
+		  }
+		  return "Failure";
+	  }
+	  
+	  /**
+	   * Tests the view all users functionality
+	   * 
+	   * @param args
+	   */
+	  public String testViewUsers() {
+		  List<User> users = ai1.viewUsers();
+		  String result = "";
+		  int x = 0;
+		  while(x < users.size()) {
+			  result = result + users.get(x).getUsername() + "\n";
+		  x++;
+		  }
+		  return result;
+	  }
+	  
+	  /**
+	   * Tests the add new user functionality
+	   * 
+	   * @param args
+	   */
+	  public String testAddNewUser(String first, String last, String username, String pass, char type) {
+		  if(ai1.addNewUser(first, last, username, pass, type) == 1) {
+			  return "User successfully added.";
+		  }
+		  return "Failure";
+	  }  
+	  
+		  /**
+		   * Tests the deactivate user functionality.
+		   * 
+		   * @param user is the user being deactivated
+		   */
+	  public String testDeactivateUser(String user) {
+		  if(ai1.deactivateUser(user) == 1) {
+			  return "User successfully deactivated.";
+		  }
+		  return "Failure.";
+	  }
+	  
+	  /**
+	   * Tests the logoff functionality.
+	   * 
+	   * @return String representation of logoff
+	   */
+	  public String testLogoff() {
+		  if(ui1.logoff() == 1) {
+			  return "Logoff successful.";
+		  }
+		  return "Failure.";
+	  }
 	  public static void main(String[] args)
 	  {
 		//objects
@@ -251,7 +326,7 @@ import java.util.List;
 	    //U1 Login Success
 	    System.out.println(p.testLogin("testUser", "Password1"));
 	    
-	    //U1 A1 Username is incorrect
+	    //U1 A1 username is incorrect
 	    System.out.println(p.testLogin("asdfdf", "Password1"));
 	    
 	    //U1 A2 Password is incorrect
@@ -264,11 +339,9 @@ import java.util.List;
 	    
 	    //U1 A4 Temporary Account
 	    ui.register("Tyreese", "Fake", "TyDog", "Password2", "Password2");
-	    System.out.println(p.testLogin("TyDog", "Password2"));
+	    System.out.println(p.testLogin("TyDog", "Password2") + "\n");
 	    
-	    System.out.println('\n');
-	    
-	    // Reset Account
+	    // Delete test account
 	    ai.deleteUser("TyDog");
 	    
 	    
@@ -282,12 +355,11 @@ import java.util.List;
 	    System.out.println(p.testRegister("Bad", "Pass", "Test2", "pass", "pass"));
 	    
 	    //U2 A3 Passwords dont match
-	    System.out.println(p.testRegister("Password","dontMatch","Test3","Password1","Password2"));
+	    System.out.println(p.testRegister("Password","dontMatch","Test3","Password1","Password2") + "\n");
 	    
 	    //Delete account from database
 	    ai.deleteUser("Test1");
-	    System.out.println('\n');
-
+	    
 	    
 	    //U3 View Saved Schools
 	    ai.addNewUser("Test", "viewSaved", "Test2", "Password1", 'u');
@@ -297,7 +369,7 @@ import java.util.List;
 	    
 	    // U3 A1 User has no saved schools
 	    ai.addNewUser("Test", "Fail", "Test3", "Password1", 'u');
-	    System.out.println(p.testViewSavedSchools("Test3"));
+	    System.out.println(p.testViewSavedSchools("Test3") + "\n");
 	    
 	    //Delete Accounts
 	    ai.deleteUser("Test2");
@@ -323,36 +395,28 @@ import java.util.List;
 	    //U6 Remove Saved School
 	    ai.addNewUser("Remove", "Saved", "Test1", "Password1", 'u');
 	    ui.saveSchool("Test1", "Butler");
-	    System.out.println(p.testViewSavedSchools("Test1"));
-	    System.out.println(p.testRemoveSaved("Test1", "Butler"));
-	    System.out.println(p.testViewSavedSchools("Test1"));
+	    System.out.println(p.testRemoveSaved("Test1", "Butler") + "\n");
 
 	    ai.deleteUser("Test1");
 	    
 	    
 	    
 	    //U7 View Existing University
-	    System.out.println(p.testViewExistingUniv("BUTLER" + "\n"));
-	    
-	    //U7 view non existent univ
-	    System.out.println(p.testViewExistingUniv("FAKE" + "\n"));
-	    
+	    System.out.println(p.testViewExistingUniv("BUTLER") + "\n");	    
 	    
 	    
 	    //U8 View Universities
 	    System.out.println(p.testViewUniversities());
 	    
 	    
-	    
 	    //U9 Remove University
 	    System.out.println(p.testRemoveUniversity("AUGSBURG") + "\n");
-	    
 	    
 	    
 	    //U10 Add University   
 	    System.out.println(p.testAddUniversity("AUGSBURG", "MINNESOTA", "SMALL-CITY", "PRIVATE" , 10000, 43, 420, 490, 29991, 80, 4000, 85, 50, 1, 3, 4) + "\n");
 	    
-	    //U10 A1 Error
+	    //U10 A3 Name not unique
 	    System.out.println(p.testAddUniversity("AUGSBURG", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5) + "\n");	    
 
 	    
@@ -360,8 +424,7 @@ import java.util.List;
 	    //U11 Edit Universities 
 	    ai.addUniversity("School", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5);
 
-	    System.out.println(p.testEditUniversity("School", "MN", "SMALL-CITY", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5) + "\n");
-	    System.out.println(p.testEditUniversity("Fake", "MN", "SMALL-CITY", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5) + "\n");
+	    System.out.println(p.testEditUniversity("School", "MN", "SMALL-CITY", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5) + "\n");	    
 	    
 	    
 	    /*
@@ -379,8 +442,8 @@ import java.util.List;
 	    
 	    
 	    //U14 Save School
+	    System.out.println(p.testSaveSchool("testUser", "BARD"));
 	    System.out.println(p.testSaveSchool("testUser", "BARD") + "\n");
-	    System.out.println(p.testViewSavedSchools("testUser"));
 	    
 	    
 	    //U15 Compare two schools
@@ -388,42 +451,51 @@ import java.util.List;
 	    
 	    
 	    
-	    //U16 View Other User's Info
-	    System.out.println(p.testViewUserInfo("juser") + "\n");
+	    //U16 View user info as admin
+	    System.out.println(p.testViewUserInfoAdmin("juser"));
 	    
 	    
-	    /*
-	    //U17 View Own Profile
-	    System.out.println("U17: Edit info (reset)");
-	    System.out.println('\n');
 	    
-	    //U18 Edit User Info
-	    System.out.println("U18: Edit User Info");
-	    ui.editUserInfo("testUser", "Greg", "Boy", "Password19");
-	    System.out.println('\n');
+	    //U16 View Own Profile
+	    System.out.println(p.testViewUserInfoUser("juser"));
 	    
-	    //U19 View Users    
-	    System.out.println("U19: View Users");
-	    ai.viewUsers();
-	    System.out.println('\n');
 	    
-	    //U20 Add new User
-	    System.out.println("U20: Add a new User");
-	   // ai.addNewUser("Dane", "Man", "DMan", "Password1", a);
-	    System.out.println('\n');
 	    
-	    //U21 Deactivate user
-	    System.out.println("U21: Deactivate user");
-	    ai.deactivateUser("DMan");
-	    System.out.println('\n');
+	    //U17 Edit User Info
+	    ai.addNewUser("Edit", "User", "Test5", "Password1", 'u');
+	    System.out.println(p.testEditUserInfoUser("Test5", "New", "Info", "Password2"));
+	    
+	    //U17 A1 invalid password
+	    System.out.println(p.testEditUserInfoUser("Test5", "Same", "Bad", "pass") + "\n");
+	    
+	    
+	    ai.deleteUser("Test5");
+	    
+	    
+	    //U18 View Users    
+	    System.out.println(p.testViewUsers());
+	    
+	    
+	    
+	    //U19 Add new User
+	    System.out.println(p.testAddNewUser("Test", "Adding", "Test6", "Password1", 'u'));
+	    
+	    //U19 A1 Username not unique
+	    System.out.println(p.testAddNewUser("Test", "Fail", "Test6", "Password2", 'u'));
+	    
+	    //U19 A2 Password does not meet criteria
+	    System.out.println(p.testAddNewUser("Test", "BadPass", "Test7", "bad", 'u') + "\n");
+	    
+	    
+	    //U20 Deactivate user
+	    System.out.println(p.testDeactivateUser("Test6") + "\n");
+	    
 	    
 	    //U22 Logoff
-	    System.out.println("U22: Logout");
-	    ui.logoff();
-	    System.out.println('\n');
+	    System.out.println(p.testLogoff());
 	    
-	  */
-	    
+	  
+	    ai.deleteUser("Test6");
 	    ai.deleteUser("testUser");
 
 	  }
