@@ -436,17 +436,22 @@ public class DBController {
     String[][] users = db.user_getUsernamesWithSavedSchools();
     String[] userSavedSchools = new String[users.length];
     int k = 0;
+    int x = 0;
     if(!(users == null)) {
     for(int i = 0; i < users.length; i++) {
     	if(users[i][0].equals(username)) {
     		userSavedSchools[k] = users[i][1];
     		k++;
+    		x = 1;
     	}
     }
     }
+    if(x == 0) {
+    	return savedSchools;
+    }
     for(int i = 0; i < userSavedSchools.length; i++) {
     	for(int j = 0; j < universities.length; j++) {
-        	if(userSavedSchools[i].equals(universities[j][0])) {
+        	if(userSavedSchools[i].toUpperCase().equals(universities[j][0])) {
         		String school = universities[j][0];
                 String state = universities[j][1];
                 String location = universities[j][2];

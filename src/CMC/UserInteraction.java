@@ -1,7 +1,6 @@
 package CMC;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Java Junkies
@@ -45,7 +44,7 @@ public class UserInteraction
    * 
    * @param user - username of user
    */
-  public List<University> viewSavedSchools(String username)
+  public ArrayList<University> viewSavedSchools(String username)
   {
     return UserController.viewSavedSchools(username);
   }

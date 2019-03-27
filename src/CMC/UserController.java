@@ -40,7 +40,7 @@ public class UserController {
   * @param username the users username
   * @return ArrayList<University> a list of the users saved schools
   */
- public List<University> viewSavedSchools(String username) {
+ public ArrayList<University> viewSavedSchools(String username) {
   return dbcontroller.viewSavedSchools(username);
  }
  

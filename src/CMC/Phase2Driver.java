@@ -1,5 +1,6 @@
 	package CMC;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -64,11 +65,12 @@ import java.util.List;
 	   * @return String representation of method call
 	   */
 	  public String testViewSavedSchools(String username) {
-		  List<University> schools = ui1.viewSavedSchools(username);
+
+		  ArrayList<University> schools = ui1.viewSavedSchools(username);
 		  String result = "";
 		  int x = 0;
 		  while(x < schools.size()) {
-			  result = result + schools.get(x) + "\n";
+			  result = result + schools.get(x).getSchool() + "\n";
 		  x++;
 		  }
 		  if(result.equals("")) {
@@ -497,7 +499,8 @@ import java.util.List;
 	  
 	    ai.deleteUser("Test6");
 	    ai.deleteUser("testUser");
-
+	    ai.removeUniversity("testSchool");
+	    ai.removeUniversity("School");
 	  }
 	}
 	
