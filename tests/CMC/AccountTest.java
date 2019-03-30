@@ -15,68 +15,87 @@ public class AccountTest {
 	}
 
 	@Test
-	public void testAccount() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testGetFirst() {
-		fail("Not yet implemented");
+		String expResult = "Test";
+		String actualResult = a.getFirst();
+		assertTrue("First name is " + expResult, expResult.equals(actualResult));
 	}
 
 	@Test
 	public void testSetFirst() {
-		fail("Not yet implemented");
+		a.setFirst("TestSetFirst");
+		String expected = "TestSetFirst";
+		assertTrue("First name is " + expected, expected.equals(a.getFirst()));
 	}
 
 	@Test
 	public void testGetLast() {
-		fail("Not yet implemented");
+		String expected = "Name";
+		String actual = a.getLast();
+		assertTrue("Last name is " + expected, expected.equals(actual));
 	}
 
 	@Test
 	public void testSetLast() {
-		fail("Not yet implemented");
+		a.setLast("TestSetLast");
+		String expected = "TestSetLast";
+		assertTrue("Last name is " + expected, expected.equals(a.getLast()));
 	}
 
 	@Test
 	public void testGetUsername() {
-		fail("Not yet implemented");
+		String expected = "accountTest";
+		String actual = a.getUsername();
+		assertTrue("Username is " + expected, expected.equals(actual));
 	}
 
 	@Test
 	public void testGetStatus() {
-		fail("Not yet implemented");
+		char expected = 'Y';
+		char actual = a.getStatus();
+		assertTrue("Status is " + expected, expected == actual);
 	}
 
 	@Test
 	public void testSetStatus() {
-		fail("Not yet implemented");
+		a.setStatus('N');
+		char expected = 'N';
+		assertTrue("Status is " + expected, expected == a.getStatus());
 	}
 
 	@Test
 	public void testSetUsername() {
-		fail("Not yet implemented");
+		a.setUsername("TestSetUsername");
+		String expected = "TestSetUsername";
+		assertTrue("Username is " + expected, expected.equals(a.getUsername()));
 	}
 
 	@Test
 	public void testGetPassword() {
-		fail("Not yet implemented");
+		String expected = "Password1";
+		String actual = a.getPassword();
+		assertTrue("Password is " + expected, expected.equals(actual));
 	}
 
 	@Test
 	public void testSetPassword() {
-		fail("Not yet implemented");
+		a.setPassword("Password2");
+		String expected = "Password2";
+		assertTrue("Password is " + expected, expected.equals(a.getPassword()));
 	}
 
 	@Test
 	public void testGetUsertype() {
-		fail("Not yet implemented");
+		char expected = 'a';
+		char actual = a.getUsertype();
+		assertTrue("User type is " + expected, expected == actual);
 	}
 
 	@Test
 	public void testSetUsertype() {
-		fail("Not yet implemented");
+		a.setUsertype('u');
+		char expected = 'u';
+		assertTrue("User type is " + expected, expected == a.getUsertype());
 	}
 
 }
