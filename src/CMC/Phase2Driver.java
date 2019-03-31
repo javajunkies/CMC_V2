@@ -334,18 +334,20 @@ import java.util.List;
 	  }
 	  
 	  public String testSearchUniversities(String mySchool, String myState, String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife){
+		  String result = "";
 		  ArrayList<University> univs = ui1.searchUniversities(mySchool, myState, myLocation, myControl, minNumStudents, maxNumStudents, minPercentFemale, maxPercentFemale, minSATVerbal, maxSATVerbal, minSATMath, maxSATMath, minExpenses, maxExpenses, minPercentFinancialAid, maxPercentFinancialAid, minNumApplicants, maxNumApplicants, minPercentAdmitted, maxPercentAdmitted, minPercentEnrolled, maxPercentEnrolled, minAcademicsScale, maxAcademicsScale, minSocialScale, maxSocialScale, minQualityOfLife, maxQualityOfLife);
-		  /*for(int i = 0; i < univs.size(); i++) {
-			  String result = univs.get(i).toString();
-		  }*/
-		  String result = univs.get(0).toString();
+		  for(int i = 0; i < univs.size(); i++) {
+			  result += "\n" + univs.get(i).toString();
+		  }
+		  
+		  //String result = univs.get(0).toString();
 		  return result;
 	  
 	  }
 	  
 	  public static void main(String[] args) {
 		  Phase2Driver p = new Phase2Driver();
-
+		  p.testSearchUniversities("a", "","","",0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0.0,0,0,0,0,0,0);
 	  }
 
 /*	  public static void main(String[] args)

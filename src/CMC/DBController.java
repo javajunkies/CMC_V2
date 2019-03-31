@@ -312,65 +312,140 @@ public class DBController {
     ArrayList<University> matchUni = new ArrayList<University>();
     //int k = 0;
     for(int i = 0; i < rowLength; i++) {
-      if(universities[i][0].contains(mySchool) 
-           || mySchool.equals("0") 
-           && universities[i][1].contains(myState) 
-           || myState.equals("0") 
-           && universities[i][2].equals(myLocation) 
-           || myLocation.equals("0") 
-           && universities[i][3].contains(myControl) 
-           || myControl.equals("0") 
-           && minNumStudents <= Integer.parseInt(universities[i][4]) 
-           && Integer.parseInt(universities[i][4]) <= maxNumStudents 
-           || minNumStudents <= Integer.parseInt(universities[i][4]) 
-           && maxNumStudents == 0 
-           && minPercentFemale <= Double.parseDouble(universities[i][5]) 
-           && Double.parseDouble(universities[i][5]) <= maxPercentFemale 
-           || minPercentFemale <= Double.parseDouble(universities[i][5]) 
-           && maxPercentFemale == 0 
-           && minSATVerbal <= Double.parseDouble(universities[i][6]) 
-           && Double.parseDouble(universities[i][6]) <= maxSATVerbal 
-           || minSATVerbal <= Double.parseDouble(universities[i][6]) 
-           && maxSATVerbal == 0 
-           && minSATMath <= Double.parseDouble(universities[i][7]) 
-           && Double.parseDouble(universities[i][7]) <= maxSATMath 
-           || minSATMath <= Double.parseDouble(universities[i][7]) 
-           && maxSATMath == 0 
-           && minExpenses <= Double.parseDouble(universities[i][8]) 
-           && Double.parseDouble(universities[i][8]) <= maxExpenses 
-           || minExpenses <= Double.parseDouble(universities[i][8]) 
-           && maxExpenses == 0 
-           && minPercentFinancialAid <= Double.parseDouble(universities[i][9]) 
-           && Double.parseDouble(universities[i][9]) <= maxPercentFinancialAid 
-           || minPercentFinancialAid <= Double.parseDouble(universities[i][9]) 
-           && maxPercentFinancialAid == 0 
-           && minNumApplicants <= Integer.parseInt(universities[i][10]) 
-           && Integer.parseInt(universities[i][10]) <= maxNumApplicants 
-           || minNumApplicants <= Integer.parseInt(universities[i][10]) 
-           && maxNumApplicants == 0 
-           && minPercentAdmitted <= Double.parseDouble(universities[i][11]) 
-           && Double.parseDouble(universities[i][11]) <= maxPercentAdmitted 
-           || minPercentAdmitted <= Double.parseDouble(universities[i][11]) 
-           && maxPercentAdmitted == 0 
-           && minPercentEnrolled <= Double.parseDouble(universities[i][12]) 
-           && Double.parseDouble(universities[i][12]) <= maxPercentEnrolled 
-           || minPercentEnrolled <= Double.parseDouble(universities[i][12]) 
-           && maxPercentEnrolled == 0 
-           && minAcademicsScale <= Integer.parseInt(universities[i][13]) 
-           && Integer.parseInt(universities[i][13]) <= maxAcademicsScale 
-           || minAcademicsScale <= Integer.parseInt(universities[i][13]) 
-           && maxAcademicsScale == 0 
-           && minSocialScale <= Integer.parseInt(universities[i][14]) 
-           && Integer.parseInt(universities[i][14]) <= maxSocialScale 
-           || minSocialScale <= Integer.parseInt(universities[i][14]) 
-           && maxSocialScale == 0 
-           && minQualityOfLife <= Integer.parseInt(universities[i][15]) 
-           && Integer.parseInt(universities[i][15]) <= maxQualityOfLife 
-           || minQualityOfLife <= Integer.parseInt(universities[i][15]) 
-           && maxQualityOfLife == 0) {
-        University univ = new University(universities[i][0],universities[i][1],universities[i][2],universities[i][3],Integer.parseInt(universities[i][4]),Double.parseDouble(universities[i][5]),Double.parseDouble(universities[i][6]),Double.parseDouble(universities[i][7]),Double.parseDouble(universities[i][8]),Double.parseDouble(universities[i][9]),Integer.parseInt(universities[i][10]),Double.parseDouble(universities[i][11]),Double.parseDouble(universities[i][12]),Integer.parseInt(universities[i][13]),Integer.parseInt(universities[i][14]),Integer.parseInt(universities[i][15]));
-        matchUni.add(univ);
+      if(universities[i][0].contains(mySchool) || mySchool == null) {
+    	  if(universities[i][1].contains(myState) || myState == null) {
+    		  if(universities[i][2].equals(myLocation) || myLocation == null) {
+    			  if( universities[i][3].contains(myControl) || myControl == null) {
+    				  if( minNumStudents <= Integer.parseInt(universities[i][4]) 
+    				           && Integer.parseInt(universities[i][4]) <= maxNumStudents 
+    				           || minNumStudents <= Integer.parseInt(universities[i][4]) 
+    				           && maxNumStudents == 0 
+    				           || Integer.parseInt(universities[i][4]) <= maxNumStudents 
+    				           && minNumStudents == 0) {
+    					  if( minPercentFemale <= Double.parseDouble(universities[i][5]) 
+    					           && Double.parseDouble(universities[i][5]) <= maxPercentFemale 
+    					           || minPercentFemale <= Double.parseDouble(universities[i][5]) 
+    					           && maxPercentFemale == 0.0 
+    					           || Double.parseDouble(universities[i][5]) <= maxPercentFemale
+    					           && minPercentFemale == 0.0) {
+    						  if( minSATVerbal <= Double.parseDouble(universities[i][6]) 
+    						           && Double.parseDouble(universities[i][6]) <= maxSATVerbal 
+    						           || minSATVerbal <= Double.parseDouble(universities[i][6]) 
+    						           && maxSATVerbal == 0.0 
+    						           || Double.parseDouble(universities[i][6]) <= maxSATVerbal
+    						           && minSATVerbal == 0.0) {
+    							  if( minSATMath <= Double.parseDouble(universities[i][7]) 
+    							           && Double.parseDouble(universities[i][7]) <= maxSATMath 
+    							           || minSATMath <= Double.parseDouble(universities[i][7]) 
+    							           && maxSATMath == 0.0 
+    							           || Double.parseDouble(universities[i][7]) <= maxSATMath
+    							           && minSATMath == 0.0) {
+    								  if( minExpenses <= Double.parseDouble(universities[i][8]) 
+    								           && Double.parseDouble(universities[i][8]) <= maxExpenses 
+    								           || minExpenses <= Double.parseDouble(universities[i][8]) 
+    								           && maxExpenses == 0.0 
+    								           || Double.parseDouble(universities[i][8]) <= maxExpenses
+    								           && minExpenses == 0.0) {
+    									  if(minPercentFinancialAid <= Double.parseDouble(universities[i][9]) 
+    									           && Double.parseDouble(universities[i][9]) <= maxPercentFinancialAid 
+    									           || minPercentFinancialAid <= Double.parseDouble(universities[i][9]) 
+    									           && maxPercentFinancialAid == 0.0 
+    									           || Double.parseDouble(universities[i][9]) <= maxPercentFinancialAid
+    									           && minPercentFinancialAid == 0.0) {
+    										  if( minPercentAdmitted <= Double.parseDouble(universities[i][11]) 
+    										           && Double.parseDouble(universities[i][11]) <= maxPercentAdmitted 
+    										           || minPercentAdmitted <= Double.parseDouble(universities[i][11]) 
+    										           && maxPercentAdmitted == 0.0 
+    										           || Double.parseDouble(universities[i][11]) <= maxPercentAdmitted
+    										           && minPercentAdmitted == 0.0) {
+    											  if( minPercentEnrolled <= Double.parseDouble(universities[i][12]) 
+    											           && Double.parseDouble(universities[i][12]) <= maxPercentEnrolled 
+    											           || minPercentEnrolled <= Double.parseDouble(universities[i][12]) 
+    											           && maxPercentEnrolled == 0.0 
+    											           || Double.parseDouble(universities[i][12]) <= maxPercentEnrolled
+    											           && minPercentEnrolled == 0.0) {
+    												  if( minAcademicsScale <= Integer.parseInt(universities[i][13]) 
+    												           && Integer.parseInt(universities[i][13]) <= maxAcademicsScale 
+    												           || minAcademicsScale <= Integer.parseInt(universities[i][13]) 
+    												           && maxAcademicsScale == 0 
+    												           || Integer.parseInt(universities[i][13]) <= maxAcademicsScale
+    												           && minAcademicsScale == 0) {
+    													  if( minSocialScale <= Integer.parseInt(universities[i][14]) 
+    													           && Integer.parseInt(universities[i][14]) <= maxSocialScale 
+    													           || minSocialScale <= Integer.parseInt(universities[i][14]) 
+    													           && maxSocialScale == 0 
+    													           || Integer.parseInt(universities[i][14]) <= maxSocialScale
+    													           && minSocialScale == 0) {
+    														  if( minQualityOfLife <= Integer.parseInt(universities[i][15]) 
+    														           && Integer.parseInt(universities[i][15]) <= maxQualityOfLife 
+    														           || minQualityOfLife <= Integer.parseInt(universities[i][15]) 
+    														           && maxQualityOfLife == 0
+    														           || Integer.parseInt(universities[i][15]) <= maxQualityOfLife
+    														           && minQualityOfLife == 0) {
+    															  
+    															  University univ = new University(universities[i][0],universities[i][1],universities[i][2],universities[i][3],Integer.parseInt(universities[i][4]),Double.parseDouble(universities[i][5]),Double.parseDouble(universities[i][6]),Double.parseDouble(universities[i][7]),Double.parseDouble(universities[i][8]),Double.parseDouble(universities[i][9]),Integer.parseInt(universities[i][10]),Double.parseDouble(universities[i][11]),Double.parseDouble(universities[i][12]),Integer.parseInt(universities[i][13]),Integer.parseInt(universities[i][14]),Integer.parseInt(universities[i][15]));
+    														      matchUni.add(univ);
+    														      
+    														           }
+    														           else {
+    														        	   continue;
+    														           }
+    													           }
+    													           else {
+    													        	   continue;
+    													           }
+    												           }
+    												           else {
+    												        	   continue;
+    												           }
+    											           }
+    											           else {
+    											        	   continue;
+    											           }
+    										           }
+    										           else {
+    										        	   continue;
+    										           }
+    									           }
+    									           else {
+    									        	   continue;
+    									           }
+    								           }
+    								           else {
+    								        	   continue;
+    								           }
+    							           }
+    							           else {
+    							        	   continue;
+    							           }
+    						           }
+    						           else{
+    						        	   continue;
+    						           }
+    					           }
+    					           else {
+    					        	   continue;
+    					           }
+    				           }
+    				           else {
+    				        	   continue;
+    				           }
+    			           }
+    			           else {
+    			        	   continue;
+    			           }
+    		  }
+    		  else {
+    			  continue;
+    		  }
+          }
+          else {
+        	  continue;
+          }
       }
+      else {
+    	  continue;
+      } 
     }
     return matchUni;
   }
@@ -575,36 +650,6 @@ public class DBController {
     return db.university_addUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
   }
   
-  
-  /**
-   *  method allows admin to edit information about a university given the current criteria.
-   *  
-   * @param school name of university
-   * @param state name of state university is in
-   * @param location name of location of the university
-   * @param control name of person who controls university)
-   * @param numberOfStudents number of students attending university
-   * @param percentFemales percentage of students attending university that are female
-   * @param SATVerbal average score of student at university on SAT Verbal
-   * @param SATMath average score of student at university on SAT Math
-   * @param expenses cost of expenses for students attending university
-   * @param percentFinancialAid percent of financial aid offered to accepted students at university
-   * @param numberOfApplicants number of people who applied to university
-   * @param percentAdmitted percent of applicants accepted to university
-   * @param percentEnrolled percent of accepted applicants who enrolled at the university
-   * @param academicsScale a number between 1 and 5 with 5 being the best indicating the quality of academics at the university
-   * @param socialScale a number between 1 and 5 with 5 being the best indicating the quality of the social atmosphere at the university
-   * @param qualityOfLifeScale a number between 1 and 5 with 5 being the best indicating the quality of the students' lives at the university
-   * 
-   * @return int the status of the edit 
-   */
-  public int editUniversity(String school, String state, String location, String control, int numberOfStudents,
-                            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-                            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
-                            int academicsScale, int socialScale, int qualityOfLifeScale) 
-  {
-    return db.university_editUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale); 
-  }
   
   /**
    * method searches through the list of usernames to ensure that the given username does not already refer to an existing account.
