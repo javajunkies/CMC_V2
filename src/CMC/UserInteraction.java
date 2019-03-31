@@ -13,7 +13,6 @@ public class UserInteraction
   //objects
   UserController UserController = new UserController();
   AccountController AccountController = new AccountController();
-  UniversityController UniversityController = new UniversityController();
   
   /**
    * login method
