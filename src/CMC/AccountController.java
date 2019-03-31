@@ -29,7 +29,7 @@ public class AccountController{
   
   /**
    * checks the users password for the required criteria
-   * @param password
+   * @param password the users password
    * @return boolean representation of checking the password, 0 if meets all criteria
    *   1 if less than 8 characters, 2 if it does not contain a letter or 3 if it does not contain a number
    */

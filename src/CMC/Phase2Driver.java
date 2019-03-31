@@ -16,8 +16,8 @@ import java.util.List;
 		/**
 		 * Tests the login functionality
 		 * 
-		 * @param username
-		 * @param password
+		 * @param username the users username
+		 * @param password the users password
 		 * @return String representation of outcome
 		 */
 	  public String testLogin(String username, String password) {
@@ -38,7 +38,13 @@ import java.util.List;
 	  /**
 	   * Tests the register functionality
 	   * 
-	   * @param 
+	   * @param first the users firstname
+	   * @param last the users lastname
+	   * @param user the users username
+	   * @param pass1 the users password
+	   * @param pass2 password confirmation
+	   * 
+	   * @return String the status of the login
 	   */
 	  public String testRegister(String first, String last, String user, String pass1, String pass2) {
 		  if(ui1.register(first, last, user, pass1, pass2) == 0) {
@@ -118,7 +124,7 @@ import java.util.List;
 		  String result = "";
 		  int x = 0;
 		  while(x < schools.size()) {
-			  result = result + schools.get(x) + "\n";
+			  result = result + schools.get(x).getSchool() + "\n";
 		  x++;
 		  }
 		  return result;
@@ -156,6 +162,7 @@ import java.util.List;
 	   * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
 	   * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
 	   * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university	   
+	   * @return String if the add was successful or not
 	   */
 	  public String testAddUniversity(String school, String state, String location, String control, int numberOfStudents,
               double percentFemales, double SATVerbal, double SATMath, double expenses, 
@@ -174,18 +181,19 @@ import java.util.List;
 	   * @param state is the state that the school is located
 	   * @param location is the type of area in which the school is located (i.e. Suburban, Small-city, ...)
 	   * @param control specifies who controls the university (i.e. Public, Private, ...)
-	   * @param numberOfStudents is the number of students at this university
-	   * @param percentFemales is the percentage of females at this university
+	   * @param numStudents is the number of students at this university
+	   * @param percentFemale is the percentage of females at this university
 	   * @param SATVerbal is the average SAT Verbal score, out of 800, for the students at this university
 	   * @param SATMath is the average SAT Math score, out of 800, for the students at this university
 	   * @param expenses is the annual tuition for this university
 	   * @param percentFinancialAid is the percentage of students who received some sort of financial aid from this university
-	   * @param numberOfApplicants is the number of students who typically apply to this university
+	   * @param numApplicants is the number of students who typically apply to this university
 	   * @param percentAdmitted is the percentage of students who are admitted annually to this university
 	   * @param percentEnrolled is the percentage of students who are currently enrolled at this university
 	   * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
 	   * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
-	   * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university	   
+	   * @param qualityOfLife is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
+	   * @return String if the edit was successful or not	   
 	   */
 	  public String testEditUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife) {
 		  if(ai1.editUniversity(school, state, location, control, numStudents, percentFemale, SATVerbal, SATMath, expenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLife) == 1) {
@@ -242,7 +250,8 @@ import java.util.List;
 	  /**
 	   * Tests the view user info functionality for users
 	   * 
-	   * @param args
+	   * @param username the users username
+	   * @return String tests the users info
 	   */
 	  public String testViewUserInfoUser(String username) {
 		  User user = ui1.viewUserInfo(username);
@@ -253,7 +262,11 @@ import java.util.List;
 	  /**
 	   * Tests the edit user functionality for users
 	   * 
-	   * @param args
+	   * @param username the users username
+	   * @param first the users firstname
+	   * @param last the users lastname
+	   * @param pass the users password
+	   * @return String if the edit was successful or not
 	   */
 	  public String testEditUserInfoUser(String username, String first, String last, String pass) {
 		  if(ui1.editUserInfo(username, first, last, pass) == 1) {
@@ -265,7 +278,7 @@ import java.util.List;
 	  /**
 	   * Tests the view all users functionality
 	   * 
-	   * @param args
+	   * @return String users
 	   */
 	  public String testViewUsers() {
 		  List<User> users = ai1.viewUsers();
@@ -281,7 +294,12 @@ import java.util.List;
 	  /**
 	   * Tests the add new user functionality
 	   * 
-	   * @param args
+	   * @param first the users firstname
+	   * @param last the users lastname
+	   * @param username the users username
+	   * @param pass the users password
+	   * @param type the users type of account
+	   * @return String if adding a user was successful or not
 	   */
 	  public String testAddNewUser(String first, String last, String username, String pass, char type) {
 		  if(ai1.addNewUser(first, last, username, pass, type) == 1) {
@@ -294,6 +312,7 @@ import java.util.List;
 		   * Tests the deactivate user functionality.
 		   * 
 		   * @param user is the user being deactivated
+		   * @return String if the deactivate was successful or not
 		   */
 	  public String testDeactivateUser(String user) {
 		  if(ai1.deactivateUser(user) == 1) {
@@ -313,7 +332,23 @@ import java.util.List;
 		  }
 		  return "Failure.";
 	  }
-	  public static void main(String[] args)
+	  
+	  public String testSearchUniversities(String mySchool, String myState, String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife){
+		  ArrayList<University> univs = ui1.searchUniversities(mySchool, myState, myLocation, myControl, minNumStudents, maxNumStudents, minPercentFemale, maxPercentFemale, minSATVerbal, maxSATVerbal, minSATMath, maxSATMath, minExpenses, maxExpenses, minPercentFinancialAid, maxPercentFinancialAid, minNumApplicants, maxNumApplicants, minPercentAdmitted, maxPercentAdmitted, minPercentEnrolled, maxPercentEnrolled, minAcademicsScale, maxAcademicsScale, minSocialScale, maxSocialScale, minQualityOfLife, maxQualityOfLife);
+		  /*for(int i = 0; i < univs.size(); i++) {
+			  String result = univs.get(i).toString();
+		  }*/
+		  String result = univs.get(0).toString();
+		  return result;
+	  
+	  }
+	  
+	  public static void main(String[] args) {
+		  Phase2Driver p = new Phase2Driver();
+
+	  }
+
+/*	  public static void main(String[] args)
 	  {
 		//objects
 		Phase2Driver p = new Phase2Driver();
@@ -377,14 +412,14 @@ import java.util.List;
 	    ai.deleteUser("Test2");
 	    ai.deleteUser("Test3");
 	    
-	/*    //U4 Sort Saved Schools
+	    //U4 Sort Saved Schools
 	    System.out.println("U4: Sort Saved Schools");
 	    //ui.sortSavedSchools(1 ,0 , 0, "testUser");
 	    System.out.println('\n');
-	    */
 	    
 	    
-	    /*
+	    
+	    
 	    //U5 View Recommended Schools    
 	    System.out.println("U5: View Recommended Schools");
 	    //ui.getRecommendedList(testSchool);              //takes type university
@@ -392,7 +427,7 @@ import java.util.List;
 	    System.out.println('\n');
 	    
 	    
-	    */
+	    
 	    
 	    //U6 Remove Saved School
 	    ai.addNewUser("Remove", "Saved", "Test1", "Password1", 'u');
@@ -427,20 +462,11 @@ import java.util.List;
 	    ai.addUniversity("School", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5);
 
 	    System.out.println(p.testEditUniversity("School", "MN", "SMALL-CITY", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5) + "\n");	    
+	    System.out.println(p.testSearchUniversities("AU", "M", "", "", 10, 1000000, 0, 100, 0, 800, 0, 800, 0, 1000000, 0, 100, 0, 100000, 0, 100, 0, 90, 1, 5, 1, 5, 1, 5));
+	   
 	    
 	    
-	    /*
-	    //U12 Search
-	    System.out.println("U12: Search");
-	    //ui.search("testSchool");
-	    System.out.println('\n');
 	    
-	    //U13 View Search Results
-	    System.out.println("U13: View Results"); //same as U12
-	    System.out.println('\n');
-	    
-	    
-	    */
 	    
 	    
 	    //U14 Save School
@@ -501,6 +527,6 @@ import java.util.List;
 	    ai.deleteUser("testUser");
 	    ai.removeUniversity("testSchool");
 	    ai.removeUniversity("School");
-	  }
+	  }*/
 	}
 	

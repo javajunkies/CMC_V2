@@ -26,12 +26,12 @@ public abstract class Account {
 	/**
 	 * Constructs an account with specified parameters.
 	 * 
-	 * @param first
-	 * @param last
-	 * @param username
-	 * @param password
-	 * @param usertype
-	 * @param status
+	 * @param first the firstname
+	 * @param last the lastname
+	 * @param username the username
+	 * @param password the password
+	 * @param usertype the usertype
+	 * @param status the account status
 	 */
 	public Account(String first, String last, String username, String password, char usertype, char status){
 		this.first = first;

@@ -58,22 +58,22 @@ public class AdminInteraction{
   * @param state is the state that the school is located
   * @param location is the type of area in which the school is located (i.e. Suburban, Small-city, ...)
   * @param control specifies who controls the university (i.e. Public, Private, ...)
-  * @param numberOfStudents is the number of students at this university
-  * @param percentFemales is the percentage of females at this university
+  * @param numStudents is the number of students at this university
+  * @param percentFemale is the percentage of females at this university
   * @param SATVerbal is the average SAT Verbal score, out of 800, for the students at this university
   * @param SATMath is the average SAT Math score, out of 800, for the students at this university
   * @param expenses is the annual tuition for this university
   * @param percentFinancialAid is the percentage of students who received some sort of financial aid from this university
-  * @param numberOfApplicants is the number of students who typically apply to this university
-  * @param percentAdmitted is the percentage of students who are admitted annually to this university   * @param percentEnrolled is the percentage of students who are currently enrolled at this university
+  * @param numApplicants is the number of students who typically apply to this university
+  * @param percentAdmitted is the percentage of students who are admitted annually to this university   
+  * @param percentEnrolled is the percentage of students who are currently enrolled at this university
   * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
   * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
-  * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
+  * @param qualityOfLife is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
   * 
   * @return int tells admin the status of adding the university
   */
-
- public int addUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
+  public int addUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
    return adminController.addUniversity(school, state, location, control, numStudents, percentFemale, SATVerbal, SATMath, expenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLife);
  }
  /**
@@ -83,22 +83,21 @@ public class AdminInteraction{
   * @param state is the state that the school is located
   * @param location is the type of area in which the school is located (i.e. Suburban, Small-city, ...)
   * @param control specifies who controls the university (i.e. Public, Private, ...)
-  * @param numberOfStudents is the number of students at this university
-  * @param percentFemales is the percentage of females at this university
+  * @param numStudents is the number of students at this university
+  * @param percentFemale is the percentage of females at this university
   * @param SATVerbal is the average SAT Verbal score, out of 800, for the students at this university
   * @param SATMath is the average SAT Math score, out of 800, for the students at this university
   * @param expenses is the annual tuition for this university
   * @param percentFinancialAid is the percentage of students who received some sort of financial aid from this university
-  * @param numberOfApplicants is the number of students who typically apply to this university
+  * @param numApplicants is the number of students who typically apply to this university
   * @param percentAdmitted is the percentage of students who are admitted annually to this university
   * @param percentEnrolled is the percentage of students who are currently enrolled at this university
   * @param academicsScale is an integer between 1 and 5 (5 being the best) indicating the quality of academics at this university 
   * @param socialScale is an integer between 1 and 5 (5 being the best) indicating the quality of the social life at this university
-  * @param qualityOfLifeScale is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
+  * @param qualityOfLife is an integer between 1 and 5 (5 being the best) indicating the overall quality of life at this university
   * 
   * @return int tells admin the status of editing a university
   */
-
  public int editUniversity(String school,String state,String location,String control,int numStudents,double percentFemale,double SATVerbal,double SATMath,double expenses,double percentFinancialAid,int numApplicants,double percentAdmitted,double percentEnrolled,int academicsScale,int socialScale,int qualityOfLife){
   return adminController.editUniversity(school, state, location, control, numStudents, percentFemale, SATVerbal, SATMath, expenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLife);
  }
@@ -106,9 +105,8 @@ public class AdminInteraction{
  /**
  *
  * Calls the getAllUniversities method from DBController.
- * @return ArrayList<Universities> the list of universities
+ * @return List the list of universities
  */
-
  public List<University> viewUniversities() {
   return adminController.viewUniversities();
 }
@@ -121,7 +119,6 @@ public class AdminInteraction{
   * @param username is the user whose profile is being viewed
   * @return an User object that belongs to the specified username
   */
- 
  public User viewUserInfo(String username){
    return adminController.viewUserInfo(username);
  }
@@ -129,7 +126,7 @@ public class AdminInteraction{
  /**
   * Calls the viewUsers method from the AdminController
   * 
-  * @return List<user> list of all the users
+  * @return List list of all the users
   */
  public List<User> viewUsers(){
    return adminController.viewUsers();
@@ -139,7 +136,7 @@ public class AdminInteraction{
   * Calls the deactivateUser method from AdminController and passes it the specified parameter
   * 
   * @param username is the username of the user being deactivated
-  * @return an int representation of the deactivation, 1 if successful, -1 if failure
+  * @return int representation of the deactivation, 1 if successful, -1 if failure
   */
  public int deactivateUser(String username){
 	   return adminController.deactivateUser(username);
@@ -153,7 +150,7 @@ public class AdminInteraction{
   * @param password the users desired password
   * @param type the type of user
   * @param status the status of the account
-  * @return int
+  * @return int the status of the edit
   */
  public int adminEditUser(String username, String firstName, String lastName, String password, char type, char status)
  {
@@ -168,7 +165,7 @@ public class AdminInteraction{
   * @param username is the username of the new user
   * @param password is the password of the new user
   * @param type is the type of new user
-  * @return boolean true if username is unique
+  * @return int true if username is unique
   */
 
  public int addNewUser(String firstName, String lastName, String username, String password, char type){

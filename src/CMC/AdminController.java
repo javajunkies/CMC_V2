@@ -24,8 +24,8 @@ public class AdminController {
  *   
  * @param username is the username used to login with
  * @param password is the password used to login with
+ * @return int the status of the login
  */
-  
   public int login(String username, String password) {
     return logInController.login(username, password);
   }
@@ -33,16 +33,15 @@ public class AdminController {
   /**
    * Calls the logoff method from DBController.
    */
-  
   public void logoff(){
     logInController.logoff();
   }
 
   /**
-   * Calls the getAllUniversities method from DBController.
-   * @return ArrayList<University> a list of universities
+   * Calls the getAllUniversities method from DBController
+   * 
+   * @return List a list of universities
    */
-  
   public List<University> viewUniversities() {
     return dbcontroller.getAllUniversities();
   }
@@ -79,7 +78,6 @@ public class AdminController {
    * 
    * @return int the status of adding a university
    */
-  
   public int addUniversity(String school, String state, String location, String control, int numberOfStudents,
                                double percentFemales, double SATVerbal, double SATMath, double expenses, 
                                double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
@@ -112,7 +110,6 @@ public class AdminController {
    * 
    * @return int the status of editing a university
    */
-  
   public int editUniversity(String school, String state, String location, String control, int numberOfStudents,
                                double percentFemales, double SATVerbal, double SATMath, double expenses, 
                                double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
@@ -135,7 +132,6 @@ public class AdminController {
    * 
    * @return int the status of editing a user
    */
-  
   public int editUser(String username, String firstName, String lastName, String password, char type, char status) {
     return dbcontroller.adminEditUser(username, firstName, lastName, password, type, status);
   } 
@@ -143,9 +139,8 @@ public class AdminController {
   /**
    * Calls the getAllUsers method from DBController
    * 
-   * @return ArrayList<University> A list of user objects
+   * @return List A list of user objects
    */
-  
   public List<User> viewUsers() {
     return dbcontroller.getAllUsers();
   } 
@@ -155,9 +150,8 @@ public class AdminController {
    * Checks to see if a certain username is unique
    * 
    * @param username is the username that is being checked for uniqueness
-   * @return a boolean representation of if the specified username is unique
+   * @return boolean representation of if the specified username is unique
    */
-  
   public boolean isUniqueUsername(String username) {
 	  if(dbcontroller.isUniqueUsername(username)) {
 		  return true;
