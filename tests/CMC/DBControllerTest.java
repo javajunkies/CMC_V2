@@ -2,8 +2,8 @@ package CMC;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class DBControllerTest {
@@ -27,5 +27,21 @@ public class DBControllerTest {
 		Boolean isUnique = db.isUniqueUsername("NewUsername");
 		assertEquals(isUnique, true);
 	}
-
+	
+	//createUser tests
+	@Test
+	public void createUserTest() {
+		int u = db.createUser("firstName", "lastName", "username", "password", 'u');
+		assertEquals(u, 1);
+	}
+		
+	
+	
+	
+	//delete things created in tests
+	@After
+	public void after()
+	{
+		db.deleteUser("username");
+	}
 }
