@@ -18,34 +18,48 @@ public class LoginController {
   * @param username username associated with this user
   * @param pass password user uses to log in
   * @return int representation of login attempt. 0 if succesful, 1 if invalid username,
-  *         2 if invalid password, and 3 if status is inactive.
+  *         2 if invalid password, and 3 if status is inactive, 4 if type is temporary
   */
  public int login(String username, String pass) {
-  int u, p = 0;
+  int u = 0;
+  int p = 0;
+  int s = 0;
+  int status = 1;
   if(this.findUser(username)){
    u = 1;
+   status = 2;
   }
   else {
-   return 1;
+   status = 1;
   }
   if(u == 1) {
    String correctPassword = this.findPassword(username);
    if(correctPassword.equals(pass)) {
     p = 1;
+    status= 3;
    }
   }
    else {
-    return 2;
+   status = 2;
    }
   if(p == 1) {
    if(this.checkStatus(username)) {
-    return 0;
+    s = 1;
+    status = 4;
    }
    else { 
-    return 3;
+    status = 3;
    }
   }
-  return 4;
+  if(s == 1) {
+	  if(this.checkType(username)){
+		  status = 0;
+	  }
+  }
+  else {
+	  status = 4;
+  }
+  return status;
  }
  
  /**
@@ -83,6 +97,21 @@ public class LoginController {
  }
   else {
    return false;
+  }
+ }
+ 
+ /**
+  * Checks account type of this user
+  * @param username the users username
+  * @return boolean if the type of the account is either user or admin
+  */
+ public boolean checkType(String username) {
+  Account user = db.findByUsername(username);
+  if(user.getUsertype() != 'a' || user.getUsertype() != 'u') {
+  return false;
+ }
+  else {
+   return true;
   }
  }
  

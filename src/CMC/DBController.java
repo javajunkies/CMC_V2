@@ -18,7 +18,7 @@ public class DBController {
    * database controller
    */
   public DBController() {
-    
+	  //UniversityDBLibrary db = new UniversityDBLibrary("javajunk", "csci230");
   }
   
   UniversityDBLibrary db = new UniversityDBLibrary("javajunk", "csci230");
@@ -304,7 +304,7 @@ public class DBController {
    * 
    * @return ArrayList an array list of university objects that matched search criteria
    */
-  public ArrayList<University> searchUniversities(String mySchool, String myState, String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife) 
+  public ArrayList<University> searchUniversities(String mySchool, String myState, boolean negateState, String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife) 
   {
     String[][] universities = db.university_getUniversities();
     int rowLength = universities[0].length;
@@ -313,7 +313,9 @@ public class DBController {
     //int k = 0;
     for(int i = 0; i < rowLength; i++) {
       if(universities[i][0].contains(mySchool) || mySchool == null) {
-    	  if(universities[i][1].contains(myState) || myState == null) {
+    	  if(universities[i][1].contains(myState) && negateState == false
+    			  || !universities[i][1].contains(myState) && negateState == true
+    			  || myState == null) {
     		  if(universities[i][2].equals(myLocation) || myLocation == null) {
     			  if( universities[i][3].contains(myControl) || myControl == null) {
     				  if( minNumStudents <= Integer.parseInt(universities[i][4]) 
@@ -575,7 +577,7 @@ public class DBController {
     	return savedSchools;
     }
     for(int i = 0; i < userSavedSchools.length; i++) {
-    	for(int j = 0; j < universities.length; j++) {
+    	for(int j = 0; j < universities[0].length; j++) {
         	if(userSavedSchools[i].toUpperCase().equals(universities[j][0])) {
         		String school = universities[j][0];
                 String state = universities[j][1];
@@ -819,7 +821,7 @@ public class DBController {
    * sort a users saved schools by percent of students admitted 
    * @param username   the username supplied for retrieving a list of saved schools
    * 
-   * @return ArrayList a list sorted by Acceptance
+   * @return ArrayList a list sorted by Acceptances
    */
  public ArrayList<University> sortByAcceptance(String username) 
   {

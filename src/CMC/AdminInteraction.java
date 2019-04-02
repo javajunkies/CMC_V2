@@ -165,7 +165,7 @@ public class AdminInteraction{
   * @param username is the username of the new user
   * @param password is the password of the new user
   * @param type is the type of new user
-  * @return int true if username is unique
+  * @return int -3 if username is unique, -2 if not unique
   */
 
  public int addNewUser(String firstName, String lastName, String username, String password, char type){
