@@ -18,7 +18,7 @@ public class DBController {
    * database controller
    */
   public DBController() {
-    
+	  //UniversityDBLibrary db = new UniversityDBLibrary("javajunk", "csci230");
   }
   
   UniversityDBLibrary db = new UniversityDBLibrary("javajunk", "csci230");
@@ -83,13 +83,14 @@ public class DBController {
     String[][] distance = new String[universities[0].length][1];
     Double[] maximum = new Double[12];
     Double[] minimum = new Double[12];
+    
     double tempDist;
     double x1;
     double x2;
     double x3;
     //int maxIndex = 0;
     //int minIndex = 0;
-    for(int j = 0; j<universities[0].length; j++) {
+    for(int j = 0; j < universities[0].length; j++) {
       for(int i = 4; i < universities[1].length; i++) {
         if(Double.parseDouble(universities[j][i]) > maximum[i]) {	// || Integer.parseInt(universities[j][i] > maximum[0][i])) {
           maximum[i] = Double.parseDouble(universities[j][i]);
@@ -304,7 +305,7 @@ public class DBController {
    * 
    * @return ArrayList an array list of university objects that matched search criteria
    */
-  public ArrayList<University> searchUniversities(String mySchool, String myState, String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife) 
+  public ArrayList<University> searchUniversities(String mySchool, String myState, boolean negateState, String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife) 
   {
     String[][] universities = db.university_getUniversities();
     int rowLength = universities[0].length;
@@ -313,7 +314,9 @@ public class DBController {
     //int k = 0;
     for(int i = 0; i < rowLength; i++) {
       if(universities[i][0].contains(mySchool) || mySchool == null) {
-    	  if(universities[i][1].contains(myState) || myState == null) {
+    	  if(universities[i][1].contains(myState) && negateState == false
+    			  || !universities[i][1].contains(myState) && negateState == true
+    			  || myState == null) {
     		  if(universities[i][2].equals(myLocation) || myLocation == null) {
     			  if( universities[i][3].contains(myControl) || myControl == null) {
     				  if( minNumStudents <= Integer.parseInt(universities[i][4]) 
@@ -483,7 +486,7 @@ public class DBController {
   }
   
   /**
-   * method to view retrieve a users info from the database and display it. 
+   * method for admin to view retrieve a users info from the database and display it. 
    * @param username the active users username 
    * @return User a user to be viewed
    */
@@ -511,6 +514,7 @@ public class DBController {
     User user1 = new User(first, last, user, password, userType, status);
     return user1;  
   }
+  
   
   
   
@@ -575,7 +579,7 @@ public class DBController {
     	return savedSchools;
     }
     for(int i = 0; i < userSavedSchools.length; i++) {
-    	for(int j = 0; j < universities.length; j++) {
+    	for(int j = 0; j < universities[0].length; j++) {
         	if(userSavedSchools[i].toUpperCase().equals(universities[j][0])) {
         		String school = universities[j][0];
                 String state = universities[j][1];
@@ -797,7 +801,7 @@ public class DBController {
    */
   public int registerNewUser(String first, String last, String user, String pass) {
     int result = db.user_addUser(first, last, user, pass, 't');
-    this.deactivateUser(user);
+    //this.deactivateUser(user);
     return result;
   }
   
@@ -819,7 +823,7 @@ public class DBController {
    * sort a users saved schools by percent of students admitted 
    * @param username   the username supplied for retrieving a list of saved schools
    * 
-   * @return ArrayList a list sorted by Acceptance
+   * @return ArrayList a list sorted by Acceptances
    */
  public ArrayList<University> sortByAcceptance(String username) 
   {

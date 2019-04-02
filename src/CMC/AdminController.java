@@ -15,10 +15,16 @@ import java.util.*;
 public class AdminController {
 
   // Creating instances of the other classes being used.
+  //public AdminController() {
+	  //DBController dbcontroller = new DBController();
+	  //LoginController logInController = new LoginController();
+	  //AccountController accountController = new AccountController();
+	//}
+
   DBController dbcontroller = new DBController();
   LoginController logInController = new LoginController();
   AccountController accountController = new AccountController();
-
+  
 /**
  * Calls the login method, passing the specified parameters.
  *   

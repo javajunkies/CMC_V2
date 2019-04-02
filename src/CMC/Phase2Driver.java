@@ -30,6 +30,9 @@ import java.util.List;
 		  else if(ai1.login(username, password) == 3) {
 			  return "Status is inactive.";
 		  }
+		  else if(ai1.login(username,password) == 4) {
+			  return "Type is temporary.";
+		  }
 		  else {
 			  return "We are unsure of the problem, please try again. Sorry for the inconvenience.";
 		  }
@@ -211,7 +214,7 @@ import java.util.List;
 	   */
 	  public String testSaveSchool(String username, String school) {
 		  if(ui1.saveSchool(username, school) == 1) {
-			  return "School successfully added.";
+			  return "School successfully saved.";
 		  }
 		  return "Failure.";
 	  }
@@ -255,7 +258,7 @@ import java.util.List;
 	   */
 	  public String testViewUserInfoUser(String username) {
 		  User user = ui1.viewUserInfo(username);
-		  String result = user.toString();
+		  String result = user.toString().substring(0,user.toString().length()-2);
 		  return result;
 	  }
 	  
@@ -333,9 +336,9 @@ import java.util.List;
 		  return "Failure.";
 	  }
 	  
-	  public String testSearchUniversities(String mySchool, String myState, String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife){
+	  public String testSearchUniversities(String mySchool, String myState, boolean negateState, String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife){
 		  String result = "";
-		  ArrayList<University> univs = ui1.searchUniversities(mySchool, myState, myLocation, myControl, minNumStudents, maxNumStudents, minPercentFemale, maxPercentFemale, minSATVerbal, maxSATVerbal, minSATMath, maxSATMath, minExpenses, maxExpenses, minPercentFinancialAid, maxPercentFinancialAid, minNumApplicants, maxNumApplicants, minPercentAdmitted, maxPercentAdmitted, minPercentEnrolled, maxPercentEnrolled, minAcademicsScale, maxAcademicsScale, minSocialScale, maxSocialScale, minQualityOfLife, maxQualityOfLife);
+		  ArrayList<University> univs = ui1.searchUniversities(mySchool, myState, negateState, myLocation, myControl, minNumStudents, maxNumStudents, minPercentFemale, maxPercentFemale, minSATVerbal, maxSATVerbal, minSATMath, maxSATMath, minExpenses, maxExpenses, minPercentFinancialAid, maxPercentFinancialAid, minNumApplicants, maxNumApplicants, minPercentAdmitted, maxPercentAdmitted, minPercentEnrolled, maxPercentEnrolled, minAcademicsScale, maxAcademicsScale, minSocialScale, maxSocialScale, minQualityOfLife, maxQualityOfLife);
 		  for(int i = 0; i < univs.size(); i++) {
 			  result += "\n" + univs.get(i).toString();
 		  }
@@ -345,12 +348,9 @@ import java.util.List;
 	  
 	  }
 	  
-	  public static void main(String[] args) {
-		  Phase2Driver p = new Phase2Driver();
-		  p.testSearchUniversities("a", "","","",0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0.0,0,0,0,0,0,0);
-	  }
+	  
 
-/*	  public static void main(String[] args)
+	  public static void main(String[] args)
 	  {
 		//objects
 		Phase2Driver p = new Phase2Driver();
@@ -363,6 +363,7 @@ import java.util.List;
 	    
 	    
 	    //U1 Login Success
+	    //System.out.println("U1: Login");
 	    System.out.println(p.testLogin("testUser", "Password1"));
 	    
 	    //U1 A1 username is incorrect
@@ -381,6 +382,7 @@ import java.util.List;
 	    System.out.println(p.testLogin("TyDog", "Password2") + "\n");
 	    
 	    // Delete test account
+	    //ai.deleteUser("testUser");
 	    ai.deleteUser("TyDog");
 	    
 	    
@@ -402,8 +404,9 @@ import java.util.List;
 	    
 	    //U3 View Saved Schools
 	    ai.addNewUser("Test", "viewSaved", "Test2", "Password1", 'u');
-	    ui.saveSchool("Test2", "Butler");
 	    ui.saveSchool("Test2", "Augsburg");
+	    ui.saveSchool("Test2", "Butler");
+	    
 	    System.out.println(p.testViewSavedSchools("Test2"));
 	    
 	    // U3 A1 User has no saved schools
@@ -424,7 +427,8 @@ import java.util.List;
 	    
 	    //U5 View Recommended Schools    
 	    System.out.println("U5: View Recommended Schools");
-	    //ui.getRecommendedList(testSchool);              //takes type university
+	    //String school = "AUGSBURG";
+	    //ui.getRecommendedList(school);              //takes type university
 	    //System.out.println("A1: No recommendations");
 	    System.out.println('\n');
 	    
@@ -464,7 +468,11 @@ import java.util.List;
 	    ai.addUniversity("School", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5);
 
 	    System.out.println(p.testEditUniversity("School", "MN", "SMALL-CITY", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5) + "\n");	    
-	    System.out.println(p.testSearchUniversities("AU", "M", "", "", 10, 1000000, 0, 100, 0, 800, 0, 800, 0, 1000000, 0, 100, 0, 100000, 0, 100, 0, 90, 1, 5, 1, 5, 1, 5));
+	    
+	    
+	    
+	    System.out.println("U12: Search by Criteria/Negation");
+	    System.out.println(p.testSearchUniversities("A", "",false, "", "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
 	   
 	    
 	    
@@ -488,7 +496,7 @@ import java.util.List;
 	    
 	    //U16 View Own Profile
 	    System.out.println(p.testViewUserInfoUser("juser"));
-	    
+	    System.out.println(p.testViewUserInfoUser("Look at -2 in substring method of userViewUser, maybe add userViewUSer to DBController"));
 	    
 	    
 	    //U17 Edit User Info
@@ -529,6 +537,6 @@ import java.util.List;
 	    ai.deleteUser("testUser");
 	    ai.removeUniversity("testSchool");
 	    ai.removeUniversity("School");
-	  }*/
+	  }
 	}
 	
