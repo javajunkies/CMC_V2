@@ -81,68 +81,183 @@ public class DBController {
     
     String[][] universities = db.university_getUniversities();
     String[][] distance = new String[universities[0].length][1];
-    Double[] maximum = new Double[12];
-    Double[] minimum = new Double[12];
+    //Double[] maximum = new Double[12];
+    //Double[] minimum = new Double[12];
     
     double tempDist;
     double x1;
     double x2;
     double x3;
-    //int maxIndex = 0;
-    //int minIndex = 0;
+    //int i = 4;
+    int maxNumStudents = Integer.parseInt(universities[0][4]);
+    int minNumStudents = Integer.parseInt(universities[0][4]);
+    double maxPercentFemale = Double.parseDouble(universities[0][5]);
+    double minPercentFemale = Double.parseDouble(universities[0][5]);
+    double maxSATVerbal = Double.parseDouble(universities[0][6]);
+    double minSATVerbal = Double.parseDouble(universities[0][6]);
+    double maxSATMath = Double.parseDouble(universities[0][7]);
+    double minSATMath = Double.parseDouble(universities[0][7]);
+    double maxExpenses = Double.parseDouble(universities[0][8]);
+    double minExpenses = Double.parseDouble(universities[0][8]);
+    double maxPercentFinancialAid = Double.parseDouble(universities[0][9]);
+    double minPercentFinancialAid = Double.parseDouble(universities[0][9]);
+    int maxNumApplicants = Integer.parseInt(universities[0][10]);
+    int minNumApplicants = Integer.parseInt(universities[0][10]);
+    double maxPercentAdmitted = Double.parseDouble(universities[0][11]);
+    double minPercentAdmitted = Integer.parseInt(universities[0][11]);
+    double maxPercentEnrolled = Double.parseDouble(universities[0][12]);
+    double minPercentEnrolled = Integer.parseInt(universities[0][12]);
+    int maxAcademicsScale = Integer.parseInt(universities[0][13]);
+    int minAcademicsScale = Integer.parseInt(universities[0][13]);
+    int maxSocialScale = Integer.parseInt(universities[0][14]);
+    int minSocialScale = Integer.parseInt(universities[0][14]);
+    int maxQualityOfLife = Integer.parseInt(universities[0][15]);
+    int minQualityOfLife = Integer.parseInt(universities[0][15]);
+    
+    
+    
     for(int j = 0; j < universities[0].length; j++) {
-      for(int i = 4; i < universities[1].length; i++) {
-        if(Double.parseDouble(universities[j][i]) > maximum[i]) {	// || Integer.parseInt(universities[j][i] > maximum[0][i])) {
-          maximum[i] = Double.parseDouble(universities[j][i]);
-          //maxIndex++;
+        
+    	if(Integer.parseInt(universities[j][4]) > maxNumStudents) {
+            maxNumStudents= Integer.parseInt(universities[j][4]);
+            
         }
-        if(Double.parseDouble(universities[j][i]) < minimum[i]) {	//|| Integer.parseInt(universities[j][i] < maximum[0][i]) {
-          minimum[i] = Double.parseDouble(universities[j][i]);
-          //minIndex++;
+        if(Integer.parseInt(universities[j][4]) < minNumStudents) {
+        	minNumStudents = Integer.parseInt(universities[j][4]);
+
         }
-      }
+          
+        if(Double.parseDouble(universities[j][5]) > maxPercentFemale) {
+        	maxPercentFemale= Double.parseDouble(universities[j][5]);
+              
+        }
+        if(Double.parseDouble(universities[j][5]) < minPercentFemale) {
+        	minPercentFemale = Double.parseDouble(universities[j][5]);
+
+        }
+        
+        if(Double.parseDouble(universities[j][6]) > maxSATVerbal) {
+        	maxSATVerbal= Double.parseDouble(universities[j][6]);
+              
+        }
+        if(Double.parseDouble(universities[j][6]) < minSATVerbal) {
+        	minSATVerbal = Double.parseDouble(universities[j][6]);
+
+        }
+        
+        if(Double.parseDouble(universities[j][7]) > maxSATMath) {
+        	maxSATMath= Double.parseDouble(universities[j][7]);
+              
+        }
+        if(Double.parseDouble(universities[j][7]) < minSATMath) {
+        	minSATMath = Double.parseDouble(universities[j][7]);
+
+        }
+        
+        if(Double.parseDouble(universities[j][8]) > maxExpenses) {
+        	maxExpenses = Double.parseDouble(universities[j][8]);
+              
+        }
+        if(Double.parseDouble(universities[j][8]) < minExpenses) {
+        	minExpenses = Double.parseDouble(universities[j][8]);
+
+        }
+        
+        if(Double.parseDouble(universities[j][9]) > maxPercentFinancialAid) {
+        	maxPercentFinancialAid = Double.parseDouble(universities[j][9]);
+              
+        }
+        if(Double.parseDouble(universities[j][9]) < minPercentFinancialAid) {
+        	minPercentFinancialAid = Double.parseDouble(universities[j][9]);
+
+        }
+        
+        if(Integer.parseInt(universities[j][10]) > maxNumApplicants) {
+            maxNumApplicants= Integer.parseInt(universities[j][10]);
+            
+        }
+        if(Integer.parseInt(universities[j][10]) < minNumApplicants) {
+        	minNumApplicants = Integer.parseInt(universities[j][10]);
+
+        }
+        
+        if(Double.parseDouble(universities[j][11]) > maxPercentAdmitted) {
+        	maxPercentAdmitted = Double.parseDouble(universities[j][11]);
+              
+        }
+        if(Double.parseDouble(universities[j][11]) < minPercentAdmitted) {
+        	minPercentAdmitted = Double.parseDouble(universities[j][11]);
+
+        }
+        
+        if(Double.parseDouble(universities[j][12]) > maxPercentEnrolled) {
+        	maxPercentEnrolled = Double.parseDouble(universities[j][12]);
+              
+        }
+        if(Double.parseDouble(universities[j][12]) < minPercentEnrolled) {
+        	minPercentEnrolled = Double.parseDouble(universities[j][12]);
+
+        }
+        
+        if(Integer.parseInt(universities[j][13]) > maxAcademicsScale) {
+        	maxAcademicsScale = Integer.parseInt(universities[j][13]);
+            
+        }
+        if(Integer.parseInt(universities[j][13]) < minAcademicsScale) {
+        	minAcademicsScale = Integer.parseInt(universities[j][13]);
+
+        }
+        
+        if(Integer.parseInt(universities[j][14]) > maxSocialScale) {
+        	maxSocialScale = Integer.parseInt(universities[j][14]);
+            
+        }
+        if(Integer.parseInt(universities[j][14]) < minSocialScale) {
+        	minSocialScale = Integer.parseInt(universities[j][14]);
+
+        }
+        
+        if(Integer.parseInt(universities[j][15]) > maxQualityOfLife) {
+        	maxQualityOfLife = Integer.parseInt(universities[j][15]);
+            
+        }
+        if(Integer.parseInt(universities[j][15]) < minQualityOfLife) {
+        	minQualityOfLife = Integer.parseInt(universities[j][15]);
+
+        }
+      
     }
+    
+    
     for(int j = 0; j < universities[0].length; j++) {
       distance[j][0] = universities[j][0];
       String state = universities[j][1];
       String location = universities[j][2];
       String control = universities[j][3];
       int numStudents = Integer.parseInt(universities[j][4]);
-      double maxNumStudents = maximum[4];
-      double minNumStudents = minimum[4];
+      
       double percentFemale = Double.parseDouble(universities[j][5]);
-      double maxPercentFemale = maximum[5];
-      double minPercentFemale = minimum[5];
+      
       double SATVerbal = Double.parseDouble(universities[j][6]);
-      double maxSATVerbal = maximum[6];
-      double minSATVerbal = minimum[6];
+      
       double SATMath = Double.parseDouble(universities[j][7]);
-      double maxSATMath = maximum[7];
-      double minSATMath = minimum[7];
+      
       double expenses = Double.parseDouble(universities[j][8]);
-      double maxExpenses = maximum[8];
-      double minExpenses = minimum[8];
+      
       double percentFinancialAid = Double.parseDouble(universities[j][9]);
-      double maxPercentFinancialAid = maximum[9];
-      double minPercentFinancialAid = minimum[9];
+      
       int numApplicants = Integer.parseInt(universities[j][10]);
-      double maxNumApplicants = maximum[10];
-      double minNumApplicants = minimum[10];
+      
       double percentAdmitted = Double.parseDouble(universities[j][11]);
-      double maxPercentAdmitted = maximum[11];
-      double minPercentAdmitted = minimum[11];
+      
       double percentEnrolled = Double.parseDouble(universities[j][12]);
-      double maxPercentEnrolled = maximum[12];
-      double minPercentEnrolled = minimum[12];
+      
       int academicsScale = Integer.parseInt(universities[j][13]);
-      double maxAcademicsScale = maximum[13];
-      double minAcademicsScale = minimum[13];
+      
       int socialScale = Integer.parseInt(universities[j][14]);
-      double maxSocialScale = maximum[14];
-      double minSocialScale = minimum[14];
+      
       int qualityOfLife = Integer.parseInt(universities[j][15]);
-      double maxQualityOfLife = maximum[15];
-      double minQualityOfLife = minimum[15];
+      
       
       if(state.equals(university.getState())) {
         x1=0;

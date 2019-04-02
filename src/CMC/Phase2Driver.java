@@ -427,8 +427,8 @@ import java.util.List;
 	    
 	    //U5 View Recommended Schools    
 	    System.out.println("U5: View Recommended Schools");
-	    //String school = "AUGSBURG";
-	    //ui.getRecommendedList(school);              //takes type university
+	    String school = "AUGSBURG";
+	    ui.getRecommendedList(school);              //takes type university
 	    //System.out.println("A1: No recommendations");
 	    System.out.println('\n');
 	    
