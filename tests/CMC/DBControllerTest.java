@@ -44,7 +44,7 @@ public class DBControllerTest {
 	    expected.add(univ2);
 	    ArrayList<University> list = db.compare("AUGSBURG", "BUTLER");
 	    
-	    //assertEquals(list ,expected);
+	    assertEquals(expected, list);
 	    //assertArrayEquals(list.toArray() , expected.toArray());
 	}
 	
