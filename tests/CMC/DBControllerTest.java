@@ -2,6 +2,8 @@ package CMC;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.Before;
 //import org.junit.BeforeClass;
@@ -17,7 +19,6 @@ public class DBControllerTest {
 		db = new DBController();
 	}
 	
-	//isUniqueUsername tests
 	@Test
 	public void isUniqueUsernameTestFalse() {
 		Boolean isUnique = db.isUniqueUsername("nadmin");
@@ -30,17 +31,41 @@ public class DBControllerTest {
 		assertEquals(isUnique, true);
 	}
 	
-	//createUser tests
 	@Test
 	public void createUserTest() {
 		int u = db.createUser("firstName", "lastName", "username", "password", 'u');
 		assertEquals(u, 1);
 	}
 		
+	@Test
+	public void compareTest() {
+		ArrayList<University> expected = new ArrayList<University>();
+	    University univ1 = db.viewExistingUniversity("AUGSBURG");
+	    University univ2 = db.viewExistingUniversity("BUTLER");
+	    expected.add(univ1);
+	    expected.add(univ2);
+	    ArrayList<University> list = db.compare("AUGSBURG", "BUTLER");
+	    
+	    assertEquals(expected, list);
+	    //assertArrayEquals(list.toArray() , expected.toArray());
+	}
+	
+	@Test
+	public void registerNewUserTest() {
+		int expected = 1;
+		int registerNewUser = db.registerNewUser("first", "last" ,"username", "password");
+		assertEquals(registerNewUser, expected);
+	}
+	
+	@Test
+	public void searchTest() {
+		ArrayList<University> expected = new ArrayList<University>();
+		ArrayList<University> searchTest = db.searchUniversities("a", "","","",0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0.0,0,0,0,0,0,0);
+		assertEquals(searchTest, expected);
+	}
 	
 	
-	
-	//delete things created in tests
+
 	@After
 	public void after()
 	{
