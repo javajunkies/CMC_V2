@@ -83,13 +83,14 @@ public class DBController {
     String[][] distance = new String[universities[0].length][1];
     Double[] maximum = new Double[12];
     Double[] minimum = new Double[12];
+    
     double tempDist;
     double x1;
     double x2;
     double x3;
     //int maxIndex = 0;
     //int minIndex = 0;
-    for(int j = 0; j<universities[0].length; j++) {
+    for(int j = 0; j < universities[0].length; j++) {
       for(int i = 4; i < universities[1].length; i++) {
         if(Double.parseDouble(universities[j][i]) > maximum[i]) {	// || Integer.parseInt(universities[j][i] > maximum[0][i])) {
           maximum[i] = Double.parseDouble(universities[j][i]);
@@ -485,7 +486,7 @@ public class DBController {
   }
   
   /**
-   * method to view retrieve a users info from the database and display it. 
+   * method for admin to view retrieve a users info from the database and display it. 
    * @param username the active users username 
    * @return User a user to be viewed
    */
@@ -513,6 +514,7 @@ public class DBController {
     User user1 = new User(first, last, user, password, userType, status);
     return user1;  
   }
+  
   
   
   
@@ -799,7 +801,7 @@ public class DBController {
    */
   public int registerNewUser(String first, String last, String user, String pass) {
     int result = db.user_addUser(first, last, user, pass, 't');
-    this.deactivateUser(user);
+    //this.deactivateUser(user);
     return result;
   }
   

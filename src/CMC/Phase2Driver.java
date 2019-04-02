@@ -258,7 +258,7 @@ import java.util.List;
 	   */
 	  public String testViewUserInfoUser(String username) {
 		  User user = ui1.viewUserInfo(username);
-		  String result = user.toString();
+		  String result = user.toString().substring(0,user.toString().length()-2);
 		  return result;
 	  }
 	  
@@ -363,7 +363,7 @@ import java.util.List;
 	    
 	    
 	    //U1 Login Success
-	    System.out.println("U1: Login");
+	    //System.out.println("U1: Login");
 	    System.out.println(p.testLogin("testUser", "Password1"));
 	    
 	    //U1 A1 username is incorrect
@@ -427,7 +427,8 @@ import java.util.List;
 	    
 	    //U5 View Recommended Schools    
 	    System.out.println("U5: View Recommended Schools");
-	    //ui.getRecommendedList(testSchool);              //takes type university
+	    //String school = "AUGSBURG";
+	    //ui.getRecommendedList(school);              //takes type university
 	    //System.out.println("A1: No recommendations");
 	    System.out.println('\n');
 	    
@@ -495,7 +496,7 @@ import java.util.List;
 	    
 	    //U16 View Own Profile
 	    System.out.println(p.testViewUserInfoUser("juser"));
-	    
+	    System.out.println(p.testViewUserInfoUser("Look at -2 in substring method of userViewUser, maybe add userViewUSer to DBController"));
 	    
 	    
 	    //U17 Edit User Info

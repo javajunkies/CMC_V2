@@ -118,7 +118,7 @@ public class UserInteraction
    * 
    * @param university - school
    */
-  public ArrayList<University> getRecommendedList(University university)
+  public ArrayList<University> getRecommendedList(String university)
   {
     return UserController.getRecommendedList(university);
   }

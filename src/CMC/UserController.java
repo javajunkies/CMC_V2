@@ -146,9 +146,10 @@ public class UserController {
   * 
   * @param university - school
   */
- public ArrayList<University> getRecommendedList(University university)
+ public ArrayList<University> getRecommendedList(String name)
  {
-   return dbcontroller.getRecommendations(university);
+	 University university = dbcontroller.viewExistingUniversity(name);
+	 return dbcontroller.getRecommendations(university);
  }
  
 }

@@ -27,7 +27,7 @@ public class LoginController {
   int status = 1;
   if(this.findUser(username)){
    u = 1;
-   status = 2;
+   
   }
   else {
    status = 1;
@@ -36,7 +36,7 @@ public class LoginController {
    String correctPassword = this.findPassword(username);
    if(correctPassword.equals(pass)) {
     p = 1;
-    status= 3;
+    
    }
   }
    else {
@@ -45,7 +45,7 @@ public class LoginController {
   if(p == 1) {
    if(this.checkStatus(username)) {
     s = 1;
-    status = 4;
+    
    }
    else { 
     status = 3;
@@ -55,10 +55,11 @@ public class LoginController {
 	  if(this.checkType(username)){
 		  status = 0;
 	  }
+	  else {
+		  status = 4;
+	  }
   }
-  else {
-	  status = 4;
-  }
+  
   return status;
  }
  
@@ -107,7 +108,7 @@ public class LoginController {
   */
  public boolean checkType(String username) {
   Account user = db.findByUsername(username);
-  if(user.getUsertype() != 'a' || user.getUsertype() != 'u') {
+  if(user.getUsertype() == 't' || user.getUsertype() == 'T') {
   return false;
  }
   else {
