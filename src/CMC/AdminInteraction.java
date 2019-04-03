@@ -128,7 +128,7 @@ public class AdminInteraction{
   * 
   * @return List list of all the users
   */
- public List<User> viewUsers(){
+ public ArrayList<User> viewUsers(){
    return adminController.viewUsers();
  }
  

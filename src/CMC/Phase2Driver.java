@@ -408,6 +408,7 @@ import java.util.List;
 	    ai.addNewUser("Test", "viewSaved", "Test2", "Password1", 'u');
 	    ui.saveSchool("Test2", "Augsburg");
 	    ui.saveSchool("Test2", "Butler");
+	    ui.saveSchool("Test2", "Bard");
 	    
 	    
 	    System.out.println(p.testViewSavedSchools("Test2"));
@@ -430,8 +431,8 @@ import java.util.List;
 	    
 	    //U5 View Recommended Schools    
 	    System.out.println("U5: View Recommended Schools");
-	    String school = "AUGSBURG";
-	    ui.getRecommendedList(school);              //takes type university
+	    //String school = "AUGSBURG";
+	    //ui.getRecommendedList(school);              //takes type university
 	    //System.out.println("A1: No recommendations");
 	    System.out.println('\n');
 	    
@@ -499,7 +500,7 @@ import java.util.List;
 	    
 	    //U16 View Own Profile
 	    System.out.println(p.testViewUserInfoUser("juser"));
-	    System.out.println(p.testViewUserInfoUser("Look at -2 in substring method of userViewUser, maybe add userViewUSer to DBController"));
+	    //Look at -2 in substring method of userViewUser, maybe add userViewUSer to DBController"));
 	    
 	    
 	    //U17 Edit User Info
