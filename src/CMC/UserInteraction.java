@@ -69,30 +69,30 @@ public class UserInteraction
   public int register(String first, String last, String username, String password, String password1)
   {
 	  if(AccountController.isUniqueUsername(username)) {
-	  if(AccountController.checkPasswordMatch(password, password1)) {
-	  if(AccountController.checkPasswordCriteria(password) == 0) {
-		  int i = AccountController.register(first, last, username, password);
-		  if(i == 1) {
-			  return 0;
+		  if(AccountController.checkPasswordMatch(password, password1)) {
+			  	if(AccountController.checkPasswordCriteria(password) == 0) {
+			  		int i = AccountController.register(first, last, username, password);
+			  		if(i == 1) {
+			  			return 0;
+			  		}
+			  		else {
+			  			return 6;
+			  		}
+			  	}
+			  	else if(AccountController.checkPasswordCriteria(password) == 1) {
+			  		return 1;
+			  	}
+			  	else if(AccountController.checkPasswordCriteria(password) == 2) {
+			  		return 2;
+			  	}
+			  	else {
+			  		return 3;
+			  	}
 		  }
 		  else {
-		  return 6;
+		  return 5;
 		  }
 	  }
-	  else if(AccountController.checkPasswordCriteria(password) == 1) {
-		  return 1;
-	  }
-	  else if(AccountController.checkPasswordCriteria(password) == 2) {
-		  return 2;
-	  }
-	  else {
-		  return 3;
-	  }
-	  }
-	  else {
-		  return 5;
-	  }
-  }
 	  else {
 		  return 4;
 	  }
