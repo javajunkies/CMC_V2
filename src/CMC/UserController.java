@@ -151,5 +151,17 @@ public class UserController {
 	 University university = dbcontroller.viewExistingUniversity(name);
 	 return dbcontroller.getRecommendations(university);
  }
+
+public ArrayList<University> sortByAcceptance(String username) {
+	return dbcontroller.sortByAcceptance(username);
+}
+
+public ArrayList<University> sortByExpenses(String username) {
+	return dbcontroller.sortByExpenses(username);
+}
+
+public ArrayList<University> sortByNumStudents(String username) {
+	return dbcontroller.sortByNumStudents(username);
+}
  
 }
