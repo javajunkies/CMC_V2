@@ -3,17 +3,16 @@
  */
 
 package CMC;
+
 import dblibrary.project.csci230.*;
 import java.util.*;
-
 
 /**
  * @author Java Junkies
  *
- * Database controller class
+ *         Database controller class
  */
-public class DBController {
-  
+public class DBController {  
   /**
    * database controller
    */
@@ -1004,5 +1003,3 @@ public class DBController {
     return byNumStudents;
   }
 }
-
-
