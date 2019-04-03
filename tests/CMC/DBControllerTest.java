@@ -77,8 +77,9 @@ public class DBControllerTest {
 	
 	@Test
 	public void addToSavedTest() {
+		db.createUser("TestAdd", "ToSaved", "testAdd", "Password1", 'u');
 		int expected = 1;
-		int actual = db.addToSaved("testUser", "Augsburg");
+		int actual = db.addToSaved("testAdd", "Augsburg");
 		assertTrue("Should return " + expected + " but returned " + actual, expected == actual);
 	}
 	
