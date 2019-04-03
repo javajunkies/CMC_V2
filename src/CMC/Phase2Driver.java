@@ -406,6 +406,7 @@ import java.util.List;
 	    ai.addNewUser("Test", "viewSaved", "Test2", "Password1", 'u');
 	    ui.saveSchool("Test2", "Augsburg");
 	    ui.saveSchool("Test2", "Butler");
+	    ui.saveSchool("Test2", "Bard");
 	    
 	    System.out.println(p.testViewSavedSchools("Test2"));
 	    

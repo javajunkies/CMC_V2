@@ -24,43 +24,39 @@ public class LoginController {
   int u = 0;
   int p = 0;
   int s = 0;
-  int status = 1;
   if(this.findUser(username)){
    u = 1;
-   
   }
   else {
-   status = 1;
+   return 1;
   }
   if(u == 1) {
    String correctPassword = this.findPassword(username);
    if(correctPassword.equals(pass)) {
     p = 1;
-    
    }
-  }
    else {
-   status = 2;
-   }
+	   return 2;
+	   }
+  }
   if(p == 1) {
    if(this.checkStatus(username)) {
     s = 1;
-    
-   }
+    }
    else { 
-    status = 3;
+    return 3;
    }
   }
   if(s == 1) {
 	  if(this.checkType(username)){
-		  status = 0;
+		  return 0;
 	  }
 	  else {
-		  status = 4;
+		  return 4;
 	  }
   }
   
-  return status;
+  return 5;
  }
  
  /**

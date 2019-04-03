@@ -475,7 +475,7 @@ public class DBController {
    * 
    * @return List a list of all the users 
    */
-  public List<User> getAllUsers() {
+  public ArrayList<User> getAllUsers() {
     ArrayList<User> userList = new ArrayList<User>();
     String[][]usersInfo = db.user_getUsers();
     for(int j=0; j<usersInfo.length; j++) {
@@ -578,8 +578,8 @@ public class DBController {
     if(x == 0) {
     	return savedSchools;
     }
-    for(int i = 0; i < userSavedSchools.length; i++) {
-    	for(int j = 0; j < universities[0].length; j++) {
+    for(int i = 0; i < (userSavedSchools.length -1); i++) {
+    	for(int j = 0; j < universities.length; j++) {
         	if(userSavedSchools[i].toUpperCase().equals(universities[j][0])) {
         		String school = universities[j][0];
                 String state = universities[j][1];
@@ -599,6 +599,7 @@ public class DBController {
                 int qualityOfLife = Integer.parseInt(universities[j][15]);
                 University savedUniv = new University(school, state, location, control, numStudents, percentFemale, SATVerbal, SATMath, expenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLife);
                 savedSchools.add(savedUniv);
+                break;
         	}
         }
     }
