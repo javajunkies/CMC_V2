@@ -12,7 +12,7 @@ public class UniversityTest {
 
 	@Before
 	public void setUp() throws Exception {
-		a = new University("CSBSJU", "MN", "St. Joseph", "private", 3000, 50, 1300, 1300, 1000, 10, 5000, 50, 50, 5, 1, 1);
+		a = new University("CSBSJU", "MN", "St. Joseph", "private", 3000, 50.0, 1300, 1300, 1000, 10, 5000, 50, 50, 5, 1, 1);
 	}
 	
 	@Test
@@ -78,13 +78,19 @@ public class UniversityTest {
 		assertTrue("Number of students is " + expResult, (expResult == actualResult));
 	}
 	
+	@Test
 	public void testSetNumStudents() {
 		a.setNumStudents(69);
 		int expResult = 69;
 		assertTrue("Number of Students is " + expResult, (expResult == a.getNumStudents()));
 	}
 	
-	public void 
+	@Test
+	public void testGetPercentFemale() {
+		double expResult = 50.0;
+		double actualResult = a.getPercentFemale();
+		assertTrue("The Percent Female is " + expResult, )
+	}
 
 	private void assertTrue(String string, boolean b) {
 		// TODO Auto-generated method stub
