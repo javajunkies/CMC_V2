@@ -500,7 +500,7 @@ import java.util.List;
 	    
 	    //U16 View Own Profile
 	    System.out.println(p.testViewUserInfoUser("juser"));
-	    System.out.println(p.testViewUserInfoUser("Look at -2 in substring method of userViewUser, maybe add userViewUSer to DBController"));
+	    //Look at -2 in substring method of userViewUser, maybe add userViewUSer to DBController"));
 	    
 	    
 	    //U17 Edit User Info

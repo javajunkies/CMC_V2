@@ -692,7 +692,7 @@ public class DBController {
     if(x == 0) {
     	return savedSchools;
     }
-    for(int i = 0; i < (userSavedSchools.length -1); i++) {
+    for(int i = 0; i < userSavedSchools.length; i++) {
     	for(int j = 0; j < universities.length; j++) {
         	if(userSavedSchools[i].toUpperCase().equals(universities[j][0])) {
         		String school = universities[j][0];
