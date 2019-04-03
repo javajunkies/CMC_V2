@@ -15,10 +15,16 @@ import java.util.*;
 public class AdminController {
 
   // Creating instances of the other classes being used.
+  //public AdminController() {
+	  //DBController dbcontroller = new DBController();
+	  //LoginController logInController = new LoginController();
+	  //AccountController accountController = new AccountController();
+	//}
+
   DBController dbcontroller = new DBController();
   LoginController logInController = new LoginController();
   AccountController accountController = new AccountController();
-
+  
 /**
  * Calls the login method, passing the specified parameters.
  *   
@@ -114,7 +120,7 @@ public class AdminController {
                                double percentFemales, double SATVerbal, double SATMath, double expenses, 
                                double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
                                int academicsScale, int socialScale, int qualityOfLifeScale) {
-    return dbcontroller.editUniversity(school, state, location, control, numberOfStudents,
+    return dbcontroller.editUnivInfo(school, state, location, control, numberOfStudents,
                                percentFemales, SATVerbal, SATMath, expenses, 
                                percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, 
                                academicsScale, socialScale, qualityOfLifeScale);
