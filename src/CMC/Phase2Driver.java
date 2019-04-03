@@ -13,6 +13,7 @@ import java.util.List;
 		UserInteraction  ui1 = new UserInteraction();
 		AdminInteraction ai1 = new AdminInteraction();
 		
+		
 		/**
 		 * Tests the login functionality
 		 * 
@@ -357,6 +358,7 @@ import java.util.List;
 		UserInteraction  ui = new UserInteraction();
 		AdminInteraction ai = new AdminInteraction();
 		
+		
 	    //create testers
 	    ai.addNewUser("test", "user", "testUser", "Password1", 'a');
 	    ai.addUniversity("testSchool", "State", "Location", "Control" , 100, 50, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 );
@@ -406,6 +408,7 @@ import java.util.List;
 	    ai.addNewUser("Test", "viewSaved", "Test2", "Password1", 'u');
 	    ui.saveSchool("Test2", "Augsburg");
 	    ui.saveSchool("Test2", "Butler");
+	    
 	    
 	    System.out.println(p.testViewSavedSchools("Test2"));
 	    

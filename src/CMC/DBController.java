@@ -80,15 +80,13 @@ public class DBController {
   {
     
     String[][] universities = db.university_getUniversities();
-    String[][] distance = new String[universities[0].length][1];
-    //Double[] maximum = new Double[12];
-    //Double[] minimum = new Double[12];
-    
+    String[][] distance = new String[universities[0].length][2];
+
     double tempDist;
     double x1;
     double x2;
     double x3;
-    //int i = 4;
+
     int maxNumStudents = Integer.parseInt(universities[0][4]);
     int minNumStudents = Integer.parseInt(universities[0][4]);
     double maxPercentFemale = Double.parseDouble(universities[0][5]);
@@ -682,7 +680,6 @@ public class DBController {
     int x = 0;
     if(!(users == null)) {
     for(int i = 0; i < users.length; i++) {
-
     	if(users[i][0].equals(username)) {
     		userSavedSchools[k] = users[i][1];
     		k++;
