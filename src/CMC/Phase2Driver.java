@@ -343,10 +343,7 @@ import java.util.List;
 		  for(int i = 0; i < univs.size(); i++) {
 			  result += "\n" + univs.get(i).toString();
 		  }
-		  
-		  //String result = univs.get(0).toString();
 		  return result;
-	  
 	  }
 	  
 	  
