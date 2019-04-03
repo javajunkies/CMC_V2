@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import org.junit.After;
 import org.junit.Before;
 //import org.junit.BeforeClass;
-
 import org.junit.Test;
 
 public class DBControllerTest {
@@ -60,6 +59,28 @@ public class DBControllerTest {
 		//ArrayList<University> expected = new ArrayList<University>();
 		//ArrayList<University> searchTest = db.searchUniversities("a", "","","",0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0.0,0,0,0,0,0,0);
 		//assertEquals(searchTest, expected);
+}
+	
+	@Test
+	public void getAllUsersTest() {
+		ArrayList<String> expected = new ArrayList<String>();
+		expected.add("John");
+		expected.add("Lynn");
+		expected.add("Noreen");
+		expected.add("test");
+		ArrayList<User> r = db.getAllUsers();
+		ArrayList<String> actual = new ArrayList<String>();
+		for(int i = 0; i < r.size(); i++) {
+			actual.add(r.get(i).getFirst());
+		}
+	}
+	
+	@Test
+	public void addToSavedTest() {
+		db.createUser("TestAdd", "ToSaved", "testAdd", "Password1", 'u');
+		int expected = 1;
+		int actual = db.addToSaved("testAdd", "Augsburg");
+		assertTrue("Should return " + expected + " but returned " + actual, expected == actual);
 	}
 	
 	

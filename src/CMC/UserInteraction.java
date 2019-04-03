@@ -69,30 +69,30 @@ public class UserInteraction
   public int register(String first, String last, String username, String password, String password1)
   {
 	  if(AccountController.isUniqueUsername(username)) {
-	  if(AccountController.checkPasswordMatch(password, password1)) {
-	  if(AccountController.checkPasswordCriteria(password) == 0) {
-		  int i = AccountController.register(first, last, username, password);
-		  if(i == 1) {
-			  return 0;
+		  if(AccountController.checkPasswordMatch(password, password1)) {
+			  	if(AccountController.checkPasswordCriteria(password) == 0) {
+			  		int i = AccountController.register(first, last, username, password);
+			  		if(i == 1) {
+			  			return 0;
+			  		}
+			  		else {
+			  			return 6;
+			  		}
+			  	}
+			  	else if(AccountController.checkPasswordCriteria(password) == 1) {
+			  		return 1;
+			  	}
+			  	else if(AccountController.checkPasswordCriteria(password) == 2) {
+			  		return 2;
+			  	}
+			  	else {
+			  		return 3;
+			  	}
 		  }
 		  else {
-		  return 6;
+		  return 5;
 		  }
 	  }
-	  else if(AccountController.checkPasswordCriteria(password) == 1) {
-		  return 1;
-	  }
-	  else if(AccountController.checkPasswordCriteria(password) == 2) {
-		  return 2;
-	  }
-	  else {
-		  return 3;
-	  }
-	  }
-	  else {
-		  return 5;
-	  }
-  }
 	  else {
 		  return 4;
 	  }
@@ -197,5 +197,17 @@ public class UserInteraction
   
   public ArrayList<University> searchUniversities(String mySchool, String myState, boolean negateState, String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife){ 
       return UserController.searchUniversities(mySchool, myState, negateState, myLocation, myControl, minNumStudents, maxNumStudents, minPercentFemale, maxPercentFemale, minSATVerbal, maxSATVerbal, minSATMath, maxSATMath, minExpenses, maxExpenses, minPercentFinancialAid, maxPercentFinancialAid, minNumApplicants, maxNumApplicants, minPercentAdmitted, maxPercentAdmitted, minPercentEnrolled, maxPercentEnrolled, minAcademicsScale, maxAcademicsScale, minSocialScale, maxSocialScale, minQualityOfLife, maxQualityOfLife);
+}
+  
+  public ArrayList<University> sortByAcceptance(String username){
+	  return UserController.sortByAcceptance(username);
+  }
+
+public ArrayList<University> sortByExpenses(String username) {
+	 return UserController.sortByExpenses(username);
+}
+
+public ArrayList<University> sortByNumStudents(String username) {
+	return UserController.sortByNumStudents(username);
 }
 }

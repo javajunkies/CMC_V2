@@ -88,11 +88,16 @@ public class AdminController {
                                double percentFemales, double SATVerbal, double SATMath, double expenses, 
                                double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
                                double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-    return dbcontroller.addUniversity(school, state, location, control, numberOfStudents,
+    try{
+    	return dbcontroller.addUniversity(school, state, location, control, numberOfStudents,
                                percentFemales, SATVerbal, SATMath, expenses, 
                                percentFinancialAid, numberOfApplicants, percentAdmitted, 
                                percentEnrolled, academicsScale, socialScale, qualityOfLifeScale) ;
-  }
+    }
+    catch(IllegalArgumentException e){
+    	return -1;
+    }
+    }
 
   /**
    * Calls the editUniversity method from DBController
@@ -147,7 +152,7 @@ public class AdminController {
    * 
    * @return List A list of user objects
    */
-  public List<User> viewUsers() {
+  public ArrayList<User> viewUsers() {
     return dbcontroller.getAllUsers();
   } 
   

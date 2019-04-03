@@ -362,4 +362,7 @@ public String toString() {
  public void setQualityOfLife(int qualityOfLife) {
   this.qualityOfLife = qualityOfLife;
  }
+
+
 }
+

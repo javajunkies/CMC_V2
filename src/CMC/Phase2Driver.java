@@ -1,4 +1,4 @@
-	package CMC;
+package CMC;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +12,7 @@ import java.util.List;
 		
 		UserInteraction  ui1 = new UserInteraction();
 		AdminInteraction ai1 = new AdminInteraction();
+		
 		
 		/**
 		 * Tests the login functionality
@@ -342,12 +343,36 @@ import java.util.List;
 		  for(int i = 0; i < univs.size(); i++) {
 			  result += "\n" + univs.get(i).toString();
 		  }
-		  
-		  //String result = univs.get(0).toString();
 		  return result;
-	  
 	  }
 	  
+	  public String testSortByAcceptance(String username) {
+		  ArrayList<University> uni = ui1.sortByAcceptance(username);
+		  String result = "";
+		  for(int i = 0; i < uni.size(); i++) {
+		    result += "\n" + uni.get(i).getSchool();
+	      }
+		 return result;
+	  }
+	  
+	  public String testSortByExpenses(String username) {
+		  ArrayList<University> uni = ui1.sortByExpenses(username);
+		  String result = "";
+		  for(int i = 0; i < uni.size(); i++) {
+		    result += "\n" + uni.get(i).getSchool();
+	      }
+		 return result;
+	  }
+	  
+	  public String testSortByNumStudents(String username) {
+		  ArrayList<University> uni = ui1.sortByNumStudents(username);
+		  String result = "";
+		  for(int i = 0; i < uni.size(); i++) {
+		    result += "\n" + uni.get(i).getSchool();
+	      }
+		 return result;
+	  }
+	 
 	  
 
 	  public static void main(String[] args)
@@ -356,6 +381,7 @@ import java.util.List;
 		Phase2Driver p = new Phase2Driver();
 		UserInteraction  ui = new UserInteraction();
 		AdminInteraction ai = new AdminInteraction();
+		
 		
 	    //create testers
 	    ai.addNewUser("test", "user", "testUser", "Password1", 'a');
@@ -406,6 +432,8 @@ import java.util.List;
 	    ai.addNewUser("Test", "viewSaved", "Test2", "Password1", 'u');
 	    ui.saveSchool("Test2", "Augsburg");
 	    ui.saveSchool("Test2", "Butler");
+	    ui.saveSchool("Test2", "Bard");
+	    
 	    
 	    System.out.println(p.testViewSavedSchools("Test2"));
 	    
@@ -418,17 +446,32 @@ import java.util.List;
 	    ai.deleteUser("Test3");
 	    
 	    //U4 Sort Saved Schools
-	    System.out.println("U4: Sort Saved Schools");
-	    //ui.sortSavedSchools(1 ,0 , 0, "testUser");
-	    System.out.println('\n');
+	    System.out.println("U4: Sort Saved Schools" + '\n');
+	    System.out.println("Sort by Acceptance Rate: ");
+	    ui.saveSchool("testuser", "Butler");
+	    ui.saveSchool("testuser", "Augsburg");
+	    ui.saveSchool("testuser", "Bard");
+	    System.out.println(p.testSortByAcceptance("testuser") + '\n');
 	    
+	    
+	    System.out.println("Sort by Expenses: ");
+	    ui.saveSchool("testuser", "Butler");
+	    ui.saveSchool("testuser", "Augsburg");
+	    ui.saveSchool("testuser", "Bard");
+	    System.out.println(p.testSortByExpenses("testuser") + '\n');
+	    
+	    System.out.println("Sort by Number of Students: ");
+	    ui.saveSchool("testuser", "Butler");
+	    ui.saveSchool("testuser", "Augsburg");
+	    ui.saveSchool("testuser", "Bard");
+	    System.out.println(p.testSortByNumStudents("testuser") + '\n');
 	    
 	    
 	    
 	    //U5 View Recommended Schools    
 	    System.out.println("U5: View Recommended Schools");
-	    String school = "AUGSBURG";
-	    ui.getRecommendedList(school);              //takes type university
+	    //String school = "AUGSBURG";
+	    //ui.getRecommendedList(school);              //takes type university
 	    //System.out.println("A1: No recommendations");
 	    System.out.println('\n');
 	    
@@ -496,7 +539,7 @@ import java.util.List;
 	    
 	    //U16 View Own Profile
 	    System.out.println(p.testViewUserInfoUser("juser"));
-	    System.out.println(p.testViewUserInfoUser("Look at -2 in substring method of userViewUser, maybe add userViewUSer to DBController"));
+	    //Look at -2 in substring method of userViewUser, maybe add userViewUSer to DBController"));
 	    
 	    
 	    //U17 Edit User Info

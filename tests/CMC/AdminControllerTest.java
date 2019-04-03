@@ -1,10 +1,7 @@
-/**
- * 
- */
 package CMC;
 
 import static org.junit.Assert.*;
-
+//import org.java.util.ArrayList.*;
 import org.junit.Before;
 import org.junit.Test;
 

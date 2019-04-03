@@ -11,6 +11,7 @@ public class LoginControllerTest {
 
 	private UserInteraction ui;
 	private static AdminInteraction ai;
+	private LoginController l;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -29,12 +30,11 @@ public class LoginControllerTest {
 	@Test
 	public void testLogin() {
 		int expected = 0;
-		
 	}
 
 	@Test
 	public void testFindUser() {
-		fail("Not yet implemented");
+		assertTrue("No such user ", l.findUser("juser"));
 	}
 
 	@Test
