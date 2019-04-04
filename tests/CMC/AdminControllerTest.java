@@ -1,9 +1,16 @@
 package CMC;
 
+//import org.java.util.*;
 import static org.junit.Assert.*;
-//import org.java.util.ArrayList.*;
+
+//import java.awt.List;
+//import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
+
+
+
 
 /**
  * @author dkuhr001
@@ -28,29 +35,32 @@ public class AdminControllerTest {
 		assertEquals("Login Successful",0,login);
 	}
 	
-	@Test
-	public void testLoginIncorrectUsername(String username, String password) {
-		int login = ac.login("juserssss","user");
-		assertEquals("Username doesn't match password. Not logged in.",1,login);
+	@Test(expected = IllegalArgumentException.class)
+	public void testLoginIncorrectUsername() {
+		ac.login("juserssss","user");
+		
 	}
 	
-	@Test
-	public void testLoginIncorrectPassword(String username, String password) {
-		int login = ac.login("juser","user22");
-		assertEquals("Username doesn't match password. Not logged in.",1,login);
+	@Test(expected = IllegalArgumentException.class)
+	public void testLoginIncorrectPassword() {
+		ac.login("juser","user22");
+		
 	}
 	
-	@Test
-	public void testLoginInactiveUser(String username, String password) {
-		int login = ac.login("juser","user");
-		assertEquals("User is inactive. Not logged in.",3,login);
+	@Test(expected = IllegalArgumentException.class)
+	public void testLoginInactiveUser() {
+		db.deactivateUser("juser");
+		ac.login("juser","user");
+		db.adminEditUser("User","User","juser","user",'u','Y');
+		
+		
 	}
 	
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void testLoginTemporaryAccount() {
 		db.registerNewUser("dane","kuhr","dkuhr","danekuhr1234");
-		int login = ac.login("dkuhr","danekuhr1234");
-		assertEquals("User type is temporary. Not logged in.",4,login);
+		ac.login("dkuhr","danekuhr1234");
+		
 		db.deleteUser("dkuhr");
 	}
 	
@@ -76,301 +86,314 @@ public class AdminControllerTest {
 	
 	
 	@Test
-	public void testRemoveUniversity(String schoolName) {
-		fail("Not yet implemented");
+	public void testRemoveUniversity() {
+		int remove = ac.removeUniversity("AUGSBURG");
+		assertTrue("University removed", remove!=0 && remove!=-1);
+		ac.addUniversity("AUGSBURG", "MINNESOTA", "SMALL-CITY", "PRIVATE" , 10000, 43, 420, 490, 29991, 80, 4000, 85, 50, 1, 3, 4);
 	}
 	
 	@Test
-	public void testRemoveUniversityInvalid(String schoolName) {
-		fail("Not yet implemented");
+	public void testRemoveUniversityInvalid() {
+		int remove = ac.removeUniversity("hdfh57");
+		assertTrue("University removed", remove==0 || remove== -1);
 	}
-	
-	
-	
-	
-	@Test
-	public void testAddUniversity(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testAddUniversityInvalidSchool(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testAddUniversityNullState(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testAddUniversityNullLocation(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testAddUniversityNullControl(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testAddUniversityInvalidNumStudents(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testAddUniversityInvalidPercentFemale(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testAddUniversityInvalidSATVerbal(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testAddUniversityInvalidSATMath(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testAddUniversityInvalidExpenses(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testAddUniversityInvalidPercentFinancialAid(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testAddUniversityInvalidNumberOfApplicants(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testAddUniversityInvalidPercentAdmitted(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testAddUniversityInvalidPercentEnrolled(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testAddUniversityInvalidAcademicsScale(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testAddUniversityInvalidSocialScale(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testAddUniversityInvalidQualityOfLifeScale(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
-	}
-	
-	
-	
-	
 	
 	
 	
 	
 	@Test
-	public void testEditUniversity(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
+	public void testAddUniversity() {
+		int add = ac.addUniversity("ADDED", "MINNESOTA", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
+		assertTrue("University added.", add > 0);
+		ac.removeUniversity("ADDED");
+		
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversityInvalidSchool() {
+		ac.addUniversity("AUGSBURG", "MINNESOTA", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversityNullState() {
+		ac.addUniversity("Asdjfh", "", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversityNullLocation() {
+		ac.addUniversity("Asdjfh", "MINN", "", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversityNullControl() {
+		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversityInvalidNumStudents() {
+		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", -5,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversityInvalidPercentFemale() {
+		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            -445, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversityInvalidSATVerbal() {
+		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, -342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversityInvalidSATMath() {
+		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            445, 342, -456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversityInvalidExpenses() {
+		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, -6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversityInvalidPercentFinancialAid() {
+		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            660, 6688, 88, 
+	            55, 4, 3, 1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversityInvalidNumberOfApplicants() {
+		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, -6688, 88, 
+	            55, 4, 3, 1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversityInvalidPercentAdmitted() {
+		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 881, 
+	            55, 4, 3, 1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversityInvalidPercentEnrolled() {
+		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            -55, 4, 3, 1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversityInvalidAcademicsScale() {
+		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 74, 3, 1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversityInvalidSocialScale() {
+		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 32, 1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversityInvalidQualityOfLifeScale() {
+		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 7, 3, -1);
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	@Test
-	public void testEditUniversityInvalidSchool(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
+	public void testEditUniversity() {
+		int add = ac.editUniversity("AUGSBURG", "MINNESOTA", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 4);
+		assertTrue("University edited.", add > 0);
+		ac.editUniversity("AUGSBURG", "MINNESOTA", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
+		
 	}
 	
-	@Test
-	public void testEditUniversityNullState(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversityInvalidSchool() {
+		ac.editUniversity("AUGSBURG", "MINNESOTA", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
 	}
 	
-	@Test
-	public void testEditUniversityNullLocation(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversityNullState() {
+		ac.editUniversity("Asdjfh", "", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
 	}
 	
-	@Test
-	public void testEditUniversityNullControl(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversityNullLocation() {
+		ac.editUniversity("Asdjfh", "MINN", "", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
 	}
 	
-	@Test
-	public void testEditUniversityInvalidNumStudents(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversityNullControl() {
+		ac.editUniversity("Asdjfh", "MINNN", "SMALL-CITY", "", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
 	}
 	
-	@Test
-	public void testEditUniversityInvalidPercentFemale(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversityInvalidNumStudents() {
+		ac.editUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", -5,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
 	}
 	
-	@Test
-	public void testEditUniversityInvalidSATVerbal(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversityInvalidPercentFemale() {
+		ac.editUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            -445, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
 	}
 	
-	@Test
-	public void testEditUniversityInvalidSATMath(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversityInvalidSATVerbal() {
+		ac.editUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, -342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
 	}
 	
-	@Test
-	public void testEditUniversityInvalidExpenses(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversityInvalidSATMath() {
+		ac.editUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            445, 342, -456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
 	}
 	
-	@Test
-	public void testEditUniversityInvalidPercentFinancialAid(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversityInvalidExpenses() {
+		ac.editUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, -6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
 	}
 	
-	@Test
-	public void testEditUniversityInvalidNumberOfApplicants(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversityInvalidPercentFinancialAid() {
+		ac.editUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            660, 6688, 88, 
+	            55, 4, 3, 1);
 	}
 	
-	@Test
-	public void testEditUniversityInvalidPercentAdmitted(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversityInvalidNumberOfApplicants() {
+		ac.editUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, -6688, 88, 
+	            55, 4, 3, 1);
 	}
 	
-	@Test
-	public void testEditUniversityInvalidPercentEnrolled(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversityInvalidPercentAdmitted() {
+		ac.editUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 881, 
+	            55, 4, 3, 1);
 	}
 	
-	@Test
-	public void testEditUniversityInvalidAcademicsScale(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversityInvalidPercentEnrolled() {
+		ac.editUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            -55, 4, 3, 1);
 	}
 	
-	@Test
-	public void testEditUniversityInvalidSocialScale(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversityInvalidAcademicsScale() {
+		ac.editUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 74, 3, 1);
 	}
 	
-	@Test
-	public void testEditUniversityInvalidQualityOfLifeScale(String school, String state, String location, String control, int numberOfStudents,
-            double percentFemales, double SATVerbal, double SATMath, double expenses, 
-            double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
-            double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		fail("Not yet implemented");
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversityInvalidSocialScale() {
+		ac.editUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 32, 1);
 	}
-
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversityInvalidQualityOfLifeScale() {
+		ac.editUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 7, 3, -1);
+	}
 	
 	
 	
 	
+	
+	/*
 	
 	@Test
 	public void testEditUser(String username, String first, String last, String password, char type, char status) {
@@ -493,7 +516,7 @@ public class AdminControllerTest {
 	}
 	
 	
-	
+	*/
 	
 	//@After
 	//db.deleteUser("dkuhr");
