@@ -412,6 +412,8 @@ import java.util.List;
 	    ai.deleteUser("TyDog");
 	    
 	    
+	    System.out.println(p.testViewUserInfoAdmin("juser"));
+	    
 	    //U2 Register
 	    System.out.println(p.testRegister("Reg","ister","Test1","Password1","Password1"));
 	    

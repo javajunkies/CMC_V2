@@ -11,14 +11,6 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import org.junit.Before;
-import org.junit.Test;
-
-
-import java.util.ArrayList;
-
-import org.junit.Before;
-import org.junit.Test;
 /**
  * @author jwolff001
  *
