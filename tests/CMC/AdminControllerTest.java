@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 //import java.util.ArrayList;
 
 import org.junit.Before;
+import org.junit.After;
 import org.junit.Test;
 
 
@@ -51,7 +52,7 @@ public class AdminControllerTest {
 	public void testLoginInactiveUser() {
 		db.deactivateUser("juser");
 		ac.login("juser","user");
-		db.adminEditUser("User","User","juser","user",'u','Y');
+		
 		
 		
 	}
@@ -518,7 +519,9 @@ public class AdminControllerTest {
 	
 	*/
 	
-	//@After
-	//db.deleteUser("dkuhr");
+	@After
+	public void remove() {
+	db.adminEditUser("User John","User","juser","user",'u','Y');
+	}
 	
 }
