@@ -89,5 +89,6 @@ public class DBControllerTest {
 	public void after()
 	{
 		db.deleteUser("username");
+		db.deleteUser("testAdd");
 	}
 }

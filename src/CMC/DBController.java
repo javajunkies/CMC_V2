@@ -917,11 +917,13 @@ public class DBController {
    * @return int if user was successfully registered, otherwise -1
    */
   public int registerNewUser(String first, String last, String user, String pass) {
-    int result = db.user_addUser(first, last, user, pass, 't');
-    //this.deactivateUser(user);
+	  int result;
+	  if (isUniqueUsername(user))
+		  result = db.user_addUser(first, last, user, pass, 't');
+	  else
+		  result = 0;
     return result;
   }
-  
 
 
  /** 
