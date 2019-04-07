@@ -394,37 +394,37 @@ public class AdminControllerTest {
 	
 	
 	
+	
+	
+	@Test
+	public void testEditUser() {
+		ac.editUser("juser", "First", "Last1", "password1", 'u', 'Y');
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUserNotUniqueUsername() {
+		ac.editUser("user", "First", "Last1", "user", 'u', 'Y');
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUserInvalidPassword() {
+		ac.editUser("juser", "First", "Last1", "u", 'u', 'Y');
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUserInvalidStatus() {
+		ac.editUser("juser", "First", "Last1", "user", 'u', 'Y');
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUserInvalidType() {
+		ac.editUser("juser", "First", "Last1", "user", 'u', 'Y');
+	}
+	
+	
+	
+	
 	/*
-	
-	@Test
-	public void testEditUser(String username, String first, String last, String password, char type, char status) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testEditUserNotUniqueUsername(String username, String first, String last, String password, char type, char status) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testEditUserInvalidPassword(String username, String first, String last, String password, char type, char status) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testEditUserInvalidStatus(String username, String first, String last, String password, char type, char status) {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testEditUserInvalidType(String username, String first, String last, String password, char type, char status) {
-		fail("Not yet implemented");
-	}
-	
-	
-	
-	
-	
 	
 	@Test
 	public void testViewUsers() {
