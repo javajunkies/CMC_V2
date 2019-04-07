@@ -22,8 +22,9 @@ public class AccountControllerTest {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testIsUniqueUsername(String username) {
+		int login = ac.login("juser","user");
+		assertEquals("Username is invaid. Not logged in.",3,login);
 	}
 
 }
