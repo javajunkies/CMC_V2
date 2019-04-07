@@ -83,6 +83,7 @@ public class DBControllerTest {
 		assertTrue("Should return " + expected + " but returned " + actual, expected == actual);
 	}
 	
+	@Test
 	
 
 	@After

@@ -303,8 +303,31 @@ public class AdminController {
    * @return int the status of editing a user
    */
   public int editUser(String username, String firstName, String lastName, String password, char type, char status) {
-    return dbcontroller.adminEditUser(username, firstName, lastName, password, type, status);
-  } 
+	  for(User user : dbcontroller.getAllUsers()) {
+		  if(username.equals(user.getUsername())) {
+			  throw new IllegalArgumentException("Invalid username.");
+		  }
+	  }
+	  
+	  if(firstName.equals("")) {
+		  throw new IllegalArgumentException("Invalid first name.");
+	  }
+	  else if(lastName.equals("")) {
+		  throw new IllegalArgumentException("Invalid last name.");
+	  }
+	  else if (password.equals("")) {
+		  throw new IllegalArgumentException("Invalid password.");
+	  }
+	  else if (type != 'u' || type != 'a' || type != 't') {
+		  throw new IllegalArgumentException("Invalid account type.");
+	  }
+	  else if (status != 'Y' || status != 'N') {
+		  throw new IllegalArgumentException("Invalid account status.");
+	  }
+	  else {
+	  return dbcontroller.adminEditUser(username, firstName, lastName, password, type, status);
+	  }
+  }
 
   /**
    * Calls the getAllUsers method from DBController
