@@ -71,6 +71,7 @@ public class DBControllerTest {
 		assertEquals(searchTest.toString(), expected.toString());
 	}
 	
+	
 	@Test
 	public void getAllUsersTest() {
 		ArrayList<String> expected = new ArrayList<String>();
