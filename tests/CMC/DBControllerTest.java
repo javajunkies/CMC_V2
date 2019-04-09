@@ -96,6 +96,31 @@ public class DBControllerTest {
 		assertTrue("Should return " + expected + " but returned " + actual, expected == actual);
 	}
 	
+	@Test
+	public void userEditUserTest() {
+		db.userEditUser("juser","User","Last","password1");
+	}
+	
+	@Test
+	public void findByUsernameTest() {
+		db.findByUsername("juser");
+	}
+	
+	@Test
+	public void viewSavedSchoolsTest() {
+		db.viewSavedSchools("juser");
+	}
+	
+	@Test
+	public void deactivateUserTest() {
+		db.deactivateUser("luser");
+	}
+	
+	@Test
+	public void sortByNumStudentsTest() {
+		db.sortByNumStudents("juser");
+	}
+
 	
 
 	@AfterClass
