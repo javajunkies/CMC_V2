@@ -5,16 +5,18 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 //import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class DBControllerTest {
 
-	private DBController db;
+	private static DBController db;
 	
-	@Before
-	public void setUp() throws Exception {
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
 		db = new DBController();
 	}
 	
@@ -94,11 +96,10 @@ public class DBControllerTest {
 		assertTrue("Should return " + expected + " but returned " + actual, expected == actual);
 	}
 	
-	@Test
 	
 
-	@After
-	public void after()
+	@AfterClass
+	public static void setUpAfterClass() throws Exception
 	{
 		db.deleteUser("username");
 		db.deleteUser("testAdd");
