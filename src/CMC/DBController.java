@@ -609,34 +609,34 @@ public class DBController {
     ArrayList<University> matchUni = new ArrayList<University>();
     
     
-    for (int i = 0; i != universities.length; i++) {
-    	if (universities[i][0].contains(mySchool.toUpperCase())   &&   universities[i][1].contains(myState.toUpperCase())   &&   universities[i][2].contains(myLocation.toUpperCase())   &&   universities[i][3].contains(myControl.toUpperCase())   &&   betweenInt(minNumStudents, universities[i][4], maxNumStudents)   &&   betweenDouble(minPercentFemale, universities[i][5], maxPercentFemale)   &&   betweenDouble(minSATVerbal, universities[i][6], maxSATVerbal)   &&   betweenDouble(minSATMath, universities[i][7], maxSATMath)   &&   betweenDouble(minExpenses, universities[i][8], maxExpenses)   &&   betweenDouble(minPercentFinancialAid, universities[i][9], maxPercentFinancialAid)   &&   betweenInt(minNumApplicants, universities[i][10], maxNumApplicants)   &&   betweenDouble(minPercentAdmitted, universities[i][11], maxPercentAdmitted)   &&   betweenDouble(minPercentEnrolled, universities[i][12], maxPercentEnrolled)   &&   betweenInt(minAcademicsScale, universities[i][13], maxAcademicsScale)   &&   betweenInt(minSocialScale, universities[i][14], maxSocialScale)   &&   betweenInt(minQualityOfLife, universities[i][15], maxQualityOfLife) ) {
-    		University univReturn = new University(universities[i][0],universities[i][1],universities[i][2],universities[i][3],Integer.parseInt(universities[i][4]),Double.parseDouble(universities[i][5]),Double.parseDouble(universities[i][6]),Double.parseDouble(universities[i][7]),Double.parseDouble(universities[i][8]),Double.parseDouble(universities[i][9]),Integer.parseInt(universities[i][10]),Double.parseDouble(universities[i][11]),Double.parseDouble(universities[i][12]),Integer.parseInt(universities[i][13]),Integer.parseInt(universities[i][14]),Integer.parseInt(universities[i][15]));
-    		matchUni.add(univReturn);
-    	}    	
+//    for (int i = 0; i != universities.length; i++) {
+//    	if (universities[i][0].contains(mySchool.toUpperCase())   &&   universities[i][1].contains(myState.toUpperCase())   &&   universities[i][2].contains(myLocation.toUpperCase())   &&   universities[i][3].contains(myControl.toUpperCase())   &&   betweenInt(minNumStudents, universities[i][4], maxNumStudents)   &&   betweenDouble(minPercentFemale, universities[i][5], maxPercentFemale)   &&   betweenDouble(minSATVerbal, universities[i][6], maxSATVerbal)   &&   betweenDouble(minSATMath, universities[i][7], maxSATMath)   &&   betweenDouble(minExpenses, universities[i][8], maxExpenses)   &&   betweenDouble(minPercentFinancialAid, universities[i][9], maxPercentFinancialAid)   &&   betweenInt(minNumApplicants, universities[i][10], maxNumApplicants)   &&   betweenDouble(minPercentAdmitted, universities[i][11], maxPercentAdmitted)   &&   betweenDouble(minPercentEnrolled, universities[i][12], maxPercentEnrolled)   &&   betweenInt(minAcademicsScale, universities[i][13], maxAcademicsScale)   &&   betweenInt(minSocialScale, universities[i][14], maxSocialScale)   &&   betweenInt(minQualityOfLife, universities[i][15], maxQualityOfLife) ) {
+//    		University univReturn = new University(universities[i][0],universities[i][1],universities[i][2],universities[i][3],Integer.parseInt(universities[i][4]),Double.parseDouble(universities[i][5]),Double.parseDouble(universities[i][6]),Double.parseDouble(universities[i][7]),Double.parseDouble(universities[i][8]),Double.parseDouble(universities[i][9]),Integer.parseInt(universities[i][10]),Double.parseDouble(universities[i][11]),Double.parseDouble(universities[i][12]),Integer.parseInt(universities[i][13]),Integer.parseInt(universities[i][14]),Integer.parseInt(universities[i][15]));
+//    		matchUni.add(univReturn);
+//    	}    	
+//    }
+    
+    
+    if (negateState == true)
+    {
+    	for (int i = 0; i != universities.length; i++) {
+        	if (universities[i][0].contains(mySchool.toUpperCase())   &&   !universities[i][1].contains(myState.toUpperCase())   &&   universities[i][2].contains(myLocation.toUpperCase())   &&   universities[i][3].contains(myControl.toUpperCase())   &&   betweenInt(minNumStudents, universities[i][4], maxNumStudents)   &&   betweenDouble(minPercentFemale, universities[i][5], maxPercentFemale)   &&   betweenDouble(minSATVerbal, universities[i][6], maxSATVerbal)   &&   betweenDouble(minSATMath, universities[i][7], maxSATMath)   &&   betweenDouble(minExpenses, universities[i][8], maxExpenses)   &&   betweenDouble(minPercentFinancialAid, universities[i][9], maxPercentFinancialAid)   &&   betweenInt(minNumApplicants, universities[i][10], maxNumApplicants)   &&   betweenDouble(minPercentAdmitted, universities[i][11], maxPercentAdmitted)   &&   betweenDouble(minPercentEnrolled, universities[i][12], maxPercentEnrolled)   &&   betweenInt(minAcademicsScale, universities[i][13], maxAcademicsScale)   &&   betweenInt(minSocialScale, universities[i][14], maxSocialScale)   &&   betweenInt(minQualityOfLife, universities[i][15], maxQualityOfLife) ) {
+        		University univReturn = new University(universities[i][0],universities[i][1],universities[i][2],universities[i][3],Integer.parseInt(universities[i][4]),Double.parseDouble(universities[i][5]),Double.parseDouble(universities[i][6]),Double.parseDouble(universities[i][7]),Double.parseDouble(universities[i][8]),Double.parseDouble(universities[i][9]),Integer.parseInt(universities[i][10]),Double.parseDouble(universities[i][11]),Double.parseDouble(universities[i][12]),Integer.parseInt(universities[i][13]),Integer.parseInt(universities[i][14]),Integer.parseInt(universities[i][15]));
+        		matchUni.add(univReturn);
+        	}    	
+        }
     }
     
-//   accept negateState - doesn't work  
-//    if (negateState == true)
-//    {
-//    	for (int i = 0; i != universities.length; i++) {
-//        	if (universities[i][0].contains(mySchool.toUpperCase())   &&   !universities[i][1].contains(myState.toUpperCase())   &&   universities[i][2].contains(myLocation.toUpperCase())   &&   universities[i][3].contains(myControl.toUpperCase())   &&   betweenInt(minNumStudents, universities[i][4], maxNumStudents)   &&   betweenDouble(minPercentFemale, universities[i][5], maxPercentFemale)   &&   betweenDouble(minSATVerbal, universities[i][6], maxSATVerbal)   &&   betweenDouble(minSATMath, universities[i][7], maxSATMath)   &&   betweenDouble(minExpenses, universities[i][8], maxExpenses)   &&   betweenDouble(minPercentFinancialAid, universities[i][9], maxPercentFinancialAid)   &&   betweenInt(minNumApplicants, universities[i][10], maxNumApplicants)   &&   betweenDouble(minPercentAdmitted, universities[i][11], maxPercentAdmitted)   &&   betweenDouble(minPercentEnrolled, universities[i][12], maxPercentEnrolled)   &&   betweenInt(minAcademicsScale, universities[i][13], maxAcademicsScale)   &&   betweenInt(minSocialScale, universities[i][14], maxSocialScale)   &&   betweenInt(minQualityOfLife, universities[i][15], maxQualityOfLife) ) {
-//        		University univReturn = new University(universities[i][0],universities[i][1],universities[i][2],universities[i][3],Integer.parseInt(universities[i][4]),Double.parseDouble(universities[i][5]),Double.parseDouble(universities[i][6]),Double.parseDouble(universities[i][7]),Double.parseDouble(universities[i][8]),Double.parseDouble(universities[i][9]),Integer.parseInt(universities[i][10]),Double.parseDouble(universities[i][11]),Double.parseDouble(universities[i][12]),Integer.parseInt(universities[i][13]),Integer.parseInt(universities[i][14]),Integer.parseInt(universities[i][15]));
-//        		matchUni.add(univReturn);
-//        	}    	
-//        }
-//    }
-//    
-//    else
-//    {
-//    	for (int i = 0; i != universities.length; i++) {
-//        	if (universities[i][0].contains(mySchool.toUpperCase())   &&   universities[i][1].contains(myState.toUpperCase())   &&   universities[i][2].contains(myLocation.toUpperCase())   &&   universities[i][3].contains(myControl.toUpperCase())   &&   betweenInt(minNumStudents, universities[i][4], maxNumStudents)   &&   betweenDouble(minPercentFemale, universities[i][5], maxPercentFemale)   &&   betweenDouble(minSATVerbal, universities[i][6], maxSATVerbal)   &&   betweenDouble(minSATMath, universities[i][7], maxSATMath)   &&   betweenDouble(minExpenses, universities[i][8], maxExpenses)   &&   betweenDouble(minPercentFinancialAid, universities[i][9], maxPercentFinancialAid)   &&   betweenInt(minNumApplicants, universities[i][10], maxNumApplicants)   &&   betweenDouble(minPercentAdmitted, universities[i][11], maxPercentAdmitted)   &&   betweenDouble(minPercentEnrolled, universities[i][12], maxPercentEnrolled)   &&   betweenInt(minAcademicsScale, universities[i][13], maxAcademicsScale)   &&   betweenInt(minSocialScale, universities[i][14], maxSocialScale)   &&   betweenInt(minQualityOfLife, universities[i][15], maxQualityOfLife) ) {
-//        		University univReturn = new University(universities[i][0],universities[i][1],universities[i][2],universities[i][3],Integer.parseInt(universities[i][4]),Double.parseDouble(universities[i][5]),Double.parseDouble(universities[i][6]),Double.parseDouble(universities[i][7]),Double.parseDouble(universities[i][8]),Double.parseDouble(universities[i][9]),Integer.parseInt(universities[i][10]),Double.parseDouble(universities[i][11]),Double.parseDouble(universities[i][12]),Integer.parseInt(universities[i][13]),Integer.parseInt(universities[i][14]),Integer.parseInt(universities[i][15]));
-//        		matchUni.add(univReturn);
-//        	}    	
-//        }
-//    }
-//    
+    else
+    {
+    	for (int i = 0; i != universities.length; i++) {
+        	if (universities[i][0].contains(mySchool.toUpperCase())   &&   universities[i][1].contains(myState.toUpperCase())   &&   universities[i][2].contains(myLocation.toUpperCase())   &&   universities[i][3].contains(myControl.toUpperCase())   &&   betweenInt(minNumStudents, universities[i][4], maxNumStudents)   &&   betweenDouble(minPercentFemale, universities[i][5], maxPercentFemale)   &&   betweenDouble(minSATVerbal, universities[i][6], maxSATVerbal)   &&   betweenDouble(minSATMath, universities[i][7], maxSATMath)   &&   betweenDouble(minExpenses, universities[i][8], maxExpenses)   &&   betweenDouble(minPercentFinancialAid, universities[i][9], maxPercentFinancialAid)   &&   betweenInt(minNumApplicants, universities[i][10], maxNumApplicants)   &&   betweenDouble(minPercentAdmitted, universities[i][11], maxPercentAdmitted)   &&   betweenDouble(minPercentEnrolled, universities[i][12], maxPercentEnrolled)   &&   betweenInt(minAcademicsScale, universities[i][13], maxAcademicsScale)   &&   betweenInt(minSocialScale, universities[i][14], maxSocialScale)   &&   betweenInt(minQualityOfLife, universities[i][15], maxQualityOfLife) ) {
+        		University univReturn = new University(universities[i][0],universities[i][1],universities[i][2],universities[i][3],Integer.parseInt(universities[i][4]),Double.parseDouble(universities[i][5]),Double.parseDouble(universities[i][6]),Double.parseDouble(universities[i][7]),Double.parseDouble(universities[i][8]),Double.parseDouble(universities[i][9]),Integer.parseInt(universities[i][10]),Double.parseDouble(universities[i][11]),Double.parseDouble(universities[i][12]),Integer.parseInt(universities[i][13]),Integer.parseInt(universities[i][14]),Integer.parseInt(universities[i][15]));
+        		matchUni.add(univReturn);
+        	}    	
+        }
+    }
+    
     
     
     return matchUni;
@@ -656,7 +656,7 @@ public class DBController {
 		  return true;
 	  else if(Double.parseDouble(number) == -1)
 		  return true;
-	  else if (Integer.parseInt(number) == 0)
+	  else if (max == 0 || min == 0)
 		  return true;
 	  else
 		  return false;
@@ -676,7 +676,7 @@ public class DBController {
 		  return true;
 	  else if(Double.parseDouble(number) == -1.0)
 		  return true;
-	  else if (Integer.parseInt(number) == 0.0)
+	  else if (min == 0.0 || max == 0.0)
 		  return true;
 	  else
 		  return false;
