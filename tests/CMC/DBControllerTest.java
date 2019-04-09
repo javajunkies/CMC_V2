@@ -56,9 +56,18 @@ public class DBControllerTest {
 	
 	@Test
 	public void searchTest() {
-		//ArrayList<University> expected = new ArrayList<University>();
-		//ArrayList<University> searchTest = db.searchUniversities("a", "","","",0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0.0,0,0,0,0,0,0);
-		//assertEquals(searchTest, expected);
+		ArrayList<University> expected = new ArrayList<University>();
+		University Uni = new University("UNIVERSITY OF CALIFORNIA BERKELEY", "CALIFORNIA", "URBAN", "STATE", 40000, 45.0, 530.0, 600.0, 15328.0, -1.0, 15000, 50.0, 70.0, 5, 3, 3);
+		expected.add(Uni);
+		ArrayList<University> searchTest = db.searchUniversities("ber", "calif", false, "urb", "st", 0 ,40000, 0.0, 45.0, 0.0, 530.0, 0.0, 600.0, 0.0, 15328.0, 0.0, 0.0, 0, 15000, 0.0, 50.0, 0.0, 70.0, 0, 5, 0, 3, 0, 3);
+		//ArrayList<University> searchTest = db.searchUniversities("ber", "calif", false, "urb", "st",0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0.0,0,0,0,0,0,0);
+		
+		for (int i = 0; i!= searchTest.size();i++)
+		{
+			System.out.println(searchTest.get(i));
+		}
+		
+//		assertEquals(searchTest, expected);
 }
 	
 	@Test
