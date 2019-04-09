@@ -33,7 +33,22 @@ public class AdminController {
  * @return int the status of the login
  */
   public int login(String username, String password) {
-    return logInController.login(username, password);
+	  if(logInController.login(username, password) == 1) {
+		  throw new IllegalArgumentException("Invalid username");
+	  }
+	  else if(logInController.login(username, password) == 2) {
+		  throw new IllegalArgumentException("Invalid username/password combination.");
+	  }
+	  else if(logInController.login(username, password) == 3) {
+		  throw new IllegalArgumentException("Account status is inactive.");
+	  }
+	  else if(logInController.login(username, password) == 4) {
+		  throw new IllegalArgumentException("Account type is temporary, wait for admin to approve registration.");
+	  }
+	  else {
+		  return logInController.login(username, password);
+	  }
+    
   }
 
   /**
@@ -59,6 +74,13 @@ public class AdminController {
    * @return int the status of removing a university
    */
   public int removeUniversity(String name) {
+	  
+	  for(University university : dbcontroller.getAllUniversities()) {
+	    	if(name.equals(university.getSchool())) {
+	    		
+	    	}
+	    }
+	  
     return dbcontroller.removeUniversity(name); 
   }
 
@@ -88,16 +110,79 @@ public class AdminController {
                                double percentFemales, double SATVerbal, double SATMath, double expenses, 
                                double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
                                double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-    try{
+    //for(University university : dbcontroller.getAllUniversities()) {
+    	if(school.equals("")) {
+    		throw new IllegalArgumentException("No school name entered.");
+    	}
+    //}
+    
+    if(state.equals("")) {
+    	throw new IllegalArgumentException("No state entered.");
+    }
+    
+    else if(location.equals("")) {
+    	throw new IllegalArgumentException("No location entered.");
+    }
+    
+    else if(control.equals("")) {
+    	throw new IllegalArgumentException("No control entered.");
+    }
+    
+    else if(numberOfStudents <= 0) {
+    	throw new IllegalArgumentException("Invalid number of students.");
+    }
+    
+    else if(percentFemales < 0 || percentFemales > 100) {
+    	throw new IllegalArgumentException("Invalid percent femalale.");
+    }
+    
+    else if(SATVerbal < 0 || SATVerbal > 1600) {
+    	throw new IllegalArgumentException("Invalid SAT Verbal.");
+    }
+    
+    else if(SATMath < 0 || SATMath > 1600) {
+    	throw new IllegalArgumentException("Invalid SAT Math.");
+    }
+    
+    else if(expenses < 0) {
+    	throw new IllegalArgumentException("Invalid expenses.");
+    }
+    
+    else if(percentFinancialAid < 0 || percentFinancialAid > 100) {
+    	throw new IllegalArgumentException("Invalid percent financial aid.");
+    }
+    
+    else if(numberOfApplicants < 0) {
+    	throw new IllegalArgumentException("Invalid number of applicants.");
+    }
+    
+    else if(percentAdmitted < 0 || percentAdmitted > 100) {
+    	throw new IllegalArgumentException("Invalid percent admitted.");
+    }
+    
+    else if(percentEnrolled < 0 || percentEnrolled > 100) {
+    	throw new IllegalArgumentException("Invalid percent enrolled.");
+    }
+    
+    else if(academicsScale < 0 || academicsScale > 5) {
+    	throw new IllegalArgumentException("Invalid academics scale.");
+    }
+    
+    else if(socialScale < 0 || socialScale > 5) {
+    	throw new IllegalArgumentException("Invalid social scale.");
+    }
+    
+    else if(qualityOfLifeScale < 0 || qualityOfLifeScale > 5) {
+    	throw new IllegalArgumentException("Invalid quality of life scale.");
+    }
+    
+    else {
     	return dbcontroller.addUniversity(school, state, location, control, numberOfStudents,
                                percentFemales, SATVerbal, SATMath, expenses, 
                                percentFinancialAid, numberOfApplicants, percentAdmitted, 
                                percentEnrolled, academicsScale, socialScale, qualityOfLifeScale) ;
     }
-    catch(IllegalArgumentException e){
-    	return -1;
-    }
-    }
+  }
 
   /**
    * Calls the editUniversity method from DBController
@@ -125,10 +210,84 @@ public class AdminController {
                                double percentFemales, double SATVerbal, double SATMath, double expenses, 
                                double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
                                int academicsScale, int socialScale, int qualityOfLifeScale) {
-    return dbcontroller.editUnivInfo(school, state, location, control, numberOfStudents,
-                               percentFemales, SATVerbal, SATMath, expenses, 
-                               percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, 
-                               academicsScale, socialScale, qualityOfLifeScale);
+	  
+	
+	  boolean nameChange = false;
+	  for(University university : dbcontroller.getAllUniversities()) {
+		  if(school.equals(university.getSchool())) {
+			  nameChange = true;
+			  
+		  }
+	  }
+
+
+  
+	  if(nameChange == false) {
+		  throw new IllegalArgumentException("School name cannot be changed.");
+	  }
+  
+	  else if(location.equals("")) {
+  	throw new IllegalArgumentException("No location entered.");
+  }
+  
+  else if(control.equals("")) {
+  	throw new IllegalArgumentException("No control entered.");
+  }
+  
+  else if(numberOfStudents <= 0) {
+  	throw new IllegalArgumentException("Invalid number of students.");
+  }
+  
+  else if(percentFemales < 0 || percentFemales > 100) {
+  	throw new IllegalArgumentException("Invalid percent femalale.");
+  }
+  
+  else if(SATVerbal < 0 || SATVerbal > 1600) {
+  	throw new IllegalArgumentException("Invalid SAT Verbal.");
+  }
+  
+  else if(SATMath < 0 || SATMath > 1600) {
+  	throw new IllegalArgumentException("Invalid SAT Math.");
+  }
+  
+  else if(expenses < 0) {
+  	throw new IllegalArgumentException("Invalid expenses.");
+  }
+  
+  else if(percentFinancialAid < 0 || percentFinancialAid > 100) {
+  	throw new IllegalArgumentException("Invalid percent financial aid.");
+  }
+  
+  else if(numberOfApplicants < 0) {
+  	throw new IllegalArgumentException("Invalid number of applicants.");
+  }
+  
+  else if(percentAdmitted < 0 || percentAdmitted > 100) {
+  	throw new IllegalArgumentException("Invalid percent admitted.");
+  }
+  
+  else if(percentEnrolled < 0 || percentEnrolled > 100) {
+  	throw new IllegalArgumentException("Invalid percent enrolled.");
+  }
+  
+  else if(academicsScale < 0 || academicsScale > 5) {
+  	throw new IllegalArgumentException("Invalid academics scale.");
+  }
+  
+  else if(socialScale < 0 || socialScale > 5) {
+  	throw new IllegalArgumentException("Invalid social scale.");
+  }
+  
+  else if(qualityOfLifeScale < 0 || qualityOfLifeScale > 5) {
+  	throw new IllegalArgumentException("Invalid quality of life scale.");
+  }
+  
+  else {
+  	return dbcontroller.editUnivInfo(school, state, location, control, numberOfStudents,
+                             percentFemales, SATVerbal, SATMath, expenses, 
+                             percentFinancialAid, numberOfApplicants, percentAdmitted, 
+                             percentEnrolled, academicsScale, socialScale, qualityOfLifeScale) ;
+  }
   }
 
   /**
@@ -144,8 +303,31 @@ public class AdminController {
    * @return int the status of editing a user
    */
   public int editUser(String username, String firstName, String lastName, String password, char type, char status) {
-    return dbcontroller.adminEditUser(username, firstName, lastName, password, type, status);
-  } 
+	  for(User user : dbcontroller.getAllUsers()) {
+		  if(username.equals(user.getUsername())) {
+			  throw new IllegalArgumentException("Invalid username.");
+		  }
+	  }
+	  
+	  if(firstName.equals("")) {
+		  throw new IllegalArgumentException("Invalid first name.");
+	  }
+	  else if(lastName.equals("")) {
+		  throw new IllegalArgumentException("Invalid last name.");
+	  }
+	  else if (password.equals("")) {
+		  throw new IllegalArgumentException("Invalid password.");
+	  }
+	  else if (type != 'u' || type != 'a' || type != 't') {
+		  throw new IllegalArgumentException("Invalid account type.");
+	  }
+	  else if (status != 'Y' || status != 'N') {
+		  throw new IllegalArgumentException("Invalid account status.");
+	  }
+	  else {
+	  return dbcontroller.adminEditUser(username, firstName, lastName, password, type, status);
+	  }
+  }
 
   /**
    * Calls the getAllUsers method from DBController

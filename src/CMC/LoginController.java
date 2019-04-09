@@ -24,11 +24,15 @@ public class LoginController {
   int u = 0;
   int p = 0;
   int s = 0;
+  int login;
   if(this.findUser(username)){
    u = 1;
+   login = 1;
   }
   else {
-   return 1;
+	  login = 1;
+	  
+   
   }
   if(u == 1) {
    String correctPassword = this.findPassword(username);
@@ -36,7 +40,9 @@ public class LoginController {
     p = 1;
    }
    else {
-	   return 2;
+	   login = 2;
+	   
+	   
 	   }
   }
   if(p == 1) {
@@ -44,19 +50,23 @@ public class LoginController {
     s = 1;
     }
    else { 
-    return 3;
+	   login = 3;
+	   
+    
    }
   }
   if(s == 1) {
 	  if(this.checkType(username)){
-		  return 0;
+		  login = 0;
 	  }
 	  else {
-		  return 4;
+		  login = 4;
+		  
+		  
 	  }
   }
   
-  return 5;
+  return login;
  }
  
  /**

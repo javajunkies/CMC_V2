@@ -349,7 +349,9 @@ public class DBController {
                           double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
                           double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) 
   {
-    return db.university_editUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
+     
+    	return db.university_editUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
+    	
   }
   
   /**
@@ -915,24 +917,14 @@ public class DBController {
    * @return int if user was successfully registered, otherwise -1
    */
   public int registerNewUser(String first, String last, String user, String pass) {
-    int result = db.user_addUser(first, last, user, pass, 't');
-    //this.deactivateUser(user);
+	  int result;
+	  if (isUniqueUsername(user))
+		  result = db.user_addUser(first, last, user, pass, 't');
+	  else
+		  result = 0;
     return result;
   }
-  
-  /** 
-   * a swap method to assist in sorting universities 
-   * 
-   * @param U1 the first university to be swapped
-   * @param U2 the second university to be swapped
-   * 
-   */
- public void swap(University U1, University U2) 
- {
-   University temp = U1;
-   U1 = U2;
-   U2 = temp;
- }
+
 
  /** 
    * sort a users saved schools by percent of students admitted 
@@ -940,10 +932,9 @@ public class DBController {
    * 
    * @return ArrayList a list sorted by Acceptances
    */
- public ArrayList<University> sortByAcceptance(String username) 
-  {
+ public ArrayList<University> sortByAcceptance(String username) {
     ArrayList<University> byAcceptance = this.viewSavedSchools(username); 
-    for(int i = 0; i < byAcceptance.size(); i ++) {
+    for(int i = 0; i < byAcceptance.size(); i++) {
     	for(int k = i + 1; k < byAcceptance.size(); k++) {
     		if(byAcceptance.get(i).getPercentAdmitted() > byAcceptance.get(k).getPercentAdmitted()) {
     			University temp = byAcceptance.get(i);
@@ -964,20 +955,19 @@ public class DBController {
    * 
    * @return ArrayList a list sorted by the expenses
    */
- public ArrayList<University> sortByExpenses(String username) 
- {
-    //make an ArrayList of the users saved schools and assign them a position
-    ArrayList<University> byExpenses = new ArrayList<University>();
-    byExpenses = viewSavedSchools(username);
-    
-    //sort the list in descending order
+ public ArrayList<University> sortByExpenses(String username) {
+    ArrayList<University> byExpenses = this.viewSavedSchools(username);
     for(int i = 0; i < byExpenses.size(); i++) {
-      if(byExpenses.get(i).getExpenses() > byExpenses.get(i+1).getExpenses()) {
-        swap(byExpenses.get(i), byExpenses.get(i+1));
-      }
+    	for(int k = i + 1; k < byExpenses.size(); k++) {
+    		if(byExpenses.get(i).getExpenses() > byExpenses.get(k).getExpenses()) {
+    			University temp = byExpenses.get(i);
+    			byExpenses.set(i, byExpenses.get(k));
+    			byExpenses.set(k, temp);
+    		}
+    	}
     }
     return byExpenses;
-  }
+ }	
     
 
  /** 
@@ -988,18 +978,19 @@ public class DBController {
    * 
    * @return ArrayList list sorted by the number of students
    */
- public ArrayList<University> sortByNumStudents(String username)
- {
-    //make an ArrayList of the users saved schools and assign them a position
-    ArrayList<University> byNumStudents = new ArrayList<University>();
-    byNumStudents = viewSavedSchools(username);
-    
-    //sort the list in descending order
+ public ArrayList<University> sortByNumStudents(String username) {
+    ArrayList<University> byNumStudents = this.viewSavedSchools(username);
     for(int i = 0; i < byNumStudents.size(); i++) {
-      if(byNumStudents.get(i).getNumStudents() > byNumStudents.get(i+1).getNumStudents()) {
-        swap(byNumStudents.get(i), byNumStudents.get(i + 1));
-      }
+    	for(int k = i + 1; k < byNumStudents.size(); k++) {
+    		if(byNumStudents.get(i).getNumStudents() > byNumStudents.get(k).getNumStudents()) {
+    	    	  University temp = byNumStudents.get(i);
+    		      byNumStudents.set(i, byNumStudents.get(k));
+    		      byNumStudents.set(k, temp);
+    		}
+    	}
     }
     return byNumStudents;
-  }
+ }
 }
+
+
