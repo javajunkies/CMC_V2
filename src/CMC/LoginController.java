@@ -61,6 +61,7 @@ public class LoginController {
 	  }
 	  else {
 		  login = 4;
+		  this.isLoggedIn(true);
 		  
 		  
 	  }
@@ -68,6 +69,7 @@ public class LoginController {
   
   return login;
  }
+ 
  
  /**
   * Checks if there is a username in the database
