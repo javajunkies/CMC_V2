@@ -377,11 +377,13 @@ import java.util.List;
 
 	  public static void main(String[] args)
 	  {
+		  
 		//objects
 		Phase2Driver p = new Phase2Driver();
 		UserInteraction  ui = new UserInteraction();
 		AdminInteraction ai = new AdminInteraction();
 		
+		System.out.println(p.testViewUsers());
 		
 	    //create testers
 	    ai.addNewUser("test", "user", "testUser", "Password1", 'a');

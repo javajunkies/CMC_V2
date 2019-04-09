@@ -86,8 +86,8 @@ public class UserControllerTest {
 	
 	@Test
 	public void SearchUniversitiestest() {
-		User expResult = ;
-		User actualResult = db.searchUniversities("Arizona State", "Arizona", "-1", "State", 40000, "50", "450", "500", "16181", "50", 17000, 80, 60, 3, 4, 5);
+		University expResult = ;
+		University actualResult = db.searchUniversities("Arizona State", "Arizona", "-1", "State", 40000, "50", "450", "500", "16181", "50", 17000, 80, 60, 3, 4, 5);
 		assertTrue("The result of the view user attempt was " + expResult, expResult.equals(actualResult));
 	}
 
