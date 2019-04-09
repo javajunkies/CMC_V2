@@ -58,9 +58,9 @@ public class UserControllerTest {
 	
 	@Test
 	public void Comparetest() {
-		ArrayList<University> expResult = ;
+		//ArrayList<University> expResult = ;
 		ArrayList<University> actualResult = db.compare("Boston College", "Cal Tech");
-		actual1Result = 
+		//actual1Result = 
 		assertTrue("The result of the save attempt was " + expResult, expResult.equals(actual1Result));
 	}
 
@@ -87,9 +87,11 @@ public class UserControllerTest {
 	
 	@Test
 	public void SearchUniversitiestest() {
-		University expResult = ;
-		University actualResult = db.searchUniversities("Arizona State", "Arizona", "-1", "State", 40000, "50", "450", "500", "16181", "50", 17000, 80, 60, 3, 4, 5);
-		assertTrue("The result of the view user attempt was " + expResult, expResult.equals(actualResult));
+	    String expResult = "ARIZONA STATE";
+		//University actualResult = db.searchUniversities("Arizona State", "Arizona", "-1", "State", 40000, "50", "450", "500", "16181", "50", 17000, 80, 60, 3, 4, 5);
+		ArrayList<University> actualResult = db.searchUniversities("Arizona State", "Arizona", false, "-1", "State", 39999, 40001, 49.0, 51.0, 449.0, 451.0, 499.0, 501.0, 16180.0, 16182.0, 49.0, 51.0, 16999, 17001, 79, 81, 59, 61, 2, 4, 3, 5, 4, 6);
+		//String actualResult1 = actualResult[1][1];
+		assertTrue("The result of the view user attempt was " + expResult, expResult.equals(actualResult1));
 	}
 
 }
