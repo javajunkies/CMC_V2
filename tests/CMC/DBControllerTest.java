@@ -35,7 +35,7 @@ public class DBControllerTest {
 	@Test
 	public void createUserTest() {
 		int u = db.createUser("firstName", "lastName", "username", "password", 'u');
-		assertEquals(u, 1);
+		assertEquals(1, u);
 	}
 		
 	@Test

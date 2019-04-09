@@ -17,12 +17,13 @@ import java.util.ArrayList;
  */
 public class UserControllerTest {
 
-	private DBController db;
+	private static DBController db;
 	private LoginController li;
 	private User c;
 	
 	@BeforeClass
-	public void setUpBeforeClass() throws Exception {
+	public static void setUpBeforeClass() throws Exception {
+		db = new DBController();
 		db.createUser("john", "wolff", "accountUsername", "Password1", 'u');
 	}
 
