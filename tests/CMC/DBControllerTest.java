@@ -5,16 +5,18 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 //import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class DBControllerTest {
 
-	private DBController db;
+	private static DBController db;
 	
-	@Before
-	public void setUp() throws Exception {
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
 		db = new DBController();
 	}
 	
@@ -56,10 +58,21 @@ public class DBControllerTest {
 	
 	@Test
 	public void searchTest() {
-		//ArrayList<University> expected = new ArrayList<University>();
-		//ArrayList<University> searchTest = db.searchUniversities("a", "","","",0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0.0,0,0,0,0,0,0);
-		//assertEquals(searchTest, expected);
-}
+		ArrayList<University> expected = new ArrayList<University>();
+		University Uni = new University("UNIVERSITY OF CALIFORNIA BERKELEY", "CALIFORNIA", "URBAN", "STATE", 40000, 45.0, 530.0, 600.0, 15328.0, -1.0, 15000, 50.0, 70.0, 5, 3, 3);
+		expected.add(Uni);
+		ArrayList<University> searchTest = db.searchUniversities("ber", "calif", false, "urb", "st", 0 ,40000, 0.0, 45.0, 0.0, 530.0, 0.0, 600.0, 0.0, 15328.0, 0.0, 0.0, 0, 15000, 0.0, 50.0, 0.0, 70.0, 0, 5, 0, 3, 0, 3);
+		//ArrayList<University> searchTest = db.searchUniversities("", "", false, "", "",0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0.0,0,0,0,0,0,0);
+		
+//		for (int i = 0; i!= searchTest.size();i++)
+//		{
+//			System.out.println(searchTest.get(i));
+//		}
+//		System.out.println(searchTest.size());
+		
+		assertEquals(searchTest.toString(), expected.toString());
+	}
+	
 	
 	@Test
 	public void getAllUsersTest() {
@@ -84,12 +97,37 @@ public class DBControllerTest {
 	}
 	
 	@Test
+	public void userEditUserTest() {
+		db.userEditUser("juser","User","Last","password1");
+	}
+	
+	@Test
+	public void findByUsernameTest() {
+		db.findByUsername("juser");
+	}
+	
+	@Test
+	public void viewSavedSchoolsTest() {
+		db.viewSavedSchools("juser");
+	}
+	
+	@Test
+	public void deactivateUserTest() {
+		db.deactivateUser("luser");
+	}
+	
+	@Test
+	public void sortByNumStudentsTest() {
+		db.sortByNumStudents("juser");
+	}
+
 	
 
-	@After
-	public void after()
+	@AfterClass
+	public static void setUpAfterClass() throws Exception
 	{
 		db.deleteUser("username");
 		db.deleteUser("testAdd");
+		db.removeUniversity("testSchool");
 	}
 }

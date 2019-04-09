@@ -110,11 +110,15 @@ public class AdminController {
                                double percentFemales, double SATVerbal, double SATMath, double expenses, 
                                double percentFinancialAid, int numberOfApplicants, double percentAdmitted, 
                                double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-    //for(University university : dbcontroller.getAllUniversities()) {
-    	if(school.equals("")) {
-    		throw new IllegalArgumentException("No school name entered.");
+	  boolean nameChange = false;
+	  for(University university : dbcontroller.getAllUniversities()) {
+    	if(school.equals(university.getSchool())) {
+    		nameChange = true;
     	}
-    //}
+    }
+	  if(nameChange == true) {
+		  throw new IllegalArgumentException("Invalid school name entered.");
+	  }
     
     if(state.equals("")) {
     	throw new IllegalArgumentException("No state entered.");
@@ -211,7 +215,7 @@ public class AdminController {
                                double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, 
                                int academicsScale, int socialScale, int qualityOfLifeScale) {
 	  
-	
+	/*
 	  boolean nameChange = false;
 	  for(University university : dbcontroller.getAllUniversities()) {
 		  if(school.equals(university.getSchool())) {
@@ -221,14 +225,14 @@ public class AdminController {
 	  }
 
 
-  
-	  if(nameChange == false) {
-		  throw new IllegalArgumentException("School name cannot be changed.");
+  */
+	  if(state.equals("")) {
+		  throw new IllegalArgumentException("No state entered.");
 	  }
   
-	  else if(location.equals("")) {
-  	throw new IllegalArgumentException("No location entered.");
-  }
+	  if(location.equals("")) {
+		  throw new IllegalArgumentException("No location entered.");
+	  }
   
   else if(control.equals("")) {
   	throw new IllegalArgumentException("No control entered.");
@@ -315,13 +319,13 @@ public class AdminController {
 	  else if(lastName.equals("")) {
 		  throw new IllegalArgumentException("Invalid last name.");
 	  }
-	  else if (password.equals("")) {
-		  throw new IllegalArgumentException("Invalid password.");
+	  else if (accountController.checkPasswordCriteria(password) != 0) {
+		  throw new IllegalArgumentException("Invalid password, must be 8 characters.");
 	  }
-	  else if (type != 'u' || type != 'a' || type != 't') {
+	  else if (type != 'u' && type != 'a' && type != 't') {
 		  throw new IllegalArgumentException("Invalid account type.");
 	  }
-	  else if (status != 'Y' || status != 'N') {
+	  else if (status != 'Y' && status != 'N') {
 		  throw new IllegalArgumentException("Invalid account status.");
 	  }
 	  else {
@@ -346,6 +350,9 @@ public class AdminController {
    * @return boolean representation of if the specified username is unique
    */
   public boolean isUniqueUsername(String username) {
+	  if(username.equals("")) {
+		  throw new IllegalArgumentException("Invalid username.");
+	  }
 	  if(dbcontroller.isUniqueUsername(username)) {
 		  return true;
 	  }
@@ -372,17 +379,26 @@ public class AdminController {
    * @return boolean If the user was added 
    */
   public int addNewUser(String firstName, String lastName, String username, String password, char type) {
-	  if(accountController.checkPasswordCriteria(password) == 0) {
-	     return dbcontroller.createUser(firstName, lastName, username, password, type);
+	  if(dbcontroller.isUser(username)) {
+		  throw new IllegalArgumentException("Invalid username.");
 	  }
 	  else if(accountController.checkPasswordCriteria(password) == 1) {
-		  return -4;
+		  throw new IllegalArgumentException("Invalid password, must have 8 characters.");
+		  //return -4;
 	  }
 	  else if(accountController.checkPasswordCriteria(password) == 2) {
-		  return -5;
+		  throw new IllegalArgumentException("Invalid password, must have atleast 1 letter.");
+		  //return -5;
+	  }
+	  else if(accountController.checkPasswordCriteria(password) == 3){
+		  throw new IllegalArgumentException("Invalid password, must have atleast 1 number.");
+		  //return -6;
+	  }
+	  else if(type == 'u' || type == 'U' || type == 'a' || type == 'A' || type == 't' || type == 'T') {
+		  return dbcontroller.createUser(firstName, lastName, username, password, type);
 	  }
 	  else {
-		  return -6;
+		  throw new IllegalArgumentException("Invalid account type.");
 	  }
 	  
   }
@@ -395,7 +411,12 @@ public class AdminController {
   
   public User viewUserInfo(String username)
   {
-    return dbcontroller.viewUser(username);
+	  if (dbcontroller.isUser(username)){
+		  return dbcontroller.viewUser(username);
+	  }
+	  else {
+		  throw new IllegalArgumentException("Invalid username.");
+	  }
   }
   
   /**
@@ -407,7 +428,13 @@ public class AdminController {
 
   public int deactivateUser(String username)
   {
-    return dbcontroller.deactivateUser(username);
+	  if (dbcontroller.isUser(username)){
+		  return dbcontroller.deactivateUser(username);
+	  }
+	  else {
+		  throw new IllegalArgumentException("Invalid username.");
+	  }
+    
   }
   
   /**
@@ -417,6 +444,12 @@ public class AdminController {
    * @return int representation of the deletion
    */
   public int deleteUser(String username) {
-	  return dbcontroller.deleteUser(username);
+	  if (dbcontroller.isUser(username)){
+		  return dbcontroller.deleteUser(username);
+	  }
+	  else {
+		  throw new IllegalArgumentException("Invalid username.");
+	  }
+	  
   }
 } 
