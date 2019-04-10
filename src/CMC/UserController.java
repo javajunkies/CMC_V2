@@ -10,6 +10,7 @@ public class UserController {
 	private boolean loggedIn = false;
 	DBController dbcontroller = new DBController();
 	LoginController logInController = new LoginController();
+	AccountController accountController = new AccountController();
  
  /**
   *Logs the user onto their account
@@ -18,14 +19,24 @@ public class UserController {
   *@return int the status of the login
   */
  public int login(String username, String password) {
-	 int result = logInController.login(username, password);
-	 if(result == 0) {
-		 this.currentUser = (User) dbcontroller.findByUsername(username);
-		 this.setLoggedIn(true);
-	 }
-  return result;
+	  if(logInController.login(username, password) == 1) {
+		  throw new IllegalArgumentException("Invalid username");
+	  }
+	  else if(logInController.login(username, password) == 2) {
+		  throw new IllegalArgumentException("Invalid username/password combination.");
+	  }
+	  else if(logInController.login(username, password) == 3) {
+		  throw new IllegalArgumentException("Account status is inactive.");
+	  }
+	  else if(logInController.login(username, password) == 4) {
+		  throw new IllegalArgumentException("Account type is temporary, wait for admin to approve registration.");
+	  }
+	  else {
+		  this.setCurrentUser((User) dbcontroller.findByUsername(username));
+		  this.setLoggedIn(true);
+		  return logInController.login(username, password);
+	  }
  }
- 
  /**
   * method to log the user off the CMC system
   *@return int the status of the users log off
@@ -61,9 +72,13 @@ public class UserController {
   * @return int the status of saving the school
   */
  public int saveSchool(String username, String university) {
-   return dbcontroller.addToSaved(username, university);
+	 if(dbcontroller.addToSaved(username, university) == -1) {
+		  throw new IllegalArgumentException("A database error occured.");
+	  }
+	  else {
+		  return dbcontroller.addToSaved(username, university);
+	  }
  }
- 
  /**
   *finds information for two schools to be compared
   *
@@ -86,11 +101,20 @@ public class UserController {
   *@return int the status of the editing user info
   */
  public int editUserInfo(String username, String firstname, String lastname, String password) {
-  return dbcontroller.userEditUser(username, firstname, lastname, password);
- }
- 
- 
- 
+	  if(firstname.equals("")) {
+		  throw new IllegalArgumentException("Invalid first name.");
+	  }
+	  else if(lastname.equals("")) {
+		  throw new IllegalArgumentException("Invalid last name.");
+	  }
+	  else if (accountController.checkPasswordCriteria(password) != 0) {
+		  throw new IllegalArgumentException("Invalid password, must be 8 characters.");
+	  }
+	  else {
+		  return dbcontroller.userEditUser(username, firstname, lastname, password);
+	  }
+}
+
  /**
   * Removes a school from the users saved school list
   *@param user the users username
@@ -98,9 +122,14 @@ public class UserController {
   *@return int the status of removing the saved school
   */
  public int removeSavedSchool(String user, String school) {
-  return dbcontroller.removeFromSaved(user, school);
- }
- 
+	 if(dbcontroller.removeFromSaved(user, school) == -1) {
+		  throw new IllegalArgumentException("A database error occured.");
+	  }
+	  else {
+		  return dbcontroller.removeFromSaved(user, school);
+	  }
+}
+
  /**
   *gets the users information
   *@param username the username to return information for

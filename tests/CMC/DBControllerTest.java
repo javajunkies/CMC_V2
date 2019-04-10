@@ -73,6 +73,23 @@ public class DBControllerTest {
 		assertEquals(searchTest.toString(), expected.toString());
 	}
 	
+	@Test
+	public void testRemoveUniversity() {
+		int remove = db.removeUniversity("AUGSBURG");
+		assertTrue("University removed", remove!=0 && remove!=-1);
+		db.addUniversity("AUGSBURG", "MINNESOTA", "SMALL-CITY", "PRIVATE" , 10000, 43, 420, 490, 29991, 80, 4000, 85, 50, 1, 3, 4);
+	}
+	
+	
+	@Test
+	public void testAddUniversity() {
+		int add = db.addUniversity("ADDED", "MINNESOTA", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
+		assertTrue("University added.", add > 0);
+		db.removeUniversity("ADDED");
+	}
 	
 	@Test
 	public void getAllUsersTest() {
@@ -94,6 +111,14 @@ public class DBControllerTest {
 		int expected = 1;
 		int actual = db.addToSaved("testAdd", "Augsburg");
 		assertTrue("Should return " + expected + " but returned " + actual, expected == actual);
+	}
+	
+	@Test
+	public void deleteUserTest() {
+		db.createUser("john", "west", "jwest", "Password2", 'u');
+		int expected = 1;
+		int actual = db.deleteUser("jwest");
+		assertEquals(expected, actual);
 	}
 
 //	@Test
