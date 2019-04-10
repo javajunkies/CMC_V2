@@ -14,8 +14,8 @@ import org.junit.Test;
  */
 public class AccountControllerTest {
 
-	private DBcontroller db; 
-	private AccountController ac; 
+	private static DBController db; 
+	private static AccountController ac; 
 	
 	/**
 	 * @throws java.lang.Exception
@@ -29,9 +29,13 @@ public class AccountControllerTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testRegister(String first, String last, String username, String password) {
+<<<<<<< HEAD
 		int expected = 1; 
 		int actual = ac.register("ben", "west", "bwest", "pass1");
 		assertTrue("Register ", expected == actual);
+=======
+		ac.register("juser,", "user", "bwest", "pass1");
+>>>>>>> d3ddee0f8366fc043cb23fbe2dbc31d8447d7ab5
 	}
 	
 	@Test(expected = IllegalArgumentException.class)

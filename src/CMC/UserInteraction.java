@@ -30,9 +30,9 @@ public class UserInteraction
    * logs the user off from CMC
    * @return int the status of the logoff
    */
-  public int logoff()
+  public void logoff()
   {
-    return UserController.logoff();
+    UserController.logoff();
   }
   
   /**

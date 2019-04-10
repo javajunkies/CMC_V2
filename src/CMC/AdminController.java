@@ -13,13 +13,9 @@ import java.util.*;
  */
 
 public class AdminController {
-
-  // Creating instances of the other classes being used.
-  //public AdminController() {
-	  //DBController dbcontroller = new DBController();
-	  //LoginController logInController = new LoginController();
-	  //AccountController accountController = new AccountController();
-	//}
+	
+	private User currentAdmin;
+	private boolean loggedIn = false;
 
   DBController dbcontroller = new DBController();
   LoginController logInController = new LoginController();
@@ -46,6 +42,8 @@ public class AdminController {
 		  throw new IllegalArgumentException("Account type is temporary, wait for admin to approve registration.");
 	  }
 	  else {
+		  this.setCurrentAdmin((User) dbcontroller.findByUsername(username));
+		  this.setLoggedIn(true);
 		  return logInController.login(username, password);
 	  }
     
@@ -55,7 +53,7 @@ public class AdminController {
    * Calls the logoff method from DBController.
    */
   public void logoff(){
-    logInController.logoff();
+    this.setLoggedIn(false);
   }
 
   /**
@@ -450,6 +448,23 @@ public class AdminController {
 	  else {
 		  throw new IllegalArgumentException("Invalid username.");
 	  }
-	  
   }
+  
+
+public void setCurrentAdmin(User currentUser) {
+	this.currentAdmin = currentUser;
+}
+
+public User getCurrentAdmin() {
+	return this.currentAdmin;
+}
+
+public boolean isLoggedIn() {
+	return loggedIn;
+}
+
+public void setLoggedIn(boolean log) {
+	this.loggedIn = log;
+}
+
 } 

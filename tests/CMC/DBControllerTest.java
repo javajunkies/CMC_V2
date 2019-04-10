@@ -35,7 +35,7 @@ public class DBControllerTest {
 	@Test
 	public void createUserTest() {
 		int u = db.createUser("firstName", "lastName", "username", "password", 'u');
-		assertEquals(u, 1);
+		assertEquals(1, u);
 	}
 		
 	@Test
@@ -62,7 +62,7 @@ public class DBControllerTest {
 		University Uni = new University("UNIVERSITY OF CALIFORNIA BERKELEY", "CALIFORNIA", "URBAN", "STATE", 40000, 45.0, 530.0, 600.0, 15328.0, -1.0, 15000, 50.0, 70.0, 5, 3, 3);
 		expected.add(Uni);
 		ArrayList<University> searchTest = db.searchUniversities("ber", "calif", false, "urb", "st", 0 ,40000, 0.0, 45.0, 0.0, 530.0, 0.0, 600.0, 0.0, 15328.0, 0.0, 0.0, 0, 15000, 0.0, 50.0, 0.0, 70.0, 0, 5, 0, 3, 0, 3);
-		//ArrayList<University> searchTest = db.searchUniversities("", "", false, "", "",0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0.0,0,0,0,0,0,0);
+		//ArrayList<University> searchTest = db.searchUniversities("A", "", false, "", "",0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0.0,0,0,0,0,0,0);
 		
 //		for (int i = 0; i!= searchTest.size();i++)
 //		{
@@ -95,7 +95,19 @@ public class DBControllerTest {
 		int actual = db.addToSaved("testAdd", "Augsburg");
 		assertTrue("Should return " + expected + " but returned " + actual, expected == actual);
 	}
-	
+
+//	@Test
+//	public void getRecommendationsTest() {
+//		University Uni = new University("UNIVERSITY OF CALIFORNIA BERKELEY", "CALIFORNIA", "URBAN", "STATE", 40000, 45.0, 530.0, 600.0, 15328.0, -1.0, 15000, 50.0, 70.0, 5, 3, 3);
+//		ArrayList<University> Test = db.getRecommendations(Uni);
+//		
+//		for (int i = 0; i!= Test.size();i++)
+//		{
+//			System.out.println(Test.get(i));
+//		}
+//		
+//	}
+
 	@Test
 	public void userEditUserTest() {
 		db.userEditUser("juser","User","Last","password1");
@@ -120,6 +132,7 @@ public class DBControllerTest {
 	public void sortByNumStudentsTest() {
 		db.sortByNumStudents("juser");
 	}
+<<<<<<< HEAD
 	
 	@Test
 	public void editUnivInfo() {
@@ -147,7 +160,20 @@ public class DBControllerTest {
 		//finish after sort is done
 		db.sort();
 	}
+=======
+>>>>>>> d3ddee0f8366fc043cb23fbe2dbc31d8447d7ab5
 	
+	@Test
+	public void removeUniversityTest() {
+		db.removeUniversity("Augsburg");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void InvalidremoveUniversityTest() {
+		db.removeUniversity("fdsafdsa");
+	}
+
+
 
 	@AfterClass
 	public static void setUpAfterClass() throws Exception
