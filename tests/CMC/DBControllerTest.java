@@ -132,6 +132,36 @@ public class DBControllerTest {
 	public void sortByNumStudentsTest() {
 		db.sortByNumStudents("juser");
 	}
+<<<<<<< HEAD
+	
+	@Test
+	public void editUnivInfo() {
+		//fill this out
+		db.editUnivInfo(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale)
+	}
+	
+	@Test
+	public void viewUserTest() {
+		db.viewUser("juser")
+	}
+	
+	@Test 
+	public void isUserTest() {
+	    db.isUser("auser")
+	}
+
+	@Test 
+	public void removeFromSaved() {
+	    db.removeFromSaved("auser", "BUTLER")
+	}
+	
+	@Test
+	public void sort() {
+		//finish after sort is done
+		db.sort();
+	}
+=======
+>>>>>>> d3ddee0f8366fc043cb23fbe2dbc31d8447d7ab5
 	
 	@Test
 	public void removeUniversityTest() {
