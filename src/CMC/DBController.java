@@ -70,6 +70,25 @@ public class DBController {
     }
     return "Could not find " + username;
   }
+  
+  //new
+  public ArrayList<University> getRecommendations2(University university) {
+	  ArrayList<University> list = new ArrayList<University>();
+	  String[][] universities = db.university_getUniversities();
+	  
+	  for (int i = 0; universities.length != i; i++)
+	  {
+		  //numStudents
+		  if (betweenDouble(Double.parseDouble(universities[i][4]) * .5, universities[i][4] , Double.parseDouble(universities[i][4]) * .150)) {
+			  list.add(new University(universities[i][0], universities[i][1], universities[i][2], universities[i][3], Integer.parseInt(universities[i][4]), Double.parseDouble(universities[i][5]), Double.parseDouble(universities[i][6]), Double.parseDouble(universities[i][7]), Double.parseDouble(universities[i][8]), Double.parseDouble(universities[i][9]), Integer.parseInt(universities[i][10]), Double.parseDouble(universities[i][11]), Double.parseDouble(universities[i][12]), Integer.parseInt(universities[i][13]), Integer.parseInt(universities[i][14]), Integer.parseInt(universities[i][15]) ));
+		  }
+		  
+		  
+	  }
+	  
+	  return list;
+  }
+  
   /**
    * Gets recommended schools
    * @param university a university object 
@@ -1020,10 +1039,13 @@ public class DBController {
    */
   public int registerNewUser(String first, String last, String user, String pass) {
 	  int result;
-	  if (isUniqueUsername(user))
+	  if (isUniqueUsername(user)) {
 		  result = db.user_addUser(first, last, user, pass, 't');
-	  else
+	  }
+	  else {
 		  result = 0;
+	  }
+	  db.user_editUser(user, first, last, pass, 't', 'N');
     return result;
   }
 

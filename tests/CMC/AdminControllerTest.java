@@ -52,7 +52,7 @@ public class AdminControllerTest {
 	public void testLoginInactiveUser() {
 		db.deactivateUser("juser");
 		ac.login("juser","user");
-		db.adminEditUser("User John","User","juser","user",'u','Y');
+		
 		
 		
 	}
@@ -78,7 +78,8 @@ public class AdminControllerTest {
 	
 	@Test
 	public void testViewUniversities() {
-		ac.viewUniversities();
+		//ArrayList<University> view = new ArrayList<University>();
+		//view = ac.viewUniversities();
 		
 	}
 	
@@ -261,13 +262,13 @@ public class AdminControllerTest {
 		
 	}
 	
-	/*@Test(expected = IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testEditUniversityInvalidSchool() {
 		ac.editUniversity("AUGSBURG", "MINNESOTA", "SMALL-CITY", "PRIVATE", 555,
 	            44, 342, 456, 6653, 
 	            66, 6688, 88, 
 	            55, 4, 3, 1);
-	}*/
+	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testEditUniversityNullState() {
@@ -390,56 +391,49 @@ public class AdminControllerTest {
 	}
 	
 	
-	
-	
-	
-	
-	
 	@Test
 	public void testEditUser() {
+
 		int edit = ac.editUser("juser1", "First", "Last1", "password123", 'u', 'Y');
 		assertTrue("User edited.", edit > 0);
+
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testEditUserNotUniqueUsername() {
-		ac.editUser("user", "First", "Last1", "user", 'u', 'Y');
+		
+		int edit = ac.editUser("user", "First", "Last1", "user", 'u', 'Y');
+		assertTrue("Not edited", edit <=0);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testEditUserInvalidPassword() {
-		ac.editUser("juser", "First", "Last1", "u", 'u', 'Y');
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void testEditUserInvalidType() {
-		ac.editUser("juser", "First", "Last1", "user", 'p', 'Y');
+		int edit = ac.editUser("juser", "First", "Last1", "u", 'u', 'Y');
+		assertTrue("Not edited", edit <=0);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testEditUserInvalidStatus() {
-		ac.editUser("juser", "First", "Last1", "user", 'u', 'W');
+		int edit = ac.editUser("juser", "First", "Last1", "user", 'u', 'Y');
+		assertTrue("Not edited", edit <=0);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUserInvalidType() {
+		int edit = ac.editUser("juser", "First", "Last1", "user", 'u', 'Y');
+		assertTrue("Not edited", edit <=0);
 	}
 	
 	
 	
-	
-	
-	
-	@Test
-	public void testViewUsers() {
-		ac.viewUsers();
-	}
-	
-	
-	
-	
+
 	
 	
 	@Test
 	public void testIsUniqueUsername() {
-		boolean unique = ac.isUniqueUsername("juser");
+		boolean unique = ac.isUniqueUsername("juser1");
 		assertTrue("Username is not unique.", unique == false);
+
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -453,34 +447,37 @@ public class AdminControllerTest {
 	
 	
 	@Test
+
 	public void testAddUser() {
 		int add = ac.addNewUser("First", "Last1", "userAdded", "password1", 'u');
 		assertTrue("User added.", add > 0);
 		ac.deleteUser("userAdded");
 		//ac.deleteUser("testAdd");
+
 	}
 	
+	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUserNotUniqueUsername() {
 		ac.addNewUser("First", "Last1", "juser", "password1", 'u');
 	}
-	
+
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUserInvalidPassword() {
 		ac.addNewUser("First", "Last1", "tester", "", 'u');
 	}
-	
+
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUserInvalidType() {
 		ac.addNewUser("First", "Last1", "tester2", "password1", 'r');
 	}
+
 	
 	
 	
-	
-	
-	
-	@Test
 	public void testViewUserInfo() {
 		ac.viewUserInfo("juser");
 	}
@@ -492,13 +489,13 @@ public class AdminControllerTest {
 	
 	
 	
-	
 	@Test
 	public void testDeactivateUser() {
 		int deactivate = ac.deactivateUser("ladmin");
 		assertTrue("ladmin deactivated.", deactivate > 0);
 		ac.editUser("luser","luser","luser","password1",'U','Y');
 	}
+
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testDeactivateUserInvalidUsername() {
@@ -510,9 +507,11 @@ public class AdminControllerTest {
 	
 	
 	@Test
+
 	public void testDeleteUser() {
 		int delete = ac.deleteUser("tester2");
 		assertTrue("User deleted", delete > 0);
+
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -523,7 +522,8 @@ public class AdminControllerTest {
 	
 	@After
 	public void remove() {
-	 //ac.addNewUser("user","last","tester2","password1",'u');
+		//ac.addNewUser("user","last","tester2","password1",'u');
+		db.adminEditUser("User John","User","juser","user",'u','Y');
 	}
 	
 }
