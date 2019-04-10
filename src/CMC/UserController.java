@@ -72,11 +72,12 @@ public class UserController {
   * @return int the status of saving the school
   */
  public int saveSchool(String username, String university) {
-	 if(dbcontroller.addToSaved(username, university) == -1) {
+	 int result = dbcontroller.addToSaved(username, university);
+	 if(result == -1) {
 		  throw new IllegalArgumentException("A database error occured.");
 	  }
 	  else {
-		  return dbcontroller.addToSaved(username, university);
+		  return result;
 	  }
  }
  /**
@@ -122,11 +123,12 @@ public class UserController {
   *@return int the status of removing the saved school
   */
  public int removeSavedSchool(String user, String school) {
-	 if(dbcontroller.removeFromSaved(user, school) == -1) {
+	 int result = dbcontroller.removeFromSaved(user, school);
+	 if(result == -1) {
 		  throw new IllegalArgumentException("A database error occured.");
 	  }
 	  else {
-		  return dbcontroller.removeFromSaved(user, school);
+		  return result;
 	  }
 }
 
