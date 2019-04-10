@@ -74,7 +74,7 @@ public class UserControllerTest {
 		double expResult = 29991.0;
 		University halfResult = UC.viewExistingUniversity("Augsburg");
 		double actualResult = halfResult.getExpenses();
-		assertEquals(expResult, actualResult);
+		assertTrue(expResult == actualResult);
 	}
 	
 	@Test
