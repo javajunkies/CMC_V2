@@ -61,7 +61,7 @@ public class LoginController {
 	  }
 	  else {
 		  login = 4;
-		  this.isLoggedIn(true);
+		  //this.isLoggedIn(true);
 		  
 		  
 	  }

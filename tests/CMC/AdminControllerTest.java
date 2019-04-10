@@ -88,7 +88,7 @@ public class AdminControllerTest {
 	@Test
 	public void testRemoveUniversity() {
 		int remove = ac.removeUniversity("AUGSBURG");
-		assertTrue("University removed", remove!=0 && remove!=-1);
+		assertTrue("University removed", remove != 0 && remove!=-1);
 		ac.addUniversity("AUGSBURG", "MINNESOTA", "SMALL-CITY", "PRIVATE" , 10000, 43, 420, 490, 29991, 80, 4000, 85, 50, 1, 3, 4);
 	}
 	
@@ -397,7 +397,8 @@ public class AdminControllerTest {
 	
 	@Test
 	public void testEditUser() {
-		ac.editUser("juser1", "First", "Last1", "password1", 'u', 'Y');
+		int edit = ac.editUser("juser1", "First", "Last1", "password123", 'u', 'Y');
+		assertTrue("User edited.", edit > 0);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -437,7 +438,8 @@ public class AdminControllerTest {
 	
 	@Test
 	public void testIsUniqueUsername() {
-		ac.isUniqueUsername("juser");
+		boolean unique = ac.isUniqueUsername("juser");
+		assertTrue("Username is not unique.", unique == false);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -452,7 +454,9 @@ public class AdminControllerTest {
 	
 	@Test
 	public void testAddUser() {
-		ac.addNewUser("First", "Last1", "test123", "password1", 'u');
+		int add = ac.addNewUser("First", "Last1", "userAdded", "password1", 'u');
+		assertTrue("User added.", add > 0);
+		ac.deleteUser("userAdded");
 		//ac.deleteUser("testAdd");
 	}
 	
@@ -491,7 +495,9 @@ public class AdminControllerTest {
 	
 	@Test
 	public void testDeactivateUser() {
-		ac.deactivateUser("testAdd");
+		int deactivate = ac.deactivateUser("ladmin");
+		assertTrue("ladmin deactivated.", deactivate > 0);
+		ac.editUser("luser","luser","luser","password1",'U','Y');
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -505,8 +511,8 @@ public class AdminControllerTest {
 	
 	@Test
 	public void testDeleteUser() {
-		ac.deleteUser("dkuhr"
-				+ "");
+		int delete = ac.deleteUser("tester2");
+		assertTrue("User deleted", delete > 0);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -517,7 +523,7 @@ public class AdminControllerTest {
 	
 	@After
 	public void remove() {
-	
+	 //ac.addNewUser("user","last","tester2","password1",'u');
 	}
 	
 }
