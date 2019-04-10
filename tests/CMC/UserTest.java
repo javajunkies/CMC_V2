@@ -17,7 +17,7 @@ public class UserTest {
 
 	@Test
 	public void ToStringtest() {
-		String ToStringTest = "User " + "Test" + "\n" + "Name" + "\n" + "accountTest" + "\n" + "Password1" + "\n" + 'a' + "\n" + 'Y' + "\n" ;
+		String ToStringTest = "User " + "Test" + "\n" + "Name" + "\n" + "accountTest" + "\n" + "Password1" + "\n" + 'a' + "\n" + 'Y' + "\n";
 		String expected = u.toString();
 		assertEquals(expected, ToStringTest);
 	}
