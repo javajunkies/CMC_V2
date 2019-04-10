@@ -113,14 +113,5 @@ public class LoginController {
 			return true;
 		}
 	}
-
-	/**
-	 * Logs this user off of CMC system.
-	 * 
-	 * @return int the status of the log off
-	 */
-	public int logoff() {
-		return 1;
-	}
 }
 
