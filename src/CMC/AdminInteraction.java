@@ -36,8 +36,8 @@ public class AdminInteraction{
   * @return int tells user the status of log off
   */
 
- public int logoff(){
-   return loginController.logoff();
+ public void logoff(){
+    adminController.logoff();
  }
  
  /**

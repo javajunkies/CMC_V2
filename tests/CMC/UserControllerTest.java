@@ -6,7 +6,6 @@ package CMC;
 import static org.junit.Assert.*;
 
 import org.junit.After;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -18,11 +17,14 @@ import java.util.ArrayList;
  */
 public class UserControllerTest {
 
-	private DBController db;
-	private UserController UC;
+	private static DBController db;
+	private User c;
+	private static UserController UC;
 	
-	@Before
-	public void setUp() throws Exception {
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+		db = new DBController();
+		UC = new UserController();
 		db.createUser("john", "wolff", "accountUsername", "Password1", 'u');
 	}
 
@@ -59,9 +61,11 @@ public class UserControllerTest {
 	
 	@Test
 	public void Logofftest() {
-		int expResult = 1;
-		int actualResult = UC.logoff();
-		assertTrue("The result of the logoff attempt was " + expResult, expResult == actualResult);
+		boolean expResult = false;
+		UC.login("juser", "user");
+		UC.logoff();
+		boolean actualResult = UC.isLoggedIn();
+		assertEquals(expResult, actualResult);
 	}
 	
 	@Test
@@ -69,7 +73,7 @@ public class UserControllerTest {
 		double expResult = 29991;
 		University halfResult = UC.viewExistingUniversity("Augsburg");
 		double actualResult = halfResult.getExpenses();
-		assertTrue("The result of viewing an existing university was " + expResult, expResult == actualResult);
+		assertEquals(expResult, actualResult);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -81,7 +85,7 @@ public class UserControllerTest {
 	public void SaveSchooltest() {
 		int expResult = 1;
 		int actualResult = UC.saveSchool("accountUsername", "Augsburg");
-		assertTrue("The result of the save attempt was " + expResult, expResult == actualResult);
+		assertEquals(expResult, actualResult);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -105,8 +109,9 @@ public class UserControllerTest {
 	@Test
 	public void editUserInfotest() {
 		int expResult = 1;
-		int actualResult = UC.editUserInfo("Johnny", "Wolff", "accountUsername", "Password1");
-		assertTrue("The number of the updates due to the save attempt was " + expResult, expResult == actualResult);
+		int actualResult = UC.editUserInfo("Johnny", "wolff", "accountUsername", "Password1");
+		//assertTrue("The number of the updates due to the save attempt was " + expResult, expResult == actualResult);
+		assertEquals(expResult, actualResult);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
