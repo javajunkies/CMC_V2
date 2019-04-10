@@ -73,6 +73,23 @@ public class DBControllerTest {
 		assertEquals(searchTest.toString(), expected.toString());
 	}
 	
+	@Test
+	public void testRemoveUniversity() {
+		int remove = db.removeUniversity("AUGSBURG");
+		assertTrue("University removed", remove!=0 && remove!=-1);
+		db.addUniversity("AUGSBURG", "MINNESOTA", "SMALL-CITY", "PRIVATE" , 10000, 43, 420, 490, 29991, 80, 4000, 85, 50, 1, 3, 4);
+	}
+	
+	
+	@Test
+	public void testAddUniversity() {
+		int add = db.addUniversity("ADDED", "MINNESOTA", "SMALL-CITY", "PRIVATE", 555,
+	            44, 342, 456, 6653, 
+	            66, 6688, 88, 
+	            55, 4, 3, 1);
+		assertTrue("University added.", add > 0);
+		db.removeUniversity("ADDED");
+	}
 	
 	@Test
 	public void getAllUsersTest() {
@@ -86,6 +103,7 @@ public class DBControllerTest {
 		for(int i = 0; i < r.size(); i++) {
 			actual.add(r.get(i).getFirst());
 		}
+		assertEquals(expected.toString(), actual.toString());
 	}
 	
 	@Test
@@ -94,6 +112,14 @@ public class DBControllerTest {
 		int expected = 1;
 		int actual = db.addToSaved("testAdd", "Augsburg");
 		assertTrue("Should return " + expected + " but returned " + actual, expected == actual);
+	}
+	
+	@Test
+	public void deleteUserTest() {
+		db.createUser("john", "west", "jwest", "Password2", 'u');
+		int expected = 1;
+		int actual = db.deleteUser("jwest");
+		assertEquals(expected, actual);
 	}
 
 //	@Test
@@ -132,7 +158,20 @@ public class DBControllerTest {
 	public void sortByNumStudentsTest() {
 		db.sortByNumStudents("juser");
 	}
+<<<<<<< HEAD
 
+=======
+	
+	@Test
+	public void addUniversityTest() {
+		int expResult = db.addUniversity("CSBSJU", "MN", "St. Joseph", "private", 3000, 50.0, 2000.0, 2000.0, 7000.0, 50.0, 4000, 75.0, 60.0, 4, 3, 2);
+		assertEquals("Expected Result = 1", expResult, 1);
+	}
+
+	@Test
+	public void getRecommendationsTest() {
+	}
+>>>>>>> 788d628a47c50fbbd4931f57640880f606abaec0
 	
 	@Test
 	public void editUnivInfo() {
@@ -160,7 +199,10 @@ public class DBControllerTest {
 		//finish after sort is done
 		db.sort();
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 788d628a47c50fbbd4931f57640880f606abaec0
 	
 	@Test
 	public void removeUniversityTest() {
@@ -172,7 +214,19 @@ public class DBControllerTest {
 		db.removeUniversity("fdsafdsa");
 	}
 
-
+	@Test
+	public void getAllUniversitiesTest() {
+		int actualResult = db.getAllUniversities().size();
+		int expResult = 179;
+		assertTrue("There are 179 universities", (actualResult == expResult));
+	}
+	
+	@Test
+	public void viewExistingUniversityTest() {
+		University expUniversity = new University("Abilene Christian University", "Texas", "Suburban", "private", 10000, 50, -1, -1, 12088, 70, 4000, 90, 80, 2, 3, 3);
+		University actualUniversity = db.viewExistingUniversity("Abilene Christian University");
+		assertTrue("Universities are the same", (expUniversity == actualUniversity))
+	}
 
 	@AfterClass
 	public static void setUpAfterClass() throws Exception
@@ -180,5 +234,6 @@ public class DBControllerTest {
 		db.deleteUser("username");
 		db.deleteUser("testAdd");
 		db.removeUniversity("testSchool");
+		db.removeUniversity("CSBSJU");
 	}
 }

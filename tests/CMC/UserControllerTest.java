@@ -6,6 +6,8 @@ package CMC;
 import static org.junit.Assert.*;
 
 import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -18,14 +20,13 @@ import java.util.ArrayList;
 public class UserControllerTest {
 
 	private static DBController db;
-	private User c;
 	private static UserController UC;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		db = new DBController();
 		UC = new UserController();
-		db.createUser("john", "wolff", "accountUsername", "Password1", 'u');
+		db.createUser("johnny", "wolff", "accountUsername", "Password1", 'u');
 	}
 
 	@Test
@@ -56,13 +57,13 @@ public class UserControllerTest {
 	public void testLoginTemporaryAccount() {
 		db.registerNewUser("John","Wolff","jwolff","JohnWolff1234");
 		UC.login("jwolff","JohnWolff1234");
-		//db.deleteUser("jwolff");???????????
+		//db.deleteUser("jwolff");
 	}
 	
 	@Test
 	public void Logofftest() {
 		boolean expResult = false;
-		UC.login("juser", "user");
+		UC.login("accountUsername", "Password1");
 		UC.logoff();
 		boolean actualResult = UC.isLoggedIn();
 		assertEquals(expResult, actualResult);
@@ -70,21 +71,16 @@ public class UserControllerTest {
 	
 	@Test
 	public void ViewExistingUniversitytest() {
-		double expResult = 29991;
+		double expResult = 29991.0;
 		University halfResult = UC.viewExistingUniversity("Augsburg");
 		double actualResult = halfResult.getExpenses();
 		assertEquals(expResult, actualResult);
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
-	public void ViewExistingUniversityInvalidtest() {
-		UC.viewExistingUniversity("fadsfs");
-	}
-	
 	@Test
 	public void SaveSchooltest() {
 		int expResult = 1;
-		int actualResult = UC.saveSchool("accountUsername", "Augsburg");
+		int actualResult = UC.saveSchool("accountUsername", "Bard");
 		assertEquals(expResult, actualResult);
 	}
 	
@@ -100,54 +96,52 @@ public class UserControllerTest {
 	
 	@Test
 	public void Comparetest() {
-		//ArrayList<University> expResult = ;
-		//ArrayList<University> actualResult = UC.compare("Boston College", "Cal Tech");
-		//actual1Result = 
-		//assertTrue("The result of the save attempt was " + expResult, expResult.equals(actual1Result));
+		ArrayList<University> expected = new ArrayList<University>();
+	    University univ1 = UC.viewExistingUniversity("AUGSBURG");
+	    University univ2 = UC.viewExistingUniversity("BUTLER");
+	    expected.add(univ1);
+	    expected.add(univ2);
+	    ArrayList<University> list = UC.compare("AUGSBURG", "BUTLER");
+	    assertEquals(expected.toString(), list.toString());
 	}
 
 	@Test
 	public void editUserInfotest() {
 		int expResult = 1;
-		int actualResult = UC.editUserInfo("Johnny", "wolff", "accountUsername", "Password1");
+		int actualResult = UC.editUserInfo("accountUsername", "Tom", "wolff", "Password1");
 		//assertTrue("The number of the updates due to the save attempt was " + expResult, expResult == actualResult);
 		assertEquals(expResult, actualResult);
 	}
 	
+	
 	@Test(expected = IllegalArgumentException.class)
 	public void InvalidPasswordeditUserInfotest() {
-		UC.editUserInfo("Johnny", "Wolff", "accountUsername", " f");
+		UC.editUserInfo("Tom", "Wolff", "accountUsername", " f");
 	}
+
 	
 	@Test
 	public void RemoveSaveSchooltest() {
 		int expResult = 1;
-		//db.addToSaved("accountUsername", "Augsburg");
+		UC.saveSchool("accountUsername", "Augsburg");
 		int actualResult = UC.removeSavedSchool("accountUsername", "Augsburg");
-		assertTrue("The number of the updates due to the remove attempt was " + expResult, expResult == actualResult);
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void InvalidSchoolRemoveSaveSchooltest() {
-		UC.removeSavedSchool("accountUsername", "fdsafvsa");
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void InvalidAccountRemoveSaveSchooltest() {
-		UC.removeSavedSchool("fdsafdsa", "Augsburg");
+		assertTrue("The number of the updates due to the remove attempt was " + actualResult, expResult == actualResult);
 	}
 	
 	@Test
 	public void ViewUserInfotest() {
-		User expResult = c;
-		User actualResult = UC.viewUserInfo("accountUsername");
+		String expResult = "johnny";
+		User halfResult = UC.viewUserInfo("accountUsername");
+		String actualResult = halfResult.getFirst();
 		assertEquals(expResult, actualResult);
 	}
 	
+	/**
 	@Test(expected = IllegalArgumentException.class)
 	public void InvalidiAccountViewUserInfotest() {
 		UC.viewUserInfo("fdsafd");
 	}
+	*/
 	
 	@Test
 	public void SearchUniversitiestest() {
@@ -158,10 +152,10 @@ public class UserControllerTest {
 		assertEquals(searchTest.toString(), expected.toString());
 	}
 	
-	@After
-	public void remove() {
+	@AfterClass
+	public static void setUpAfterClass() {
 		db.deleteUser("accountUsername");
-		//what else????
+		db.deleteUser("jwolff");
 	}
 
 }
