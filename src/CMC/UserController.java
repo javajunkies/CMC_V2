@@ -6,8 +6,10 @@ import java.util.*;
  */
 public class UserController {
  
- DBController dbcontroller = new DBController();
- LoginController logInController = new LoginController();
+	private User currentUser;
+	private boolean loggedIn = false;
+	DBController dbcontroller = new DBController();
+	LoginController logInController = new LoginController();
  
  /**
   *Logs the user onto their account
@@ -16,15 +18,20 @@ public class UserController {
   *@return int the status of the login
   */
  public int login(String username, String password) {
-  return logInController.login(username, password);
+	 int result = logInController.login(username, password);
+	 if(result == 0) {
+		 this.currentUser = (User) dbcontroller.findByUsername(username);
+		 this.setLoggedIn(true);
+	 }
+  return result;
  }
  
  /**
   * method to log the user off the CMC system
   *@return int the status of the users log off
   */
- public int logoff() {
-  return logInController.logoff();
+ public void logoff() {
+	 this.setLoggedIn(false);
  }
  
  /**
@@ -162,6 +169,22 @@ public ArrayList<University> sortByExpenses(String username) {
 
 public ArrayList<University> sortByNumStudents(String username) {
 	return dbcontroller.sortByNumStudents(username);
+}
+
+public void setCurrentUser(User currentUser) {
+	this.currentUser = currentUser;
+}
+
+public User getCurrentUser() {
+	return this.currentUser;
+}
+
+public boolean isLoggedIn() {
+	return loggedIn;
+}
+
+public void setLoggedIn(boolean log) {
+	this.loggedIn = log;
 }
  
 }

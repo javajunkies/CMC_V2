@@ -5,16 +5,18 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 //import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class DBControllerTest {
 
-	private DBController db;
+	private static DBController db;
 	
-	@Before
-	public void setUp() throws Exception {
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
 		db = new DBController();
 	}
 	
@@ -33,7 +35,7 @@ public class DBControllerTest {
 	@Test
 	public void createUserTest() {
 		int u = db.createUser("firstName", "lastName", "username", "password", 'u');
-		assertEquals(u, 1);
+		assertEquals(1, u);
 	}
 		
 	@Test
@@ -93,7 +95,7 @@ public class DBControllerTest {
 		int actual = db.addToSaved("testAdd", "Augsburg");
 		assertTrue("Should return " + expected + " but returned " + actual, expected == actual);
 	}
-	
+
 //	@Test
 //	public void getRecommendationsTest() {
 //		University Uni = new University("UNIVERSITY OF CALIFORNIA BERKELEY", "CALIFORNIA", "URBAN", "STATE", 40000, 45.0, 530.0, 600.0, 15328.0, -1.0, 15000, 50.0, 70.0, 5, 3, 3);
@@ -106,8 +108,35 @@ public class DBControllerTest {
 //		
 //	}
 
-	@After
-	public void after()
+	@Test
+	public void userEditUserTest() {
+		db.userEditUser("juser","User","Last","password1");
+	}
+	
+	@Test
+	public void findByUsernameTest() {
+		db.findByUsername("juser");
+	}
+	
+	@Test
+	public void viewSavedSchoolsTest() {
+		db.viewSavedSchools("juser");
+	}
+	
+	@Test
+	public void deactivateUserTest() {
+		db.deactivateUser("luser");
+	}
+	
+	@Test
+	public void sortByNumStudentsTest() {
+		db.sortByNumStudents("juser");
+	}
+
+
+
+	@AfterClass
+	public static void setUpAfterClass() throws Exception
 	{
 		db.deleteUser("username");
 		db.deleteUser("testAdd");

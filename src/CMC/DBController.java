@@ -1039,10 +1039,13 @@ public class DBController {
    */
   public int registerNewUser(String first, String last, String user, String pass) {
 	  int result;
-	  if (isUniqueUsername(user))
+	  if (isUniqueUsername(user)) {
 		  result = db.user_addUser(first, last, user, pass, 't');
-	  else
+	  }
+	  else {
 		  result = 0;
+	  }
+	  db.user_editUser(user, first, last, pass, 't', 'N');
     return result;
   }
 

@@ -391,11 +391,6 @@ public class AdminControllerTest {
 	}
 	
 	
-	
-	
-	
-	
-	
 	@Test
 	public void testEditUser() {
 		ac.editUser("juser", "First", "Last1", "password1", 'u', 'Y');

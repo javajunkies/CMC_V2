@@ -325,17 +325,7 @@ import java.util.List;
 		  return "Failure.";
 	  }
 	  
-	  /**
-	   * Tests the logoff functionality.
-	   * 
-	   * @return String representation of logoff
-	   */
-	  public String testLogoff() {
-		  if(ui1.logoff() == 1) {
-			  return "Logoff successful.";
-		  }
-		  return "Failure.";
-	  }
+
 	  
 	  public String testSearchUniversities(String mySchool, String myState, boolean negateState, String myLocation,String myControl,int minNumStudents, int maxNumStudents,double minPercentFemale, double maxPercentFemale,double minSATVerbal, double maxSATVerbal,double minSATMath, double maxSATMath,double minExpenses, double maxExpenses,double minPercentFinancialAid, double maxPercentFinancialAid,int minNumApplicants, int maxNumApplicants,double minPercentAdmitted, double maxPercentAdmitted,double minPercentEnrolled, double maxPercentEnrolled,int minAcademicsScale, int maxAcademicsScale,int minSocialScale, int maxSocialScale,int minQualityOfLife, int maxQualityOfLife){
 		  String result = "";
@@ -377,11 +367,13 @@ import java.util.List;
 
 	  public static void main(String[] args)
 	  {
+		  
 		//objects
 		Phase2Driver p = new Phase2Driver();
 		UserInteraction  ui = new UserInteraction();
 		AdminInteraction ai = new AdminInteraction();
 		
+		System.out.println(p.testViewUsers());
 		
 	    //create testers
 	    ai.addNewUser("test", "user", "testUser", "Password1", 'a');
@@ -573,9 +565,6 @@ import java.util.List;
 	    //U20 Deactivate user
 	    System.out.println(p.testDeactivateUser("Test6") + "\n");
 	    
-	    
-	    //U22 Logoff
-	    System.out.println(p.testLogoff());
 	    
 	  
 	    ai.deleteUser("Test6");
