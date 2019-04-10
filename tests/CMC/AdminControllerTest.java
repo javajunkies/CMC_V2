@@ -17,6 +17,7 @@ import org.junit.Test;
  * @author dkuhr001
  *
  */
+
 public class AdminControllerTest {
 	//@BeforeClass
 	private AdminController ac;
@@ -34,6 +35,7 @@ public class AdminControllerTest {
 	public void testLoginValid() {
 		int login = ac.login("juser","user");
 		assertEquals("Login Successful",0,login);
+		ac.logoff();
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -79,7 +81,7 @@ public class AdminControllerTest {
 	@Test
 	public void testViewUniversities() {
 		//ArrayList<University> view = new ArrayList<University>();
-		//view = ac.viewUniversities();
+		ac.viewUniversities();
 		
 	}
 	
@@ -115,130 +117,162 @@ public class AdminControllerTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUniversityInvalidSchool() {
-		ac.addUniversity("AUGSBURG", "MINNESOTA", "SMALL-CITY", "PRIVATE", 555,
+		int expected = 0;
+		int actual = ac.addUniversity("AUGSBURG", "MINNESOTA", "SMALL-CITY", "PRIVATE", 555,
 	            44, 342, 456, 6653, 
 	            66, 6688, 88, 
 	            55, 4, 3, 1);
+		assertTrue("Null State expected.", expected == actual);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUniversityNullState() {
-		ac.addUniversity("Asdjfh", "", "SMALL-CITY", "PRIVATE", 555,
+		int expected = 0;
+		int actual = ac.addUniversity("Asdjfh", "", "SMALL-CITY", "PRIVATE", 555,
 	            44, 342, 456, 6653, 
 	            66, 6688, 88, 
 	            55, 4, 3, 1);
+		assertTrue("Null State expected.", expected == actual);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUniversityNullLocation() {
-		ac.addUniversity("Asdjfh", "MINN", "", "PRIVATE", 555,
+		int expected = 0;
+		int actual = ac.addUniversity("Asdjfh", "MINN", "", "PRIVATE", 555,
 	            44, 342, 456, 6653, 
 	            66, 6688, 88, 
 	            55, 4, 3, 1);
+		assertTrue("Null State expected.", expected == actual);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUniversityNullControl() {
-		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "", 555,
+		int expected = 0;
+		int actual = ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "", 555,
 	            44, 342, 456, 6653, 
 	            66, 6688, 88, 
 	            55, 4, 3, 1);
+		assertTrue("Null State expected.", expected == actual);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUniversityInvalidNumStudents() {
-		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", -5,
+		int expected = 0;
+		int actual = ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", -5,
 	            44, 342, 456, 6653, 
 	            66, 6688, 88, 
 	            55, 4, 3, 1);
+		assertTrue("Null State expected.", expected == actual);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUniversityInvalidPercentFemale() {
-		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+		int expected = 0;
+		int actual = ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
 	            -445, 342, 456, 6653, 
 	            66, 6688, 88, 
 	            55, 4, 3, 1);
+		assertTrue("Null State expected.", expected == actual);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUniversityInvalidSATVerbal() {
-		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+		int expected = 0;
+		int actual = ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
 	            44, -342, 456, 6653, 
 	            66, 6688, 88, 
 	            55, 4, 3, 1);
+		assertTrue("Null State expected.", expected == actual);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUniversityInvalidSATMath() {
-		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+		int expected = 0;
+		int actual = ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
 	            445, 342, -456, 6653, 
 	            66, 6688, 88, 
 	            55, 4, 3, 1);
+		assertTrue("Null State expected.", expected == actual);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUniversityInvalidExpenses() {
-		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+		int expected = 0;
+		int actual = ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
 	            44, 342, 456, -6653, 
 	            66, 6688, 88, 
 	            55, 4, 3, 1);
+		assertTrue("Null State expected.", expected == actual);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUniversityInvalidPercentFinancialAid() {
-		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+		int expected = 0;
+		int actual = ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
 	            44, 342, 456, 6653, 
 	            660, 6688, 88, 
 	            55, 4, 3, 1);
+		assertTrue("Null State expected.", expected == actual);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUniversityInvalidNumberOfApplicants() {
-		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+		int expected = 0;
+		int actual = ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
 	            44, 342, 456, 6653, 
 	            66, -6688, 88, 
 	            55, 4, 3, 1);
+		assertTrue("Null State expected.", expected == actual);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUniversityInvalidPercentAdmitted() {
-		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+		int expected = 0;
+		int actual = ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
 	            44, 342, 456, 6653, 
 	            66, 6688, 881, 
 	            55, 4, 3, 1);
+		assertTrue("Null State expected.", expected == actual);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUniversityInvalidPercentEnrolled() {
-		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+		int expected = 0;
+		int actual = ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
 	            44, 342, 456, 6653, 
 	            66, 6688, 88, 
 	            -55, 4, 3, 1);
+		assertTrue("Null State expected.", expected == actual);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUniversityInvalidAcademicsScale() {
-		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+		int expected = 0;
+		int actual = ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
 	            44, 342, 456, 6653, 
 	            66, 6688, 88, 
 	            55, 74, 3, 1);
+		assertTrue("Null State expected.", expected == actual);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUniversityInvalidSocialScale() {
-		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+		int expected = 0;
+		int actual = ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
 	            44, 342, 456, 6653, 
 	            66, 6688, 88, 
 	            55, 4, 32, 1);
+		assertTrue("Null State expected.", expected == actual);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUniversityInvalidQualityOfLifeScale() {
-		ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
+		int expected = 0;
+		int actual = ac.addUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
 	            44, 342, 456, 6653, 
 	            66, 6688, 88, 
 	            55, 7, 3, -1);
+		assertTrue("Invalid scale expected.", expected == actual);
 	}
 	
 	
@@ -383,7 +417,7 @@ public class AdminControllerTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testEditUniversityInvalidQualityOfLifeScale() {
+	public void testEditUniversityLowQualityOfLifeScale() {
 		ac.editUniversity("Asdjfh", "MINNN", "SMALL-CITY", "PRIVATE", 555,
 	            44, 342, 456, 6653, 
 	            66, 6688, 88, 
@@ -391,18 +425,20 @@ public class AdminControllerTest {
 	}
 	
 	
+	
 	@Test
 	public void testEditUser() {
 
-		int edit = ac.editUser("juser1", "First", "Last1", "password123", 'u', 'Y');
+		int edit = ac.editUser("ladmin", "First", "Last1", "password1", 'u', 'Y');
 		assertTrue("User edited.", edit > 0);
+		ac.editUser("ladmin", "First", "LastOld", "password123", 'u', 'Y');
 
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testEditUserNotUniqueUsername() {
 		
-		int edit = ac.editUser("user", "First", "Last1", "user", 'u', 'Y');
+		int edit = ac.editUser("ladmin", "First", "Last1", "user", 'u', 'Y');
 		assertTrue("Not edited", edit <=0);
 	}
 	
@@ -414,13 +450,13 @@ public class AdminControllerTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testEditUserInvalidStatus() {
-		int edit = ac.editUser("juser", "First", "Last1", "user", 'u', 'Y');
+		int edit = ac.editUser("juser", "First", "Last1", "user", 'u', 'T');
 		assertTrue("Not edited", edit <=0);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testEditUserInvalidType() {
-		int edit = ac.editUser("juser", "First", "Last1", "user", 'u', 'Y');
+		int edit = ac.editUser("juser", "First", "Last1", "user", 'w', 'Y');
 		assertTrue("Not edited", edit <=0);
 	}
 	
@@ -431,8 +467,8 @@ public class AdminControllerTest {
 	
 	@Test
 	public void testIsUniqueUsername() {
-		boolean unique = ac.isUniqueUsername("juser1");
-		assertTrue("Username is not unique.", unique == false);
+		boolean unique = ac.isUniqueUsername("juser123");
+		assertTrue("Username is not unique.", unique == true);
 
 	}
 	
@@ -466,7 +502,7 @@ public class AdminControllerTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUserInvalidPassword() {
-		ac.addNewUser("First", "Last1", "tester", "", 'u');
+		ac.addNewUser("First", "Last1", "tester", "er", 'u');
 	}
 
 
@@ -492,7 +528,7 @@ public class AdminControllerTest {
 	@Test
 	public void testDeactivateUser() {
 		int deactivate = ac.deactivateUser("ladmin");
-		assertTrue("ladmin deactivated.", deactivate > 0);
+		assertTrue("ladmin deactivated.", deactivate != -1);
 		ac.editUser("luser","luser","luser","password1",'U','Y');
 	}
 
@@ -527,3 +563,7 @@ public class AdminControllerTest {
 	}
 	
 }
+
+
+
+

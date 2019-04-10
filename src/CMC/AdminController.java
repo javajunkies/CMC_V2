@@ -392,11 +392,12 @@ public class AdminController {
 		  throw new IllegalArgumentException("Invalid password, must have atleast 1 number.");
 		  //return -6;
 	  }
-	  else if(type == 'u' || type == 'U' || type == 'a' || type == 'A' || type == 't' || type == 'T') {
-		  return dbcontroller.createUser(firstName, lastName, username, password, type);
+	  else if(type == 'u' && type == 'a' && type == 't') {
+		  
+		  throw new IllegalArgumentException("Invalid account type.");
 	  }
 	  else {
-		  throw new IllegalArgumentException("Invalid account type.");
+		  return dbcontroller.createUser(firstName, lastName, username, password, type);
 	  }
 	  
   }

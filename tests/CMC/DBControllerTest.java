@@ -158,9 +158,7 @@ public class DBControllerTest {
 	public void sortByNumStudentsTest() {
 		db.sortByNumStudents("juser");
 	}
-<<<<<<< HEAD
 
-=======
 	
 	@Test
 	public void addUniversityTest() {
@@ -171,7 +169,7 @@ public class DBControllerTest {
 	@Test
 	public void getRecommendationsTest() {
 	}
->>>>>>> 788d628a47c50fbbd4931f57640880f606abaec0
+
 	
 	@Test
 	public void editUnivInfo() {
@@ -199,10 +197,6 @@ public class DBControllerTest {
 		//finish after sort is done
 		db.sort();
 	}
-<<<<<<< HEAD
-
-=======
->>>>>>> 788d628a47c50fbbd4931f57640880f606abaec0
 	
 	@Test
 	public void removeUniversityTest() {
