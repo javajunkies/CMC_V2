@@ -52,7 +52,7 @@ public class AdminControllerTest {
 	public void testLoginInactiveUser() {
 		db.deactivateUser("juser");
 		ac.login("juser","user");
-		db.adminEditUser("User John","User","juser","user",'u','Y');
+		
 		
 		
 	}
@@ -78,7 +78,8 @@ public class AdminControllerTest {
 	
 	@Test
 	public void testViewUniversities() {
-		ac.viewUniversities();
+		//ArrayList<University> view = new ArrayList<University>();
+		//view = ac.viewUniversities();
 		
 	}
 	
@@ -261,13 +262,13 @@ public class AdminControllerTest {
 		
 	}
 	
-	/*@Test(expected = IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testEditUniversityInvalidSchool() {
 		ac.editUniversity("AUGSBURG", "MINNESOTA", "SMALL-CITY", "PRIVATE", 555,
 	            44, 342, 456, 6653, 
 	            66, 6688, 88, 
 	            55, 4, 3, 1);
-	}*/
+	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testEditUniversityNullState() {
@@ -390,14 +391,9 @@ public class AdminControllerTest {
 	}
 	
 	
-	
-	
-	
-	
-	
 	@Test
 	public void testEditUser() {
-		ac.editUser("juser1", "First", "Last1", "password1", 'u', 'Y');
+		ac.editUser("juser", "First", "Last1", "password1", 'u', 'Y');
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -411,23 +407,23 @@ public class AdminControllerTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testEditUserInvalidType() {
-		ac.editUser("juser", "First", "Last1", "user", 'p', 'Y');
+	public void testEditUserInvalidStatus() {
+		ac.editUser("juser", "First", "Last1", "user", 'u', 'Y');
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testEditUserInvalidStatus() {
-		ac.editUser("juser", "First", "Last1", "user", 'u', 'W');
+	public void testEditUserInvalidType() {
+		ac.editUser("juser", "First", "Last1", "user", 'u', 'Y');
 	}
 	
 	
 	
 	
-	
+	/*
 	
 	@Test
 	public void testViewUsers() {
-		ac.viewUsers();
+		fail("Not yet implemented");
 	}
 	
 	
@@ -436,13 +432,13 @@ public class AdminControllerTest {
 	
 	
 	@Test
-	public void testIsUniqueUsername() {
-		ac.isUniqueUsername("juser");
+	public void testIsUniqueUsername(String username) {
+		fail("Not yet implemented");
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
-	public void testIsUniqueUsernameNullUsername() {
-		ac.isUniqueUsername("");
+	@Test
+	public void testIsUniqueUsernameNullUsername(String username) {
+		fail("Not yet implemented");
 	}
 	
 	
@@ -451,52 +447,54 @@ public class AdminControllerTest {
 	
 	
 	@Test
-	public void testAddUser() {
-		ac.addNewUser("First", "Last1", "test123", "password1", 'u');
-		//ac.deleteUser("testAdd");
+	public void testAddNewUser(String username, String first, String last, String password, char type, char status) {
+		fail("Not yet implemented");
 	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void testAddUserNotUniqueUsername() {
-		ac.addNewUser("First", "Last1", "juser", "password1", 'u');
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void testAddUserInvalidPassword() {
-		ac.addNewUser("First", "Last1", "tester", "", 'u');
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void testAddUserInvalidType() {
-		ac.addNewUser("First", "Last1", "tester2", "password1", 'r');
-	}
-	
-	
-	
-	
-	
 	
 	@Test
-	public void testViewUserInfo() {
-		ac.viewUserInfo("juser");
+	public void testAddNewUserNotUniqueUsername(String username, String first, String last, String password, char type, char status) {
+		fail("Not yet implemented");
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
-	public void testViewUserInfoInvalidUsername() {
-		ac.viewUserInfo("john");
+	@Test
+	public void testAddNewUserInvalidPassword(String username, String first, String last, String password, char type, char status) {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testAddNewUserInvalidStatus(String username, String first, String last, String password, char type, char status) {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testAddNewUserInvalidType(String username, String first, String last, String password, char type, char status) {
+		fail("Not yet implemented");
 	}
 	
 	
 	
 	
 	@Test
-	public void testDeactivateUser() {
-		ac.deactivateUser("testAdd");
+	public void testViewUserInfo(String username) {
+		fail("Not yet implemented");
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
-	public void testDeactivateUserInvalidUsername() {
-		ac.deactivateUser("dogs");
+	@Test
+	public void testViewUserInfoInvalidUsername(String username) {
+		fail("Not yet implemented");
+	}
+	
+	
+	
+	
+	@Test
+	public void testDeactivateUser(String username) {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testDeactivateUserInvalidUsername(String username) {
+		fail("Not yet implemented");
 	}
 	
 	
@@ -504,20 +502,21 @@ public class AdminControllerTest {
 	
 	
 	@Test
-	public void testDeleteUser() {
-		ac.deleteUser("dkuhr"
-				+ "");
+	public void testDeleteUser(String username) {
+		fail("Not yet implemented");
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
-	public void testDeleteUserInvalidUsername() {
-		ac.deleteUser("abcd");
+	@Test
+	public void testDeleteUserInvalidUsername(String username) {
+		fail("Not yet implemented");
 	}
 	
+	
+	*/
 	
 	@After
 	public void remove() {
-	
+	db.adminEditUser("User John","User","juser","user",'u','Y');
 	}
 	
 }
