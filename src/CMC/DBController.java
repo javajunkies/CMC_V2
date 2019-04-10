@@ -813,7 +813,10 @@ public class DBController {
     		k++;
     	}
     }
-    		 for(int i = 0; i < userSavedSchools.length; i++) {
+    if(k == 0) {
+    	throw new NoSuchElementException(username + " has no saved schools");
+    }
+    		 for(int i = 0; i < k; i++) {
     		    	for(int j = 0; j < universities.length; j++) {
     		        	if(userSavedSchools[i].toUpperCase().equals(universities[j][0])) {
     		        		String school = universities[j][0];
@@ -990,7 +993,7 @@ public class DBController {
    * @param username the username of the user
    * @param university the university being removed from the user's saved schools
    * 
-   * @return int if school successfully removed from user's saved schools, otherwise -1
+   * @return int 1 if school successfully removed from user's saved schools, otherwise -1
    */
   public int removeFromSaved(String username, String university)
   {
