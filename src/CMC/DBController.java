@@ -799,50 +799,59 @@ public class DBController {
     String[][] universities = db.university_getUniversities();
     ArrayList<University> savedSchools = new ArrayList<University>();
     String[][] users = db.user_getUsernamesWithSavedSchools();
-    String[] userSavedSchools = new String[users.length];
     int k = 0;
-    int x = 0;
     if(!(users == null)) {
-    for(int i = 0; i < users.length; i++) {
+    	String[] userSavedSchools = new String[users.length];
+    for(int x = 0; x < users.length; x++) {
 
-    	if(users[i][0].equals(username)) {
-    		userSavedSchools[k] = users[i][1];
+    	if(users[x][0].equals(username)) {
+    		userSavedSchools[k] = users[x][1];
     		k++;
-    		x = 1;
     	}
     }
+    		 for(int i = 0; i < userSavedSchools.length; i++) {
+    		    	for(int j = 0; j < universities.length; j++) {
+    		        	if(userSavedSchools[i].toUpperCase().equals(universities[j][0])) {
+    		        		String school = universities[j][0];
+    		                String state = universities[j][1];
+    		                String location = universities[j][2];
+    		                String control = universities[j][3];
+    		                int numStudents = Integer.parseInt(universities[j][4]);
+    		                double percentFemale = Double.parseDouble(universities[j][5]);
+    		                double SATVerbal = Double.parseDouble(universities[j][6]);
+    		                double SATMath = Double.parseDouble(universities[j][7]);
+    		                double expenses = Double.parseDouble(universities[j][8]);
+    		                double percentFinancialAid = Double.parseDouble(universities[j][9]);
+    		                int numApplicants = Integer.parseInt(universities[j][10]);
+    		                double percentAdmitted = Double.parseDouble(universities[j][11]);
+    		                double percentEnrolled = Double.parseDouble(universities[j][12]);
+    		                int academicsScale = Integer.parseInt(universities[j][13]);
+    		                int socialScale = Integer.parseInt(universities[j][14]);
+    		                int qualityOfLife = Integer.parseInt(universities[j][15]);
+    		                University savedUniv = new University(school, state, location, control, numStudents, percentFemale, SATVerbal, SATMath, expenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLife);
+    		                savedSchools.add(savedUniv);
+    		                break;
+    	}
+    		    	}
+    		 }
+    		  return savedSchools;
+    	
     }
-    if(x == 0) {
-    	return savedSchools;
+    else {
+    	throw new NoSuchElementException("No users with saved school");
     }
-    for(int i = 0; i < userSavedSchools.length; i++) {
-    	for(int j = 0; j < universities.length; j++) {
-        	if(userSavedSchools[i].toUpperCase().equals(universities[j][0])) {
-        		String school = universities[j][0];
-                String state = universities[j][1];
-                String location = universities[j][2];
-                String control = universities[j][3];
-                int numStudents = Integer.parseInt(universities[j][4]);
-                double percentFemale = Double.parseDouble(universities[j][5]);
-                double SATVerbal = Double.parseDouble(universities[j][6]);
-                double SATMath = Double.parseDouble(universities[j][7]);
-                double expenses = Double.parseDouble(universities[j][8]);
-                double percentFinancialAid = Double.parseDouble(universities[j][9]);
-                int numApplicants = Integer.parseInt(universities[j][10]);
-                double percentAdmitted = Double.parseDouble(universities[j][11]);
-                double percentEnrolled = Double.parseDouble(universities[j][12]);
-                int academicsScale = Integer.parseInt(universities[j][13]);
-                int socialScale = Integer.parseInt(universities[j][14]);
-                int qualityOfLife = Integer.parseInt(universities[j][15]);
-                University savedUniv = new University(school, state, location, control, numStudents, percentFemale, SATVerbal, SATMath, expenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLife);
-                savedSchools.add(savedUniv);
-                break;
-        	}
-        }
-    }
+
     
-    return savedSchools;
+    
+    
+    
+   
+        
+    
+    
   }
+  
+    
   
   /**
    * removes a university from the CMC system

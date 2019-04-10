@@ -86,6 +86,7 @@ public class DBControllerTest {
 		for(int i = 0; i < r.size(); i++) {
 			actual.add(r.get(i).getFirst());
 		}
+		assertEquals(expected.toString(), actual.toString());
 	}
 	
 	@Test
