@@ -120,7 +120,30 @@ public class DBControllerTest {
 	public void sortByNumStudentsTest() {
 		db.sortByNumStudents("juser");
 	}
+	
+	@Test
+	public void addUniversityTest() {
+		int expResult = db.addUniversity("CSBSJU", "MN", "St. Joseph", "private", 3000, 50.0, 2000.0, 2000.0, 7000.0, 50.0, 4000, 75.0, 60.0, 4, 3, 2);
+		assertEquals("Expected Result = 1", expResult, 1);
+	}
 
+	@Test
+	public void getRecommendationsTest() {
+		University testUniversity = new University("CSBSJU", "MN", "St. Joseph", "private", 3000, 50.0, 2000.0, 2000.0, 7000.0, 50.0, 4000, 75.0, 60.0, 4, 3, 2);
+		db.addUniversity("Dane Kuhr University", "MN", "St. Joseph", "private", 3001, 49.0, 2001.0, 1999.0, 7001.0, 49.0, 4001, 74.0, 61.0, 5, 2, 3);
+		db.addUniversity("John Wolff University", "MN", "St. Joseph", "private", 2999, 50.5, 1999.6, 2001.7, 6999.8, 50.9, 3999, 76.1, 59.2, 3, 4, 1);
+		db.addUniversity("Justin Brakob University", "WA", "Walla Walla", "private", 3000, 50.0, 2000.0, 200.0, 7000.0, 50.0, 4000, 75.0, 60.0, 4, 3, 2);
+		db.addUniversity("Tyreese Robinson University", "MN", "St. Joseph", "public charter", 3000, 50.0, 2000.0, 2000.0, 7000.0, 50.0, 4000, 75.0, 60.0, 4, 3, 2);
+		db.addUniversity("Ben West University", "MN", "West St. Joseph", "private", 3002, 49.9, 1999.9, 1999.9, 6999.9, 49.9, 3999, 74.9, 59.9, 3, 2, 1);
+		ArrayList<University> actualResult = db.getRecommendations(testUniversity);
+		ArrayList<University> expResult = new ArrayList<University>();
+		expResult.add(db.viewExistingUniversity("Dane Kuhr University"));
+		expResult.add(db.viewExistingUniversity("John Wolff University"));
+		expResult.add(db.viewExistingUniversity("Justin Brakob University"));
+		expResult.add(db.viewExistingUniversity("Tyreese Robinson University"));
+		expResult.add(db.viewExistingUniversity("Ben West University"));
+		// Finish this john
+	}
 	
 
 	@AfterClass
@@ -129,5 +152,6 @@ public class DBControllerTest {
 		db.deleteUser("username");
 		db.deleteUser("testAdd");
 		db.removeUniversity("testSchool");
+		db.removeUniversity("CSBSJU");
 	}
 }
