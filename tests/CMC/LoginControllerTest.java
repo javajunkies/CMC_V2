@@ -85,8 +85,8 @@ public class LoginControllerTest {
 	@Test
 	public void testCheckStatusActive() {
 		char expected = 'Y';
-		char actual = l.checkStatus("juser");
-		assertTrue("Check status should return " + expected, expected == actual);
+		char actual = l.checkStatus("nadmin");
+		assertTrue("Check status should return " + expected + " but returned " + actual, expected == actual);
 	}
 	
 	public void testCheckStatusInactive() {
