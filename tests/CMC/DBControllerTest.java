@@ -120,6 +120,16 @@ public class DBControllerTest {
 	public void sortByNumStudentsTest() {
 		db.sortByNumStudents("juser");
 	}
+	
+	@Test
+	public void removeUniversityTest() {
+		db.removeUniversity("Augsburg");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void InvalidremoveUniversityTest() {
+		db.removeUniversity("fdsafdsa");
+	}
 
 	
 
