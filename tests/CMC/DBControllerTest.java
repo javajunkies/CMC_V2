@@ -159,6 +159,43 @@ public class DBControllerTest {
 	}
 	
 	@Test
+	public void addUniversityTest() {
+		int expResult = db.addUniversity("CSBSJU", "MN", "St. Joseph", "private", 3000, 50.0, 2000.0, 2000.0, 7000.0, 50.0, 4000, 75.0, 60.0, 4, 3, 2);
+		assertEquals("Expected Result = 1", expResult, 1);
+	}
+
+	@Test
+	public void getRecommendationsTest() {
+	}
+	
+	@Test
+	public void editUnivInfo() {
+		//fill this out
+		db.editUnivInfo(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale)
+	}
+	
+	@Test
+	public void viewUserTest() {
+		db.viewUser("juser")
+	}
+	
+	@Test 
+	public void isUserTest() {
+	    db.isUser("auser")
+	}
+
+	@Test 
+	public void removeFromSaved() {
+	    db.removeFromSaved("auser", "BUTLER")
+	}
+	
+	@Test
+	public void sort() {
+		//finish after sort is done
+		db.sort();
+	}
+	
+	@Test
 	public void removeUniversityTest() {
 		db.removeUniversity("Augsburg");
 	}
@@ -168,7 +205,19 @@ public class DBControllerTest {
 		db.removeUniversity("fdsafdsa");
 	}
 
-
+	@Test
+	public void getAllUniversitiesTest() {
+		int actualResult = db.getAllUniversities().size();
+		int expResult = 179;
+		assertTrue("There are 179 universities", (actualResult == expResult));
+	}
+	
+	@Test
+	public void viewExistingUniversityTest() {
+		University expUniversity = new University("Abilene Christian University", "Texas", "Suburban", "private", 10000, 50, -1, -1, 12088, 70, 4000, 90, 80, 2, 3, 3);
+		University actualUniversity = db.viewExistingUniversity("Abilene Christian University");
+		assertTrue("Universities are the same", (expUniversity == actualUniversity))
+	}
 
 	@AfterClass
 	public static void setUpAfterClass() throws Exception
@@ -176,5 +225,6 @@ public class DBControllerTest {
 		db.deleteUser("username");
 		db.deleteUser("testAdd");
 		db.removeUniversity("testSchool");
+		db.removeUniversity("CSBSJU");
 	}
 }
