@@ -55,8 +55,24 @@ public class LoginControllerTest {
 		assertEquals("Login should return " + expected, expected, actual);
 	}
 	@Test
-	public void testFindUser() {
-		assertTrue("No such user", l.findUser("juser"));
+	public void testFindUserValidAdmin() {
+		boolean expected = true;
+		boolean actual = l.findUser("nadmin");
+		assertTrue("No such user", expected == actual);
+	}
+	
+	@Test
+	public void testFindUserInvalid() {
+		boolean expected = false;
+		boolean actual = l.findUser("FakeUsername");
+		assertTrue("No such user", expected == actual);
+	}
+	
+	@Test
+	public void testFindUserValidUser() {
+		boolean expected = true;
+		boolean actual = l.findUser("juser");
+		assertTrue("No such user", expected == actual);
 	}
 
 	@Test
@@ -67,9 +83,15 @@ public class LoginControllerTest {
 	}
 
 	@Test
-	public void testCheckStatus() {
+	public void testCheckStatusActive() {
 		char expected = 'Y';
-		char actual = l.checkStatus("nadmin");
+		char actual = l.checkStatus("juser");
+		assertTrue("Check status should return " + expected, expected == actual);
+	}
+	
+	public void testCheckStatusInactive() {
+		char expected = 'N';
+		char actual = l.checkStatus("luser");
 		assertTrue("Check status should return " + expected, expected == actual);
 	}
 	
@@ -80,9 +102,5 @@ public class LoginControllerTest {
 		assertEquals("Login should return " + expected, expected, actual);
 	}
 
-	@Test
-	public void testLogoff() {
-		fail("Not yet implemented");
-	}
 
 }

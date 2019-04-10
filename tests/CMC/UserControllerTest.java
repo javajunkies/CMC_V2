@@ -36,8 +36,8 @@ public class UserControllerTest {
 	
 	@Test
 	public void Logofftest() {
-		int expResult = 1;
-		int actualResult = li.logoff();
+		boolean expResult = false;
+		boolean actualResult = li.logoff();
 		assertTrue("The result of the logoff attempt was " + expResult, expResult == actualResult);
 	}
 	
